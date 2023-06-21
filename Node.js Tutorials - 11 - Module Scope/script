@@ -1,0 +1,72 @@
+https://docs.google.com/presentation/d/14hIWHcG_RWgfteoqACD2Z4zYgbdD3BYiYO0yLgRoL8k/edit#slide=id.g2434a943147_0_2
+
+
+
+
+
+Welcome back in this video 
+Let's discuss about the module scope. I'm going to start out by developing two new modules it's a new file. 
+
+(((Let'sunderstand about module scope I'm going to begin by creating two new modules it's a new file )))
+
+
+banana.js  a new file apple.js within banana.js 
+
+
+#const fruits = "banana"
+#console.log(fruits)
+
+
+- I'm going to add const fruits is equal to banana and log it to the console 
+
+
+- I'm going to copy the same contents paste it in apple.js but change banana to apple now in index.js 
+
+
+#require('./banana')
+#require('./apple')
+I'm going to delete the existing code and instead require the two modules we have just created require dot slash banana require dotslash apple
+
+
+
+now we are importing two modules which contain the exact same constant being logged which is fruits the question to you now is if we run node index 
+## node index
+
+- all right if I run the command you can see the output is banana followed by apple both names are logged and there is noconflict or error and this is because each module in node.js has its own scope and the way node.js achieves that is with the immediately invoked function expression or if we pattern in JavaScript let me help you understand with an example 
+
+
+## create file iife.js
+## (function(){
+	
+})()
+
+- I'm going to create a new file called ife.js within the file I'm going to Define twoif thesefunction followed by parentheses andcurly bracesrapid with parentheses to convert it into a function expression and add parentheses at the end to immediately invoke it
+
+
+##const fruits = "banana"
+##console.log(superhro);
+
+- now within the function body const fruits is equal to banana and we log the same to the console next I'm going to copy paste this immediately invoked function expression and change banana to apple 
+
+-In the terminal if I run node if we see banana followed by apple and this is because with if these each function gets its own private scope under the hood node.js as well uses this same pattern 
+
+
+// slides
+ -Before a modules code is executed node.js will wrap it with a function  wrapper that provides module scope 
+
+- Because of this, we are able to avoid worrying about variables or functions conflicting. 
+
+- This saves us from having to worry about conflicting variables or functions
+
+
+
+
+
+
+There is proper encapsulation and reusability is unaffected
+
+this if you ask me is exactly what you want from a module system to summarize about module scope each loaded module in node.js is wrapped with an iffy that provides private scoping of code this allows you to repeat variable or function names without any conflicts 
+
+
+Thank you guys for watching Please consider giving me a rating and I'll see you in the next  video, till then take care
+"

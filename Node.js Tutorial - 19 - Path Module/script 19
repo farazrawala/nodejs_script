@@ -1,0 +1,78 @@
+in the previous video we learned about built-in modules it is code that node.js provides out of the box to help us build applications.
+in this video let's take a look at our first built-in module which is the path module.
+the path module provides utilities for working with files and directory paths.
+let's understand how to work with it.
+I'm here in index.js which is sort of our main module it is empty to begin with.
+to make use of a built-in module we first have to import it and to import a built-in module we use the require function so at the top const path is equal to require node colon path.
+here path is the name of our built-in module and we prefix it with node to indicate that it is a built-in module.
+it is also important to note there is no dot slash at the beginning.
+once we have the module loaded we can access the various properties and methods exposed by that module.
+now the path module has about 14 different properties and methods but in this video we will focus on seven which are regularly used.
+for most of the examples we will use the readily available double underscore filename and double underscore directory name convenience variables available in every module.
+let me quickly help you recollect what they represent.
+console log double underscore file nameconsole.log double underscore directory name.
+if I run node index.
+you can see double underscore file name is a string that represents the full path to the file index.js and double underscore their name is a string that represents the full path to the folder where index.js is located and this is the node.js folder.
+with this in mind let's take a look at the different methods available on the path module.
+first we have base name which Returns the last portion of a path.
+I'm going to duplicate the log statements and add path dot base name passing in double underscore file name and in the next line path dot base name passing in double underscore their name.
+save the file and run the code and you see index.js which is the last portion of double underscore file name and node.js which is the last portion of double underscore their name.
+the next method is EXT name which retains the extension of the path.
+copy paste the two lines and change base name to EXT name.
+run the code and we see dot JS for double underscore file name and an empty string for double underscore dinner name since it does not have a DOT character in its path.
+next we have the parse method which returns an object whose properties represent significant elements of the path let's copy paste just.
+the file name log statement and change EXT name to parse.
+run the code and we see an object with a few interesting properties.
+we have root of the path the directory.
+the base which is the last portion the extension and the name of the file.
+you can access these properties individually using the dot notation like you would do on any object.
+along similar lines we have the format method which returns a path string given an object.
+so if I duplicate the line and invoke path dot format passing in path dot parse run node index we should get back the original path string which is double underscore filename.
+the next method is is absolute which returns whether a path is absolute or not.
+let me copy paste a log statement and change parse to is absolute the path dot is absolute double underscore file name.
+run the code and we see it is true.
+this part in fact is an absolute path.
+if I make a copy and pass in dot slash data dot Json save the file and run the code.
+we see it is not an absolute path dot slash is relative.
+the next method is join which joins all given path segments together using the platform specific separator as a delimiter and then normalizes the resulting path.
+now that was a mouthful so let's understand with a few examples.
+I'll comment out the code so far to focus only on path.join.
+ now path dot join accepts one or more strings as arguments.
+for our first example let's specify three arguments.
+folder one folder 2 and index.html.
+run the code and we see three strings joined by platform specific separator as a delimiter.
+this is forward slash for a Mac and back slash for Windows.
+if I add a forward slash at the start.
+run node index you can see the path will also have a forward slash at the start.
+simple concatenation as you can see.
+but path dot join also normalizes the resulting path so if I make a copy and add double forward slash for folder two run node index you can see the resulting path still has only one forward slash.
+similarly if I make a copy and add dot dot slash to index.html run node index the resulting path has just folder 1slash index.html.
+this is because we are saying from folder to jump one folder up and then concatenate index.html.
+pretty neat if you ask me but something i would avoid as this is pretty confusing.
+finally you can also have something like double underscore directory name and data dot Json one node index and you can see this will give the full absolute path to data.json.
+hopefully you're now clear as to how the join method works.
+our final method is resolve which results a sequence of paths or path segments into an absolute path now this is a little tricky to understand so don't hesitate to re-watch the explanation a few times till it clicks for you.
+I am going to copy paste these five lines and replace join with resolve.
+I'll also comment out the join method to focus only on the resolve method output.
+all right if I now run node index we should see the log statements let's try understand the output.
+first thing to note is that in every lock statement the path starts with a forward slash indicating an absolute path.
+the path returned though is completely dependent on the arguments you pass in.
+if your arguments don't contain a forward slash as is the case with our first statement.
+result will add an absolute path to the current folder and join the arguments.
+this is how we see from slash users all the way till index.html.
+on the other hand if you specify a forward slash result will return the absolute path from that forward slash.
+which is y we see Slash folder 1 folder2 and index.html.
+now if forward slash occurs later in the sequence as is the case in statement 3here result will consider that as the root and ignore the previous path.
+this is why we see Slash folder 2 slashindex.html.
+this also explains the next statement where slash folder 2 is the root but we go up one folder and hence onlyindex.html is logged.
+finally since double underscore directory name is already an absolute path we see that with data.json returned by the result method.
+hopefully you're able to understand the differences.
+now one last point I would like to mention here is that when importing a built-in module the node prefix is optional even if I omit.
+node colon save the file run the code node index we see the same output node is smart enough to figure out that the important module is a built-in module however the node protocol has many benefits.
+first it makes it perfectly clear that the import is a node.js built-in module beginners don't always realize this.
+second it makes the import identifier a valid absolute URL.
+Third it avoids conflicts for future node.js built-in modules since the node protocol was recently introduced you may see built-in module Imports without the node prefix.
+however I recommend using it for all the benefits that you see listed here.
+to summarize path is a built-in module that provides utilities to work with file and directory paths.
+we had a look at base name extension name parse format is absolute join and result methods all of which will come to your help when building real world applications.
+thank you for watching please do consider subscribing to the channel and I'll see you in the next video

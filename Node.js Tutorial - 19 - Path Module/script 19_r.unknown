@@ -1,0 +1,201 @@
+We talked about built-in modules in the last session; this is pre-written code that comes with Node.js and may be used to speed up development.
+(((((("in the previous video we learned about built-in modules it is code that node.js provides out of the box to help us build applications.")))))))))))
+
+Let's have a look at the path module, the first pre-installed module, in this video.
+File and directory path utilities are available in the path module.
+(((((((((((((((("in this video let's take a look at our first built-in module which is the path module.
+the path module provides utilities for working with files and directory paths."))))))))))
+
+Let's figure out how to use it effectively.
+I'm in index.js, which is the primary module but currently contains nothing.
+(((((((("let's understand how to work with it.
+I'm here in index.js which is sort of our main module it is empty to begin with.")))))))))))))
+
+In order to use a pre-existing module, we must first import it, and the require function is used for this purpose; so, at the very top, const path is equal to require node colon path.
+(((((((((("to make use of a built-in module we first have to import it and to import a built-in module we use the require function so at the top const path is equal to require node colon path.")))))))))))))))))))
+
+Here, path is the name of our preinstalled module, and the node prefix indicates that it is a built-in component.
+Keep in mind there is no./ at the start of the expression either.
+((((((((((("here path is the name of our built-in module and we prefix it with node to indicate that it is a built-in module.
+it is also impoHere, path is the name of our preinstalled module, and the node prefix indicates that it is a built-in component.
+Keep in mind there is no./ at the start of the expression either.
+rtant to note there is no dot slash at the beginning.")))))))))))))))
+
+As soon as the module is loaded, its properties and methods become available for use.
+There are now around 14 attributes and methods available in the path module, but this video will only cover the most important seven.
+(((((((((("once we have the module loaded we can access the various properties and methods exposed by that module.
+now the path module has about 14 different properties and methods but in this video we will focus on seven which are regularly used."))))))))))))))))
+
+
+The double underscore filename and directory name convenience variables included into every module will be used extensively throughout the examples.
+I'll quickly refresh your memory on what they stand for. 
+((((((((((((((("for most of the examples we will use the readily available double underscore filename and double underscore directory name convenience variables available in every module.
+let me quickly help you recollect what they represent."))))))))))))
+
+Double underscore in the console log's filenameThe directory name console.log is a double underscore.
+when I do a node index.
+(((((((((((((((("console log double underscore file nameconsole.log double underscore directory name.
+if I run node index."))))
+
+Observe that They're located in the node.js folder, thus double underscore file name is the complete path to that folder, and double underscore their name is the full path to the file index.js within that folder.
+Keeping this in mind, let's investigate the path module's myriad of functions.
+base name, which returns the path's tail, comes first. 
+(((((((((((((((("you can see double underscore file name is a string that represents the full path to the file index.js and double underscore their name is a string that represents the full path to the folder where index.js is located and this is the node.js folder.
+with this in mind let's take a look at the different methods available on the path module.
+first we have base name which Returns the last portion of a path.")))))))))))))))))))))))))
+
+I plan on copying the log statements and appending "path dot base name passing in double underscore file name" and "path dot base name passing in double underscore their name" to each new line.
+(((((((("I'm going to duplicate the log statements and add path dot base name passing in double underscore file name and in the next line path dot base name passing in double underscore their name."))))))))))))))))
+
+After saving and running the file, you should be presented with index.js (the final part of the double-underscore file name) and node.js (the final part of their name).
+The next option is EXT name, which also keeps the path's extension. 
+((((((((((("save the file and run the code and you see index.js which is the last portion of double underscore file name and node.js which is the last portion of double underscore their name.
+the next method is EXT name which retains the extension of the path.")))))))))))))))
+
+Just cut and paste the two lines, but this time replace "base" with "EXT." 
+((((((((((("copy paste the two lines and change base name to EXT name.")))))))))
+
+
+If you try to run the code without include the DOT character in the route, you will get an empty string for the double underscore meal name.
+"(((((((((((((run the code and we see dot JS for double underscore file name and an empty string for double underscore dinner name since it does not have a DOT character in its path.")))))))))
+
+Then, there is the parse method, which, to cut to the chase, produces an object whose attributes reflect crucial components of the route.
+((((((((((("next we have the parse method which returns an object whose properties represent significant elements of the path let's copy paste just.")))))))))))))
+
+the log statement and the EXT name modification parsing.
+When we run the code, we get an object with certain unique characteristics.
+We are at the directory's starting point, or the root.
+(((((((("the file name log statement and change EXT name to parse.
+run the code and we see an object with a few interesting properties.
+we have root of the path the directory."))))))))))))))
+
+the root, or the very end of the file's extension and name.
+These properties are much like any other on an object in that they may be accessed using the dot notation.
+(((((((((((("the base which is the last portion the extension and the name of the file.
+you can access these properties individually using the dot notation like you would do on any object.")))))))))))))
+
+Similarly, an object's format method may be used to obtain a path string.
+((((((((("along similar lines we have the format method which returns a path string given an object.")))))))))))
+
+The original path string (double underscore filename) should be restored if I make a copy of the line and then use path.format with the parameters path.parse.run.node.index. 
+((((((((((("so if I duplicate the line and invoke path dot format passing in path dot parse run node index we should get back the original path string which is double underscore filename.")))))))))))
+
+The second one is called "is absolute," and it indicates whether or not a certain path is absolute.
+I'm going to paste in a log statement and alter the parsing to absolute. the file name is a double underscore absolute path.
+"(((((((((((((the next method is is absolute which returns whether a path is absolute or not.
+let me copy paste a log statement and change parse to is absolute the path dot is absolute double underscore file name."))))))))))))
+
+It checks out when we run the code.
+This is the one and only true route. 
+(((((((((((("run the code and we see it is true.
+this part in fact is an absolute path.")))))))))
+
+What happens if I make a copy, then save the file as "./data.Json" and execute the program?
+dot slash is relative, not absolute, as we can now see. 
+((((((((((((("if I make a copy and pass in dot slash data dot Json save the file and run the code.
+we see it is not an absolute path dot slash is relative.")))))))))))))))
+
+The following operation, join, combines all of the specified route segments using the platform-specific separator as a divider, and then standardizes the whole thing.
+((((((("the next method is join which joins all given path segments together using the platform specific separator as a delimiter and then normalizes the resulting path.))))))))))))"
+
+Yes, that was a mouthful, so let's break it down with some illustrations.
+I'll isolate route by commenting out the rest of the code.join.
+(((((((((("now that was a mouthful so let's understand with a few examples.
+I'll comment out the code so far to focus only on path.join."))))))))))))
+ 
+The number of strings that may be sent to path dot join has increased.
+Let's start with a simple example and define three parameters.
+ ((((((((((("now path dot join accepts one or more strings as arguments.
+for our first example let's specify three arguments."))))))))
+
+folder one folder 2 and index.html.
+
+When we run the code, we see three strings that have been combined using the platform-specific separator.
+((((((((((((("run the code and we see three strings joined by platform specific separator as a delimiter.")))))))))))
+
+For Macs, you would use a forward slash; for Windows, you would use a back slash.
+if I prepend a forward slash to the beginning.
+(((((((("this is forward slash for a Mac and back slash for Windows.
+if I add a forward slash at the start."))))))))))))
+
+run index nodes You can see that the path's beginning is a forward slash as well.
+As you can see, it's just a concatenation.
+If I make a copy and use two forward slashes for folder two in run node index, you'll find that the resultant path is still only one forward slash after being normalized by path dot join. 
+((((((((((((("run node index you can see the path will also have a forward slash at the start.
+simple concatenation as you can see.
+but path dot join also normalizes the resulting path so if I make a copy and add double forward slash for folder two run node index you can see the resulting path still has only one forward slash.")))))))))))
+
+the resultant path contains simply folder 1slash index.html if I make a copy and add dot dot slash to index.html and run node index.
+The reason for this is that we are instructing from folder to first concatenate index.html before jumping up a level.
+((((((((("similarly if I make a copy and add dot dot slash to index.html run node index the resulting path has just folder 1slash index.html.
+this is because we are saying from folder to jump one folder up and then concatenate index.html."))))))))))
+
+It's quite cool, if you ask me, but it's also extremely confusing, so I'd probably steer clear of it.
+Last but not least, you may also have something like double underscore directory name and data dot Json one node index, and this will provide you the entire absolute path to data.json.
+The join procedure should now be more transparent to you
+(((((((((((("pretty neat if you ask me but something i would avoid as this is pretty confusing.
+finally you can also have something like double underscore directory name and data dot Json one node index and you can see this will give the full absolute path to data.json.
+hopefully you're now clear as to how the join method works."))))))))))))))))))
+
+If you're having trouble following along, don't worry about it; just watch the video again and again until you get it. Our final technique is resolve, which converts a list of pathways or path segments into an absolute path.
+These five lines will be copied and pasted with join changed to resolve.
+To isolate the output of the resolve function, I will also disable the join method via a remark. 
+((((((((((((((((("our final method is resolve which results a sequence of paths or path segments into an absolute path now this is a little tricky to understand so don't hesitate to re-watch the explanation a few times till it clicks for you.
+I am going to copy paste these five lines and replace join with resolve.
+I'll also comment out the join method to focus only on the resolve method output.")))))))))))))))))
+
+
+OK, I guess Let's see if we can make sense of the output from now running node index and reading the log statements."(((((((((((((((all right if I now run node index we should see the log statements let's try understand the output."))))))))))
+
+Every lock statement's route begins with a forward slash, denoting an absolute path, which is the first thing to keep in mind.
+However, the route that is returned is entirely dependant on the parameters that are supplied. 
+"(((((((((((((first thing to note is that in every lock statement the path starts with a forward slash indicating an absolute path.
+the path returned though is completely dependent on the arguments you pass in.")))))))))))
+
+If, like in our initial sentence, the arguments you use do not include a forward slash, then your argument is invalid. 
+"(((((((((((((((if your arguments don't contain a forward slash as is the case with our first statement.")))))))))))
+
+The end result will be a joined set of parameters and an absolute path relative to the current folder.
+In this method, we can trace the path from slash users to index.html.
+However, if you use a forward slash instead of a relative route, result will return the absolute path.
+(((((((((((("result will add an absolute path to the current folder and join the arguments.
+this is how we see from slash users all the way till index.html.
+on the other hand if you specify a forward slash result will return the absolute path from that forward slash."))))))))))))
+
+which is why we have index.html, folder1, and folder2.
+The preceding route will be disregarded if a forward slash appears later in the sequence, as in assertion 3 here.
+((((((((("which is y we see Slash folder 1 folder2 and index.html.
+now if forward slash occurs later in the sequence as is the case in statement 3here result will consider that as the root and ignore the previous path."))))))))))))
+
+Because of this, Slash folder 2 has a slashindex.html file.
+This clarifies the following remark as well: even if slash folder 2 is the root, we move up a level and just log index.html.
+((((((((("this is why we see Slash folder 2 slashindex.html.
+this also explains the next statement where slash folder 2 is the root but we go up one folder and hence onlyindex.html is logged.")))))))))
+
+Finally, we can observe that the name of the directory preceded by a double underscore is an absolute path.results in json format from the result method.
+I think you'll be able to see the distinctions now.
+((((((((((((("finally since double underscore directory name is already an absolute path we see that with data.json returned by the result method.
+hopefully you're able to understand the differences.")))))))))))))
+
+Finally, I'd want to point out here that the node prefix is optional even if I do not use it when importing a built-in module.
+When we execute the code with node colon, then save it and run it with node index, we get the same result since node knows that the crucial module is a built-in one.
+((((((((((("now one last point I would like to mention here is that when importing a built-in module the node prefix is optional even if I omit.
+node colon save the file run the code node index we see the same output node is smart enough to figure out that the important module is a built-in module however the node protocol has many benefits.")))))))))))))))
+
+First, it highlights the import's node status for maximum clarity.Many newcomers to JS don't know about this built-in module's existence.
+the second is that it converts the import identifier into an absolute URL.
+((((((((("first it makes it perfectly clear that the import is a node.js built-in module beginners don't always realize this.
+second it makes the import identifier a valid absolute URL.")))))))))
+
+Third, it prevents potential node conflicts.Built-in modules in Node.js may be imported without the node prefix due to the protocol's recent introduction.
+Nonetheless, I urge you to make use of it for the reasons stated below.
+(((((((((((("Third it avoids conflicts for future node.js built-in modules since the node protocol was recently introduced you may see built-in module Imports without the node prefix.
+however I recommend using it for all the benefits that you see listed here.")))))))))))))))
+
+Briefly, path is an in-built module that offers access to several tools for manipulating file and directory paths.
+In this lesson, we examined the base name extension name parse format is absolute join and result techniques that will be useful when constructing functional software.
+((((((((((((("to summarize path is a built-in module that provides utilities to work with file and directory paths.
+we had a look at base name extension name parse format is absolute join and result methods all of which will come to your help when building real world applications.")))))))))))))))
+
+I hope you enjoyed the video, and if you did, please subscribe so you don't miss the next one. 
+"(((((thank you for watching please do consider subscribing to the channel and I'll see you in the next video"))))))))))

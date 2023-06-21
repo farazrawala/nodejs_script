@@ -1,0 +1,124 @@
+https://docs.google.com/presentation/d/14hIWHcG_RWgfteoqACD2Z4zYgbdD3BYiYO0yLgRoL8k/edit#slide=id.g24e8cb25d84_0_0
+
+https://www.youtube.com/watch?v=F_GmxjP80so&list=PLC3y8-rFHvwh8shCMHFA5kWxD9PaPwxaY&index=14
+
+
+
+I want to show case some of the patterns that you might come across in other projects when importing and exporting modules. All of these patterns are valid patterns, and I want to make sure that you are aware of them.
+(((((Welcome back in this video I want to show case some of the patterns you might come across in other projects when importing and exporting modules they all are valid patterns and I want to make sure you're aware of them)))))
+
+
+- To get started, I'm creating a new file called "math.js."
+(((I'm going to begin by creating a new  file math.js )))
+
+##code 
+const add = () => {
+	return a*b;
+}
+
+
+
+in the file I'm going to define a function it's a function that accepts two numbers and returns their sum our first pattern is when we have to export and import a single variable or function in math.js 
+
+
+##code 
+module.exports = add 
+specify "module.exports" is equal to add 
+
+
+#code //index.js
+const add = require('./math')
+console.log(add(3,4));
+
+
+in index.js
+const add is equal to require dot slash math we can then console log add passing in to comma 3.
+
+-When we type "node index" into the terminal, the expected result is 7. 
+(((in the terminal run node indexand we see 7 which is the expected output 
+)))
+
+
+
+- Of course, this is the same pattern we've noticed before. 
+(((this of course is also the pattern we have already seen )))
+
+
+##code 
+module.exports  = () => {
+	return a*b;
+}
+
+
+Let's move on to the second pattern. In the second pattern, instead of having "module.exports" on a separate line, we directly assign the arrow function to "module.exports." To do this, comment out "module.exports" is equal to add and instead, on the first line, replace const add with "module.exports." The import will remain the same, and if you now rerun node index, we should see the same output 7.
+(((((let's now proceed to the second pattern in the second pattern instead of having "module.exports" on a separate line we directly assign the arrow function to "module.exports" so comment out "module.exports" is equal to add and instead on the first line replace const add with "module.exports" the import will remain the same if you now rerun node index we should see the same output 5.)))))
+
+
+
+##code revert back to pattern 1
+const subtract = () => {
+	return a-b;
+}
+
+
+
+
+
+
+-Let's move on to the third pattern, in which we export multiple variables or functions: I'll switch back to using const add as an equal sign, and I'll add a second function. Now that we know how to export both add and subtract, we can simply type "module.exports," which is an object, and press enter.
+((((let's now proceed to the third pattern where we export more than one variable or function I'm going to revert back to const add is equal to a function I'm also going to add a second function subtract accepts two parameters and Returns the difference now to export both add and subtract we can type"module.exports" and this is equal to an object)))) 
+
+
+module.exports = {
+	add:add,
+	subtract:subtract
+} 
+
+here we set a property add to the add function and a property subtract to the subtract function with es2015 features though we can specify just add and subtract if the key and value are the same so add comma subtract 
+
+we are basically attaching properties to the exports object that exists on every module now 
+
+
+
+back in index.js require will return an object let's call it math 
+
+const math = require('./math')
+
+
+
+### math.add 
+math.subtract(7,3)
+
+we can now invoke math dot add to comma and math dot subtract 2 comma 3 in the terminal
+
+
+-The results of running node index 7 and 4 which is the expected output 
+((((if we run node index we see 5 and -1 which is the expected output ))))
+
+
+this is the third pattern when dealing with object Imports though you might also come across destructuring which is again an es2015 feature after requiring the module we destructure the functions from the object 
+
+##code
+const {add,substract} = math
+
+
+math.add to add
+so const add comma subtract and this is from the math object we then invoke just add and subtracton lines 5 and 6.
+
+
+
+run node index again and we still see the same output A variation of how we attach functions to "module.exports" brings us to the fourth pattern when we Define the function we can directly assign it to a property on "module.exports" so instead of const add and const subtract 
+
+we specify "module.exports.add" and "module.exports.subtract"
+
+we can comment out the object export rerun node index and we see the same output so this is our fourth pattern 
+
+
+for the fifth and final pattern we're going to revisit the iffy that wraps every module if you remember the function that wraps every module in node.js receives five parameters the first parameter is exports now exports is a reference to "module.exports" that is shorter to type so for our fifth pattern we can replace"module.exports" with just exports so "exports.add" and "module.exports.subtract" rerun node index and we see the sameoutput 
+
+
+However, I strongly suggest that you avoid using just exports and instead always use "module.exports." The question that immediately comes to mind is why using "module.exports" rather than just exports is preferable.You'll have to wait until the next video for me to respond to that question, but in the meanwhile, I hope that the five distinct ways to import and export modules in node have been sufficiently clear to you.js I appreciate you taking the time to watch, 
+
+Thank you guys for watching Please consider giving me a five star rating and I'll see you in the next video, till then take care"
+.
+(((((however I will discourage you to use just exports and always stick to "module.exports" and your immediate question would be why is it better to use "module.exports" instead of just exportswell let me answer that question in the next videobut for now I hope you're clear with the five different patterns to Import and Export modules in node.js thank you for watching please doconsider subscribing to the channel andI'll see you in the next one")))))

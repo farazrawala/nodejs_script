@@ -1,0 +1,144 @@
+https://docs.google.com/presentation/d/14hIWHcG_RWgfteoqACD2Z4zYgbdD3BYiYO0yLgRoL8k/edit#slide=id.g24e8cb25d84_0_0
+
+
+"
+in the previous video we had a look at various patterns to Import and Export modules for our fifth pattern 
+
+
+
+- Previously, we had learnt about the exports keyword, which may be used in place of "module.exports." However, in this video with a few lines of code, I mentioned that it is always best to use "module.exports" instead of exports.
+(((((we had learned about the exports keyword which can be used in place of  "module.exports" however I did mention it is always better to use  "module.exports" instead of exports in this video with a few lines of code))))) 
+
+
+let me explain the reasoning behind that 
+
+
+I'm going to begin by creating a new file I'll call it object-reference.js 
+
+
+##code 
+const obj1 = {
+	name : "Zack Cornor"
+}
+within the file I'm going to create an object called obj1               with one property name initialized to Zack Cornor in the next line 
+
+
+##code 
+const obj1 = obj2
+obj2.name  = "Harry Brown "
+
+I'm going to create anew object      obj2 and assign obj1 to obj2 
+
+in the next line 
+
+I will reassign object 2 dot name to "Harry Brown" you now log obj1 to the console and run node object reference dot Js 
+
+
+We can see that the object has been logged, but the name associated with it is Harry Brown . When you assign one object to another in JavaScript, both objects point at the same address in memory. Modifying one object will lead to the modification of the other object. 
+((((we see the object logged but the name is Harry Brown  and not Zack Cornor this is because in JavaScript when you assign one object to another both objects point at the same address in memory modifying one will lead to modifying the other ))))
+
+1:52
+
+-Therefore, when we modified object 2, we were simultaneously modifying object 1, which is why Harry Brown 's name was chosen rather than Zack Cornor's. Now, after the first assignment has been completed, now here is the interesting bit after the initial assignment
+((((so when we modified object 2 we are also modifying object 1 which is why name is Harry Brown  and not Zack Cornor now here is the interesting bit after the initial assignment
+))))
+
+
+
+#const obj2 to let
+obj2 = {
+	name : "Harry Brown"
+}
+If we create a new object rather than modifying the properties of the old object, that reference will be broken. Therefore, if I update the "const obj2" assignment to read "let obj2 is equal to obj1," and then assign a new object to obj2 with the name changed to Harry Brown , and then run the code, the reference will be broken. 
+((((if we assign a new object instead of modifying the properties on the existing object that reference is broken so if I change "const obj2" assignment to let "obj2 is equal to obj1" and then assign a new object to obj2 with name set to Harry Brown  and run the code)))) 
+
+
+we see obj1 still contains Zack Cornor when we assigned an object literal the reference was broken modifying obj2 will no longer affect obj1 hopefully this makes sense now 
+
+why did I explain this well as it turns out obj1 is "module.exports" and obj2 is just exports this Behavior where we expect Harry Brown to be logged but Zack Cornor is logged instead is what might happen whenworking with node.js modules as well 
+
+
+let's go back to math.js and understand this 
+
+3:20
+
+at the moment on line 1 and line 5  we are modifying the property that exists on the "exports.object" this as you can see works as expected 
+
+
+when we run node index addition and subtraction print the expected results if we choose to use the other syntax where we have  "module.exports" as an object run node index that also works as expected
+
+// last comment wali export uncoment kardo
+
+but if I now replace "module.exports" with just exports and rerun node index
+
+
+it does not work as expected 
+
+this is because from a module node.js only returns "module.exports" and not the exports object
+
+exports is just a reference to "module.exports" 
+ 
+ // last export hightlighted.
+ if you assign a new object to exports like we have done here on line 9 that reference is broken and "module.exports" will be an empty object that is exported 
+
+
+ // hight math in 1st line
+ in our case math becomes an empty object in index.js 
+
+4:50
+
+if you try access "dot.add" or "dot.subtract" on an empty object it will through an error 
+
+going back to our object reference hopefully you can now relate to obj1  being  "module.exports" and obj2 being exports 
+
+
+if this is a little difficult to understand let me help you visualize by debugging 
+
+
+// last modules.export will be commit
+ // const add will exports.add 
+first let me go to scenario 1 where we have "exports.add" and "exports.subtract" this was our fifth pattern in the previous video 
+
+
+// index. debug
+
+if I now debug you can see initially exports is an empty object "module.exports" is also an empty objectif 
+I step into the require function we are brought to "math.js" step over and we can now see exports has an ad property which is a function and "module.exports" also has an ad property which is a function step over again and we have subtract aswell both on exports and  "module.exports" this is because they both point at the same location and changing exports will also change   "module.exports" which is what is returned from the require function 
+
+
+// math.js
+now let's switch to exports where we assign a new object that contains add and subtract as properties 
+
+- It's a new assignment, so rather than modifying the "exports.object" properties, run and debug instead. We now have exports, which is an empty object, "module.exports," which is also an empty object, and we've stepped inside the math function.js
+((((it's a new assignment instead of modifying the "exports.object" properties run and debug we have exports which is an empty object "module.exports" which is an empty object step into the function call and we are now in math.js))))
+
+
+if I now step through the code after we cross the exports assignment you can see only exports is populated with add and subtract functions 
+
+
+but  "module.exports" is not populated 
+
+
+this is because the reference was lost when you assign a new object instead of attaching a property on the exports object 
+
+// step over.
+when we return back to index equire returns an empty object which results in the error 
+
+// math.js
+comment last export
+exports.add
+exports.subract.
+
+
+so if you ask me al though exports is shorter than "module.exports" this confusion of attaching to the expert's object versus assigning a new object to exports is just not worth it  
+
+
+// last object export uncomit 
+module.exports 
+
+
+
+I would suggest always use "module.exports"when exporting from a module hopefully you also now have an idea of all the five parameters that are present in the function that wraps every module in node.js exports require module double underscore file name and double underscore directory name 
+
+
+Thank you guys for watching Please do consider giving me a rating and I'll see you in the next  video, till then take care

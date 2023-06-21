@@ -1,0 +1,227 @@
+over the past few videos, we've learned about the common JS module format used in node.js
+with common.js 
+
+each file is treated as a module.
+ this means that 
+
+ variables, functions, classes and etc. are not accessible to other files by default 
+
+you need to 
+
+explicitly tell the module system which parts of your code should be exported via module.exports
+
+this is done we are the "module.exports" object but the exports shortcut which are both available in every common.js module 
+
+whenever you want 
+
+to import code into a file use the require function
+ although common JS works perfectly fine a new module system has been added to node.js.
+ 
+ and that is es modules. 
+
+let's learn about es modules in this video 
+
+You may be wondering why we would need yet another choice for "importing and exporting modules."
+((((now the first question you might have is why would we need another option for importing and exporting modules.))))
+
+
+well at the time node.js was created there was no built-in module system in JavaScript
+
+ node.js defaulted to common.js as its module system.
+
+
+ however as of es 2015 JavaScript does have a standardized module system as part of the language itself.
+that module system is called ecma script modules or ES modules or esm for short.
+
+
+Node and browser makers finally caught up to each other.Finally, node.js's maintainers had fully implemented the specification.Initial stability was reached in node with version 14.
+(((( it took a while before the browser vendors and the node.js maintainers actually fully implemented the standard this was finally the case for node.js with version 14 when it first got stable.))))
+
+(((Let's take a look at few examples to learn how to utilize es modules in node.js.)))
+ so let's understand with a few examples how to work with es modules in node.js.
+
+
+
+let's use the same example of our math module from before but use es modules instead of common Js.
+the first thing you should know is that the file extension for ES modules is dot MJS and not Js let's create a new file.
+ main dot MJS
+
+
+Let's make another file for the math section.
+((((let's create a second file for our math module.
+ )))) 
+ 
+ 2.40
+
+  // math esm.mjs.
+ ##code
+ const add = (a,b) =>{
+  return a + b
+ } 
+
+ within the file I'm going to define a function const add a comma b as parameters and we return a plus b our first pattern is where we have to export and import a single variable or function in math hyphen esm.mjs we type export default add.
+
+## code
+ export default add;
+
+
+ this exports the add function in main dot MJS 
+
+
+
+  ## import add from './math-esm.js'
+ import add from.
+ 
+
+ console.log(add(5,5));
+ Maths m dot MJS we can then console log add Phi comma 5 to the console.
+in the terminal run node mean dot MJS and we see the expected output 10.
+
+Next, we'll look at the second structure.
+((((let's now proceed to the second pattern)))).
+
+Instead of placing the export default on a separate line, like in the first pattern, we placed it in the same line as the arrow function in the second.
+(((( in the second pattern instead of having export default on a separate line we have it in line with the arrow function itself.))))
+
+
+
+// comment last line export
+//  const add =  (remove) and add
+export add
+
+
+so comment out export default add and instead on the first line replace const add is equal to.
+with export default if we save the file and we run node main dot MJS we should see the same output.
+let's now proceed to the third pattern where we export more than one variable or function.
+
+
+
+###const add =  (add)
+ 
+
+ I'm going to revert back to const add is equal to function.
+
+
+In addition, I plan to apply a second use.
+((((((I'm also going to add a second function.))))))
+
+## const subtract = (a,b) => {
+	return a-b
+}
+
+
+const subtract a comma B and return a minus B.
+
+now to go ahead and export both features.
+((((((now to export both the functions.))))))
+
+## export default {
+	add:add,
+	substract:substract
+}
+
+We can export default and object, and we can set a property add to the add method and a property subtract to the subtract function. With es2015, if key and value are the same, we can provide a short hand add and subtract.
+((((we can export default and object and we can set add to the add function and a property subtract to the subtract function of course with es2015 if key and valueare the same we can specify a short hand add and subtract.))))
+
+
+main.mjs
+
+
+## import math (add)
+
+
+Now we're back on main. We'll be importing an object called math.
+((((now back in main.js we will be importing an object let's call it math.))))
+
+###
+math.add
+math.substract
+
+we can now invoke math dot add five comma five and math dot subtract5 comma 5.
+
+
+
+in the terminal if we run node mean dot MJS we see 10 and 0 which is the expected out.
+
+
+this is the third pattern.
+
+
+When handling object imports, you may come across destructuring, which is another es2015 feature.
+when dealing with object Imports though you might also come across destructuring which is again an es2015 feature.
+after importing the module, we destructured the functions from the object
+
+##
+const {add,substract} = math
+
+
+it's a const add comma subtract from math.
+we then invoke just add and subtract.
+
+These three patterns all generate the same result when we run node Main.
+((((run node Main and we see the same output these three patterns.))))
+
+
+here are referred to as default exports.
+
+
+we are alert to refer to the exported function by any name while importing it.
+
+7.04
+
+now in es modules we also have what is known as named exports where the variable or function name being exported must match while importing it.
+
+##
+export const add 
+export const subtract 
+
+so for the fourth pattern when we Define the function we can add the export keyword at the start.
+export const add export const subtract.
+
+//comment last export line
+we could leave the default export as is but I'll comment that out to avoid any confusion.
+
+There are two ways to import in main.mjs.
+(((back in main.mjs we can Import in two ways))).
+
+
+## import * as math ...
+First import Star as math in which case maths an object that contains all the exports from main.js and we can destructure add and subtract from math.
+
+
+Running "node main.js" makes it continue to function as expected.
+((( if you run node main.js it continues to work as expected.)))
+
+
+a second way which is also the more common way to import named exports issuing curly braces with the same names as the exports.
+
+so import curly brace sadd and subtract from the math module.
+
+When importing, we are, simply, destructuring.
+(((we are basically destructuring when importing.)))
+
+remove the additional destructuring clear the terminal run node Main and we see the same output.
+
+these are different patterns to Import and Export with es module format.
+
+- to summarize es modules is the ecma script standard for modules.
+it was introduced with es2015 and
+
+node.js provided stable support since nerd version 14.
+
+with es modules instead of "module.exports" we use the export keyword.
+ the export can be default or named.
+
+we import the exported variables or functions using the import keyword.
+if it is a default export we can assign any name while importing.
+if it is a named export the import name must be the same.
+
+If you've done front-end programming previously, you should be familiar with this es module structure.
+((((if you have done front-end development before this format of es modules should already be familiar.
+))))
+
+
+it might also be the future of node.js but for now I'll stick to using common JS which will still be the primary format for a year or two.
+
+
+alright thank you for watching and I'll see you in the next video"

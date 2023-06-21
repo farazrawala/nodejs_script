@@ -1,0 +1,62 @@
+"
+-In the previous video, we learned how to use the required function to load a module, which essentially asks V8 to run the code contained in that module. 
+
+(((((in the previous video we learned how to load a module using the required function by requiring a module we are basically asking V8 to execute the code in that module )))))
+
+
+
+-Even though this works, the best way to make and reuse a block of code is to open certain functions that other files or apps can use.
+((((although this works fine the right way to create and re use a block of code is to expose certain functionality that can be consumed by external files or apps))))
+
+
+- we can do that using the special module.exports object that is always readily available in node.js
+
+
+### move to add.js file.=> 
+
+### remove const sum
+### remove console
+- here's how it works in add.js instead of calling add and logging the sum value  we're going to export the add function from this module for that we assign add function to the module.exports object 
+
+
+### module.exports = add
+so module.exports is equal to add now what is special about this object well the value of this object is what the required function returns for the corresponding module 
+
+### move to index.js
+
+### const add = requi....
+this allows us to store ad in a constant the const add is equal to require dot slash add 
+
+## add in last line
+##const sum = add(1,2);
+##console.log(sum);
+
+In index.js again we can now type const sum is equal to add 1 comma two and console log sum in the terminal run the code using node index and we see the message as well as 3 logged in the console  
+
+### move to add.js
+### then move to index.js 
+-The add function is a reusable piece of code, and now that we've made it public and included it in index.js, we may call it as much as we like.
+(((((But now that we are exposing the add function and loading it up in index.js we can call the add function any number of times as it is a reusabl eblock of code)))))
+	
+
+//add this.
+##const sum2 = add(11,12);
+##console.log(sum1);
+
+
+  run the code and we see 23 as well now one point you should make note of is that when we capture the value of module.exports using the require function the constant name can be anything it doesn't have to be add
+
+  // rename add
+  ## const add = requi....
+
+
+  I can change this to add function and update the function calls as well rerun node index and we see the same result the 
+
+
+  return value doesn't have to be the same as the exported value this is called a default export where you can refer to the returned value using any name
+
+  but this is pretty much the idea behind modules in node.js you can create new functionality such as the add function expose it using the special module.exports object import it in a different file using the require function and use it as many times as you want to this is the common JS format for exporting and importing functionality that node.js adheres to although 
+
+
+- This is basically what you need to know before moving on, though there are a few more Concepts about modules that I think you should be aware of in order to have a greater understanding of how modules work, so let's keep discussing them in the videos to come.
+((((this is pretty much what you should know to proceed there are a few more Concepts aboutmodules that I personally feel youshould be aware of to have a deeper understanding of how modules work so let's continue our discussion about modules in the upcoming videos as well))))"

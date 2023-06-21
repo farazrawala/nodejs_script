@@ -1,0 +1,37 @@
+In the previous video we had a look at the path module in node.js.
+before we proceed with the other built-in modules we need to take a detour to understand the Callback pattern or callback style of programming in node.js which is what this video is all about.
+let's begin by understanding a very important point.
+in JavaScript functions are first class objects.
+what that means is that just like an object a function can be passed as an argument to a function and a function can also be returned as value from other functions.
+let's understand this with a simple example.
+back in vs code in index.js I'm going to define a function called greet.
+which accepts a name parameter and logs to the console hello followed by the name.
+I'll Define another function called greet Vishwa’s.
+what is special here is that the function accepts another function as its argument.
+within the function body we have a cons declaration name equal to Vishwas and we call the past in function with name as its argument.
+finally I'll invoke greet Vishwas passing in the grid function.
+when we run node index the control goes to greet Vishwas which calls greet FN greet FN is nothing but the grid function which we have defined on line1.execution goes to the grid function with name equal to Vishwas and hello Vishwas is going to be logged in the terminal.
+here tweet Vishwas is a function which accepts another function as an argument and you might be pleasantly surprised to learn that any function that is passed as an argument to another function is called a callback function in JavaScript.
+also the function which accepts a function as its argument or returns a function is called a higher order function.
+if I simply rename the function and its argument to convey what they stand for.
+higher order function.
+accepts a callback function and on line 7 calls that callback function passing in the name constant.
+so we now know what a callback function is.
+you might be thinking is that Edwell yesa function passed as an argument to another function is called a callback function but what we need to understand is why do we need a callback function.
+we can answer that by categorizing callbacks into two.
+ synchronous and asynchronous let's first talk about synchronous.
+Callback as callback which is executed immediately is called a synchronous callback.
+our greet callback function here is an example as the function gets executed immediately when the control goes inside the higher order function.
+a more practical example is a callback function passed to methods like sort map or filter.
+in these cases the Callback function defines a logic that the higher order function needs to apply.
+nothing too fancy when it comes to synchronous callbacks let’s now move on to async callbacks which will also bring our Focus back on asynchronous JavaScript.
+an async callback is a callback that is often used to continue or resume code execution after an asynchronous operation has completed.
+so in the async world callbacks are used to delay the execution of a function until a particular time or event has occurred.
+and this use case is really important because most of the modules in Node.js have an asynchronous nature to prevent blocking of execution.
+for example reading data from a file fetching data from a database or handling a network request now we will understand each of these in more detail as we progress through the series but for now let me go back to browser JavaScript to help you understand with an example.
+our first example is that of event handlers.
+when JavaScript encounters dot add event listener it does not immediately run the Callback function.
+the function is only run when the user clicks on the button in other words the execution of the Callback function is delayed till an event occurs in the browser and that event is the click event if you want a data fetching example with callbacks we can go back to jQuery if you've used it before for dollar dot get the first argument is the URL and the second argument is the Callback function which gets called only after the data has been loaded.
+but this is the Callback pattern or callback style of programming that is very popular in node.js they allow you to delay the execution of a function until a particular time or event has occurred.
+all right with this understanding of callbacks let's proceed to the next video where we will resume learning about the different built-in modules in node.js.
+I'll see you in the next one

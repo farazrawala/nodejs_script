@@ -1,0 +1,166 @@
+"
+Hello, guys hope you are having a great day, 
+in the previous two videos, we learned about module scope and module wrapper in this video Let's Learn yet another
+
+Important concept which is module caching to help you understand what model caching is all about 
+
+
+Create a new file called "superhero.js"
+{{{{Let me create a newfile superhero.js}}}}
+
+
+I'll create a superhero class within the file, and we'll add a constructor to initialize the superhero's name. 
+{{{{Within the file I'm going to create a  superhero class  class superhero and we're going to add a Constructor to initialize the superhero's name }}}}
+
+
+##code 
+constructor(name)
+{
+	this.name
+}
+
+
+
+ - this.name is equal to the Past in name  
+
+
+ ##code 
+
+ getName ()
+ {
+   return this.name
+ }
+
+ setName(name)
+ {
+    this.name = name
+ }
+
+
+
+
+ - I'll also add two methods to get and set the name return this dot name set name receives a name and assigns it to this dot name finally I'm going to export an instance of this class module.export is equal to a new superhero  and we pass in name as Batman
+
+ ### module.exports = new SuperHero('Batman');
+
+ Back in index.js I'm going to start fresh and require the superhero module
+
+// clear every thing in index.js
+## move to index.js
+const superHero = require('./super-hero');
+console.log(superHero.getName());
+
+
+ I'll Store The Returned value in a constant called superhero which would be an object in the next line I can log "superhero dot get" name and if we run node index in the terminal we should see Batman loged in the console I can also call "set name" so "superhero dot set name" passing in Superman and log get name again 
+
+
+
+ re run the code node index and we see Superman from the new log statement
+
+
+code ##
+superHero.getName('SuperMan')
+console.log(superHero.getName());
+
+I really hope that everything is clear now,
+
+
+
+--- Audio  baqi hai. 
+
+
+however in order to make another instance of superhero, I'm going to have require the superhero module once more. In the following line, "require dot slash superhero" is equivalent to the "const new superhero" expression. I'm going to console log new superhero dot get name
+(((( I hope this is clear now though I'm going to require the superhero module again to create another instance of superhero the const new superhero is equal to "require dot slash superhero" in the next line I'm going to console log new superhero dot get name
+))))
+
+###
+const newSuperHero = require('./super-hero');
+newSuperHero.getName('SuperMan')
+
+
+
+ -
+Think about what you would expect to see if you ran this code right now: new superhero dot get name.
+ ((((if you were to run this code now what do you think is the output of new superhero dot get name  pause and think about it))))
+
+
+- If I run node index, you can see that the new superhero's name is also Superman. This is confusing because we are clearly establishing a new instance of superhero with the name Batman; hence, the log statement should also be Batman.js
+ (((if I run node index you can see the new superhero name is also Superman now why is that clearly we are creating a new instance of superhero which should receive Batmanas the name shouldn't the lock statement also be Batman well this is where the concept of module caching comes into picture in node.js)))
+
+ - On line 1, we load and cache the superhero module for later use. "Cache" is just a fancy word for "remember," which is exactly what happens when a new module is needed. 
+ (((((when we require a new module it is loaded and cached for subsequent loading in our case on line 1 the superhero module is loaded and cached now cached is simply a fancy word for remembered )))))
+
+
+ so the next time we require the same module on line six node.js will think hey I remember this module has already been loaded before let me reuse that instead of doing the additional work of loading it brand new in our case it is going to load the same object as line one
+
+
+- since objects are passed by reference we get the same superhero object whose name has been modified to Superman this is how module caching Works in node.js and it's the reason you see Superman being locked again instead of Batman in a real-world application the same module is typically imported in several different files and caching is what helps with performance all right let's debug this code and understand how caching works
+
+By setting a breakpoint on the first line of code and then clicking "Run and Debug," we can observe the values of the local variables being set to "double underscore" and "directory name," both of which link to node.js 
+[Double underscore filename which points to index.js and module is the current file index.js module dot exports is an empty object I also want to expand the required function and show the cache currently has index.js]
+
+(((
+I'm going to place a breakpoint on line one and click on run and debug we can see the local variables being populated double underscore directory name which points at node.js )))
+
+[Double underscore filename which points to index.js and module is the current file index.js module dot exports is an empty object I also want to expand the required function and show the cache currently has index.js]
+
+
+now I'm going to step into the function call which brings us to the superhero module double underscore "filename" is updated to superhero.js and so is the required function cache we now have an entry for superhero.js
+
+
+-After executing line 15, we are returned to index.js where we can see that the module dot exports has been updated to include a new instance of the superhero class continue. 
+(((((after running line number 15 you can see that module dot exports is now populated with an instance of the superhero class proceed and we are brought back to index.js 
+)))))
+
+
+superhero constant now contains an object with the property name set to Batman if I proceed to set name and step into the function call we are brought back to superhero module where we update the name with Superman come back to index.js and you can see superhero is now an object with name set to Superman 
+
+
+- I've reached the second necessary statement for the superhero module, and here's where things get interesting: if I step inside the function call, execution does not return to the superhero module, but instead continues on to the following line, because when loaded node.js 
+((((but now comes the interesting part I'm here at the second required statement for the superhero module if I step into the function call the execution does not bring us back to the superhero module it goes straight to the next line that is because when loaded node.js 
+))))
+
+since the module is already cached you can see the entry here in require dot cache node.js reuses this instead of load in git brand new the code inside superhero.js is not parsed again the same superhero object with name set to Superman is returned 
+
+
+
+
+
+
+//video part 2
+hopefully the concept of module caching is now clear to you well if caching is really important how do we deal with scenarios where we need to create separate instances of superhero well it is simple instead of exporting an instance that we can import we export the class itself so module.exports is equal to the superhero class
+
+//super-hero.js
+##module.exports = SuperHero;
+
+now back in index.js we can alter our code as follows 
+
+// index.js
+remove everything.
+
+const superhero is equal to require  superhero const Batman is equal to new superhero passing in Batman as a string and we can call Batman dot get name 
+
+
+const SuperHero = require('./super-hero');
+
+
+const batman = new SuperHero("Batman");
+console.log(batman.getName());
+batman.setName('FAraz.');
+console.log(batman.getName());
+
+
+const superMan = new SuperHero("SuperMan");
+console.log(superMan.getName());
+superMan.setName('Hussain..');
+console.log(superMan.getName());
+
+
+we can also call Batman dot set name and pass n Bruce Wayne in the next line call Batman dot get name again and then we can create a new superhero instance so Superman is equal to new superhero passing in Superman let's also log Superman dot get a name if we now run node index we see Batman Bruce Wayne and Superman the output is as expected make sure you've understood this right since modules imported and exported incorrectly may lead to unexpected bugs 
+
+
+
+
+Thank you guys for watching Please consider giving me a rating and I'll see you in the next  video, till then take care"
+"
+"

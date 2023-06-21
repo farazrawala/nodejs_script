@@ -1,0 +1,85 @@
+https://docs.google.com/presentation/d/14hIWHcG_RWgfteoqACD2Z4zYgbdD3BYiYO0yLgRoL8k/edit#slide=id.g2434a943147_0_2
+
+
+
+
+*********6 - Hello World*********
+Hello, and welcome back to this video where we'll be discussing local modules. 
+
+//slide no. 
+The modules developed within an application are referred to as "local modules."
+
+At the moment, we have index.js with hello from index.js logged to the terminal in the same file; these are examples of local modules, which we build and use in our application.
+(((((welcome back in this video let's take a look at the first type of modules which is local modules local modules are modules that we create and use in our application at the moment we have index.js with hello from index.js logged to the terminal in the same file)))))
+
+
+I'm planning to implement a feature that totals two numbers. 
+
+
+
+code *   
+const add = (a,b) => {
+	return a+b
+}
+
+
+Here we use an arrow function to specify two arguments separated by a comma, B, and to return their sum in the following line. 
+
+
+code * 
+const sum(1,2)
+
+We then execute this function again, this time passing in the numbers 1 and 2, and store the result in a constant named "sum." Although this works, it's best practise to learn how to create a separate module for the add function within the same nodejs folder so that you can easily manage the code as your application grows. Save the file, 
+
+
+
+
+then run node index.js. We should see hello from index.js and being logged.
+
+ ((((I'm going to add a function to find the sum of two numbers this is an arrow function we specify two parameters a comma B and return their sum in the next line recall the function with 1 and 2 as arguments and assign the return value to the sum constant finally I'm going to log to the console constant sum if you now save the file and run node index.js we should see hello from index.js and being logged although this works fine it's alwaysgood to split your JavaScript programsinto separate modules that can beimported when neededthat allows you to easily manage thecode as your application grows so let's now learn how to create a separate module for the add functionin the same node.js folder))))
+
+
+ -I'm going to make a new file called add.js, and this file will serve as our first module. 
+
+ - I'll copy the add function's code and paste it in add.js, along with the assignment to the sum variable and the console log statement.
+
+  - If you then save both files and run node index, you'll see that we only have the hello variable from index.js. The first thing to remember about node.js modules is that we do not see the log line from add.js. Since each file is a module but is isolated by default—I can even add an incorrect JavaScript statement—the issue becomes how to instruct node to run not only index.js but also add.js.
+ (((((I'm going to create a new filec alled add.js and this file represents our first module I'm going to cut the add function code and paste it in add.js including the assignment to the sum variable and the console log statement if you now save both the files and run node index you can see we have just hello from index.js we don't see the log statement from add.js and this is the first point to keep in mind about modules in node.js each file is a module but isisolated by default I can even add an incorrect JavaScript statementbut still be able to run index.js so the question is how do we ask node to execute not just index.js but also add.js)))))
+
+
+
+
+
+ - well this is where the common.js module format comes into picture 
+
+
+ // Slides.
+ common.js is a standard that states how a module should be structured and shared 
+ node.js adopted common.js when it started out and is what you will see incode basis 
+
+
+
+ let's understand how it works to include the add module into index.js we need to use a function that is always available in node and that is the require function let's call it at the top to this function we pass in the path to the module as a string so quotes single or double based on yourpreference and the path is dot slash add dotJs here dot slash refers to the same folder as index.js and ant.js is the file name of our first module if we now save the file and we run the code node index you can see three followed by hello from index.js   
+
+
+-So, in this case, the required code loads the add module into the index.The code is in add.js.js is run by their server, and the results are locked in the terminal.
+(((( so what is happening here is the required function loads the add module into index.js the code in add.js gets executed by there engine and the output is locked inthe terminal)))) 3.
+
+
+
+-After the code in the add.js module is run, the rest of the code in index.js is run, which sends "hello" from index.js to the terminal. We can check this by running in debug mode on the first line of index.js. rather than stopping the running node in the terminal, click on the line number to set the stop button. You should now see a red dot.
+((((( once add.js module code has been executed the remaining code in index.js is executed which logs hello from index.js to the terminal we can verify this by running in debug mode on the first line in index.js place a breakpoint by clicking on the line number you should see a red dot now instead of running node in the terminal )))))
+
+
+ we click on the debug and run Icon in the sidebar here click on run and debug button and select node.js this starts the program in debug mode I can click on step into and you can see the required function which was our first line in index.js brings us to add.js we can step over and we see three logged in the debug console step over again and execution is back in index.js step over again and we see the message hello from index.js being logged this is how the control flows with modules 
+
+
+
+ - The last thing I want to point out in this video is that you don't have to specify dot JS as the file extension when requiring JavaScript files. If you leave out the extension, node will automatically add dot JS and try to load the module, 
+
+ #Terminal node->clear, node->run.
+
+ - So if we rerun node index, we still get the same results. Ignoring the dot JS file extension is pretty common, and I'll be doing the same thing in the rest of the series to sum up node.js, each file is a separate module that is loaded into another file using the require function when search.when js is run, the code in the package is also run. If the file we need is a JavaScript file, we don't need to mention the file's extension or node.js will figure it out for us, but even though we can load and run a module, it would be better if we could make some of its functions public and keep the rest private. This would let us share only the code that is needed between modules. In the next movie, we'll see how to do that.
+
+
+ ((((( the last point I would like to highlight in this video is that you don't have to specify dot JS as the file extension when requiring JavaScript files if you choose to leave out the extension node will automatically append dot JS and try load the module so if we were to rerunnode index we still see the same output ignoring dot JS file extension is prettycommon and I will be doing the same in the rest of the series to summarize in node.js each file is amodule that is isolated by default to load a module into another file we use the require function when index.js is executed the code inthe module is also executed if the file we are requiring is a JavaScript file we can skip specifying the extension and node.js will infer iton our behalf now although we are able to load and execute a module what would be better is if we could expose certain functionality from the module while keeping the rest private that would allow us to share only the necessary code between modules let's see how to do that in the nextvideo)))))"

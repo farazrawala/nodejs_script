@@ -1,0 +1,104 @@
+Here we are at the last video of the chapter, so let's import some Json data. Json, which stands for "JavaScript object notation," is a popular data communication standard for websites.
+(((((("welcome back for the final video in this section let's import some Json data Json stands for JavaScript object notation and is a data interchange format commonly used with web servers."))))))))
+
+Let's quickly review how node.js handles Json file imports as modules in this video.
+(((("in this video Let's briefly understand how importing Json file as a module works with node.js.")))))))
+
+backward compared code To get started, I'm going to make a brand new data.Json file.
+The key in Json data is further enclosed by quotation marks, much like a JavaScript object.
+(((((("back in vs code I'm going to begin by creating a new file data dot Json.
+Json data is similar to a JavaScript object but the key is also wrapped with quotes."))))))
+
+## data.json
+
+
+### {
+	"name": "Javid Moore",
+	"address" : {
+		"street" : "Wayne Manor",
+		"city" : "Gotham"
+	}
+}
+let's add a sample Json.
+curly braces.
+property name.
+set to Bruce Wayne.
+and address.
+
+
+## index.js
+const data = require('./data.json')
+console.log(data);
+
+
+(((((((("which is an object with Street main manner and City got them.
+now back in index.js we can load the file const data is equal to require dot slash data dot Json in the next line let's log data to the console.")))))))
+
+in the terminal if we now run node index we see the Json data as a JavaScript object and this is the default behavior in node.js if we import a Json file the require function will parse the contents into a JavaScript object we can now Access Data dot name run node index and we see just Bruce Way.
+
+Another thing to keep in mind is that you may disregard the.Json suffix when importing Json files as well.
+(((((((("the other point to know is that for Json files as well you can ignore the dot Json extension while importing.")))))))
+
+thus, information in the form of a dot-slash format is required The same thing happens if I rerun node index, however you should realize that node.js will look for data.js before data.json.
+(((((("so require dot slash data if I re run node index we see the same result, however you should know that node.js will first try to find data.js before trying to find data.json.")))))))))
+
+If your folder already included a data.js file, Node would use that file instead of the Json file, which might cause complications.
+If you're going to import Json files, you should always utilize the extension.
+((((((((("if a data.js file were to exist in your folder node would import that file and not the Json file which may lead to issues.
+my suggestion is to always use the extension when importing Json files."))))))))
+
+2 : 52 
+
+
+OK, I guess I'd want to briefly cover node's watch mode before we wrap up this part.Every time we make a modification to this file, we have to re-run node index to see the output in the console. Thus, if I add a log statement saying "hello world," 
+"(((((all right before we wind up this section I want to quickly talk about watch mode in node.js if I add a log statement hello world every time we make a change to this file we have to re-run node index to view the output in the terminal."))))))
+
+Obviously, this is not a deal breaker, but this is why Node added the watch mode in version 18
+"((((now this of course is not a major pain point but in version 18 node introduced the watch mode."))))))
+
+while there is a modification to the imported code, the process is restarted while operating in watch mode.
+to start the terminal application index.js in watch mode.
+((((("running in watch mode as we call it, restarts the process when there is a change in the imported code.
+to run index.js in watch mode in the terminal.")))))))))))  
+
+The result is "hello world" and a warning that watch mode is an experimental feature is displayed when the command is executed; this is acceptable.
+"((((((run the command node dash dash watch followed by the file name when we run the command we see a warning that watch mode is an experimental feature which is fine for us and we see the output hello world."))))
+
+Changing "hello world" to "hello Vishwas" and saving the file causes an instant change in the terminal.
+ howdy Vishwas.
+(((((("if you now update hello world to hello Vishwas and save the file we see the updated output in the terminal right away.
+ hello Vishwas.")))))))))
+
+3 : 58 
+
+Since the watch mode is always alert for any changes to your code, you may expect to often edit file contents and double-check the results.
+(((((((((((("as you can see the watch mode constantly watches for changes in your code and restarts the process often you will see yourself having to modify file contents and verifying the output.")))))))))
+
+In this case, the watch mode is a great boon, and it's a welcome enhancement to the development experience.
+"(((((((((((the watch mode is very helpful in such a scenario and is a nice Improvement to developer experience.")))))))))
+
+That was only a brief digression into watch mode; I may not end up using it for the whole of the series because we have to use different filenames for each video.
+(((((((("I may not use it throughout the series as we do have to run different filenames in different videos but that was just a quick detour about watch mode."))))"
+
+This concludes our discussion of node's local modules.js.
+We began by learning what modules are, why they're useful, and the many types Node supports before narrowing our attention to the "local" modules we develop and distribute just within our own app.
+((((((((((("with that we come to the end of this section on local modules in node.js.
+we started off by understanding what isa module what is the need for modules and what are the types of modules in node we then started focusing only on local modules which are modules we create and share within our application.")))))))))
+
+We covered the fundamentals of the typical JS module format, including the mandatory function and module.Modules can be imported and exported using the exports keyword. 
+((((((("we learned about the common JS module format the required function and module.exports keyword for importing and exporting modules.)))))))))"
+
+Each module, we discovered, has its own unique scope and is encased in an iffy.  
+((((((("we learned that each module is wrapped in an iffy and has a private scope."))))))))
+
+the if we injects five arguments into the module that may be utilized as you like. 
+"((((((((((the if we injects five parameters which can be used within the module.")))))
+
+Finally, we looked at importing Json data and the brand new watch mode, as well as learnt about module caching and the different patterns for importing and exporting modules in common JS and Es modules format.
+(((((((((("we also learned about module caching we proceeded to understand the different patterns for importing and exporting modules in both common JS and Es modules format finally we had a look at importing Json data and the newly introduced watch mode."))))))))))))
+
+Our discussion of local modules has reached its conclusion. 
+((((((((((("that completes our list of topics to discuss about local modules.")))))))))))
+
+I hope you enjoyed the video, and if you did, please subscribe to the channel so you don't miss any future uploads.
+ (((((("thank you for watching please do consider subscribing to the channel and I'll see you in the next video"))))))))))

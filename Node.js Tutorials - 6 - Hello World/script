@@ -1,0 +1,63 @@
+*********6 - Hello World*********
+- Let's get our environment ready and write our first hello world programme with node in this video. Before we get started, we should note that node.js is commonly referred to as just node, and I will do the same throughout the series. First, download and install an editor; I recommend VS Code (available at code.visualstudio.com). There are a number of different ways to install node.js, depending on your operating system; I'll show you the quickest and easiest way possible by directing you to nodejs.org. The most recent version, as of this recording, is 20.0.0.
+((Before we begin I want to quickly mention that node.js is often referred to as just node and I will be doing the same throughout the series with that point in mind in this video let's set up our development environment and write our first hello world program with node Begin by installing an editor of yourchoice I am using vs code you can headover tocode.visualstudio.com to download and install it next we need to install node.js itself there are quite a few ways to install node depending on your operating system so let me point you to the simplest method head over to nodejs.org and here download the latest version which as of this recording is [20.0.0]))
+
+
+After downloading the file, simply install it using the default settings.Please pause the video while you install Node.js; I've already done so. When you're done, switch to the tab marked "Open Visual Studio Code" and navigate to a folder of your choice; mine is named "nodejs," and within it is a settings Json file in which I've set the zoom level to 4; this is purely for the purposes of the recording, so ignore it. Launch node.js by opening a terminal window or by pressing Ctrl + backtick in the terminal.
+(((((Once the file is downloaded install it by clicking to the defaults without changing any settingI already have it installed so please pause the video while you complete this tab once the installation is complete openVisual Studio code inside a folder of your choice I have a folder called node.js within the folder I have a settings Json file where I have set the zoom level to 4 and this is only for recording purposes you don't have to worry about it once you have vs code opened inside a folder of your choic eopen the integrated terminal View terminal or you can use the shortcut Ctrl backtick in the terminal run the command node.js)))))
+
+
+Now that we have node version 20.0.0 or higher installed, let's learn how to execute JavaScript code with node. When you press enter, you should see the version of node installed on your machine. If you don't, your installation might not have been successful; please try reinstalling node or Googling the error message you see when you run this command. 
+((((( when you press enter you should see the version of node installed on your machine if you don't see the version yourinstallation might not have been successful please try reinstalling node or Google the error message you see when you run this command all right now that we have node version 19 or above installed let's learn how to execute JavaScript code with node )))))
+
+
+
+ - there are two ways and let's go overeach of them the first one is the node Rebel Ripple stands for   
+ - read
+ - evaluate
+ - print
+ - Loop 
+
+
+ switch to  vs code in the terminal you can type clear and press enter to clear the contents now you can type the word node and press enter this starts an interactive shell that processes node.js expressions 
+
+ if I type console.log hello world and press enter we see the string hello world logged inthe terminal and undefined which is the return value of console log statement 
+
+
+
+ on similar lines I can type a JavaScript expression 3 + 3  press enter and we get the value 6.
+
+
+ - thus the node Rebel reads user-entered JavaScript code, evaluates the result of interpreting the line of code, prints the result to the user, and Loops until the user indicates to quit. 
+ ((((so the node Rebel reads JavaScript code the user enters evaluates the result of interpreting the line of code prints the result to the user and Loops until the user signals to quilt)))) 
+
+
+- we quit by pressing Ctrl C although using Rebel is pretty straight forward for building applications the preferred way is to write JavaScript code in a file and run it with the node command in the terminal.
+
+
+
+============================================================
+-With vscode Create a new file in the folder; app.js, main.js, or index.js are all appropriate names; we'll use index.js. 
+((((In vs code Begin by creating a new file in the folder the convention is to call it app.js main.js or index.js let's go with index.js ))))
+
+
+
+ within the file type console.log hello from index.js save the file and in the terminal run the command node followed by the file name index.js  when we do that we see hello from index.js logged in the terminal 
+
+-Since node allows us to run JavaScript code stored in a file, we will continue to use this method moving forward in rest of the series. 
+ (((we are able to execute the JavaScript code written in a file using node and this is the approach we will take in the rest of the series as well )))
+
+
+ -Finally, we learnt about the node Rebel, which is one way to run JavaScript code with node, after installing node.js and verifying the same with the node-v command in the terminal. 
+ 
+ ((((so to summarize we installed node.js and verified the Same by running the command node-v in the terminal we then learned about the node Rebel which is one way to run JavaScript code with node ))))
+
+
+We also gained knowledge the second method, which is to write our code in a file with a dot-dot-js extension and then run it with node in the command line. I would like to point out that you are free to skip the dot-dot-js file extension if you so choose; simply run node index without the dot-dot-js extension, and the output will be the same.
+
+((((
+ we also learned the second approach which is to write our code in a (dot).js  file and execute it with node in the command line and let me point out that you could if you want to omit the dot JS file extension as well so run node index without dot Js and we have the same output))))
+
+ - Thanks to node, we were able to execute JavaScript outside of the browser for the first time; that's it for now, guys; see you next time. 
+ (we have successfully run our first piece of JavaScript code outside the browser thanks to node all right thank you for watching see you in the next one)
+"

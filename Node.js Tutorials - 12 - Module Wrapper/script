@@ -1,0 +1,77 @@
+"
+Hello guys welcome to this video 
+in the first video, we learned how
+
+//slides
+- every module in node.js gets wrapped inan iffy before being loaded
+
+- iffe helps keep top level variables scoped to the module rather than the global object
+
+but as it turns out 
+
+- the iffy that wraps every module contains five parameters which are pretty important for the functioning of a module
+
+in this video Let's understand more about that module wrapper first let's understand how parametersand arguments work with a simple iffy inJavaScript
+
+from here in ifee.js where we have two simple effes 
+
+### add parameter
+###console.log(parameter,var)
+we can add a parameter called message to each functionand log it along with the fruits 
+
+
+###('hello'),('Hey')
+for the first function let's pass hello as argument and for the second function hey as the argument 
+
+
+
+if we save the file and run node iffy we see hello banana and hey apple  this is how you specify parameters and pass arguments to an immediately invoked function expression
+
+
+// move to banana.js
+now let's go back to node.js and understand how each module is wrapped thank you 
+
+// slide no. 9
+here is our module code const fruits is equal to banana and console log fruits 
+
+// slider no. 10
+here is the same code wrapped in animmediately invoked function expression and 
+
+// slider no. 11
+here is the final code with parametersthere are five in total exports require module double underscorefile name double underscore their name by wrapping each module code in this iffy with five parameters node.js provides few Global looking variables that are actually specific to the module 
+
+## move to index.js // select require.
+this is how we get access to require and module.exports within a file 
+
+they are not magical Global variables they're injected during execution by node.js
+
+// slide no. 8
+now what do these parameters represent well I feel it is easier to understand if we debug our code so break point on the first line in index.js
+
+
+
+and from the sidebar run and debug when the execution starts you can see a set of local variables in the debug panel the variables seem familiar don't they we have the same five parameters along with this keyword which is available in every function let's understand about exports parameter 
+
+
+
+a few videos down the line but the remaining four let's understand now
+
+
+first we have double underscore theirname which is the directory or foldername of the current module
+you can see it's a string thatrepresents the path to the currentfolder which is node.js 
+
+
+along similar lines we have doubleunderscore file name which is the filename of the current module you can see it's a string that represents the path to the current file which is index.js
+
+
+both double underscore their name and double underscore file name are convenience variables available for use within the module 
+
+next we have the require function which we already know aboutit is used to import a module by path
+
+finally we have module which is areference to the current module if I expand it the file name points to index.js
+
+
+if I now step into the function call we are brought to banana.js the double underscore name Remains the Same but double underscore file name changes to banana.js similarly if I continue execution and step into apple the same variables update one more time hopefully you now understand what the different parameters representthe exports parameter and exports property in the module object issomething we will take a closer look atvery soon
+
+
+but for nowkeep in mind that before a module's code is executed node.js will wrap it with a function that contains five parameters namely exports require module doubleunderscore file name and doubleunderscore directory name they are available for use in everymodule so that is about the module wrapper thank you for watching please do consider subscribing to the channel and I'll see you in the next one"

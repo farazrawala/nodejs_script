@@ -1,0 +1,51 @@
+"welcome back in this video let's take a look at our second built-in module which is the events module.
+the events module allows us to work with events in node.js.
+an event is an action or An Occurrence that has happened in our application that we can respond.
+to using the events module we can dispatch our own custom events and respond to those custom events in a non-blocking manner.
+let's understand with an example.
+now the concept of events is not node.js specific it exists even in our everyday life so before we dive into code let me first walk you through a non-technical day-to-day scenario.
+let's say you're feeling hungry and head out to Domino's to have a pizza.
+at the counter you place your order fora pizza.
+when you place the order the line cook sees the order on the screen and bakes the pizza for you nothing out of the ordinary but it is something we can relate back to events.
+in this scenario order being placed is the event baking a pizza is a response to that event.
+if the scenario is clear what I want now is for us to use the built-in events module and write code that can mimic this day-to-day scenario.
+I'm here at index.js which is sort of our main module it is empty to begin with if you remember to make use of a built-in module we first have to import it and to import a built-in module we use the require function.
+so at the top const event emitter is equal to require node colon events make sure to not prefix dot slash.
+now you might be wondering why did I call the constant event emitter and not events.
+well that is because the events module returns a class called event emitter which encapsulates functionality to emit events and respond to events.
+you could call it events but event emitter is more appropriate in the next line let's instantiate the class.
+const emitter is equal to new event emitter.
+Now using this emitter object we can emit events.
+let's emit an order placed event to emit an event we use the emit method so emitter dot emit.
+he method accepts the event name as argument.
+let's call it order pizza so when execution reaches line number 5an event is broadcasted in our code.
+but that is pretty much it to respond to this order pizza event we need to register a listener.
+for that we use the on method.
+so emitter dot on and this method accepts two parameters.
+the first parameter is the event name which is order pizza the second parameter is the listener.
+a listener is a callback function that gets executed when the corresponding event is emitted.
+if you can recollect from the previous video a callback function allows us to delay execution till an event has occurred.
+let's add an arrow function which simply logs to the console.
+order received baking a pizza and that is pretty much it if we run node index we see the message or the received baking a pizza so dispatching and responding to custom events courtesy of the events module.
+sometimes when emitting an event you may want to pass data to The Listener for example when ordering a pizza I want to specify the size and a topping.
+to achieve that all you have to do is specify the arguments after the event name while emitting the event.
+let's add two arguments large which is the size and mushroom which is the topping.
+when you do this node.js will automatically pass on the arguments to the Listener function.
+we can now accept size comma topping and the log statement baking a size pizza with topping.
+if you run node index we see baking a large pizza with mushrooms.
+it's also worth noting that you can register multiple listeners for the same event for example I can add emitter dot on the same order pizza event but this time a different listener.
+it still receives size automatically and within the function body if size is equal to large we're going to add a log statement serving complementary drink.
+we run node index and we see the expected output.
+now it is very important to note that we are not blocking execution by writing code in this manner.
+if I add a log statement just before emit do work before event occurs in the system and run the code we see the log statement first and then the logs from our pizza order.
+the code execution does not stop at line5 for the order pizza event to occur.
+all we are doing is delaying the execution of a function till a certain event is signaled in the system.
+this is known as event-driven programming and is used quite a lot innode.js.
+alright let me quickly summarize what we have learned in this video.
+the events module is a built-in module that allows us to work with events in node.
+the module returns an event emitter class which we can instantiate to create an emitter object.
+using the emitter object we can register event listeners using the on method and emit an event using the emit method the emit method accepts the event name followed by arguments that need to be passed on to the listeners.
+when an event occurs node automatically calls the listeners for the corresponding event passing in the appropriate arguments.
+events allow us to write code in anon-blocking manner now we are not quite done with the events module and the event emitter class.
+ in the next video let's learn how to create our own module that builds on top of the event emitter class.
+ I'll see you in the next one" 
