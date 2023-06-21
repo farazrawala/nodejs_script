@@ -17,6 +17,9 @@ I'm planning to implement a feature that totals two numbers.
 
 
 
+
+
+
 code *   
 const add = (a,b) => {
 	return a+b
