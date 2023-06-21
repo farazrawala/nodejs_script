@@ -1,75 +1,91 @@
-
-in the previous video we learned how to create an HTTP server with the built-in HTTP module in node.js.
+The last video demonstrated how to use Node.js's native HTTP module to build an HTTP server.
+We saw how to reply with simple text in that instance.
+(((((((((((("in the previous video we learned how to create an HTTP server with the built-in HTTP module in node.js.
 in that example we learned how to respond with some plain text.
 
-
-in this video let's see how to respond with Json data.
+Let's have a look at how to reply with Json data in this video.
+I'm going to make a new object in the request listener.
+(((((((((((("in this video let's see how to respond with Json data.
 in the request listener I'm going to create a new object.
 
-
-const superhero has two properties first name set to Bruce.
+dual qualities of the const superhero Bruce is the default first name.
+to Wayne's last name, also.
+(((((((((((("const superhero has two properties first name set to Bruce.
 and last name said to Wayne.
 
-
-now let's try respond by sending this object to the client.
+Let's see if we can get a reaction from the client by sending them this item.
+hence,. end rest.
+(((((((((((("now let's try respond by sending this object to the client.
 so rest dot end.
 
-
 Superhero.
+Use the node index command in the terminal.
+(((((((((((("Superhero.
 in the terminal run node index.
 
-
-and if we now refresh the browser.
+as well as if we now reload the web page.
+We need to fix this ASAP.
+(((((((((((("and if we now refresh the browser.
 we have a problem.
 
-
-head back to vs code and we see an error in the terminal.
+There was an issue on the terminal when we returned to vs code.
+A text, a buffer, or an uintarray object can be used for the chunk parameter.
+(((((((((((("head back to vs code and we see an error in the terminal.
 the chunk argument must be of type string or an instance of buffer or uintarray.
 
-
-instead received an instance of object.
+substituted for an instance of object.
+as a result, we can't just reply with JavaScript objects.
+(((((((((((("instead received an instance of object.
 so we can't send JavaScript objects as is in a response.
 
-
-what we have to do is convert it into what is called the Json format.
+The next step is to transform the data into Json format.
+The JavaScript object notation (json) is a data transfer format compatible with HTTP.
+(((((((((((("what we have to do is convert it into what is called the Json format.
 Json which stands for JavaScript object notation is a data interchange format that we can use with http.
 
+The V8 engine offers in-built capabilities to meet our goals, which is why we've settled on the Json format.
+(((((((((((("the nice thing about using Json format is that the V8 engine has built-in functionality to support what we want to achieve.
 
-the nice thing about using Json format is that the V8 engine has built-in functionality to support what we want to achieve.
-
-
-all we have to do is invoke the built-in method Json Dot stringify.
+The only thing we need to do is call the predefined function Json Dot stringify.
+and use the superhero argument.
+(((((((((((("all we have to do is invoke the built-in method Json Dot stringify.
 and pass n superhero as an argument.
 
-
-we do however have to specify to the browser the content type is Json.
+However, we must tell the browser that the file's content type is Json.
+Therefore, in the application slash colon Json content type on line 9. 
+(((((((((((("we do however have to specify to the browser the content type is Json.
 so on line 9 content type colon application slash Json.
 
-
-now if we restart the server node index head back to the browser and refresh.
+Now, let's go ahead and reload the browser after restarting the server node index.
+Our item is shown as a string.
+((((((((((("now if we restart the server node index head back to the browser and refresh.
 we see a string representation of our object.
 
-
-if you want to convert this back to an object you can use the built-in Json dot parse method.
+The built-in Json dot parse method may be used to return to an object form.
+However, this is how you may reply with objects in Json format.
+((((((((((("if you want to convert this back to an object you can use the built-in Json dot parse method.
 but this is how you can send objects as Json response.
 
-
-and you'll be pleasantly surprised to know you've written your first API withnode.js.
+, and the realization that you've created your first API with node.js will come as a nice surprise.
+There is a single API endpoint available to us at localhost:3000.
+((((((((((("and you'll be pleasantly surprised to know you've written your first API withnode.js.
 we have one API endpoint which is localhost 3000 and that endpoint returns some data.
 
-
-that data is an object with first and last names.
+There are first and last names stored in the data item.
+This means that any server with the ability to make a request may now access this information from our application, not just the browser.
+((((((((((("that data is an object with first and last names.
 in doing this not just the browser but any server that is capable of making a request can now get this data from our application.
 
+Now that we know what an API is, we can go on to learning how to construct APIs using Node.js, but that will have to wait for another series.
+((((((((((("now we will learn what exactly is an API and we will learn all there is to designing apis with node.js but that is for another series.
 
-now we will learn what exactly is an API and we will learn all there is to designing apis with node.js but that is for another series.
+Please focus on learning the difference between application/slash-Json and json for the time being.In order to return a Json response to the client, stringify is all that is required.
+((((((((((("for now I want you to understand that content type set to application slash Json and json.stringify are sufficient to send a Json response back to the client.
 
-
-for now I want you to understand that content type set to application slash Json and json.stringify are sufficient to send a Json response back to the client.
-
-
-a format that is different to plain text which we had seen in the previous video.
+a different presentation style from the basic text we saw in the first video.
+If you understand, come on in to the following film where we'll discover how to reply with HTML.
+((((((((((("a format that is different to plain text which we had seen in the previous video.
 if this is clear join me in the next video where we will learn how to send HTML as a response.
 
-
-thank you for watching and I'll see you in the next one
+I appreciate you joining in and will see you next time!
+((((((((("thank you for watching and I'll see you in the next one

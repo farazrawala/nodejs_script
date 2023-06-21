@@ -1,97 +1,122 @@
-
+ In our previous video, we saw how streams are used to read and write data from files.
 ((((("in the previous video we learned about streams in the context of reading and writing file contents.))))))
 
-
+In order to read data from a file, we used the construct readable stream command.
 ((((("we used create readable stream to create a readable stream that reads from a file.))))))
 
-
+We also used the function to produce a stream that can be written to a file. 
 ((((("and we used create writable stream that writes to a file.))))))
 
-
+Fortunately, this is a rather typical scenario, and node provides a more convenient and superior solution in the form of pipes.
 ((((("as it turns out this is a common pattern and node has a simpler and better way to do the same and that is using pipes.))))))
 
-
+Check watch this video to get educated about pipes.
+As laypeople, we are familiar with the concept of a pipe.Check watch this video to get educated about pipes.
+As laypeople, we are familiar with the concept of a pipe. 
 ((((("let's learn about pipes in this video.
 in non-technical terms we understand what a pipe is.
 ))))))
 
+such as the hose that runs from the water heater to the dishwasher.
+Water from the tank flows via the pipe and out of the sink's faucet.
 ((((("for example a pipe that connects a tank to a kitchen sink.
 the tank feeds water into the pipe which can be released through the tap in the sink.))))))
 
-
+As far as the pipes are concerned, we are doing a read on the tank and a write to the sink.
+within the node.Comparison of js to a pipe 
 ((((("from a pipe point of view we are reading water from the tank and writing it to the sink.
 in node.js a pipe is very similar.))))))
 
-
+A reading stream is linked to a writeable stream in this process.
+To put this feature into action, we employ the pipe technique on a readable stream.
 ((((("It takes a readable stream and connects it to a writable stream.
 we use the pipe method on a readable stream to implement the functionality.))))))
 
-
+I can disable the data event in index.js in VS Code by adding a remark.
+rather than making use of a single code snippet
 ((((("back in vs code in index.js I can comment out the data event.
 and instead write one line of code.))))))
 
-
+the ability to read a pipe in real time.
+and time is written as we go by. 
 ((((("readable stream dot pipe.
 and we pass in writable stream.))))))
 
-
+suppose we now clear the file to its contents and save it.
+index node and run it. 
 ((((("if we now save the file clear file to contents.
 and run node index.))))))
 
-
+The identical results as before are visible to us.
+Please say hello to the evolving code in the attached Dot txt file. 
 ((((("we can see the same output as before.
 hello code evolution which is present in file Dot txt.))))))
 
-
+One of a pipe's greatest strengths is that it "Returns the destination stream," allowing for chaining to occur. 
 ((((("now what is great about a pipe is that it Returns the destination stream which enables chaining.))))))
 
-
+However, a transform stream or readable duplex destination stream is required.
+In this case, we have a stream that can be written to.
 ((((("however the condition is that the destination stream has to be readable duplex or a transform stream.
 in our current example we have a writable stream.))))))
-))))))
-
+ 
+Hence, we cannot perform a dot pipe chain by invoking dot.
+Use the zlib module instead, which is already installed.
 ((((("so we cannot Chain by calling dot pipe.
 instead let's make use of another built-in module which is zlib.))))))
 
-
+It's possible that the following example is too advanced for you right now, but I want to make sure you understand the notion of chaining using the pipe approach.
 ((((("now this example might be slightly Advanced at the moment but I want to make sure you're aware of the concept of chaining with the pipe method.))))))
 
-
+Initially, we need to bring in the zlib module.
+The gzip technique is used to implement compression in the lip module.
 ((((("at the top import the zlib module.
 the lip module provides compression functionality implemented using gzip algorithm.))))))
 
-
+To put it another way, zlib is what enables the creation of compressed files.
+The transform stream is an integral part of zlib, which is one of its many wonderful features.
 ((((("or in simple terms zlib allows us to create zipped files if we can call it that.
 what is great about zlib is that it has a built-in transform stream.))))))
 
-
+This allows us to say that const gzip == zlib.create_gzip in our code.
+And then we can write readable stream dot pipe gzip once we have a readable stream ready to go.
 ((((("so we can write const gzip is equal to zlib dot create gzip.
 and after we have created a readable stream we can write readable stream dot pipe gzip.))))))
 
-
+Now you get a stream of transformations back.
+to enable us to dial Dot pipe and send the data. 
 ((((("now this returns a transform stream.
 so we can call Dot pipe and pass in.))))))
 
-
+Write stream dot FS."
+using File 2.txt.gz as the final resting place.
 ((((("FS dot write stream.
 and the destination is File 2 dot txt dot gz.))))))
 
-
+As can be seen, we're using DOT pipe for our chaining.
+Changing from a read-only stream to a transform-only stream and finally to a write-only stream. 
 ((((("we are chaining with DOT pipe as you can see.
 moving from a readable stream to a transform stream to a writable stream.))))))
 
+Of course you can just write fs.right stream. as a constant and use it, but using the pipe approach, I'm hoping you'll get the idea of chaining. 
 ((((("of course you can write fs.right stream.
 as a constant and use it but hopefully you're able to understand the concept of chaining with the pipe method.))))))
 
+if I do an index node scan.
+The new filename.txt.gz should appear in your directory.
 ((((("if I run node index.
 you should see the new filefile2.txt.gz created.))))))
 
+This is the operation of pipes in Node.js.
+Now, we're still not through with the preinstalled components. 
 ((((("this is how pipes work in node.js.
 now we are not quite done with the built-in modules.))))))
 
+we have one more to go which is the built-in HTTP module.
+let's take a look at that next.
 ((((("we have one more to go which is the built-in HTTP module.
 let's take a look at that next.))))))
 
-
+I hope you enjoyed the video, and if you did, please subscribe so you don't miss the next one.
 ((((("thank you for watching please do consider subscribing to the channel and I'll see you in the next video))))))
 
