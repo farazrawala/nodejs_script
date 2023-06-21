@@ -1,0 +1,49 @@
+" "welcome back.
+in this video let's learn about routing with the HTTP module.
+at the moment when we navigate to localhost 3000 we see the response hello vishwas welcome to node.
+if I navigate to slash about we see the same response slash API still the same response.
+but this is not how a typical website would behave right.
+slash about word render and about page and slash API would perhaps respond with some Json data.
+well let's see how to mimic that behavior with our HTTP module.
+I'm going to clear out the request listener body and start over.
+the first thing you should know is thatrequest.url gives us the URL query string.
+let me respond with that value to help you understand what I mean.
+rest dot end request dot URL.
+restart node index.
+navigate to localhost 3000and we see forward slash as the response.
+this represents the root.
+let's change the url to slash about.
+and we see Slash about as the response slash API.
+and we see Slash API.
+the request dot URL gives us the query string.
+we can use it with an if else statement or a switch statement to respond differently.
+If request dot URL is equal to forward slash which is the root.
+we're going to respond to 100 with some plain text.
+content type Text slash plane rest dot end home page.
+else if the request URL is equal to the about page so slash about.
+I'm going to copy paste these two lines of code.
+and change the text to about page.
+elseif request dot URL is equal to slash API.
+we're going to respond with some Json data.
+so as dot right head200.
+content type application slash Json.
+and then rest dot end Json Dot stringify we're going to pass in an object with first name set to Bruce and last name set to Vain.
+Finally if none of the URLs match we're going to respond with a page not found message with a 404 status code.
+this is to ensure the user is informed that no such URL exists.
+for now save the file.
+Restart and refresh localhost 3000we have a problem.
+and that is because I need to remove the first response.
+restart node index.
+head back to the browser.
+Refresh and we see home page being displayed.
+navigate to slash about.
+and we see about page.
+slash API and we see a Json response.
+finally slash vishwas and we see page not found.
+this is how you can map requests to the appropriate response in code.
+the HTTP module gives us access to the request object which in turn gives us access to the URL property.
+and not just that.
+request dot method also gives us access to the HTTP method such as get post put and delete which we can once again use to Route different requests.
+a combination of request.url and request dot method can help you handle any type of routing with the HTTP module.
+however in the real world app you typically rely on a web framework to handle all of this for you.
+let's briefly understand about that in the next video" 

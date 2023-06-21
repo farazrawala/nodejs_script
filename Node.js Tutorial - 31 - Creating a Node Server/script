@@ -1,0 +1,143 @@
+
+In the previous video we had an introduction to the built-in HTTP module.
+in this video Let's understand with code how to create a node server with the HTTP module.
+
+
+Step 1 we import the module.
+const HTTP is equal to require node colon http.
+
+
+Step 2 we invoke the create server method on the module.
+HTTP dot create server.
+
+
+now this method accepts a callback function as its argument.
+this function in turn receives two arguments request and response.
+
+
+now it turns out HTTP module also extends the event emitter class.
+and the Callback function we have specified here is actually a request listener.
+
+
+that is whenever a request reaches the server this callback function is executed.
+the request argument contains information about the incoming request.
+
+
+and we will inspect a few properties on the request object in the upcoming videos.
+
+
+an argument is the server response and we use it to build the response that has to be sent back to the client.
+
+
+so node will handle the incoming request and we have to write code to send back the response.
+on the response object we first invoke the right head method.
+
+
+we specify an argument which is the HTTP status code.
+this will be 200 for a successful response.
+
+
+next we can end the response with some text.
+for that we invoke the end method on the response.
+
+
+and pass in a string.
+hello world.
+we have now written code to respond to any incoming request.
+
+
+however we must also inform our server to listen to any incoming requests.
+for that we store the server created using the create server method in a constant.
+
+
+const server is equal to http dot create server.
+now in the next line on the server constant we invoke the listen method passing in a port number.
+
+
+three thousand.
+you can think of port number as a door number in an apartment with many houses.
+
+
+on a machine there can be many other servers but are node.js server runs on Port 3000.
+Optionally.
+you can also specify a callback function for when the server starts to listen.
+
+
+let's add a callback function that logs to the console server running on Port 3000.
+and that is pretty much it.
+now in the terminal we can run node index.
+
+
+we see the log statement server running on Port 3000.
+but what is important to note though is that the program doesn't exist.
+
+
+it is now waiting for requests on Port3000.
+and how do we make a request.
+
+
+well we doit from the browser.
+in the address bar type localhost colon 3000.
+
+
+here localhost refers to our own machine which is our server and 3000 is the port number we have specified in our code.
+
+press enter.
+and we should see Hello World being displayed if you inspect element and open the network tab.
+Refresh you can have a look at the request and response.
+
+
+it is standard http.
+with just 10 lines of code we are able to import the HTTP related code create a server that listens to requests and responds with some text.
+
+
+it really is the simple to create a server with node and is a popular example you'll come across when reading about node.js.
+
+
+now all they're not necessary it is a good practice to specify the content type of the response.
+currently we are responding plain text so let's add a second argument to right head.
+
+
+where we specify content type as Text slash plane.
+if I now restart node index.
+
+
+Ctrl C node index head to the browser.
+and refresh.
+Localhost.
+
+
+in the response headers we can see content type is Text slash plane.
+like I already mentioned the content type header is technically optional but then you're leaving it up to the 
+
+
+browser to essentially guess what type of content you're returning.
+I would always recommend specifying the content type.
+
+
+all right let's learn a few more details about the node server in the upcoming videos but for now let me quickly summarize what we have learned in this video.
+
+
+first we imported the built-in HTTP module.
+next we use the create server method to create a server.
+
+
+the method accepts a request listener callback which gets executed on every request.
+
+
+note automatically injects the requests and response arguments into the Callback function.
+the request object gives us information about the incoming request whereas the response object is used to send back a response to the client.
+
+
+finally we specify that the created server should listen to incoming requests on Port 3000.
+
+now as a small exercise I want you to log the request object to the console and have a quick look at the key value pairs logged in the terminal.
+
+
+I'm going to warn you though there is a whole bunch of information that will not make sense to you but I want you to understand how much information we have access to if we want to use it.
+
+
+of course we will learn a bit more about requests and response in the upcoming videos as well.
+
+
+alright then thank you for watching please do consider subscribing to the channel and I'll see you in the next one.

@@ -1,0 +1,126 @@
+hello, once again The Path Module and the Events Module are the two pre-existing modules we have explored until now.
+(((((((("welcome back so far we have learned about two built-in modules the path module and the events module.")))))))) 
+
+It's time for another diversion before we can go on to the next three steps.
+(((((((("now before we proceed with the remaining three we need to take another detour.")))))))) 
+
+This time around, we'll dive into asynchronous JavaScript and learn all about character sets, encoding streams, and buffers.
+(((((((("this time we're going to learn about character sets encoding streams and buffers and finally a little about asynchronous JavaScript.")))))))) 
+
+In this video, we'll examine character sets and encoding in detail. 
+(((((((("in this particular video a focus will only be on character sets and encoding.")))))))) 
+
+Let's start with the basics of binary information before diving into character sets. 
+(((((((("to understand what is a character set let's first understand what is binary data.")))))))) 
+
+Today, information on computers is represented and stored as a string of zeros and ones called binary.
+(((((((("now computers store and represent data in binary format which is a collection of zeros and ones.")))))))) 
+
+The first ten digits written in binary are shown to the right.
+(((((((("on the right you have a list of the first 10 numbers represented in binary.")))))))) 
+
+Each 0 or 1 in this context is known as a binary digit, or bit, for short. 
+(((((((("here each 0 or 1 is called a binary digit or bit for short.")))))))) 
+
+Data must be converted into its binary representation before it can be used by a computer. 
+(((((((("to work with a piece of data a computer needs to convert the data into its binary representation.")))))))) 
+
+"for instance, in order for a computer to store the number 4, it must first convert 4 to 100."
+(((((((("for example to store the number 4 a computer needs to convert 4 to 1 0 0.")))))))) 
+
+However, this raises the question of how a computer would know to do the conversion.
+(((((((("but the question is how does a computer know to perform the conversion.")))))))) 
+
+Well, it's just elementary arithmetic, because the base-2 numeral system allows for a representation of "one zero zero" as 2power 0 x 0 + 2power 1 x 0 + 2part 2 x 1. 
+(((((((("well it is just simple mathematics where we rely on base 2 numeric system one zero zero can be represented as 2power 0 multiplied by 0 plus 2 power 1multiplied by 0 plus 2 part 2 multiplied by 1.")))))))) 
+
+This adds up to 4, as we're adding zeros to zeros.As you can see, it's hardly rocket science.
+(((((((("this gives us 4 plus 0 plus 0 which is4.pretty simple as you can see.")))))))) 
+
+However, it is important to remember that numbers aren't the only data type we work with; strings are also common, therefore it's important to consider how a computer might represent a character in binary format.
+(((((((("but you have to keep in mind numbers are not the only data type we work with strings are something we come across quite often so how will a computer represent a character in binary format.")))))))) 
+
+How does the computer translate characters like "V" into binary? It turns out that computers first transform the character to a number before translating that number into its binary equivalent.
+(((((((("for example the letter v how does the computer convert V to binary well as it turns out computers will first convert the character to a number then convert that number to its binary representation.")))))))) 
+
+"so computers will first convert the character or string V to a number that representsV.
+(((((((("so for the character or string V computers will first convert V to a number that representsV.")))))))) 
+
+The number 86 appears when you write the character "V dot character code at" followed by brackets in the browser's dev tools console.
+(((((((("in the browser in the dev tools console if I type the character V dot character code at followed by parentheses we see the number 86.")))))))) 
+
+The letter V has the numerical value of. Character code is another name for it. 
+(((((((("this is the numeric representation of the character V. it is also called character code.")))))))) 
+
+However, once again, how can a computer decide on a certain numerical value for each character?
+(((((((("but again how does a computer know what number will represent each character.")))))))) 
+
+How does it determine that our age group should be 86?
+(((((((("in our case how does it know we should be represented as 86.")))))))) 
+
+Exactly, that's why we're here to discuss character settings, the video's second main topic. 
+(((((((("well that question brings us to the second Topic in this video which is character sets.")))))))) 
+
+To represent characters numerically, character sets are predetermined lists.
+(((((((("character sets are predefined lists of characters represented by numbers.")))))))) 
+
+Unicode and ASCII are only two of the many character sets available to mankind.What we just saw in the browser was rendered in unicode.
+(((((((("we have different character sets we can use but the two most popular ones are Unicode and ASCII.what we have just seen in the browser is unicode.")))))))) 
+
+Unicode character set dictates that 86should represent character V
+(((((((("Unicode character set dictates that 86should represent character V.")))))))) 
+
+If I select the letter V in uppercase and go to unicodeable.com, I can see the corresponding numerical representation of that letter. 
+(((((((("if you head over to unicodeable.com you can see characters and their numeric representation, if I click on uppercase V.")))))))) 
+
+The browser also returned 86, so maybe this helps you have a better grasp on how computers convert text to numerical form. 
+(((((((("we see 86which is what the browser returned as well hopefully this gives you a better idea of how computers represent characters in numbers.")))))))) 
+
+Now that alphabets and numerals are interchangeable, You could imagine that if you convert these integers to binary, the computer can use them.okay, but that's not really accurate. 
+(((((((("now that we have characters as numbers you may think the computer can work with these numbers by converting them to binary.well that is only partially true.")))))))) 
+
+It leads us to the video's final topic: encoding characters.
+(((((((("which brings us to the third Topic in this video which is character encoding.")))))))) 
+
+
+(((((((("character encoding dictates how to represent a number in a character set as binary Data before it can be stored in a computer.")))))))) 
+
+to be more precise, it specifies the amount of bits required to represent a certain integer. 
+(((((((("more specifically it dictates how many bits to use to represent a number.")))))))) 
+
+utf-8 is a character encoding scheme that may be used as an example
+(((((((("one such example of a character encoding system is utf-8.")))))))) 
+
+UTF-8 specifies how byte-encoded characters should be represented. 
+(((((((("utf-8 states that characters should been coded in bytes.")))))))) 
+
+Since there are eight bits in a byte, each binary character may be represented by a string of ones and zeros. 
+(((((((("now a byte is a set of eight bits so eight ones or zeros should be used to represent the code of any character in binary.")))))))) 
+
+To review, in binary, the number four was written as 1 0 0. 
+(((((((("if we go back to our binary representation of the number four it was1 0 0.")))))))) 
+
+To make it a byte, utf-8 encoding has the computer append five zeros to the left.
+(((((((("with utf-8 encoding computer adds five zeros to the left to make it a byte.")))))))) 
+
+That's why you'll see the number 4 written as five zeroes and a double zero.
+(((((((("so 4 is represented as five zeros one double zero.")))))))) 
+
+Similarly, the digits for the letter V are 86, which is written as the binary sequence 0 1 0 1 0 1 1 0.
+(((((((("on similar lines V is represented as 86 which in turn is represented as 0 1 0 1 0 1 1 0.")))))))) 
+
+In binary, strings and characters are stored in computer memory using units of 1 byte, or eight bits. 
+(((((((("1 byte or eight bits and this is how computers store strings or characters in binary format.")))))))) 
+
+You should now be aware that there are parallel standards for the binary encoding and storage of visual media such as photographs and motion pictures.
+(((((((("now you should know similar guidelines also exist on how images and videos should be encoded and stored in binary format.")))))))) 
+
+yet that is essentially the point I wished to make with this video.
+(((((((("but that is pretty much what I wanted to cover in this video.")))))))) 
+
+I think the definition of binary data is now crystal apparent. what are character sets and encodings, respectively. 
+(((((((("I hope it is now clear as to what is binary data what is a character set and what is character encoding.")))))))) 
+
+With this information in hand, let's move on to the next video where we'll talk about streams and buffers.
+(((((((("with this knowledge let's now proceed to the next video where we will learn about streams and buffers I'll see you in the next one"")))))))) 
+

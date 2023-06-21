@@ -1,0 +1,69 @@
+"welcome back in the previous video we learned about libue's thread pool and how the main thread offloads some of the async methods like pbk df2 into the thread pool.
+we executed pbkdf2 three times which all executed in parallel indicating we have at least three threads in the pool.
+but the question is how many threads are there in total.
+well let's find out with this third experiment.
+for experiment 3 I'm going to set max calls equal to 4.
+we run node index.
+a couple of times.
+and we see almost the same time for all four hashers.
+there is slight difference but on an average it's close to 300.
+let's now change Max calls to 5.
+run node index.
+and straight away you can see there is something different.
+hash 5 takes nearly twice the amount of time as the first four on average.
+which can only mean one thing Libby's thread pool has four threads.
+when we execute pbkdf2 five times the first four each take their own thread and complete in nearly the same time.
+the fifth call however has to wait for a thread to be free.
+when hash 1 is complete hash 5 runs on the thread and finishes resulting in twice the amount of time taken in total.
+so libuey's thread pool has four threads by default.
+this will be our inference from experiment number three.
+now you might ask can we increase the number of threads in the thread pool so that more calls to pbk df2 can run in parallel leading to better performance.
+well the answer is yes.
+and that brings us to experiment number four.
+for this experiment we will increase the thread pool size.
+the way to do that is by setting a process environment variable.
+Process dot EnVy dot UV underscore thread pool underscore size.
+let's set it to 5 for now.
+if we rerun node index.
+you can see the fifth hash takes almost the same time and not twice as much as the other hashes.
+set max calls to 6.run node index.
+and now the sixth hash takes twice as much.
+update thread pull size to 6.
+and we see hash 6 doesn't take twice as much anymore.
+in this way by increasing the thread pool size we are able to improve the total time taken to run multiple calls of pvk df2.
+and this will be our inference from experiment number four.
+and there is one important point to keep in mind when increasing the thread pool size.
+if you increase it beyond the number of CPU cores your machine has the average time taken per method execution also increases.
+which brings us to the next experiment.
+for experiment 5 I'm going to change size to 8.
+and Max calls also to 8.
+if we rerun node index.
+we see all eight hashes still consume approximately the same time.
+300 milliseconds on average.
+now though I'm going to change thread pull size to 16.
+and Max calls to 16.
+if we rerun node index.
+you can see almost all the 16 hashes take the same amount of time as the other.
+it is around 550 to 600 milliseconds.
+which is double the previous run.
+and this is because the operating system has to juggle 16 threads across 8 CPU cores which is the case for my MacBook.
+let me help you understand with a visual representation.
+now my MacBook has eight cores it has 10but two are efficiency cores which to be honest I'm not sure if node.js makes use of them the same way.
+when we have only one call to pbk df2 It takes one thread which takes one core.
+this takes approximately 270milliseconds.
+when we change the thread pull size to 8.
+and number of calls to 8.
+each call takes one thread which in turn takes one core.
+this will still result in approximately 270 milliseconds for each call.
+now though when there are 16 threads and16 pbk df2 calls.
+we have one thread per call.
+but the operating system has to juggle16 threads across eight cores.
+and the way the OS scheduler does this is to switch between threads ensuring they all get equal amount of time.
+and because of this 16 threads now have to share eight cores.
+this results in twice the amount of time for each pvk df2 call.
+this is the reason we see 550 to 600milliseconds instead of 270 to 300milliseconds when we had fewer threads than CPU cores.
+so increasing the thread pull size can help with performance but that is limited by the number of available CPU cores this will be our inference from experiment number five.
+hopefully you're now able to see under the hood how Libby's threat pool helps execute some of the async methods innode.js.
+now hang on why do I say some of the async methods why not all async methods.
+well let's discuss that in the next video.
+thank you for watching and if you're enjoying the videos please do leave alike And subscribe to the channel I'll see you in the next one"

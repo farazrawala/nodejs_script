@@ -1,0 +1,117 @@
+okay, as promised, let's wrap up this detour by picking up some knowledge about asynchronous JavaScript.
+(((((((((("all right for our final Topic in this detour let's learn a bit about asynchronous JavaScript."))))))))
+
+The asynchronous features of Node.js will be discussed in greater depth in the following chapter.
+(((((((((("in an upcoming section we will learn in detail about the asynchronous behavior in node."))))))))
+
+nonetheless, this video is meant to serve as a brief introduction to async JavaScript. 
+ (((((((((("but a quick introduction about async JavaScript is necessary and that quick intro is what this video is about."))))))))
+
+
+
+
+In this article, we will learn the ins and outs of asynchronous JavaScript.
+The first step in mastering JavaScript is to grasp this. 
+(((((((((("we're going to understand the what and why of async JavaScript.
+now the first point to understand about JavaScript."))))))))
+
+is that, at its core, JavaScript is a blocking synchronous single-threaded language.
+in addition to the fact that these three factors are crucial. 
+ (((((((((("is that in its most basic form JavaScript is a synchronous blocking single threaded language.
+and the three points mentioned here are really important."))))))))
+
+So, let's try to decipher what they're saying. To begin, JavaScript operates in a synchronous fashion.
+((((((((((" let's understand what they mean the first point is that JavaScript is synchronous."))))))))
+
+If you have two functions that report messages to the console, only one line of code will execute at a time.
+(((((((((("if you have two functions which log messages to the console code execute stop down with only one line executing at any given time."))))))))
+
+On the right, we can see that an is entered before to B.
+The second issue is that, being synchronous, JavaScript blocks as it waits for anything to finish.
+(((((((((("in our example on the right we see a is logged before B.
+the second point is that JavaScript is blocking which is because of its synchronous nature."))))))))
+
+A new process will not begin until the current one is finished, regardless of how long it takes.
+Therefore, JavaScript must complete function A before going on to function B if it contains an intense code block. 
+(((((((((("no matter how long a previous process takes the subsequent process won't kickoff until the former is completed.
+so if function a has to execute an intensive chunk of code JavaScript has to finish that without moving on to function B."))))))))
+
+regardless of how long it takes to type the code (be it 10 seconds or 1 minute).
+Sometimes, while a web app is being executed in a browser, it will execute a particularly lengthy section of code without giving back control to the browser, giving the impression that the browser has stopped.
+ This is referred to as a block.
+(((((((((("even if that code takes 10 seconds or one minute."))))))))
+you might have seen this happen in the browser when a web application runs in a browser and it executes an intensive chunk of code without returning control to the browser the browser can appear to be frozen.
+ this is called blocking."))))))))
+
+The browser is unable to accept input or do other actions until the web app gives control back to the CPU. 
+(((((((((("the browser is blocked from continuing to handle user input and perform other tasks until the web app returns control to the processor."))))))))
+
+Lastly, JavaScript only supports a single thread.
+(((((((((("the last point is that JavaScript is single threaded."))))))))
+
+"a thread is just another way for JavaScript to perform work.
+Moreover, a single thread can only do a single operation. 
+(((((((((("a thread is simply a process that your JavaScript program can use to run a task.
+and each thread can only do one task at a time."))))))))
+
+in contrast to a small number of other languages that allow for parallel processing through multi-threading, Python cannot. 
+(((((((((("unlike a few other languages which support multi-threading and can thus run multiple tasks in parallel."))))))))
+
+on JavaScript, all code is executed on a single thread known as the main thread.
+This leads us to the conclusion that, at its core, JavaScript is a blocking asynchronous single-threaded programming language. 
+(((((((((("JavaScript has just the one thread called the main thread for executing any code.
+this brings us to the point that in its most basic form JavaScript is asynchronous blocking single threaded language."))))))))
+
+However, as you may have anticipated, there is a major issue with this JavaScript paradigm. 
+(((((((((("but as you might have guessed already this model of JavaScript creates a huge problem."))))))))
+
+What if we have to pull information from the database and then process it using some code? 
+(((((((((("what if we have a task to retrieve data from the database and then run some code on the data that is retrieved."))))))))
+
+We have to hold up on the front line until the data is retrieved, but once it arrives, business as usual may resume. 
+(((((((((("we have to wait on the first line for the data to be fetched and when the data finally comes back we can resume with our normal execution."))))))))
+
+however it may take a second or more, and we can't run any other code at that period.
+if data or answer is not what we anticipate it to be, and Java Script immediately moves on to the next line without waiting, we have an error. 
+(((((((((("but that could take one second or even more and during that time we can't run any further code.
+and Java Scriptif it simply proceeds to the next line without waiting we have an error because data or response in this case is not what we expect it to be."))))))))
+
+Thus, we require a method wherein JavaScript may exhibit asynchronous behavior.
+It turns out that using only JavaScript isn't enough to support asynchronous programming, hence the challenge is how to do it.
+(((((((((("so we need a way to have asynchronous Behavior with JavaScript.
+and the question is how do we cater to asynchronous programming in Java Script well as it turns out just JavaScript is not enough to achieve that."))))))))
+
+To develop asynchronous programming, we require additional parts that exist outside of JavaScript.
+In the front end, browsers play a crucial role.
+(((((((((("we need new pieces which are outside of JavaScript to help us write asynchronous code.
+in front end this is where web browsers come into play."))))))))
+
+This is where node.js comes into play on the backend.
+Internet Explorer and Node.js Create methods and ap i's that will let us register code that will run asynchronously in response to events rather than immediately. 
+(((((((((("in backend this is where node.js comes into play.
+web browsers and node Define functions and ap is that allow us to register functions that should not be executed synchronously and should instead be invoked asynchronously when some kind of an event occurs."))))))))
+
+That might be anything from the length of time to how often the mouse is clicked.
+(((((((((("for example that could be the passage of time the user's interaction with the mouse."))))))))
+
+information being taken from a storage medium, such as a file or the Internet.
+This allows many tasks to be processed concurrently without causing the main thread to stall.
+(((((((((("data being read from a file system or the arrival of data over the network.
+this means you can let your code do several things at the same time without stopping or blocking your main thread."))))))))
+
+To sum up, JavaScript is a synchronous blocking single threaded language, and this is what makes asynchronous Java Script possible.
+(((((((((("this is pretty much the what and why of asynchronous Java Script to summarize JavaScript is a synchronous blocking single threaded language."))))))))
+
+However, this is not a quality that helps when creating software.
+We need node.js and the browser to work together to provide non-blocking asynchronous behavior. 
+(((((((((("this nature however is not beneficial for writing apps.
+we want non-blocking asynchronous Behavior which is made possible by browser in the front end and node.js on the back end."))))))))
+
+Some of the core code in the built-in modules of node.js is written in a form that does not stop the main JavaScript thread. 
+(((((((((("the style of programming where we don't block the main JavaScript thread is fundamental to node.js and is at the heart of how some of the built-in module code is written."))))))))
+
+OK, I guess Now that we have a firm grasp on character sets, encoding, streams, buffers, and asynchronous JavaScript, we can return to the main route and continue our education on the subject of built-in modules.
+(((((((((("all right with these newly learned Concepts about character sets encoding streams buffers and async JavaScript we are now finally ready to join back the main path on learning more about built-in modules."))))))))
+
+Let's move on to the following video where we may discuss the fs built-inThank you for watching this module; please join me again soon. 
+(((((((((("let's proceed to the next video where we can learn about the fs built-in module thank you for watching and I'll see you in the next one."))))))))

@@ -1,0 +1,125 @@
+We covered the events module in the last video, which "Returns the event emitter class."
+((((((((((((("In the previous video we learned about the events module which Returns the event emitter class.")))))))) 
+
+With the help of an event emitter instance, we were able to send out notifications and handle incoming events.
+((((((((((((("using an instance of event emitter we were able to emit events and respond to the emitted events.")))))))) 
+ 
+In this tutorial, I will demonstrate how to extend the EventEmitter class to develop a new module.
+Lets proceed.In this tutorial, I will demonstrate how to extend the EventEmitter class to develop a new module.
+Lets proceed.
+((((((((((((("in this video I want to show you how we can create our own module that builds on top of the event emitter class.
+let's begin.")))))))) 
+
+A new document, pizzashop, is being made right now.js.
+((((((((((((("I'm going to create a new file called pizzashop.js.")))))))) 
+
+In the following file, I will define a PizzaShop class, and that class will have a constructor. 
+((((((((((((("within the file I'm going to define a pizza shop class, Class pizza shop has a Constructor.")))))))) 
+
+where we'll add two new procedures and set the starting point to zero.
+ one who makes a purchase" 
+((((((((((((("where we initialize or the number to zero and we're going to add two methods.
+ one to place an order.")))))))) 
+
+where the order number is being increased and where the current order number may be seen using a separate mechanism called "display order number."
+((((((((((((("where we increment order number and another called display order number to view the current order number.")))))))) 
+
+Let's make the class available to other modules by exporting it. 
+((((((((((((("let's export the class for use in other modules.")))))))) 
+
+We'll import the class and comment out the current code in index.js.
+((((((((((((("in index.js let's comment out the existing code and import the class.")))))))) 
+ 
+
+For example: "Khan's Pizza Shop is the same as what we need from pizza shop dot com in the next line. 
+((((((((((((("Khan's pizza shop is equal to require from dot slash pizza shop in the next line.")))))))) 
+
+"let's make a pizza shop that's the same as the new one." 
+((((((((((((("let's create an instance pizza shop is equal to new pizza shop.")))))))) 
+
+Then we may get the order number by typing "pizza shop order" and "pizza shop dot display order number." 
+((((((((((((("we can then invoke pizza shop.order  followed by pizza shop dot display order number.")))))))) 
+
+We ought to obtain the message "current order number 1" if we type node index into the terminal. 
+((((((((((((("if we run node index in the terminal we should see the message current order number 1. ")))))))) 
+
+Here, we'd want an event-driven architecture to be used for taking pizza orders at a pizzeria that already has its own set of properties and methods. 
+((((((((((((("so we have a pizza shop that has its own properties and methods however we would like the shop to be able to handle orders using the event-driven architecture.")))))))) 
+
+It now relies on the events module and may be fixed via inheritance.
+In JavaScript, we may use the "extend" keyword to let a class inherit properties and methods from another. 
+((((((((((((("that is using the events module now the solution for that is inheritance.
+in JavaScript we can extend one class to inherit the functionality of another class.")))))))) 
+
+Here's how we're going to implement inheritance from the EventEmitter class into our PizzaShop class.
+the First, bring in the class that handles emitting events.
+((((((((((((("in our case pizza shop class is going to inherit from the event emitter class and here's how we do that.
+Begin by importing the event emitter class.")))))))) 
+
+Const event emitter is equivalent to colon events on a required node.
+The pizza parlour is the next location to employ the extents keyword in. 
+((((((((((((("const event emitter is equal to require node colon events.
+next use the extents keyword with the pizza shop.")))))))) 
+
+Class PizzaTakeOutExtender eventually invokes super within its Constructor to extend the event emitter.
+((((((((((((("Class pizza shop extends event emitter finally within the Constructor invoke super.")))))))) 
+
+If you're interested in learning more about the inner workings of the extents and super keywords and the class-based inheritance feature introduced in es2015, I highly recommend watching my Advanced JavaScript crash course
+((((((((((((("this class-based inheritance is a feature introduced in es2015 please do watch my Advanced JavaScript crash course if you would like to learn more about what the extents and super keywords do under the hood.")))))))) 
+
+However, because to this inheritance, we can treat the PizzaShop class as though it were an event emitter class.
+As a result, we can no longer rely on a dedicated emitter object to send out events within the order function. 
+((((((((((((("but what this inheritance allows us to do is use the pizza shop class as if itis an event emitter class.
+so in the order method we can now emit an event but this time we don't have a separate emitter object.")))))))) 
+
+Instead The thing that is being released is indicated by this term.
+If we add the parameters "size" and "topping," the event will be called "order," and the dot will emit those values.
+((((((((((((("Instead This keyword refers to the emitted object.
+so this dot emits the event name is order and let's add size and topping as parameters.")))))))) 
+
+We may return to index.js and add listeners since an event has been emitted.
+Order pizza at the event name dot shop. 
+((((((((((((("with an event now being emitted we can go back to index.js and attach listeners.
+pizza shop dot on the event name is order.")))))))) 
+
+We'll log size and topping information received from the Listener into the console.
+Let's specify the size and toppings when we place the order.
+((((((((((((("The Listener receives size and topping which we're going to log to the console.
+while placing the order let's specify the size and the toppings.")))))))) 
+
+We get the expected log statement if we rerun node index now.
+We can see that the current order number is 1, and we know they've gotten instructions to make a big pizza topped with mushrooms. 
+((((((((((((("if we now rerun node index we see the expected log statement.
+are they received making a large pizza with mushrooms, we also see the current order number is1.")))))))) 
+
+Let's set up the other event listener now, the one for when a beverage is served. 
+((((((((((((("let's now register the other event listener which has to do with serving a drink.")))))))) 
+
+So, let's make a new file called drink machine.js, and inside that file, let's make a new class that handles making drinks. Serving size may be input into Drink Machine's serve drink mechanism. 
+((((((((((((("now what I will do is extract out the drink logic into a separate module so new file called drink machine.js and within the file let’s create a new class. Drink Machine one method called serve drink which accepts size.")))))))) 
+
+"if the order is quite big.
+We sign in to the free drink terminal. 
+((((((((((((("if the order size is large.
+we log to the console serving complementary drink.")))))))) 
+
+Let's package it up and send it back to index.js, where we can use required slash Drink Machine to instantiate a new instance. 
+((((((((((((("let's export it for use in index.js.
+back in indecent Drink Machine is equal to require dot slash Drink Machine and create a new instance.")))))))) 
+
+subsequent in the same sequence of event listeners.
+Served beverage pass size call Drink Machine dot.
+((((((((((((("next within the same order event listener.
+call Drink Machine dot served drink pass in size.")))))))) 
+
+The first order has been received, and the expected log statements have been generated as the node index has been restarted to accommodate it.
+As you can see, we may connect many modules without firmly coupling them all by utilising events. 
+((((((((((((("rerun node index and we see the expected log statements order received making a large pizza with mushrooms serving complimentary drink current order number one.
+as you can see using events we are able to tie together different modules without having to tightly couple them.")))))))) 
+
+Keep in mind that most of the built-in modules, including FS streams and HTTP, that we will study in the following videos also extend from the event emitter class, allowing them to Emit and react to their own custom events, just like modules like pizza shop can do in this video.
+((((((((((((("but what I want you to take away from this video is the fact that modules such as pizza shop can extend from event emitter allowing them to Emit and react to their own custom events and the reason I want you to remember this is because most of the built-in modules especially FS streams and HTTP which we are about to learn in the upcoming videos also extend from the event emitter class.")))))))) 
+
+ Please consider subscribing if you like the video. Next time, buddy.
+((((((((((((("thank you for watching please do consider subscribing to the channel I’ll see you in the next one.")))))))) 
+

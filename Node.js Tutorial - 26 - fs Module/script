@@ -1,0 +1,215 @@
+
+((((("in this video let's take a look at the fs module in node.))))))
+
+((((("the file system module allows you to work with the file system on your computer.
+let's understand how to work with that.))))))
+
+((((("I'm here in index.js which is our main module it is empty to begin with to make use of a built-in module we first have to import it and to import a built-in module we use the require function.))))))
+
+((((("so at the top const FS is equal to require node colon FS.
+here FS is the name of our built-in module.))))))
+
+((((("once we have the module loaded we can access the various properties and methods exposed by the fs module.
+for our first method let's learn how to read the contents of a file.))))))
+
+
+((((("I'm going to create a new file calledfile.txt.
+within the file I'm going to add.))))))
+
+
+((((("hello code Evolution as text.
+now back in index.js on the fs object returned from the fs module.))))))
+
+
+((((("we're going to invoke a method called read file sync.
+to this method we pass in the path to the file we want to read.))))))
+
+
+((((("if you're happy with relative Parts itis as simple as dot slash file Dot txd.
+we can capture the return value in a constant called file contents.))))))
+
+
+((((("and log it to the console.
+if we run node index we see we have a buffer with binary data.))))))
+
+
+((((("to view it in human readable format.
+let's set a second argumentutf-8 which is the encoding.))))))
+
+
+((((("now if we save the file and rerun node index we see Hello code evolution which is the file content.
+hopefully you're now able to relate back to the video about binary data buffers and encoding and how it is relevant to understanding FS module.))))))
+
+
+((((("the fs module internally uses the buffer.
+now you might have noticed the method name is read file sync.))))))
+
+
+((((("here the suffix sync is very important.
+this basically tells us the method is asynchronous way of reading a file.))))))
+
+
+((((("in other words JavaScript engine will wait till the file contents are read before moving on to the next line.
+now it might be okay to block the JavaScript main thread and read data If that is essential for code written further down the line.))))))
+
+
+((((("for example reading configuration data from a file and using it further down the line.))))))
+
+
+((((("however more often than not you don't want this synchronous Behavior.))))))
+
+
+((((("if you have a lot of concurrent users and the file size is large they will be blocked for some time as JavaScript is single threaded and synchronous.))))))
+
+
+((((("the performance will be really poor.
+now I hinted towards this in the previous video but what you have to keep in mind is that node.js is 
+asynchronous.))))))
+
+
+((((("it has features to do tasks asynchronously without blocking the main thread.
+and for that reason another method exists on the fs object which is the read file method.))))))
+
+
+((((("let's understand its syntax.
+so FS dot read file.))))))
+
+
+((((("and the first argument is the file path which is dot slash file Dot txt.
+the second argument is a callback function which will be invoked after the file contents have been read.))))))
+
+
+((((("remember a function that is passed as an argument to another function is a callback function.
+this function receives two parameters error and data.))))))
+
+
+((((("error is the error that was identified when reading the file if there was any.
+if there was no error on the other hand it is set to null and data is populated with the file contents.))))))
+
+
+((((("this pattern of using callbacks were the first argument is the error is called error first callback pattern.
+something you will find commonly used innode.js.))))))
+
+
+((((("now within the function body if there is an error.
+let's log it to the console.))))))
+
+
+((((("if there is no error let's log data to the console.
+now if we rerun node index we see Hello code Evolution from our sync read and the same buffer object with binary data from our asynchronous read.))))))
+
+
+((((("we can pass in utf-8 as the second argument which is our encoding.
+now we run node index.))))))
+
+
+((((("and we see Hello code evolution in both the cases.
+So reading File synchronously versus reading file asynchronously.))))))
+
+
+((((("in fact let's prove this method is asynchronous by adding a few log statements.
+at the top add a log statement.))))))
+
+
+((((("First in between the two file reads let's add a log statement second and at the end a log statement third.
+if we now run node index we see first output from the read file sync method second third and then output from 
+read file.))))))
+
+
+((((("so what node does is keep track of this callback function and allows for further code to be executed.
+when the file reading is complete node will then execute the Callback function.))))))
+
+
+((((("it doesn't matter if it's a huge file which can even take five seconds rest of the code continues to execute.
+and because of this asynchronous callback approach your app will not freeze when multiple users interact with 
+the application.))))))
+
+
+((((("hopefully the log statements make sense.
+now there are quite a few methods available on the fs module but let's take a look at one more just to get the 
+hang of things.))))))
+
+
+((((("let's see how to write contents into a file we are going to be using the write file method which has both sync and async versions.))))))
+
+
+((((("let's start with synchronous FS dot write file sync.
+first argument is the path to the file.))))))
+
+((((("let's specify greet.txt and the second argument is the file contents let's add a string hello world.
+if we now run node index.))))))
+
+((((("you can see a new file greet.txt has been created with hello world as the contents.
+pretty simple right.))))))
+
+
+((((("let's now take a look at the async version.
+FS dot write file and the first argument Remains the Same file name which is dot slash greet Dot txt followed by file contents.))))))
+
+
+((((("hello vishwas now we specify the third argument which is our error first callback.
+within the function body check for an error.))))))
+
+
+((((("and if it exists log it to the console.
+if there is no error the contents have been written to the file and we can log a message that says so.))))))
+
+
+((((("rerun node index and this time we see file written in the log statements.
+open greet.txt and we see the updated text hello vishwas.))))))
+
+
+((((("by default write file overwrites the file contents.
+this is the reason hello world has been overwritten with hello vishwas.))))))
+
+
+((((("however if you want to append to the existing content you can add an option as a third argument.
+it's an object where we set flag as append.))))))
+
+
+((((("now if I add a space before hello vishwas save the file and run node index.
+we have Hello World a space and then hello vishwas.))))))
+
+
+((((("both content exist in the file.
+now if you're wondering as to why hello code evolution is locked at the very end it just so happened in this ))))))
+
+((((("run reading the file took a lot more time than writing to the file.
+and we will learn more about this in the section on asynchronous node under the hood.))))))
+
+
+((((("but let me be very honest in saying wrapping your head around asynchronous code is not easy.
+if this is the first time you're encountering this code please do re-watch the video if you have to.))))))
+
+
+((((("but for now let me summarize what we have learned.
+in node we rely on the fs module to work with the file system we can use the read file sync method to read ))))))
+
+
+((((("file contents but that will block execution and potentially hang execution when multiple users interact with the app.))))))
+
+
+((((("the recommended approach is to use read file.
+which does not block execution while the file contents are being read.))))))
+
+
+((((("rest of the code is executed and whennode.js gets a signal that the file has been read it will execute the Callback function.))))))
+
+
+((((("if that was an error while reading the file the error argument is set.
+if there was no error error is null and data is set.))))))
+
+
+((((("you can use data for processing the file contents if necessary.
+we also had a look at the right file sync.))))))
+
+
+((((("and write file methods to write contents into a new file if the file does not exist a new file is created if the file exists the contents are overwritten.))))))
+
+
+((((("you can also add a flag to append contents instead of overwriting.
+now although this callback based read file and write file methods do the job node decided to add a promise based version of the fs module which we can use in our applet's learn about that in the next video.))))))
+))))))
+
+
+((((("thank you for watching please do consider subscribing to the channel and I'll see you in the next one.))))))

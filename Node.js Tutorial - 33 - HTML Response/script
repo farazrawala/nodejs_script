@@ -1,0 +1,100 @@
+"in the previous video we learned how to send Json data as response.
+in this video let's learn how to send HTML as response.
+
+
+I'm going to revert back to plain text response instead of Json.
+so content type Text slash plane and rest dot end hello world.
+
+
+ this should seem familiar as it is the exact same code from two videos ago.
+ if you now restart the server and refresh the browser.
+
+
+ we should see the text hello world.
+ now let's try to add some HTML.
+
+
+ I'm going to wrap the hello world text with an H1 tag.
+ restart the server.
+
+
+ and refresh the browser now the output is not as expected.
+ we would expect the text hello world to be larger in size without the H1 tags at the start and the end.
+
+
+ the reason we see only text and not HTML is because we are asking the browser to treat this response as plain text.
+
+
+ if the browser has to parse this as HTML we need to specify content type as Text slash HTML.
+ restart the server and now if we refresh the browser we should see larger hello world text in bold.
+
+
+ this is the default styling of an H1 tag and this is how you send HTML content as response.
+ although this works fine typically we don't build HTML as a string in the same JavaScript file.
+
+
+ instead we Define the HTML in a separate file and send that file contents as a response.
+ let me show you how to do that.
+
+
+ I'm going to create a new file called index.html.
+ with in the file type exclamation and tab to generate HTML content.
+
+
+ specify a title.
+ and for the body within an H1 tag specify the text from index.html.
+
+
+ next we need to read the file contents of index.html in our request listener.
+ and for reading a file we know we can use the fs module.
+
+
+ so at the top const FS is equal to require node colon FS and within the request listener.
+ const HTML is equal to FS dot read file sync.
+
+ the file path is dot slash index.html.
+ and encoding is utf-8.
+
+
+the reason I've used read file sync and not read file is because we want to wait for the file content to be read before responding.
+
+
+ now that we have the file content as HTML we send it as response.
+ and for now restart the server so Ctrl C node index head back to the browser and refresh we see the expected 
+ HTML.
+ 
+ from index.html.
+ if I inspect it.
+ it is in an H1 tag.
+ 
+
+ although this works you have to keep in mind that read file sync reads the entire file contents at once.
+ if you have a large HTML file we are storing all that content in a temporary buffer which may lead to 
+unnecessary use of memory.
+
+
+ instead we can rely on streams which we have already learned about.
+ so FS dot create stream the path is dot slash index.html.
+
+
+ and we're going to pipe to the response.
+ restart the server node index refresh the browser and we see the same output as before.
+
+
+ but this time our code is more performant.
+ now for Simplicity I've used relative path to index.html.
+
+
+ but you should stick to using double underscore directory name whenever you can.
+ save the file.
+
+ restart the server refresh and we see the same output.
+ so this is how you can respond with HTML.
+
+ right now we have a very simple HTML file but you can add any HTML tag you want to along with CSS for styling.
+ content type Text slash HTML is the key.
+
+ on a side note if you don't want to restart the server every time you make a change please make use of the watch mode that we have already learned about.
+
+ alright thank you for watching please do consider subscribing to the channel.
+ and I'll see you in the next one"

@@ -1,0 +1,97 @@
+
+((((("in the previous video we learned about streams in the context of reading and writing file contents.))))))
+
+
+((((("we used create readable stream to create a readable stream that reads from a file.))))))
+
+
+((((("and we used create writable stream that writes to a file.))))))
+
+
+((((("as it turns out this is a common pattern and node has a simpler and better way to do the same and that is using pipes.))))))
+
+
+((((("let's learn about pipes in this video.
+in non-technical terms we understand what a pipe is.
+))))))
+
+((((("for example a pipe that connects a tank to a kitchen sink.
+the tank feeds water into the pipe which can be released through the tap in the sink.))))))
+
+
+((((("from a pipe point of view we are reading water from the tank and writing it to the sink.
+in node.js a pipe is very similar.))))))
+
+
+((((("It takes a readable stream and connects it to a writable stream.
+we use the pipe method on a readable stream to implement the functionality.))))))
+
+
+((((("back in vs code in index.js I can comment out the data event.
+and instead write one line of code.))))))
+
+
+((((("readable stream dot pipe.
+and we pass in writable stream.))))))
+
+
+((((("if we now save the file clear file to contents.
+and run node index.))))))
+
+
+((((("we can see the same output as before.
+hello code evolution which is present in file Dot txt.))))))
+
+
+((((("now what is great about a pipe is that it Returns the destination stream which enables chaining.))))))
+
+
+((((("however the condition is that the destination stream has to be readable duplex or a transform stream.
+in our current example we have a writable stream.))))))
+))))))
+
+((((("so we cannot Chain by calling dot pipe.
+instead let's make use of another built-in module which is zlib.))))))
+
+
+((((("now this example might be slightly Advanced at the moment but I want to make sure you're aware of the concept of chaining with the pipe method.))))))
+
+
+((((("at the top import the zlib module.
+the lip module provides compression functionality implemented using gzip algorithm.))))))
+
+
+((((("or in simple terms zlib allows us to create zipped files if we can call it that.
+what is great about zlib is that it has a built-in transform stream.))))))
+
+
+((((("so we can write const gzip is equal to zlib dot create gzip.
+and after we have created a readable stream we can write readable stream dot pipe gzip.))))))
+
+
+((((("now this returns a transform stream.
+so we can call Dot pipe and pass in.))))))
+
+
+((((("FS dot write stream.
+and the destination is File 2 dot txt dot gz.))))))
+
+
+((((("we are chaining with DOT pipe as you can see.
+moving from a readable stream to a transform stream to a writable stream.))))))
+
+((((("of course you can write fs.right stream.
+as a constant and use it but hopefully you're able to understand the concept of chaining with the pipe method.))))))
+
+((((("if I run node index.
+you should see the new filefile2.txt.gz created.))))))
+
+((((("this is how pipes work in node.js.
+now we are not quite done with the built-in modules.))))))
+
+((((("we have one more to go which is the built-in HTTP module.
+let's take a look at that next.))))))
+
+
+((((("thank you for watching please do consider subscribing to the channel and I'll see you in the next video))))))
+

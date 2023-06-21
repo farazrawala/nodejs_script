@@ -1,0 +1,201 @@
+In the last clip, we discussed binary data, which consists of only zeros and ones.
+((((((((" Welcome back in the previous video we learned about binary data which is zeros and ones that computers can understand.")))))))) 
+
+regarding character encoding, which specifies how a number in a character set is encoded as binary data, and character sets, which are predefined lists of characters represented by numbers.
+((((((((" about character sets which are pre defined lists of characters represented by numbers and finally about character encoding which dictates how to represent a number in a character set as binary data.")))))))) 
+
+in this video Let's proceed to understand what our streams and buffers.
+let's start with streams.
+((((((((" in this video Let's proceed to understand what our streams and buffers.
+let's start with streams.")))))))) 
+
+ 
+A stream is a continuous flow of information from one location to another.
+One such example is the transfer of data from one file to another on the same computer, or the transmission of data across the Internet. 
+(((((((("stream is a sequence of data that is being moved from one point to another over time.
+vfor example a stream of data over the Internet being moved from one computer to another or a stream of data being transferred from one file to another within the same computer.")))))))) 
+
+ 
+The concept of node.js is to handle data streams in pieces as they arrive, rather than all at once. 
+(((((((("in node.js the idea is to process streams of data in chunks as they arrive instead of waiting for the entire data to be available before processing.")))))))) 
+
+as when you're viewing a video on YouTube, for instance.
+You can start watching the video before it has completely downloading. 
+((((((((" for example if you're watching a video on YouTube.
+you don't wait for the entire video to be downloaded to watch it.")))))))) 
+
+While waiting for the remaining data to arrive gradually, you may observe the information as it is delivered in bite-sized portions.
+(((((((("the data arrives in chunks and you watch in chunks while the rest of the data arrives over time.")))))))) 
+Similarly, you wouldn't wait for all of file A's data to be stored in temporary memory before copying it into file B if you were transferring its contents.
+(((((((("Similarly if you're transferring file contents from file a to file B you don't wait for the entire file a content to be saved in temporary memory before moving it into file B.")))))))) 
+
+It's a piecemeal process whereby some of the data arrives immediately while the rest trickles in over time.
+(((((((("the contents arrive in chunks and you transfer in chunks while the remaining contents arrive over time.")))))))) 
+
+By doing this, you'll be able to avoid downloading and storing data that isn't essential. 
+(((((((("in doing so you're preventing unnecessary data downloads and memory usage and I'm sure you'll agree that is always good.")))))))) 
+
+The idea that a stream is a succession of data being sent from one location to another over time should now be crystal obvious to you. 
+(((((((("hopefully it is clear to you now that a stream is a sequence of data that is being moved from one point to another over time.")))))))) 
+
+But the question is how precisely that data sequence is sent.
+(((((((("but the que stion is how exactly is that sequence of data moved.")))))))) 
+
+This leads us to the following Subject covered in the present video.
+that act as buffers. 
+(((((((("that brings us to the next Topic in this video.
+which is buffers.")))))))) 
+
+now to understand what a buffer is I'm going to give an analogy that should hopefully be easy to understand.
+consider the scenario of an amusement park with a roller coaster.
+(((((((("now to understand what a buffer is I'm going to give an analogy that should hopefully be easy to understand.
+consider the scenario of an amusement park with a roller coaster.")))))))) 
+
+The coaster has a passenger capacity of 30.
+however we have no idea how fast or slow people get to the roller coaster.
+If there are 100 people waiting and only 30 can be seated at once, the remaining 70 will have to wait until the following round.
+(((((((("the roller coaster can accommodate 30 people.
+but we don't know at what pace people arrive at the roller coaster.
+if 100 people arrive at a time30 are accommodated and the remaining 70have to wait in line for next round.")))))))) 
+
+However, as a guideline for increased productivity, if just one person shows up, they will have to wait in line until at least ten others do as well. 
+(((((((("on the other hand if only one person arrives he or she has to wait in line for at least 10 people to arrive in total and that is a guideline set to improve efficiency.")))))))) 
+
+however the fact remains that you have little say over the rate at which guests show up.
+Time is the only variable in sending folks on the voyage. 
+(((((((("but the bottom line is you cannot control the pace at which people arrive.
+you can only decide when is the right time to send people on the ride.")))))))) 
+
+If the ride is full or there aren't enough people to start it, those who are waiting in line will have to wait. 
+(((((((("if people are already on the ride or there are too few a people to start the ride you have to have people arriving wait inline.")))))))) 
+
+Interestingly enough, this waiting room is really the buffer.
+((((((((" and as it turns out this area where people wait is nothing but the buffer."))))))))
+
+Node.js is powerless to alter the rate at which information is added to the Stream; all it can do is choose when it is opportune to forward the data on for processing.
+(((((((("node.js cannot control the pace at which data arrives in the Stream it can only decide when is the right time to send the data for processing."))))))))
+
+Node will place incoming data in a buffer if there is currently data being processed or if there is not enough data to process.
+(((((((("if there is data already being processed or too little data to process node puts the arriving data in a buffer."))))))))
+
+In the runtime, node keeps a deliberately compact space for processing incoming data streams. 
+(((((((("it is an intentionally small area that node maintains in the runtime to processa stream of data."))))))))
+
+The buffering process is most easily understood in the context of online video streaming.
+ If your network speed is sufficient, the stream will fill the buffer immediately, and your data will be sent on for processing.
+(((((((("a familiar example where you can see a buffer in action is when you're streaming a video online.
+ if your internet connection is fast enough the speed of the stream will be fast enough to instantly fill up the buffer and send it out for processing."))))))))
+
+That will keep happening till the stream is over. 
+(((((((("that will repeat till the stream is finished."))))))))
+
+However, if your connection is sluggish, the video player will show a loading spinner instead of the video as it waits for additional data to come.
+(((((((("but if your connection is slow after processing the first chunk of data that arrived the video player will display a loading spinner which indicates it is waiting for more data to arrive."))))))))
+
+Once the data has been processed and the buffer is full, the video will begin playing.
+  More information will continue to come and be stored in the buffer while the video is playing.
+ Hopefully, you now have a firm grasp on the difference between streams and buffers.
+(((((((("once the buffer is filled up and the data is processed the video player shows the video.
+  while the video is playing more data will continue to arrive and wait in the buffer.
+ hopefully the concept of streams and buffers is now clear to you."))))))))
+
+Now that we know what buffers are, we need to know how they relate to the binary data character sets and encoding we covered in the last video.
+(((((((("now then what is the connection between binary data character sets and encoding we learned about in the previous video to buffers which we learned about a second ago."))))))))
+
+I guess we'll have to go back to the editor and do some more coding in order to figure it out.
+This is a blank index.js file. 
+(((((((("well to understand that we need to head back to the editor and write some code.
+I'm here at an empty index.js."))))))))
+
+Now, that's a node you need to know about.The buffer function is built into js so that it may be used without needing to be imported.
+The string vishwas will be stored in a buffer we will build.
+The buffer is constant, hence its contents cannot change. 
+(((((((("now what you should know is that node.js provides the buffer feature as a global feature that you can use without having to import it.
+let's create a buffer that holds the string vishwas.
+it's a const buffer."))))))))
+
+Now that's a hub you ought to be aware of.Rather to requiring an external import, js already includes the buffer function.
+A buffer will be constructed to hold the string vishwas.
+Since the size of the buffer is fixed, its contents are also fixed.  
+(((((((("is equal to new buffer.
+now on Buffer we use a method Dot from which accepts a string vishwas.
+we can also specify the character encoding which is utf-8."))))))))
+
+As of right now, the UT encoding value of 8 is discretionary.
+The following line will include me logging the dot buffer into Json.
+(((((((("now UT of 8 is the default encoding value so that is optional.
+in the next line I'm going to log buffer dot to Json."))))))))
+
+"if we run node index, we find a data array with seven digits, and the object type is set to buffer." 
+(((((((("if we run node index we see an object type is set to buffer and we have a data array which contains seven numbers."))))))))
+
+Each of these numbers is the Unicode character code for a letter in the string vishwas; this is our first link to the previous film. 
+(((((((("and this is our first connection to the previous video each number here is the Unicode character code for the character in the string vishwas."))))))))
+
+Keep in mind that 86 represents the value of character.
+Let's log only this time and add another log statement.
+Buffer.
+When we do a node index. 
+(((((((("remember 86 was the number for character.
+let's add another log statement this time we log just.
+Buffer.
+if we run node index."))))))))
+
+This new form of the buffer's representation has come into view.
+A buffer stores unprocessed binary data that is produced when we log to the console; this is our second connection to the first video.
+(((((((("we see this different representation of the buffer.
+and this is our second connection to the previous video a buffer contains raw binary data thatis displayed as output when we log to the console."))))))))
+
+
+(((((((("but hang on as in binary just zeros and ones. well it is.
+what node.js does is print the hexadecimal or base 16 notation of the number as printing 8 Bits binary for every character can flood your terminal."))))))))
+
+However, hold on there, because binary is only zeros and ones. yes, indeed.
+Since publishing 8 Bits binary for every letter might overwhelm your terminal, node.js instead outputs the value in hexadecimal, or base 16. 
+(((((((("but if I copy 56 which is the representation of v and head over to the browser where I have a hexadecimal converter and convert56we see 0 1 0 1 0 1 1 0 which is the binary representation of the character V and binary representation of the character code 86."))))))))
+
+I doubt I would have been able to describe what a buffer is if I had tried to explain these log statements without first introducing the ideas in the prior video.
+(((((((("if I would have tried to explain these log statements without any knowledge of the concepts from the previous video I don't think I would have been able to explain what a buffer holds."))))))))
+
+
+but I think you get the idea now 
+(((((((("but hopefully you now understand."))))))))
+
+The binary information stored in the buffer may now be converted to its string representation with the log buffer Dot to string command. 
+(((((((("now you can also log buffer Dot to string and this will give back the string representation of the binary data in the buffer vishwas."))))))))
+
+There is now a write access to the buffer.
+so let's pass in the text code and conduct a buffer dot write.
+(((((((("now you can also write to the buffer.
+so buffer dot write and let's pass in the string code."))))))))
+
+If the Node Index is Re-Run.
+We can now see that the text was actually a code.
+(((((((("if we rerun node index.
+we see that the string is now code was."))))))))
+
+The four characters from vishwas are lost since buffers have limited memory.
+(((((((("and this is because buffers have limited memory the four characters overwrite the four characters from vishwas."))))))))
+
+Furthermore, the final few characters are missed when you type "code evolution run node index" since they don't fit in the buffer.
+(((((((("and if you were to write code evolution run node index you can see the last few letters are skipped 
+as they can't be stored in the buffer."))))))))
+
+The meaning of buffers should now be clear to you.
+and the best way to communicate with them via node.js 
+(((((((("hopefully you now know what are buffers.
+and how to interact with them in node.js."))))))))
+
+But there's something I need to tell you, node.Whenever possible, js will employ a buffer internally, so you might never have to deal with them directly.
+(((((((("but let me tell you something node.js internally uses buffers were required and you may never have to work with buffers directly."))))))))
+
+Actually, we might have studied fs and HTTP modules without learning such specifics about buffers. 
+(((((((("in fact we could have learned about fsand HTTP modules without understanding about buffers in this level of detail."))))))))
+
+but every time, I want you to grasp the basics, since they are the building blocks of any new technology you may encounter.
+(((((((("but as always I would like you to understand the foundations as they are key to forming a mental model of any technology that you're learning."))))))))
+
+OK, I guess Let's explore asynchronous JavaScript in the subsequent video.
+Please consider subscribing to the channel, and I hope you enjoyed the video; hope to see you in the upcoming one!
+(((((((("all right in the next video let's learn about asynchronous JavaScript.
+thank you for watching please do consider subscribing to the channel and I'll see you in the next one."))))))))

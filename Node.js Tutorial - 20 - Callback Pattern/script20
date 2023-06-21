@@ -1,4 +1,10 @@
+/// checking...
+
+
 In the previous video we had a look at the path module in node.js.
+
+
+
 before we proceed with the other built-in modules we need to take a detour to understand the Callback pattern or callback style of programming in node.js which is what this video is all about.
 let's begin by understanding a very important point.
 in JavaScript functions are first class objects.

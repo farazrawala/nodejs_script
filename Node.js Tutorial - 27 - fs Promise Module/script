@@ -1,0 +1,105 @@
+In the last video, we covered the FS module, which is already installed and can be used to interact with your computer's file system.
+((((("In the previous video we learned about the built-in FS module which allows you to work with the file system on your computer.))))))
+
+While the fs module may be used without issue, a newer, promise-based version of the same module is available. 
+((((("although it is perfectly okay to use the fs module there is a more recent promise based version of the same module.))))))
+
+I feel it's important for you to be aware of this since you'll be seeing it in more modern code bases, especially if you're utilizing ES modules. 
+((((("it is something you will come across in more recent code bases especially when using ES modules so I want to make sure you're aware of it.))))))
+
+I feel it's important for you to be aware of this since you'll be seeing it in more modern code bases, especially if you're utilizing ES modules. 
+((((("I'm going to comment out the existing code and move it to the bottom.
+now for Step One Import the module at the top.))))))
+
+const The FS equals the mandatory node We have now attached slash promises to our FS status.
+It's plain to see
+((((("const FS is equal to require node FS slash promises we have now appended slash promises.
+As you can see.))))))
+
+In Step 2, we'll use the read file method to read a file.
+Thus, FS does not read file . Dot txd
+((((("Step 2 let's read a file using the read file method.
+so FS dot read file file Dot txd.))))))
+
+"the second parameter specifies utf-8 as the encoding type.
+However, given that we are using a promise-based implementation of read file, we can use both then and catch blocks.
+((((("the second argument is the encoding type which is utf-8.
+now though since we are working with a promise based version of read file we can add then and catch blocks.))))))
+
+Hence, dot then catch.
+After the promise resolves successfully, we are given access to the data, which can be logged in the console. 
+((((("so dot then dot catch.
+then is called when the promise results successfully we get access to the data which we can log to the console.))))))
+
+When the promise fails with an error, we call catch to reclaim access to the adder and log it to the console. 
+((((("catch is called when the promise rejects with an error to get access to the adder which we can log again to the console.))))))
+
+You may watch my Advanced JavaScript crash course if you're unfamiliar with the syntax of promises, then, and catch blocks. 
+((((("now if the concept of promises then and catch blocks are new to you please watch my Advanced JavaScript crash course which will help you understand the syntax.))))))
+
+We may proceed with node index if we now save the file.
+file's contents are shown Greetings, Evolving Code 
+((((("if we now save the file and run node index.
+we see the file contents hello code evolution.))))))
+
+The outcomes of our code are as planned.
+Add some more log statements to show that this is in fact asynchronous. 
+((((("our code works as expected.
+again to prove this is asynchronous let's add a few log statements.))))))
+
+above the fold initially.
+then record the time after the read file was requested
+((((("at the top log first.
+and then log second after the call to read file.))))))))))))
+
+If we now run node index, we will obtain data from the read file method after a brief delay.
+So, node initiates the file read and temporarily stores the results so that more code may run.
+((((("if we now run node index receive first second and then the data from read file method.
+so what node does is start the file read and set it aside which allows for further code to be executed.))))))
+
+Upon completion of the file read, the node will either execute the catch blocks or return the promise result. 
+((((("when the file reading is complete node will then execute then or catch blocks depending on whether the promise result or rejected.))))))
+
+With an asynchronous strategy like this, your software won't stall even if several people are simultaneously utilizing it.
+((((("because of this asynchronous approach your app will not freeze when multiple users interact with the application.))))))
+
+Since async await is only a syntactical wrapper overpromises, it may now be used in conjunction with the promise-based FS module. 
+((((("now the promise based FS module can also be used with async await as async a wait is just a syntactical wrapper 
+overpromises.))))))
+
+To avoid unnecessary complexity, I will instead use an async function within the same file, as top-level a weight may only be used in modules, i.e. dot MJS files.
+There are try/catch sections inside the async function that reads the file.
+
+To avoid unnecessary complexity, I will instead use an async function within the same file, as top-level a weight may only be used in modules, i.e. dot MJS files.
+There are try/catch sections inside the async function that reads the file. 
+
+((((("however since top level a weight can only be used in modules that is dot MJS files I'm going to instead use an 
+async function in the same file to not further complicate this.
+Async function read file within the function we have try catch blocks.))))))
+
+The attempt block is waiting for the FS dot read file to arrive.
+both file.txt and utf-8The data-logging line will be in the next line. ((((("within the try block we await FS dot read file passing in.
+file.txt and utf-8in the next line we can log the data.))))))
+
+Let's see if we can record any errors that occur into the console by using the catch block.
+Invoke the async read file method at the end. 
+((((("if there was an error let's catch it in the catch block and log it to the console.
+finally call the read file async function.))))))
+
+After saying "hello" to code evolution, we're back to where we started if we run node index.
+However, this code is much simpler to understand. 
+((((("if we now run node index we see the same output as before hello code evolution.
+but this code is relatively easier to read.))))))
+
+When maximum speed in terms of execution time and memory allocation is desired, the Callback based versions of the node FS module apis are preferred over the usage of the promise apis.
+((((("the Callback based versions of the node FS module apis are preferable over the use of the promise apis when maximal performance is required both in terms of execution time and memory allocation.))))))
+
+However, if this is not a top priority for you, I think the promise-based FS module is OK. 
+((((("but if that is not a major concern I would recommend you stick with the promise based FS module.))))))
+
+OK, I guess Let's go on to learning about streams and pipes in node now that we know about the file system module.js 
+((((("all right with this knowledge in place about the file system module let's proceed to understand about streams 
+and pipes in node.js.))))))
+
+Please subscribe to the channel if you like this video, and I'll see you in the next one! 
+((((("thank you for watching please do consider subscribing to the channel and I'll see you in the next one))))))

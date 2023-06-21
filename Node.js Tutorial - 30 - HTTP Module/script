@@ -1,0 +1,62 @@
+
+((((("Welcome back for our final built-in module we're going to take a look at the HTTP module.
+
+
+((((("however before we understand what the HTTP module is about.
+ let's briefly understand how the web works.
+
+
+((((("or in simple terms let's understand what happens when you type a URL in a web browser on your computer.
+let's start with the concept of clients and servers.
+
+
+((((("computers connected to the internet are called clients and servers.
+
+
+((((("clients are internet connected devices such as computers or mobile phones along with web accessing software available on those devices such as a web browser.
+
+
+((((("servers on the other hand are computers that store web pages sites or applications.
+when you type a URL in the browser the client device requests access to a webpage.
+
+
+((((("a copy of the web page is downloaded from the server and sent as a response to the client to be displayed in the web browser.
+
+
+((((("this model is popularly called the client server model.
+now we understand that there is data transfer between the client and the server.
+
+
+((((("but in what format is that data.
+what if the request sent by the client cannot be understood by the server.
+
+
+((((("Or what if the response sent by the server cannot be understood by the client.
+well this is where HTTP comes into picture.
+
+
+((((("HTTP stands for hypertext transfer protocol and is a protocol that defines a format for clients and servers to speak to each other.
+
+
+((((("a client sends an HTTP request and the server responds with an HTTP response.
+this is how the web works at a very high level.
+
+((((("now where does node fit in.
+well as it turns out we can create a webserver using node.js.
+
+
+((((("node has access to operating system functionality like networking and given the fact that node has an event Loop to run tasks asynchronously.
+
+
+((((("it is perfect for creating web servers that can simultaneously handle large volumes of requests.
+of course the node server we create still has to respect the HTTP format.
+
+
+((((("and for that we use the built-in HTTP module.
+the HTTP module allows creation of webservers that can transfer data over http.
+
+
+((((("and this is probably the moment you have all been waiting for.
+to learn how to create a server using node.js well let's take a look at the code in the next video.
+
+

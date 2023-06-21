@@ -1,0 +1,75 @@
+
+in the previous video we learned how to create an HTTP server with the built-in HTTP module in node.js.
+in that example we learned how to respond with some plain text.
+
+
+in this video let's see how to respond with Json data.
+in the request listener I'm going to create a new object.
+
+
+const superhero has two properties first name set to Bruce.
+and last name said to Wayne.
+
+
+now let's try respond by sending this object to the client.
+so rest dot end.
+
+
+Superhero.
+in the terminal run node index.
+
+
+and if we now refresh the browser.
+we have a problem.
+
+
+head back to vs code and we see an error in the terminal.
+the chunk argument must be of type string or an instance of buffer or uintarray.
+
+
+instead received an instance of object.
+so we can't send JavaScript objects as is in a response.
+
+
+what we have to do is convert it into what is called the Json format.
+Json which stands for JavaScript object notation is a data interchange format that we can use with http.
+
+
+the nice thing about using Json format is that the V8 engine has built-in functionality to support what we want to achieve.
+
+
+all we have to do is invoke the built-in method Json Dot stringify.
+and pass n superhero as an argument.
+
+
+we do however have to specify to the browser the content type is Json.
+so on line 9 content type colon application slash Json.
+
+
+now if we restart the server node index head back to the browser and refresh.
+we see a string representation of our object.
+
+
+if you want to convert this back to an object you can use the built-in Json dot parse method.
+but this is how you can send objects as Json response.
+
+
+and you'll be pleasantly surprised to know you've written your first API withnode.js.
+we have one API endpoint which is localhost 3000 and that endpoint returns some data.
+
+
+that data is an object with first and last names.
+in doing this not just the browser but any server that is capable of making a request can now get this data from our application.
+
+
+now we will learn what exactly is an API and we will learn all there is to designing apis with node.js but that is for another series.
+
+
+for now I want you to understand that content type set to application slash Json and json.stringify are sufficient to send a Json response back to the client.
+
+
+a format that is different to plain text which we had seen in the previous video.
+if this is clear join me in the next video where we will learn how to send HTML as a response.
+
+
+thank you for watching and I'll see you in the next one

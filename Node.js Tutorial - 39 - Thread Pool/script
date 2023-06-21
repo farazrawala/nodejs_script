@@ -1,0 +1,80 @@
+"welcome back.
+ starting this video let's learn about Libby's thread pool and the role it plays in the async non-blocking nature of node.js.
+I'm going to start with something we are familiar with reading from a file using the fs module.
+I'm going to copy paste code that reads contents from a file named file.txt.
+we have the fs module import.
+a log statement first.
+FS dot read file which logs file contents.
+and then a log message last.
+when I run node index.
+we see first and then last and finally file contents.
+from this it is clear that the read file method is asynchronous and non-blocking.
+it is allowing the execution of code further down the line while the file contents are being read.
+but how is node able to do this.
+the answer is Libby's thread pool.
+here is how you can imagine the conversation between java script's main thread and libuv when the main thread encounters an asynchronous method.
+Hali buy I need to read file contents but that is a time consuming task.
+I don't want to block further code from being executed during this time.
+can I offload this task to you.
+in response Library says sure main thread unlike you who is single threaded I have a pool of threads that I can use to run some of these time-consuming tasks.
+when the task is done the file contents are retrieved and the associated callback functions can be run.
+really simple.
+so Libby's thread pool as the name indicates is literally a pool of threads that node.js uses to offload time-consuming tasks and ensure the main thread is not blocked for a long time.
+if this makes sense let's now head back to vs code and understand about the thread pool in a bit more detail.
+now what we are going to do is basically execute a method and measure the time it takes to run that method.
+we will do this across different scenarios which will help shed more light on what exactly happens behind the scenes.
+for our experiments we're going to use a brand new module which is the cryptomodule let's import it at the top.
+the crypto module provides crypto graphic functionality and similar to the fs module it does use libuey's thread pool for some of its methods.
+we are going to use one specific method from the crypto module namely pbk df2.
+so crypto Dot pbk df2.
+this stands for password based key derivation function 2 and is one of the popular methods to Hash passwords before storing them.
+and you don't have to worry about what the method does or the arguments that we need to pass in.
+you just have to remember this is a CPU intensive method that takes a long time and is offloaded to the bui's thread pool.
+all right for our first experiment we're going to measure the time taken to run the synchronous version of pbk df2.
+there are a lot of experiments to run so let me copy paste the code to save us some time.
+so we have pbkdf to sync method which is called with five different arguments.
+like I mentioned already you don't have to worry about these.
+we are also measuring the time taken using the date object.
+of course there are better ways to measure performance but this will suffice for our little experiment.
+when I save the file and run node index.
+you can see the password is hashed in261 milliseconds.
+this number can change for you depending on your Hardware.
+now if I duplicate this same function.
+save the file and run the code.
+we see almost twice the amount of time.
+duplicate once more run node index.
+and we see the time taken is nearly three times.
+from this we can say that each call to pbk df2sync as indicated by the very name is synchronous and blocking.
+as a graph we can visualize this as sequential execution.
+if T is the time taken to execute one function call.
+3T is the total time taken to execute three function calls.
+in fact you should know that every method in node.js that has the sync suffix always runs on the main thread and is blocking.
+this will be our inference from experiment 1.
+let's now proceed to experiment 2.
+this time we are going to invoke the asynchronous version of pbk df2.
+once again I'm going to copy paste the code to save us some time.
+the code may seem a little confusing but this is the simplest code I can set up to run our second experiment.
+what we have here is a call to pbk df2async version.
+it contains the same five arguments but also contains a callback function that is executed when the hashing is complete.
+it is within this callback function that we log the time taken to run the method.
+the method call is wrapped in a for Loop which at the moment runs just once.
+it is controlled using the max calls constant here.
+if we save the file and run node index.
+we see 261 milliseconds about the same as the synchronous version.
+now though let me change maximum calls to 2.
+so we will run pbkdf2 twice.
+when I rerun node index.
+you can see both calls take approximately 260 milliseconds.
+a little higher than a single call but it is definitely not twice as long.
+let's change maximum calls to 3.
+we run and you can see the time taken is still around 270 milliseconds.
+the third function call is not taking three times as much as the first one.
+as a graph we can visualize this as parallel execution this means each call to pvk df2 runs in a separate thread. 
+and where are these separate threads in libuy's thread pool.
+a few methods like FS dot read file andcrypto.pbkdf2 run on a separate thread in liby's thread pool.
+they do run synchronously in their own thread but as far as the main thread is concerned it appears as if the method is running asynchronously.
+this will be our inference from experiment 2.
+hopefully you now understand how async methods are executed Under The Hood.
+now we are not quite done with our experiments there's still a lot more to uncover about the thread pool.
+if you are intrigued join me in the next video where we will understand what happens when we further increase the max calls constant.
+thank you for watching please do consider subscribing to the channel and I'll see you in the next one"

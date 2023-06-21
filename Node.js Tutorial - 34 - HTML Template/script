@@ -1,0 +1,66 @@
+
+in the previous video we learned how to respond with HTML.
+we created an HTML file.
+
+
+used the fs module.
+to read the file contents and pipe it as a response.
+
+
+now this is great for static HTML Pages where the content does not change.
+
+
+however you will come across a situation where you need to add some Dynamic values into the HTML.
+
+
+for example let's say we need to display the logged in user's name.
+how do we inject the username into our HTML.
+
+
+well for our understanding we are going to use the most basic solution which is string replacement.
+
+
+
+in this video Let's understand how to use a given HTML template and inject some Dynamic values through string replacement.
+
+
+within the request listener I'm going to remove FS dot create read stream and go back to read file sync as we need to handle this a little different.
+
+first let me declare a constant.
+name and set it equal to the string vishwas.
+
+
+this is the value that we need to display in our HTML.
+so in the HTML file I'm going to add hello curly braces name welcome to node.
+
+
+what we now have to do is replace name in double curly braces with the name constant in our JavaScript file.
+
+
+and as I mentioned already we are going to rely on simple string replacement.
+
+
+after reading the file contents and storing it in the HTML constant I'm going to change const HTML to let HTML which stores the file contents.
+
+
+in the next line I'm going to update HTML to be HTML dot replace.
+and we're going to replace name inside double curly braces.
+
+
+with the name constant vishwas.
+we send the updated HTML as response.
+
+
+if you now save the file restart node index.
+refresh the browser.
+
+we should see the expected output hello vishwas welcome to node.
+so we are able to create one HTML template but have Dynamic values from JavaScript.
+
+
+really simple as you can see.
+so that is about working with HTML templates.
+
+
+in the next video let's learn about routing with the HTTP server.
+thank you for watching and I'll see you in the next one"

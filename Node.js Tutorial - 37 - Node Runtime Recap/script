@@ -1,0 +1,34 @@
+"welcome back for our fifth section in the series let's take a closer look at thein ternals of node.js.
+and I want to start this section by recollecting two topics we've already learned in the series.
+first let's recollect what we know about the node.js runtime.
+we know that the node runtime is an environment which provides all the necessary components in order to use and run a JavaScript program outside a browser.
+at its core it contains three major components.
+external dependencies like V8 and libu v which are libraries that node.js requires for its functioning.
+C plus plus features like file system access and networking and finally the JavaScript library which provides functions and utilities to tap into the C plus features from your JavaScript code which uses the V8 engine behind the scenes.
+nothing too complicated I hope.
+for our second topic let's recollect what we've learned about asynchronous JavaScript.
+we have learned that JavaScript in its most basic form is asynchronous blocking single threaded language.
+we split this into three parts which I'm going to repeat for completeness.
+the first point is that JavaScript is synchronous.
+if we have two functions which log messages to the console code execute stop down with only one line executing at any given time.
+in our example on the right we see a is logged before B.
+the second point is that JavaScript is blocking which is because of its synchronous nature.
+no matter how long a previous process takes the subsequent process won't kickoff until the former is completed.
+so if function a has to execute an intensive chunk of code JavaScript has to finish that before moving on to function B.
+even if that code takes 10 seconds or one minute.
+you might have seen this in the browser.
+when a web app runs in a browser and it executes an intensive chunk of code without returning control to the browser.
+the browser can appear to be frozen.
+this is called blocking.
+the browser is blocked from continuing to handle user input and perform other tasks until the web app returns control to the processor.
+the last point is that JavaScript is single threaded.
+a thread is simply a process that your JavaScript program can use to run a task.
+and each thread can only do one task at a time.
+unlike a few other languages which support multi-threading and can thus run multiple tasks in parallel JavaScript has just the one thread called the main thread for executing any code.
+so in its most basic form JavaScript is asynchronous blocking single threaded language.
+but hang on if that is the case how do we explain the asynchronous behavior of methods like FS dot read file or HTTP dot create server.
+well as it turns out just JavaScript is not sufficient to explain that async behavior.
+we need new pieces outside of Java Script to help us write asynchronous code.
+and in case of node.js that piece is the external dependency libu V.
+in this section let's understand what libu e is and the role it plays in the asynchronous event-driven architecture of node.js.
+I'll see you in the next video.
