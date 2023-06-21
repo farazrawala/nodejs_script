@@ -1,2 +1,68 @@
-"welcome backover the past two videos we've run fivedifferent experiments to understand therole of libuey's thread pool whenexecuting async methods like read fileand pbkdf2in this video I want to stay on the sametopic of Liberty and async methods buthighlight a different pointand I'll do that with our nextexperimentfor experiment 6 we're going to use adifferent async methodthis time one that involves the networki ofirst comment out the crypto moduleimportand the call to pvkdf2comment out the thread pool size as wellinstead import the https modulehttps is a secure version of the HTTPmodule we've already seenthe method we are going to invoke is therequest method that makes a request toan endpointlet me copy paste the code to save ussome timerequest accepts a URL and we are makinga request to google.comthe second argument is a callbackfunction which gets access to theresponsewe can add listeners to the data and endeventswithin the end event listenerwe are going to log the time taken forthe requestvery similar to what we were doing withpbk df2finally we end the requestand this call to request is placedinside the for Looplet's now run this code with differentvalues of Max callslet's start with onewhen we run node indexwe see the request takes approximately200 millisecondslet's now change Max calls to dorun node indexand the average is now in the range of200 to 300 millisecondslet's now change Max calls to 4.rerun node indexand the average again lies in the rangeof 200 to 300 millisecondslet's bump it up to sixand six if you can recollect is largerthan the default thread pool sizerun the codeand we see the average is still between200 and 300 millisecondsfinally let's change Max calls to 12.we runand surprisingly the average is stillbetween 200 and 300 millisecondsbased on this experiment we can inferthe following two pointsfirstalthough bothcrypto.pbkdf2 and https dot request areasynchronoushttps dot request method does not seemto use the thread poolwe can infer this by noticing that theaverage time Remains the Same for onerequest or six requests or even 12requestsif threadpool was involved we shouldhave seen a larger average time for morethan four requests which we did notsecondhttps dot request does not seem to beaffected by the number of CPU coreseithereven when running 12 requests at a timethe average time was the same as runningone requesthopefully this makes senseand let me tell you this inference is infact truehttps dot request is a network inputoutput operation and not a CPU boundoperationit does not use the thread poolinstead delegates the work to theoperating system kernel and wheneverpossible it will pull the kernel and seeif the request has completedthis is the reason we see nearly thesame request time when we have 1 4 oreven 12 different requestsall right if this is clear we canconclude this video with the followingpointsin node.js async methods are handled bylibuebut they are handled in one of twodifferent wayseither the native async mechanism or thethread poolwhenever possible libuv will use nativeasync mechanisms in the operating systemso as to avoid blocking the main threadsince this is part of the kernel thereis a different mechanism for eachoperating systemwe have e-pol for Linux KQ for Mac OSand IO completion port on Windowsrelying on Native async mechanisms makesnode scalable as the only limitation isthe operating system kernelexample of this is a network i ooperationon the other handif there is no native async support andthe task is file IO or CPU intensiveLibrary uses the thread pool to avoidblocking the main threadalthough the thread pull preservesasynchronicity with respect to node'smain thread it can still become abottleneck if all threads are busyI hope you now have a clearunderstanding of how async methods arehandled under the hood in node.jsthank you for watching please doconsider subscribing to the channel andI'll see you in the next one"
-/w
+"welcome back.
+over the past two videos we've run five different experiments to understand the role of libuey's thread pool when executing async methods like read file and pbkdf2.
+in this video I want to stay on the same topic of Liberty and async methods but highlight a different point.
+and I'll do that with our next experiment.
+for experiment 6 we're going to use a different async method.
+this time one that involves the network io.
+first comment out the crypto module import.
+and the call to pvkdf2.
+comment out the thread pool size as well.
+instead import the https module.
+https is a secure version of the HTTP module we've already seen.
+the method we are going to invoke is the request method that makes a request to an endpoint.
+let me copy paste the code to save us some time.
+request accepts a URL and we are making a request to google.com.
+the second argument is a call back function which gets access to the response.
+we can add listeners to the data and end events.
+within the end event listener.
+we are going to log the time taken for the request.
+very similar to what we were doing with pbk df2.
+finally we end the request.
+and this call to request is placed inside the for Loop.
+let's now run this code with different values of Max calls.
+let's start with one.
+when we run node index.
+we see the request takes approximately 200 milliseconds.
+let's now change Max calls to do.
+run node index.
+and the average is now in the range of 200 to 300 milliseconds.
+let's now change Max calls to 4.
+rerun node index.
+and the average again lies in the range of 200 to 300 milliseconds.
+let's bump it up to six.
+And six if you can recollect is larger than the default thread pool size.
+run the code.
+and we see the average is still between200 and 300 milliseconds.
+finally let's change Max calls to 12.
+we run.
+and surprisingly the average is still between 200 and 300 milliseconds.
+based on this experiment we can infer the following two points.
+First.
+although both crypto.pbkdf2 and https dot request are asynchronous https dot request method does not seem to use the thread pool.
+we can infer this by noticing that the average time Remains the Same for one request or six requests or even 12 requests.
+if thread pool was involved we should have seen a larger average time for more than four requests which we did not.
+second https dot request does not seem to be affected by the number of CPU cores either.
+even when running 12 requests at a time.
+the average time was the same as running one request.
+hope fully this makes sense.
+and let me tell you this inference is infact true.
+https dot request is a network input output operation and not a CPU bound operation.
+it does not use the thread pool.
+instead delegates the work to the operating system kernel and whenever possible it will pull the kernel and seeif the request has completed.
+this is the reason we see nearly thesame request time when we have 1 4 oreven 12 different requests.
+all right if this is clear we can conclude this video with the following points.
+in node.js async methods are handled by libue.
+but they are handled in one of two different ways.
+either the native async mechanism or the thread pool.
+whenever possible libuv will use native async mechanisms in the operating system so as to avoid blocking the main thread.
+since this is part of the kernel there is a different mechanism for each operating system we have e-pol for Linux KQ for Mac OSand IO completion port on Windows.
+relying on Native async mechanisms makes node scalable as the only limitation is the operating system kernel.
+example of this is a network i o operation on the other hand.
+if there is no native async support and the task is file IO or CPU intensive.
+Library uses the thread pool to avoid blocking the main thread.
+although the thread pull preserves asynchronicity with respect to node'smain thread it can still become a bottle neck if all threads are busy.
+I hope you now have a clear understanding of how async methods are handled under the hood in node.js.
+thank you for watching please do consider subscribing to the channel and I'll see you in the next one"
+
+
+

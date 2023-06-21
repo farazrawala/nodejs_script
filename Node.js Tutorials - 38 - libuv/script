@@ -9,3 +9,4 @@ how does it do that using two very important features namely thread pool and eve
 of course there's a lot more to libuev than just these two features but as beginners thread pool and event Loop are more than sufficient to help us form amental model of how node handles asynchronous code.
 and you guessed it we will be learning about these two features in detail.
 in the next video let's start with the thread pool"
+
