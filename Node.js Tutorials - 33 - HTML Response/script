@@ -1,100 +1,134 @@
-"in the previous video we learned how to send Json data as response.
+ In the earlier video, we saw how to reply with Json data.
+Let's watch this video and pick up some tips on replying using HTML.
+ (((((((((("in the previous video we learned how to send Json data as response.
 in this video let's learn how to send HTML as response.
 
-
-I'm going to revert back to plain text response instead of Json.
+Instead of using Json, I will go back to a simple text answer.
+meaning, content type Hello, world! type / aircraft. rest.
+(((((((((("I'm going to revert back to plain text response instead of Json.
 so content type Text slash plane and rest dot end hello world.
 
-
- this should seem familiar as it is the exact same code from two videos ago.
+ The server has to be rebooted, and the browser must be refreshed. 
+ if you now restart the server and refresh the browser.
+ (((((((((("This should seem familiar as it is the exact same code from two videos ago.
  if you now restart the server and refresh the browser.
 
-
- we should see the text hello world.
+It's expected that "hello world" will appear on the screen.
+ Attempting HTML addition at this time.
+ (((((((((("we should see the text hello world.
  now let's try to add some HTML.
 
-
- I'm going to wrap the hello world text with an H1 tag.
+I'm going to put an H1 tag around the "hello world" text.
+ I need a server restart.
+ (((((((((("I'm going to wrap the hello world text with an H1 tag.
  restart the server.
 
-
- and refresh the browser now the output is not as expected.
+If the results are not what you anticipated, try refreshing the browser.
+ Without the opening and closing H1 tags, the phrase "hello world" should presumably be larger.
+ (((((((((("and refresh the browser now the output is not as expected.
  we would expect the text hello world to be larger in size without the H1 tags at the start and the end.
 
+We have instructed the browser to display this response only in text format rather than HTML, which is why we see simply text.
+ (((((((((("the reason we see only text and not HTML is because we are asking the browser to treat this response as plain text.
 
- the reason we see only text and not HTML is because we are asking the browser to treat this response as plain text.
-
-
- if the browser has to parse this as HTML we need to specify content type as Text slash HTML.
+We should set the content type to "Text/HTML" if we want the browser to treat this as HTML.
+ After restarting the server, the text "hello world" should appear in bold when the browser is refreshed.
+((((((((((" if the browser has to parse this as HTML we need to specify content type as Text slash HTML.
  restart the server and now if we refresh the browser we should see larger hello world text in bold.
 
-
- this is the default styling of an H1 tag and this is how you send HTML content as response.
+This is how an H1 tag is styled by default and how HTML content is sent in response.
+ Despite the fact that this is perfectly functional, HTML is rarely built as a string in the same JavaScript code.
+ (((((((((("this is the default styling of an H1 tag and this is how you send HTML content as response.
  although this works fine typically we don't build HTML as a string in the same JavaScript file.
 
-
- instead we Define the HTML in a separate file and send that file contents as a response.
+Rather, we transmit the contents of a file where the HTML is defined as a response.
+ Let me demonstrate that to you.  
+ (((((((((("instead we Define the HTML in a separate file and send that file contents as a response.
  let me show you how to do that.
 
-
- I'm going to create a new file called index.html.
+Let me start by making a fresh index.html file.
+ using the file extension's exclamation point and tab character to produce HTML. 
+ (((((((((("I'm going to create a new file called index.html.
  with in the file type exclamation and tab to generate HTML content.
 
 
- specify a title.
- and for the body within an H1 tag specify the text from index.html.
+ ((((((((((Give it a name.
+ and use the content from index.html for the body of an H1 tag.
 
-
- next we need to read the file contents of index.html in our request listener.
+Our request listener will now read the contents of the index.html file.
+ We also know that the fs module can be used to read files.
+ (((((((((("next we need to read the file contents of index.html in our request listener.
  and for reading a file we know we can use the fs module.
 
-
- so at the top const FS is equal to require node colon FS and within the request listener.
+This means that in the request listener, as well as at the top level, const FS equals need node colon FS.
+ FS.dot_read_file_sync is equal to const HTML.
+ (((((((((("so at the top const FS is equal to require node colon FS and within the request listener.
  const HTML is equal to FS dot read file sync.
 
- the file path is dot slash index.html.
+The correct filename format is "./index.html."
+ in addition to utf-8 encoding.
+ (((((((((("the file path is dot slash index.html.
  and encoding is utf-8.
 
+Because I wanted to wait until the file's contents were read before replying, I used read file sync instead of just read file.
+(((((((((("the reason I've used read file sync and not read file is because we want to wait for the file content to be read before responding.
 
-the reason I've used read file sync and not read file is because we want to wait for the file content to be read before responding.
-
-
- now that we have the file content as HTML we send it as response.
+Now that we have the file's contents in HTML format, we can send that back as a reply.
+ and for the time being restart the server so that when we Ctrl C node index return to the browser and hit refresh, we get the anticipated HTML.
+ (((((((((("now that we have the file content as HTML we send it as response.
  and for now restart the server so Ctrl C node index head back to the browser and refresh we see the expected 
  HTML.
  
- from index.html.
+ starting at the index page.
+ if I have a look at it.
+ It's an H1 tag, after all.
+ (((((((((("from index.html.
  if I inspect it.
  it is in an H1 tag.
  
-
- although this works you have to keep in mind that read file sync reads the entire file contents at once.
+While this does work, it's important to note that read file sync consumes the full file at once.
+ You may see unneeded memory consumption since we are keeping the whole contents of a huge HTML file in a temporary buffer.
+((((((((((" although this works you have to keep in mind that read file sync reads the entire file contents at once.
  if you have a large HTML file we are storing all that content in a temporary buffer which may lead to 
 unnecessary use of memory.
 
-
- instead we can rely on streams which we have already learned about.
+Instead, we may depend on our prior knowledge of streams.
+ So, the address is "FS/create/stream/index.html"
+ (((((((((("instead we can rely on streams which we have already learned about.
  so FS dot create stream the path is dot slash index.html.
 
-
- and we're going to pipe to the response.
+Then we will be using a conduit to get the reply.
+ After reloading the browser and restarting the server's node index, the results are the same as before.
+ (((((((((("and we're going to pipe to the response.
  restart the server node index refresh the browser and we see the same output as before.
 
 
- but this time our code is more performant.
+ nonetheless, we have more efficient code this time around.
+ For the sake of brevity, I've switched to using a relative path to index.html. 
+(((((((((("but this time our code is more performant.
  now for Simplicity I've used relative path to index.html.
 
 
- but you should stick to using double underscore directory name whenever you can.
+ However, double underscores should be used in directory names wherever possible.
+ Keep the file safe. 
+ (((((((((("but you should stick to using double underscore directory name whenever you can.
  save the file.
 
- restart the server refresh and we see the same output.
+The results did not change after restarting the server.
+ This is how to reply using HTML, if you're interested.
+ (((((((((("restart the server refresh and we see the same output.
  so this is how you can respond with HTML.
 
- right now we have a very simple HTML file but you can add any HTML tag you want to along with CSS for styling.
- content type Text slash HTML is the key.
+There aren't many tags in the current HTML file, but you're free to add whatever you like, as well as some CSS for formatting.
+ (((((((((("right now we have a very simple HTML file but you can add any HTML tag you want to along with CSS for styling.
+ 
+style of content The secret is text/HTML formatting.
+ (((((((("content type Text slash HTML is the key.
 
- on a side note if you don't want to restart the server every time you make a change please make use of the watch mode that we have already learned about.
+Additionally, please use the server's watch mode, which we have previously learnt about, to avoid having to restart it every time you make a change. 
+ (((((((((("on a side note if you don't want to restart the server every time you make a change please make use of the watch mode that we have already learned about.
 
- alright thank you for watching please do consider subscribing to the channel.
+Okay, I appreciate you tuning in, and I hope you'll subscribe to my channel.
+ and till the next one, bye!
+ (((((((((("alright thank you for watching please do consider subscribing to the channel.
  and I'll see you in the next one"

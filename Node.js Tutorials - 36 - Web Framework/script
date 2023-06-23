@@ -1,34 +1,94 @@
-welcome back.
+ hello again.
+ We've come a long way in this chapter, and there's still a lot more to learn about the HTTP module.
+ (((((((((("welcome back.
  so far in this section we have learned quite a few things about the HTTP module.
-how to create a server.
+
+creating a server from scratch.
+to get hold of the data you've asked for and how.
+(((((((((("how to create a server.
 how to access the request information.
-how to send a response how to modify the response header how to set a response status how to respond with plain text HTML work with HTML templates and even respond with Json.
-more recently we also learned how to route requests to different responses.
-now although this works perfectly fine in an Enterprise scale application.
+
+"Response Etiquette" Changing the header in a response status update instructions techniques for replying in HTML, including plain text, HTML templates, and Json.
+(((((((((("how to send a response how to modify the response header how to set a response status how to respond with plain text HTML work with HTML templates and even respond with Json.
+
+Recently, we've also picked up the ability to redirect inquiries to various replies. 
+(((((((((("more recently we also learned how to route requests to different responses.
+
+Despite this, it functions admirably in an Enterprise-level setting.
+This is not the correct method for building a server and managing requests.
+(((((((((("now although this works perfectly fine in an Enterprise scale application.
 this is not how you would create a server and handle requests.
-instead you will rely on a web framework k for node.js.
+
+Instead, you'll utilize Node.js within the confines of web framework k.
+Simply said, a framework isolates the load level code so that you may concentrate on the needs rather than the code itself.
+(((((((((("instead you will rely on a web framework k for node.js.
 a framework simply abstracts the load level code allowing you to focus on the requirements than the code itself.
-for example angular react view are all Frame works slash libraries that help you build user interfaces without having to rely on the lower level Dom API in JavaScript.
-Similarly there are Frameworks to build web or mobile applications without having to directly rely on the HTTP module innode.js.
-examples of such Frameworks are Express Nest happy COA and sales.
-the build on top of the HTTP module making it easier for you to implement all the features we have seen in this section.
-as I mentioned in the very first video in the series Express is a pretty popular node framework and we will learn all about its features in an upcoming series.
+
+Frame works and frameworks like Angular and React View make it possible to construct UIs without resorting to JavaScript's low-level Dom API.
+(((((((((("for example angular react view are all Frame works slash libraries that help you build user 
+interfaces without having to rely on the lower level Dom API in JavaScript.
+
+Similarly, you may use Frameworks to construct online or mobile applications without explicitly utilizing the innode.js HTTP module. 
+(((((((((("Similarly there are Frameworks to build web or mobile applications without having to directly rely on the HTTP module innode.js.
+
+Express Nest, the COA, and sales are two instances of successful frameworks.
+(((((((((("examples of such Frameworks are Express Nest happy COA and sales.
+
+built on top of the HTTP module, simplifying the incorporation of all the functionality discussed so far.
+((((((((("the build on top of the HTTP module making it easier for you to implement all the features we have seen in this section.
+
+I said in the first video that we'd be learning everything about the capabilities of the popular node framework Express in a later series.
+For the time being, we'll continue to concentrate on node.js alone. 
+(((((((((("as I mentioned in the very first video in the series Express is a pretty popular node framework and we will learn all about its features in an upcoming series.
 for now our focus is on just node.js and that will continue for the rest of the series.
-before we proceed though let me quickly summarize what we have learned in this section on built-in modules.
+
+But before we go on, let me briefly recap everything we've covered so far with respect to built-in modules.
+To our knowledge, built-in modules are those that are included in the standard distribution of Node.
+(((((((((("before we proceed though let me quickly summarize what we have learned in this section on built-in modules.
 we understand that built-in modules are modules that node ships out of the box.
-we learned about the path module which provides utilities for working with file and directory paths.
-we then understood the Callback pattern which was required to learn about the events module.
-we then learned how to extend from the event emitter class.
-next we had a theoretical lecture on character sets and encoding.
+
+We discovered the path module, which is a set of helpful tools for manipulating file and directory paths.
+(((((((((("we learned about the path module which provides utilities for working with file and directory paths.
+
+After that, we were able to understand the events module and its prerequisite, the Callback pattern. 
+((((((((("we then understood the Callback pattern which was required to learn about the events module.
+
+Next, we discovered how to build upon the event emitter base class.
+((((((((("we then learned how to extend from the event emitter class.
+
+"then we moved on to a more theoretical discussion of encoding and character sets.
+that was required to comprehend what streams and buffers are.
+The discussion then veered off into a study of the ins and outs of asynchronous JavaScript.
+(((((((((("next we had a theoretical lecture on character sets and encoding.
 that was needed to understand the concept of streams and buffers.
 we then took a detour to understand the what and why of asynchronous JavaScript.
-then we returned to node.js Concepts and learned about the fs module that allows us to work with the file system.
-we then learned about streams in node.js through the fs module.
-streams allow efficient handling of data in chunks.
+
+After that, we went back to the node.js Concepts section and studied the fs module, which provides access to the file system.
+(((((((((("then we returned to node.js Concepts and learned about the fs module that allows us to work with the file system.
+
+Next, we got into node's streams.JavaScript using the fs plugin.
+((((((((("we then learned about streams in node.js through the fs module.
+
+Streams enable the effective processing of data in bite-sized pieces.
+Then, we were introduced to pipes, which made reading and writing much less complicated.
+ 
+(((((((((("streams allow efficient handling of data in chunks.
 we then learned about pipes which allow us to read and write in a really simple way.
-finally we had a look at the HTTP module which allows us to create a server handle requests respond with plain text HTML or Json and also handle routing.
-there are a few more built-in modules but these are the important ones that you must know when learning node.js.
-now for our next section we're going to take a closer look at node.js under the hood and trust me this is a section that you don't want to miss.
-thank you for watching.
+
+The HTTP module was the last one we examined; it allows us to set up a server, process requests, reply with plain text HTML or Json, and manage routing.
+(((((((((("finally we had a look at the HTTP module which allows us to create a server handle requests respond with plain text HTML or Json and also handle routing.
+
+
+These are the most crucial modules to master when starting out with Node.js; there are many more.
+((((((((("there are a few more built-in modules but these are the important ones that you must know when learning node.js.
+
+In this following part, we'll examine node in further detail.JavaScript behind the scenes, and believe me when I say this is an important part of the tutorial.
+(((((((((("now for our next section we're going to take a closer look at node.js under the hood and 
+trust me this is a section that you don't want to miss.
+
+We appreciate you taking the time to watch.
+Please hit the like button and sign up for the channel if you're liking the videos!
+Saying "I'll catch you in the next one"
+(((((((((("thank you for watching.
 if you're enjoying the videos please do leave alike And subscribe to the channel.
 I'll see you in the next one"

@@ -1,13 +1,28 @@
-welcome back in this video Let's briefly understand what libuv is all about.
-and we are going to do this by understanding the what why and how of Libya B.
+hello again in this online video First, let's take a quick look at what libuv is. 
+((((((((((("welcome back in this video Let's briefly understand what libuv is all about.
+
+And we will do this by first answering the question, "What is Libuv?" before moving on to the "why" and "how" of Libya B.
+((((((((((("and we are going to do this by understanding the what why and how of Libya B.
 first up what is Libuv.
-libuv is a cross-platform open source Library written in C language.
+
+The libuv C Library is available to the public and may be used on several platforms.
+Just why is libuv required?
+((((((((((("libuv is a cross-platform open source Library written in C language.
 why do we need libuv.
-well Libby V is what handles asynchronous non-blocking operations innode.js.
+
+In node.js, asynchronous, nonblocking actions are managed by Libby V.
+It hides the complexities of working with an OS behind an abstraction layer.
+((((((((((("well Libby V is what handles asynchronous non-blocking operations innode.js.
 it abstracts away all the complexity of dealing with the operating system.
-how does it do that using two very important features namely thread pool and event Loop.
+
+The answer lies in its use of the thread pool and the event Loop.
+While there is much more to libuev, the thread pool and event loop provide a solid foundation for understanding how node handles asynchronous programming.
+((((((((((("how does it do that using two very important features namely thread pool and event Loop.
 of course there's a lot more to libuev than just these two features but as beginners thread pool and event Loop are more than sufficient to help us form amental model of how node handles asynchronous code.
-and you guessed it we will be learning about these two features in detail.
+
+and you guessed it, we'll be focusing our studies on these two aspects.
+The thread pool is where we'll get started in the following video.        
+((((((((((("and you guessed it we will be learning about these two features in detail.
 in the next video let's start with the thread pool"
 
 

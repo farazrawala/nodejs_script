@@ -1,80 +1,206 @@
-"welcome back.
+ thank you for returning.
+ Let's get started with this video by learning how Libby's thread pool contributes to node's non-blocking, asynchronous nature.js.
+ ((((((((welcome back.
  starting this video let's learn about Libby's thread pool and the role it plays in the async non-blocking nature of node.js.
-I'm going to start with something we are familiar with reading from a file using the fs module.
+
+First, I'll demonstrate something already well-known to us: reading data from a file with the fs module.
+I'm going to cut and paste some code that opens the file named file.txt and displays its contents.
+(((((((("I'm going to start with something we are familiar with reading from a file using the fs module.
 I'm going to copy paste code that reads contents from a file named file.txt.
-we have the fs module import.
+
+The fs import module is available.
+a first log statement.
+(((((((("we have the fs module import.
 a log statement first.
-FS dot read file which logs file contents.
+
+A file system log reader (FS. LOG).
+and finally, a log message.
+(((((((("FS dot read file which logs file contents.
 and then a log message last.
-when I run node index.
+
+as soon as I run node index.
+The contents of the file are displayed in reverse chronological order.
+This demonstrates that the read file method is non-blocking and asynchronous. 
+(((((((("when I run node index.
 we see first and then last and finally file contents.
 from this it is clear that the read file method is asynchronous and non-blocking.
-it is allowing the execution of code further down the line while the file contents are being read.
+
+While the file is being read, it is possible for subsequent code to be executed.
+the question is how node manages to pull this off.
+(((((((("it is allowing the execution of code further down the line while the file contents are being read.
 but how is node able to do this.
-the answer is Libby's thread pool.
-here is how you can imagine the conversation between java script's main thread and libuv when the main thread encounters an asynchronous method.
-Hali buy I need to read file contents but that is a time consuming task.
+
+The thread pool in Libby is the answer
+(((((((("the answer is Libby's thread pool.
+
+To visualize what happens when the main thread in JavaScript calls an asynchronous method, consider the following exchange between the main thread and libuv.
+(((((((("here is how you can imagine the conversation between java script's main thread and libuv when 
+the main thread encounters an asynchronous method.
+
+To purchase Hali Reading file contents is necessary, but it takes a lot of time.
+I don't want to halt the execution of any other code at this moment.
+(((((((("Hali buy I need to read file contents but that is a time consuming task.
 I don't want to block further code from being executed during this time.
-can I offload this task to you.
+
+may I dump this responsibility on you?
+The library responds, "Sure, main thread," meaning that it has more than one thread available to handle the load.
+(((((((("can I offload this task to you.
 in response Library says sure main thread unlike you who is single threaded I have a pool of threads that I can use to run some of these time-consuming tasks.
-when the task is done the file contents are retrieved and the associated callback functions can be run.
+
+The contents of the file are retrieved once the task is complete, and the corresponding callback methods are executed.
+easy as pie. 
+(((((((("when the task is done the file contents are retrieved and the associated callback functions can be run.
 really simple.
-so Libby's thread pool as the name indicates is literally a pool of threads that node.js uses to offload time-consuming tasks and ensure the main thread is not blocked for a long time.
+
+Consequently, Libby's thread pool is, as its name implies, a collection of threads shared by a single node.js employs to delegate work that might otherwise stop the main thread and free up processing time.
+If you follow along, let's return to versus code and learn more about the thread pool.
+(((((((("so Libby's thread pool as the name indicates is literally a pool of threads that node.js uses to offload time-consuming tasks and ensure the main thread is not blocked for a long time.
 if this makes sense let's now head back to vs code and understand about the thread pool in a bit more detail.
-now what we are going to do is basically execute a method and measure the time it takes to run that method.
-we will do this across different scenarios which will help shed more light on what exactly happens behind the scenes.
-for our experiments we're going to use a brand new module which is the cryptomodule let's import it at the top.
+
+In this next step, we will essentially run a procedure and time how long it takes to complete.
+(((((((("now what we are going to do is basically execute a method and measure the time it takes to run that method.
+
+This will be done in a variety of contexts, illuminating the inner workings of the system. 
+(((((((("we will do this across different scenarios which will help shed more light on what exactly happens behind the scenes.
+
+Let's begin by importing the cryptomodule, a new module we'll be using in our experiments.
+The crypto module implements cryptographic operations; like the fs module, it makes use of libuey's thread pool.
+(((((((("for our experiments we're going to use a brand new module which is the cryptomodule let's 
+import it at the top.
 the crypto module provides crypto graphic functionality and similar to the fs module it does use libuey's thread pool for some of its methods.
-we are going to use one specific method from the crypto module namely pbk df2.
+
+We'll be employing a subset of the crypto module's tools, pbk df2.
+Hence, the crypto pbk df2.
+(((((((("we are going to use one specific method from the crypto module namely pbk df2.
 so crypto Dot pbk df2.
-this stands for password based key derivation function 2 and is one of the popular methods to Hash passwords before storing them.
-and you don't have to worry about what the method does or the arguments that we need to pass in.
+
+This is an often-used technique for securing password storage; its full name is password-based-key-derivation-function-2 (PBKDF2).
+(((((((("this stands for password based key derivation function 2 and is one of the popular methods to Hash passwords before storing them.
+
+and you won't need to understand the method's purpose or the justifications we must supply.
+Keep in mind that this is a very time-consuming and CPU-intensive process that is offloaded to the bui's thread pool. 
+(((((((("and you don't have to worry about what the method does or the arguments that we need to pass in.
 you just have to remember this is a CPU intensive method that takes a long time and is offloaded to the bui's thread pool.
-all right for our first experiment we're going to measure the time taken to run the synchronous version of pbk df2.
-there are a lot of experiments to run so let me copy paste the code to save us some time.
+
+First, we'll conduct an experiment to determine how long it takes to execute pbk df2 in a synchronous fashion.
+(((((((("all right for our first experiment we're going to measure the time taken to run the synchronous version of pbk df2.
+
+Please allow me to copy and paste the code for you as there are many experiments to perform.
+So, we have a pbkdf to sync method that takes five parameters.
+(((((((("there are a lot of experiments to run so let me copy paste the code to save us some time.
 so we have pbkdf to sync method which is called with five different arguments.
-like I mentioned already you don't have to worry about these.
+
+You shouldn't fret over these, as I've already stated.
+We're utilizing the date object to keep track of time, too.
+(((((((("like I mentioned already you don't have to worry about these.
 we are also measuring the time taken using the date object.
-of course there are better ways to measure performance but this will suffice for our little experiment.
+
+There are more accurate techniques to gauge performance, but for the purposes of our experiment, this will do.
+once I have completed node index and saved the file.
+(((((((("of course there are better ways to measure performance but this will suffice for our little experiment.
 when I save the file and run node index.
-you can see the password is hashed in261 milliseconds.
+
+There are more accurate techniques to gauge performance, but for the purposes of our experiment, this will do.
+once I have completed node index and saved the file.
+(((((((("you can see the password is hashed in261 milliseconds.
 this number can change for you depending on your Hardware.
 now if I duplicate this same function.
-save the file and run the code.
+
+Put away the data and start the program.
+We get nearly twice as much viewing time. 
+(((((((("save the file and run the code.
 we see almost twice the amount of time.
-duplicate once more run node index.
+
+The Node Index will be duplicated and re-run.
+The time invested is about triple what we expected.
+(((((((("duplicate once more run node index.
 and we see the time taken is nearly three times.
-from this we can say that each call to pbk df2sync as indicated by the very name is synchronous and blocking.
+
+This means that, as the name suggests, pbk df2sync calls are synchronous and blocking.
+We can see the execution in sequence by representing it as a graph.
+(((((((("from this we can say that each call to pbk df2sync as indicated by the very name is synchronous and blocking.
 as a graph we can visualize this as sequential execution.
-if T is the time taken to execute one function call.
+
+if the duration of one function call is T.
+Three function calls took 3T seconds to complete.
+(((((((("if T is the time taken to execute one function call.
 3T is the total time taken to execute three function calls.
-in fact you should know that every method in node.js that has the sync suffix always runs on the main thread and is blocking.
-this will be our inference from experiment 1.
+
+Every node.js method with the sync suffix runs blockingly on the main thread at all times.
+(((((((("in fact you should know that every method in node.js that has the sync suffix always runs on the main thread and is blocking.
+
+This is the conclusion we shall draw from the first experiment.
+Now, let's go on to our second experiment.
+(((((((("this will be our inference from experiment 1.
 let's now proceed to experiment 2.
-this time we are going to invoke the asynchronous version of pbk df2.
+
+This time, we'll use an asynchronous method to run pbk df2.
+I'm just going to copy and paste the code again to save time. 
+(((((((("this time we are going to invoke the asynchronous version of pbk df2.
 once again I'm going to copy paste the code to save us some time.
-the code may seem a little confusing but this is the simplest code I can set up to run our second experiment.
-what we have here is a call to pbk df2async version.
-it contains the same five arguments but also contains a callback function that is executed when the hashing is complete.
-it is within this callback function that we log the time taken to run the method.
+
+The code may look complicated, but it's the simplest I can make for our second experiment.
+(((((((("the code may seem a little confusing but this is the simplest code I can set up to run our second experiment.
+
+This is a request for the asynchronous pbk df2async version. 
+(((((((("what we have here is a call to pbk df2async version.
+
+same 5 inputs as before, plus a callback function to be called after hashing is complete.
+(((((((("it contains the same five arguments but also contains a callback function that is executed when the hashing is complete.
+
+In this callback function, we keep track of how long the method execution took.
+The method call is now being executed only once within a for Loop.
+(((((((("it is within this callback function that we log the time taken to run the method.
 the method call is wrapped in a for Loop which at the moment runs just once.
-it is controlled using the max calls constant here.
+
+Here, the max calls constant serves as the regulator.
+Once the file is saved, we can execute node index.
+(((((((("it is controlled using the max calls constant here.
 if we save the file and run node index.
-we see 261 milliseconds about the same as the synchronous version.
+
+We observe 261 ms, which is very similar to the synchronous version.
+However, I'd like to lower the maximum number of calls to 2.
+(((((((("we see 261 milliseconds about the same as the synchronous version.
 now though let me change maximum calls to 2.
-so we will run pbkdf2 twice.
+
+Thus, we will double-check the integrity of the file using pbkdf2.
+whenever I run node index again. 
+(((((((("so we will run pbkdf2 twice.
 when I rerun node index.
-you can see both calls take approximately 260 milliseconds.
+
+As you can see, a total of 260 ms is spent on both calls.
+a bit longer than a single call, but not by much more than twice as much.
+(((((((("you can see both calls take approximately 260 milliseconds.
 a little higher than a single call but it is definitely not twice as long.
-let's change maximum calls to 3.
+
+Reduce the number of allowed calls to three.
+We timed ourselves running, and it still took roughly 270 ms.
+(((((((("let's change maximum calls to 3.
 we run and you can see the time taken is still around 270 milliseconds.
+
+
 the third function call is not taking three times as much as the first one.
-as a graph we can visualize this as parallel execution this means each call to pvk df2 runs in a separate thread. 
+(((((((("the third function call is not taking three times as much as the first one.
+
+This can be represented graphically as a parallel process using a graph. Because of this, each invocation of pvk df2 is processed on its own thread. 
+I was wondering where in libuy's thread pool these individual threads were located.
+(((((((("as a graph we can visualize this as parallel execution this means each call to pvk df2 runs in a separate thread. 
 and where are these separate threads in libuy's thread pool.
-a few methods like FS dot read file andcrypto.pbkdf2 run on a separate thread in liby's thread pool.
+
+There are a few liby functions that require their own thread, such as FS dot read file and crypto.pbkdf2.
+They are executed synchronously in a separate thread, but appear to be executing asynchronously to the main thread.
+(((((((("a few methods like FS dot read file andcrypto.pbkdf2 run on a separate thread in liby's thread pool.
 they do run synchronously in their own thread but as far as the main thread is concerned it appears as if the method is running asynchronously.
-this will be our inference from experiment 2.
+
+This is what we will conclude after running Experiment 2.
+Ideally, you can now see "Under The Hood" of how async techniques are actually implemented.
+(((((((("this will be our inference from experiment 2.
 hopefully you now understand how async methods are executed Under The Hood.
-now we are not quite done with our experiments there's still a lot more to uncover about the thread pool.
-if you are intrigued join me in the next video where we will understand what happens when we further increase the max calls constant.
+
+Our investigation into the thread pool is far from complete; there is still a great deal to learn.
+(((((((("now we are not quite done with our experiments there's still a lot more to uncover about the thread pool.
+
+If you're interested, come along in the next video as we examine what happens when we make the max calls constant even higher.
+Thank you for viewing, and I hope you enjoy the channel enough to subscribe.
+(((((((("if you are intrigued join me in the next video where we will understand what happens when we further increase the max calls constant.
 thank you for watching please do consider subscribing to the channel and I'll see you in the next one"

@@ -1,34 +1,93 @@
-"welcome back for our fifth section in the series let's take a closer look at thein ternals of node.js.
+ As promised, let's study node's inner workings in this, the series' fifth installment.js.
+Now to kick off this portion, I'd want to review two concepts from earlier episodes. 
+ ((((((((((""welcome back for our fifth section in the series let's take a closer look at thein ternals of node.js.
 and I want to start this section by recollecting two topics we've already learned in the series.
-first let's recollect what we know about the node.js runtime.
-we know that the node runtime is an environment which provides all the necessary components in order to use and run a JavaScript program outside a browser.
-at its core it contains three major components.
+
+Let's review the information we already have about the node.The JS Interpreter.
+(((((((((("first let's recollect what we know about the node.js runtime.
+
+We know that the node runtime is a platform that supplies everything needed to use and run a JavaScript app even when no browser is available.
+(((((((((("we know that the node runtime is an environment which provides all the necessary components in order to use and run a JavaScript program outside a browser.
+
+There are basically three parts to it.
+Libraries that are not part of node.js itself but are necessary for its operation include V8 and libu v.
+(((((((((("at its core it contains three major components.
 external dependencies like V8 and libu v which are libraries that node.js requires for its functioning.
-C plus plus features like file system access and networking and finally the JavaScript library which provides functions and utilities to tap into the C plus features from your JavaScript code which uses the V8 engine behind the scenes.
-nothing too complicated I hope.
+
+The C plus plus functionality, such as file system access and networking, are accessible from your JavaScript code thanks to the JavaScript library, which offers functions and utilities to access the C plus features via the V8 engine.
+(((((((((("C plus plus features like file system access and networking and finally the JavaScript library which provides functions and utilities to tap into the C plus features from your JavaScript code which uses the V8 engine behind the scenes.
+
+Hopefully nothing too involved.
+Let's review our prior understanding of asynchronous JavaScript as we move on to our next subject.
+(((((((((("nothing too complicated I hope.
 for our second topic let's recollect what we've learned about asynchronous JavaScript.
-we have learned that JavaScript in its most basic form is asynchronous blocking single threaded language.
+
+As we've seen, JavaScript is, at its core, a single-threaded, asynchronous programming language.
+We broke it down into three sections, each of which I'm going to go through again.
+(((((((((("we have learned that JavaScript in its most basic form is asynchronous blocking single threaded language.
 we split this into three parts which I'm going to repeat for completeness.
-the first point is that JavaScript is synchronous.
-if we have two functions which log messages to the console code execute stop down with only one line executing at any given time.
-in our example on the right we see a is logged before B.
+
+In the first place, it's important to note that JavaScript is synchronous.
+(((((((((("the first point is that JavaScript is synchronous.
+
+The code will halt with just one line running at a time if there are two routines that report messages to the console.
+((((((((((if we have two functions which log messages to the console code execute stop down with only one line executing at any given time.
+
+On the right, we can see that an is entered before to B.
+Second, due to its synchronous nature, JavaScript causes blocks.
+(((((((((("in our example on the right we see a is logged before B.
 the second point is that JavaScript is blocking which is because of its synchronous nature.
-no matter how long a previous process takes the subsequent process won't kickoff until the former is completed.
-so if function a has to execute an intensive chunk of code JavaScript has to finish that before moving on to function B.
-even if that code takes 10 seconds or one minute.
+
+A new process will not begin until the current one is finished, regardless of how long it takes.
+(((((((((("no matter how long a previous process takes the subsequent process won't kickoff until the former is completed.
+
+JavaScript will wait until the preceding function, A, has completed its execution before going on to the next, B.
+(((((((((("so if function a has to execute an intensive chunk of code JavaScript has to finish that before moving on to function B.
+
+That code needs to be developed, whether it takes 10 seconds or 1 minute.
+This may have shown in your browser.
+(((((((((("even if that code takes 10 seconds or one minute.
 you might have seen this in the browser.
-when a web app runs in a browser and it executes an intensive chunk of code without returning control to the browser.
-the browser can appear to be frozen.
+
+when a browser-based application performs a lengthy piece of code without giving control back to the browser thereafter.
+(((((((((("when a web app runs in a browser and it executes an intensive chunk of code without returning control to the browser.
+
+It's possible for your browser to look frozen.
+This is referred to as a block. 
+(((((((((("the browser can appear to be frozen.
 this is called blocking.
-the browser is blocked from continuing to handle user input and perform other tasks until the web app returns control to the processor.
-the last point is that JavaScript is single threaded.
+
+Until the web app restores control to the CPU, the browser is prevented from continuing to process user input and other activities.
+(((((((("the browser is blocked from continuing to handle user input and perform other tasks until the web app returns control to the processor.
+
+One final note: JavaScript cannot run in many threads.
+Simply said, a thread is a process that may be used by your JavaScript application to carry out an operation.
+(((((((("the last point is that JavaScript is single threaded.
 a thread is simply a process that your JavaScript program can use to run a task.
-and each thread can only do one task at a time.
-unlike a few other languages which support multi-threading and can thus run multiple tasks in parallel JavaScript has just the one thread called the main thread for executing any code.
-so in its most basic form JavaScript is asynchronous blocking single threaded language.
-but hang on if that is the case how do we explain the asynchronous behavior of methods like FS dot read file or HTTP dot create server.
-well as it turns out just JavaScript is not sufficient to explain that async behavior.
-we need new pieces outside of Java Script to help us write asynchronous code.
+
+Moreover, a single thread can only do a single operation.
+(((((((("and each thread can only do one task at a time.
+
+Unlike some other languages that allow for simultaneous processing of different tasks by using several threads, JavaScript only has a single thread, the main thread, in which code is executed.
+(((((((("unlike a few other languages which support multi-threading and can thus run multiple tasks in parallel JavaScript has just the one thread called the main thread for executing any code.
+
+JavaScript, at its core, is a single-threaded, asynchronous programming language.
+But wait, if that's the case, how can we account for the asynchronous nature of operations like FS.readFile and HTTP.createServer?
+Specifically, libu V is an external requirement for node.js.
+(((((((("so in its most basic form JavaScript is asynchronous blocking single threaded language.
+but hang on if that is the case how do we explain the asynchronous behavior of methods like FS dot read 
+file or HTTP dot create server.
 and in case of node.js that piece is the external dependency libu V.
-in this section let's understand what libu e is and the role it plays in the asynchronous event-driven architecture of node.js.
+
+It turns out that the async behavior cannot be fully explained by only using JavaScript.
+New components beyond Java Script are required to facilitate the creation of asynchronous software.
+(((((((("well as it turns out just JavaScript is not sufficient to explain that async behavior.
+we need new pieces outside of Java Script to help us write asynchronous code.
+
+and the node in question.In js, that part is the dependent on something else. libu V 
+(((((((("and in case of node.js that piece is the external dependency libu V.
+
+Here, we will learn about libu e and its function in node.js's asynchronous event-driven architecture.
+Stay tuned for the next video! 
+(((((((("in this section let's understand what libu e is and the role it plays in the asynchronous event-driven architecture of node.js.
 I'll see you in the next video.

@@ -1,49 +1,125 @@
-" "welcome back.
+ hello again.
+Let's have a look at the HTTP module's routing features in this video.
+ (((((((((("welcome back.
 in this video let's learn about routing with the HTTP module.
-at the moment when we navigate to localhost 3000 we see the response hello vishwas welcome to node.
-if I navigate to slash about we see the same response slash API still the same response.
-but this is not how a typical website would behave right.
+
+At the moment, if we go to localhost:3000, we get a "hello Vishwas, welcome to node" message.
+((((((((("at the moment when we navigate to localhost 3000 we see the response hello vishwas welcome to node.
+
+I get the same result whether I use the slash key or the about section. The API is giving the same result when slashed.
+(((((((((("if I navigate to slash about we see the same response slash API still the same response.
+
+A normal website, however, would not act in this way.
+Possibly some Json data would be returned if you typed "slash about word render and slash about page and slash API."
+(((((((((("but this is not how a typical website would behave right.
 slash about word render and about page and slash API would perhaps respond with some Json data.
-well let's see how to mimic that behavior with our HTTP module.
+
+now let's see if we can get our HTTP module to act in a similar fashion.
+I'm going to start anew and delete anything in the request listener body.
+(((((((((("well let's see how to mimic that behavior with our HTTP module.
 I'm going to clear out the request listener body and start over.
-the first thing you should know is thatrequest.url gives us the URL query string.
+
+The first thing you need to know is that we can get the query string for a URL from the property request.url.
+I'll give you that number to assist you grasp my point.
+(((((((((("the first thing you should know is thatrequest.url gives us the URL query string.
 let me respond with that value to help you understand what I mean.
-rest dot end request dot URL.
+
+The format is: rest. end. request. URL.
+Node index restart.
+(((((((((("rest dot end request dot URL.
 restart node index.
-navigate to localhost 3000and we see forward slash as the response.
+
+forward slash is returned when you go to localhost port 3000.
+This is where everything begins. 
+(((((((((("navigate to localhost 3000and we see forward slash as the response.
 this represents the root.
-let's change the url to slash about.
+
+
+Let's switch the address to /about/.
+In this context, Slash serves as the response API.
+(((((((((("let's change the url to slash about.
 and we see Slash about as the response slash API.
-and we see Slash API.
+
+to the Slash API we go.
+The query string is available via the request.url parameter.
+(((((((((("and we see Slash API.
 the request dot URL gives us the query string.
-we can use it with an if else statement or a switch statement to respond differently.
+
+We may utilize it in a variety of ways, including with if/else and switch statements.
+Request. URL equals root if it starts with a forward slash.
+(((((((((("we can use it with an if else statement or a switch statement to respond differently.
 If request dot URL is equal to forward slash which is the root.
-we're going to respond to 100 with some plain text.
+
+Our response to the first hundred will be text only.
+style of content Home page text plane rest dot end. 
+(((((((((("we're going to respond to 100 with some plain text.
 content type Text slash plane rest dot end home page.
-else if the request URL is equal to the about page so slash about.
-I'm going to copy paste these two lines of code.
+
+Alternatively, if the about page is the requested page, then cut about.
+((((((((("else if the request URL is equal to the about page so slash about.
+
+I'm going to paste this code in exactly as it is.
+add the "about" section, of course. 
+(((((((((("I'm going to copy paste these two lines of code.
 and change the text to about page.
-elseif request dot URL is equal to slash API.
+
+otherwiseif the requested URL equals the API path.
+In response, we will send some Json information.
+(((((((((("elseif request dot URL is equal to slash API.
 we're going to respond with some Json data.
-so as dot right head200.
+
+Hence, application/Json content type at 200 dot right-head position.
+(((((((((("so as dot right head200.
 content type application slash Json.
-and then rest dot end Json Dot stringify we're going to pass in an object with first name set to Bruce and last name set to Vain.
-Finally if none of the URLs match we're going to respond with a page not found message with a 404 status code.
-this is to ensure the user is informed that no such URL exists.
+
+the end of the rest... Json To dot stringify, we'll supply an object having Bruce for a first name and Vain for a surname.
+(((((((((("and then rest dot end Json Dot stringify we're going to pass in an object with first name set to Bruce and last name set to Vain.
+
+When everything else fails, we'll provide a 404 page not found response if no URL matches. 
+(((((((((("Finally if none of the URLs match we're going to respond with a page not found message with a 404 status code.
+
+This is done so that the user is made aware that the requested URL does not exist.
+Currently, it is best to save the document.
+Initiate a new session on localhost port 3000.There is an issue here.
+(((((((((("this is to ensure the user is informed that no such URL exists.
 for now save the file.
 Restart and refresh localhost 3000we have a problem.
-and that is because I need to remove the first response.
+
+and the reason for it is that I had to discard the initial answer.
+Initiate a new node index.
+return to your web browser.
+(((((((((("and that is because I need to remove the first response.
 restart node index.
 head back to the browser.
-Refresh and we see home page being displayed.
+
+Refresh and the homepage is what we see.
+to cut around by navigating.
+and check out this page!
+(((((((((("Refresh and we see home page being displayed.
 navigate to slash about.
 and we see about page.
-slash API and we see a Json response.
+
+/ API, and the result is a Json object.
+page not found when we finally slash vishwas.
+(((((((((("slash API and we see a Json response.
 finally slash vishwas and we see page not found.
-this is how you can map requests to the appropriate response in code.
-the HTTP module gives us access to the request object which in turn gives us access to the URL property.
+
+In this manner, code may be used to map requests to their corresponding responses.
+((((((((("this is how you can map requests to the appropriate response in code.
+
+Because of the HTTP module, we can examine the URL attribute of the request object.
+Additionally, that's not all.
+(((((((((("the HTTP module gives us access to the request object which in turn gives us access to the URL property.
 and not just that.
-request dot method also gives us access to the HTTP method such as get post put and delete which we can once again use to Route different requests.
-a combination of request.url and request dot method can help you handle any type of routing with the HTTP module.
-however in the real world app you typically rely on a web framework to handle all of this for you.
-let's briefly understand about that in the next video" 
+
+Once again, we can utilize the request.method to route requests based on their HTTP method, which includes get, post, put, and delete.
+(((((((((("request dot method also gives us access to the HTTP method such as get post put and delete which we can once again use to Route different requests.
+
+The HTTP module's request.url and request dot method can be used together to manage various routing scenarios.
+(((((((((("a combination of request.url and request dot method can help you handle any type of routing with the HTTP module.
+
+In contrast, a web framework takes care of all of this for you in a real-world project.
+(((((((((("however in the real world app you typically rely on a web framework to handle all of this for you.
+
+In the next video, let's take a quick look at this topic. 
+(((((((((("let's briefly understand about that in the next video" 
