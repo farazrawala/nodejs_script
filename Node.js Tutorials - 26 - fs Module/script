@@ -1,13 +1,17 @@
 
 ((((("in this video let's take a look at the fs module in node.))))))
 
+
 ((((("the file system module allows you to work with the file system on your computer.
 let's understand how to work with that.))))))
 
+
 ((((("I'm here in index.js which is our main module it is empty to begin with to make use of a built-in module we first have to import it and to import a built-in module we use the require function.))))))
+
 
 ((((("so at the top const FS is equal to require node colon FS.
 here FS is the name of our built-in module.))))))
+
 
 ((((("once we have the module loaded we can access the various properties and methods exposed by the fs module.
 for our first method let's learn how to read the contents of a file.))))))
@@ -209,7 +213,7 @@ we also had a look at the right file sync.))))))
 
 ((((("you can also add a flag to append contents instead of overwriting.
 now although this callback based read file and write file methods do the job node decided to add a promise based version of the fs module which we can use in our applet's learn about that in the next video.))))))
-))))))
+ 
 
 
 ((((("thank you for watching please do consider subscribing to the channel and I'll see you in the next one.))))))

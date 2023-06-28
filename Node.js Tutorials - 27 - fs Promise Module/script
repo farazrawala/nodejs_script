@@ -69,16 +69,13 @@ overpromises.))))))
 
 To avoid unnecessary complexity, I will instead use an async function within the same file, as top-level a weight may only be used in modules, i.e. dot MJS files.
 There are try/catch sections inside the async function that reads the file.
-
-To avoid unnecessary complexity, I will instead use an async function within the same file, as top-level a weight may only be used in modules, i.e. dot MJS files.
-There are try/catch sections inside the async function that reads the file. 
-
 ((((("however since top level a weight can only be used in modules that is dot MJS files I'm going to instead use an 
 async function in the same file to not further complicate this.
 Async function read file within the function we have try catch blocks.))))))
 
 The attempt block is waiting for the FS dot read file to arrive.
-both file.txt and utf-8The data-logging line will be in the next line. ((((("within the try block we await FS dot read file passing in.
+both file.txt and utf-8The data-logging line will be in the next line. 
+((((("within the try block we await FS dot read file passing in.
 file.txt and utf-8in the next line we can log the data.))))))
 
 Let's see if we can record any errors that occur into the console by using the catch block.

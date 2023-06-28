@@ -1,1 +1,113 @@
-"in this video let's run a few moreexperiments to understand better aboutthe check queueplease do watch the previous five videosbefore continuingnow in the previous video we understoodabout i o polling that happens inbetween the ioq and check queuethat in turnhelped us understand why read file islocked after set immediatenow what if the io polling was completeand a callback did exist in the ioqlet's conduct an experiment for thatscenariofor experiment number 10 I'm going tomake a small change in our codeinstead of executing set immediate atthe endI'm going to execute it within the readfile called backI've also changed the message to reflectthis is inner set immediate inside readfilethe reason I've done this is to ensurethis set immediate callback is queued uponly after the i o polling is completepause for a minute and try to figure outthe outputif I run node indexwe can see this time set immediate islocked after read filefrom this we can infer thatcheck queue callbacks are executed aftermicro task queue callbacks timer queuecallbacks and ioq callbacks are executedlet's visualize the executionwhen the call stack executes allstatements in our code snippet we end upwith one callback in the next queue onein the promise queue and one in thetimer queuethere is no callback in the ioq yet as IO polling has not been completed this welearned in the previous videonow when there is no further code toexecute control enters the event Loopfirst call back from the next day queueis dq'd and executed which locks amessage to the consolenow that the next queue is emptyeventually proceeds to the promise queuethe Callback is dq'd and executed on thecall stack logging a message to theconsoleat this point the promise queue is emptyand the event Loop proceeds to the timerqueuewe have one callback which is dq'd andexecuted resulting in the third logmessagenow event Loop proceeds to the ioq butthis queue does not have any callbacksit then proceeds to the i o pollingphaseduring this phase the read fileoperation is complete which pushes acallback function into the ioqthe event Loop then proceeds to thecheck queue and the close queue whichare both emptythe loop then proceeds to the seconditerationit checks next to queue promise queuetimer queue all of which are empty andfinally arrives at ioqit encounters one new callback functionwhich gets executedthe fourth message is logged in theconsolebut the Callback function also containsa call to set immediate which queues upa callback function in the check queueevent Loop then proceeds from the ioqinto the check queue dqs the Callbackand executes the samethis results in the last message beinglogged in the consolehopefully this visualization makes senseif it does let's now proceed toexperiment number 11.this time within the read file callbackbut after set immediate callI'm going to paste a call toprocess.nextstick and promise.resolvefirst we have this isinnerprocess.net stick inside read fileand then we have this is innerpromise.result inside read fileI want you to pause again and try figureout the outputif I run node indexwe can see read file 1 is being lockedto the consoleand then we see process.nextstickand promise.resolve callbacks areexecuted before set immediate callbackfrom this we can infermicro task queue callbacks are executedafter IO callbacks and before checkqueue callbacksonce again let's visualize this forbetter understandingwhen the call stack executes allstatements we end up with one callbackin the next queueone in the promise queue and one in thetimer queuethere is no callback in the ioq yet asIO polling has not been completednow when there is no further code toexecute control enters the event Loopfirst call back from the next stickqueue is dq'd and execute it which locksa message to the consolenow that the next EQ is empty eventuallyproceeds to the promise queuethe Callback is dq'd and executed on thecall stack logging a message to theconsoleat this point the promise queue is emptyand the event Loop proceeds to the timerqueuewe have one callbackwhich is DQ and executedthis results in the third log statementin the consolenow event Loop proceeds to the ioq butthis queue does not have any callbacksit then proceeds to the i o pollingphase and during this phase the readfile operation is complete which pushesa callback function into the ioqpayment Loop then proceeds to the checkqueue and the close queue which are bothemptythe loop then proceeds to the nextiterationit checks next IQ promise queue timerqueue all of which are empty and finallyarrives at ioqit encounters one new callback functionwhich gets executedthe fourth message is logged to theconsolewith the read file callback alsocontains a call to nextdickpromise.resolve and set immediatethis results in a callback functionbeing queued up in the next queuepromise queue and the check queueit so happens that the event Loop beforeleaving the ioq and entering the checkqueue makes another check with the microtask queuesit first checks the next IQ sees thereis a callback and runs that callbackthis will print the correspondingmessage in the consolenext it checks the promise queue seesthere is a callback and runs thatcallbackthis will print the correspondingmessage in the consolefinally when the micro task queues areempty event Loop proceeds to the checkqueue dqs the Callback function andexecutes the samethis results in the last message beingprinted in the consolethe main point to take over here is thatcallbacks in the micro task queues areexecuted between the ioq and the checkqueue callbackshopefully the inference from experiment11 is clear to youlet's now proceed to the next experimentfor experiment number 12 I'm going tocopy paste a new code snippetlet me walk you through the codewe have a total of three calls to setimmediatewe have the corresponding log statementin each of themone two and threewithin the second set immediate thoughwe have a call to process Dot nextdickand promise.resolvepretty straightforward as you can seeonce again pause the video and tryfigure out the outputif I run node indexyou can see we have set immediate 1 2and before set immediate 3 we have nextstick 1 and promise.resolve onefrom this we can infer thatmicro task queues callbacks are executedin between check queue callbacksin our case in between the second andthird set immediate the micro taskqueues are executedthey have a priority that simply can'tbe ignoredall right let's head back to the slidesand visualize the executionwhen the call stack executes allstatements we end up with threecallbacks in the check queuewhen there is no further code to executecontrol enters the event Loopthe initial queues are skipped as thereare no callbackswe start with the check queue insteadthe first callback is dq'd and executedresulting in the log statementnext the second callback is also dq'dand executedthis results in the second log statementhowever the second callback also queuesup a callback in the next queue and thepromise queueas it turns out these skews have veryhigh priority and are checked in betweencheck queue callback executionsso after the second set immediatecallback in the check queue is executedthe Callback in the next queue is TQ andexecutedthat is followed by the promise queuecallback being dq'd and executednow when the micro task queues are emptycontrol returns back to the check queueand the third callback is dq'd andexecutedthis will print the final message in theconsolehopefully this is now clear to youalright for the 13th experiment which isthe final experiment in this videolet me point out the timer anomaly withthe check queue as wellI'm going to comment outthe existing codeand paste a new snippetit is really simple as you can see onecall to set timeout with zeromillisecond delay and a call to setimmediate right afterif I run the code several timesyou can see the order of execution isnot the same we have set timeout 1followed by set immediate oneand this is set immediate 1 followed byset timeout 1.now we have already covered thereasoning behind this in the video onioq so please do watch that video tounderstand why this happensbut the inference is that when runningset timeout with zero millisecond delayalong with a set immediate method theorder of execution can never beguaranteedof course you can add a time consumingfor Loop to guarantee the orderNow set timeout will always executebefore set immediateall right with these experiments I hopeyou're able to better understand theorder of execution of callbacks in thecheck queueif you are enjoying the content pleasedo leave a like And subscribe to thechannel I'll see you in the next one"
+  "in this video let's run a few more experiments to understand better about the check queue.
+please do watch the previous five videos before continuing.
+now in the previous video we understood about io polling that happens in between the io q and check queue.
+that in turn helped us understand why read file is locked after set immediate.
+now what if the io polling was complete and a callback did exist in the io q let's conduct an experiment for that scenario.
+for experiment number 10 I'm going to make a small change in our code.
+instead of executing set immediate at the end I'm going to execute it within the read file called back.
+I've also changed the message to reflect this is inner set immediate inside read file.
+the reason I've done this is to ensure this set immediate callback is queued up only after the i o polling is complete.
+Do pause for a minute and try to figure out the output.
+if I run node index.
+we can see this time set immediate is locked after read file.
+from this we can infer that check queue callbacks are executed after micro task queue callbacks timer queue call backs and io q callbacks are executed.
+let's visualize the execution.
+when the call stack executes all statements in our code snippet we end up with one callback in the next queue one in the promise queue and one in the timer queue.
+there is no callback in the ioq yet as IO polling has not been completed this we learned in the previous video.
+now when there is no further code to execute control enters the event Loop.
+first call back from the next day queue is dq'd and executed which locks a message to the console.
+now that the next queue is empty eventually proceeds to the promise queue.
+the Callback is dq'd and executed on the call stack logging a message to the console.
+at this point the promise queue is empty and the event Loop proceeds to the timer queue.
+we have one callback which is dq'd and executed resulting in the third log message.
+now event Loop proceeds to the io q but this queue does not have any callbacks.
+it then proceeds to the io polling phase.
+during this phase the read file operation is complete which pushes a call back function into the io q.
+the event Loop then proceeds to the check queue and the close queue which are both empty.
+the loop then proceeds to the second iteration.
+it checks next to queue promise queue timer queue all of which are empty and finally arrives at io q.
+it encounters one new callback function which gets executed.
+the fourth message is logged in the console.
+but the Callback function also contains a call to set immediate which queues up a callback function in the check queue.
+event Loop then proceeds from the io q into the check queue dq’ds the Callback.
+and executes the same.
+this results in the last message being logged in the console.
+hopefully this visualization makes sense.
+if it does let's now proceed to experiment number 11.
+this time within the read file callback but after set immediate call.
+I'm going to paste a call to process.next stick and promise.resolve.
+first we have this isinnerprocess.net stick inside read file.
+and then we have this is inner promise.result inside read file.
+I want you to pause again and try figure out the output.
+if I run node index.
+we can see read file 1 is being locked to the console.
+and then we see process.next stick.
+and promise.resolve callbacks are executed before set immediate callback.
+from this we can infer micro task queue callbacks are executed after IO callbacks and before check queue callbacks.
+once again let's visualize this for better understanding.
+when the call stack executes all statements we end up with one call back in the next queue.
+one in the promise queue and one in the timer queue.
+there is no callback in the io q yet as IO polling has not been completed.
+now when there is no further code to execute control enters the event Loop.
+first call back from the next stick queue is dq'd and execute it which locks a message to the console.
+now that the next EQ is empty eventually proceeds to the promise queue.
+the Callback is dq'd and executed on the call stack logging a message to the console.
+at this point the promise queue is empty and the event Loop proceeds to the timer queue.
+we have one callback which is DQ and executed.
+this results in the third log statement in the console.
+now event Loop proceeds to the io q but this queue does not have any callbacks.
+it then proceeds to the io polling phase and during this phase the read file operation is complete which pushes a callback function into the io q.
+payment Loop then proceeds to the check queue and the close queue which are both empty.
+the loop then proceeds to the next iteration it checks next IQ promise queue timer queue all of which are empty and finally arrives at io q.
+it encounters one new callback function which gets executed.
+the fourth message is logged to the console.
+with the read file callback also contains a call to next tick promise.resolve and set immediate.
+this results in a callback function being queued up in the next queue promise queue and the check queue.
+it so happens that the event Loop before leaving the io q and entering the check queue makes another check with the microtask queues.
+it first checks the next IQ sees there is a callback and runs that callback.
+this will print the corresponding message in the console.
+next it checks the promise queue sees there is a callback and runs that callback.
+this will print the corresponding message in the console.
+finally when the micro task queues are empty event Loop proceeds to the check queue dq’ds the Callback function and executes the same.
+this results in the last message being printed in the console.
+the main point to take over here is that callbacks in the micro task queues are executed between the io q and the check queue callbacks.
+hopefully the inference from experiment11 is clear to you.
+let's now proceed to the next experiment.
+for experiment number 12 I'm going to copy paste a new code snippet.
+let me walk you through the code.
+we have a total of three calls to set immediate.
+we have the corresponding log statement in each of them one two and three.
+within the second set immediate though we have a call to process Dot next tick and promise.resolve.
+pretty straightforward as you can see.
+once again pause the video and try figure out the output.
+if I run node index.
+you can see we have set immediate 1 2and before set immediate 3 we have next stick 1 and promise.resolve one.
+from this we can infer that micro task queues callbacks are executed in between check queue callbacks.
+in our case in between the second and third set immediate the micro task queues are executed.
+they have a priority that simply can't be ignored.
+all right let's head back to the slides and visualize the execution.
+when the call stack executes all statements we end up with three callbacks in the check queue.
+when there is no further code to execute control enters the event Loop.
+the initial queues are skipped as there are no callbacks.
+we start with the check queue instead.
+the first callback is dq'd and executed resulting in the log statement.
+next the second callback is also dq'd and executed.
+this results in the second log statement.
+however the second callback also queues up a callback in the next queue and the promise queue.
+as it turns out these skews have very high priority and are checked in between check queue callback executions.
+so after the second set immediate callback in the check queue is executed the Callback in the next queue is TQ and executed that is followed by the promise queue callback being dq'd and executed.
+now when the micro task queues are empty control returns back to the check queue and the third callback is dq'd and executed.
+this will print the final message in the console hopefully this is now clear to you.
+alright for the 13th experiment which is the final experiment in this video.
+let me point out the timer anomaly with the check queue as well.
+I'm going to comment out the existing code and paste a new snippet.
+it is really simple as you can see one call to set timeout with zero millisecond delay and a call to set immediate right after.
+if I run the code several times.
+you can see the order of execution Is not the same we have set timeout 1followed by set immediate one and this is set immediate 1 followed by set timeout 1.
+now we have already covered the reasoning behind this in the video on io q so please do watch that video to understand why this happens.
+but the inference is that when running set timeout with zero millisecond delay.
+along with a set immediate method the order of execution can never be guaranteed.
+of course you can add a time consuming for Loop to guarantee the order.
+Now set timeout will always execute before set immediate.
+all right with these experiments I hope you're able to better understand the order of execution of callbacks in the check queue.
+if you are enjoying the content please do leave a like And subscribe to the channel I'll see you in the next one"

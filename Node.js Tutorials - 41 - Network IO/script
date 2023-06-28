@@ -1,68 +1,165 @@
-"welcome back.
+Hello again!
+In order to learn how libuey's thread pool affects the execution of asynchronous methods like read file and pbkdf2 throughout the course of the last two films, we ran five separate tests.
+ (((((((((((((("welcome back.
 over the past two videos we've run five different experiments to understand the role of libuey's thread pool when executing async methods like read file and pbkdf2.
-in this video I want to stay on the same topic of Liberty and async methods but highlight a different point.
-and I'll do that with our next experiment.
+
+In this video, I'd want to expand on a previous discussion on Liberty and asynchronous approaches. 
+((((((((((((("in this video I want to stay on the same topic of Liberty and async methods but highlight a different point.
+
+I want to accomplish it in the subsequent test we do.
+Experiment 6 will employ a new asynchronous strategy.
+this time relating to i/o in a network.
+((((((((((((("and I'll do that with our next experiment.
 for experiment 6 we're going to use a different async method.
 this time one that involves the network io.
-first comment out the crypto module import.
+
+Start by erasing the import of the crypto module.
+plus the invocation of pvkdf2.
+((((((((((((("first comment out the crypto module import.
 and the call to pvkdf2.
-comment out the thread pool size as well.
+
+Likewise, the thread pool size should be commented out.
+replace it with an HTTPS import.
+The HTTPS protocol is a more secure variant of the standard HTTP module.
+((((((((((((("comment out the thread pool size as well.
 instead import the https module.
 https is a secure version of the HTTP module we've already seen.
-the method we are going to invoke is the request method that makes a request to an endpoint.
+
+We'll be calling the request method, which sends a query to a service's endpoint.
+To avoid wasting time, allow me to copy and paste the code for you. 
+((((((((((((("the method we are going to invoke is the request method that makes a request to an endpoint.
 let me copy paste the code to save us some time.
-request accepts a URL and we are making a request to google.com.
+
+request takes a URL as an argument; in this case, we're sending a request to google.com.
+The second parameter is a callback function that will be sent the result.
+Data listeners may be added and events can be closed.
+((((((((((((("request accepts a URL and we are making a request to google.com.
 the second argument is a call back function which gets access to the response.
 we can add listeners to the data and end events.
-within the end event listener.
+
+inside of the last event listener.
+The duration of the request will be recorded.
+It was a lot like the work we did with pbk df2.
+((((((((((((("within the end event listener.
 we are going to log the time taken for the request.
 very similar to what we were doing with pbk df2.
-finally we end the request.
+
+We're closing out the request now.
+in the for Loop, we have included the call to request.
+((((((((((((("finally we end the request.
 and this call to request is placed inside the for Loop.
-let's now run this code with different values of Max calls.
+
+Now, let's see what happens if we execute this code with varying Max calls.
+Okay, so let's begin with 1.
+((((((((((((("let's now run this code with different values of Max calls.
 let's start with one.
-when we run node index.
+
+whenever we execute node index.
+We can observe that it takes around 200 ms for the request to be processed.
+((((((((((((("when we run node index.
 we see the request takes approximately 200 milliseconds.
-let's now change Max calls to do.
-run node index.
-and the average is now in the range of 200 to 300 milliseconds.
+
+Let's make some changes to Max's plan.
+index node execution.
+(((((((((((((let's now alter what Max suggests we do.
+execute node index.
+
+Currently, we're seeing typical response times of around 200–300 ms.
+Max calls will now be set to 4, and the node index will be re-run.
+((((((((((((("and the average is now in the range of 200 to 300 milliseconds.
 let's now change Max calls to 4.
 rerun node index.
-and the average again lies in the range of 200 to 300 milliseconds.
+
+and once more, the mean value is between two hundred and three hundred milliseconds.
+Raise the number to six, please.
+((((((((((((("and the average again lies in the range of 200 to 300 milliseconds.
 let's bump it up to six.
-And six if you can recollect is larger than the default thread pool size.
+
+The default size of a thread pool is four, thus increasing it to six would be unusual.
+get the program to work. 
+((((((((((((("And six if you can recollect is larger than the default thread pool size.
 run the code.
-and we see the average is still between200 and 300 milliseconds.
+
+and we can still observe that the mean value is somewhere in the range of 200–300 ms.
+Allow 12 calls at most, please.
+we run.
+((((((((((((("and we see the average is still between200 and 300 milliseconds.
 finally let's change Max calls to 12.
 we run.
-and surprisingly the average is still between 200 and 300 milliseconds.
+
+Moreover, the average is still, shockingly, below a millisecond.
+We may conclude the following two things from this experiment.
+First.
+((((((((((((("and surprisingly the average is still between 200 and 300 milliseconds.
 based on this experiment we can infer the following two points.
 First.
-although both crypto.pbkdf2 and https dot request are asynchronous https dot request method does not seem to use the thread pool.
-we can infer this by noticing that the average time Remains the Same for one request or six requests or even 12 requests.
-if thread pool was involved we should have seen a larger average time for more than four requests which we did not.
-second https dot request does not seem to be affected by the number of CPU cores either.
+
+The https dot request technique does not appear to utilize the thread pool, despite the fact that both crypto.pbkdf2 and https dot request are asynchronous.
+((((((((((((("although both crypto.pbkdf2 and https dot request are asynchronous https dot request method does not seem to use the thread pool.
+
+This is inferred from the fact that the average time required to process a single request is same to the time required to process six requests or twelve requests.
+((((((((((((("we can infer this by noticing that the average time Remains the Same for one request or six requests or even 12 requests.
+
+The average time for more than four queries should have been longer if thread pool was at play, however this was not the case.
+
+((((((((((((("if thread pool was involved we should have seen a larger average time for more than four requests which we did not.
+
+The number of CPU cores does not appear to play a role in the processing time of the second https dot request.
+even when processing 12 queries simultaneously.
+I really hope that makes sense. 
+((((((((((((("second https dot request does not seem to be affected by the number of CPU cores either.
 even when running 12 requests at a time.
-the average time was the same as running one request.
 hope fully this makes sense.
-and let me tell you this inference is infact true.
+
+and I ensure that your deduction is correct.
+The HTTP/1.1 request is a network I/O transaction, not a CPU-bound one.
+((((((((((((("and let me tell you this inference is infact true.
 https dot request is a network input output operation and not a CPU bound operation.
+
 it does not use the thread pool.
 instead delegates the work to the operating system kernel and whenever possible it will pull the kernel and seeif the request has completed.
-this is the reason we see nearly thesame request time when we have 1 4 oreven 12 different requests.
-all right if this is clear we can conclude this video with the following points.
+((((((((((((("it does not use the thread pool.
+instead delegates the work to the operating system kernel and whenever possible it will pull the kernel and seeif the request has completed.
+
+instead delegates the work to the operating system kernel and whenever possible it will pull the kernel and seeif the request has completed.
+This explains why the time it takes for each request is so consistent, whether when there are 1, 4, or 12 of them.
+((((((((((((("this is the reason we see nearly thesame request time when we have 1 4 oreven 12 different requests.
+
+OK, I guess If you understand, we can wrap up this video by discussing the following.
+somewhere between nodes.libue manages the asynchronous methods in js.
+((((((((((((("all right if this is clear we can conclude this video with the following points.
 in node.js async methods are handled by libue.
-but they are handled in one of two different ways.
+
+However, there are two distinct approaches to dealing with them.
+native async support, or the thread pool, if available.
+((((((((((((("but they are handled in one of two different ways.
 either the native async mechanism or the thread pool.
-whenever possible libuv will use native async mechanisms in the operating system so as to avoid blocking the main thread.
-since this is part of the kernel there is a different mechanism for each operating system we have e-pol for Linux KQ for Mac OSand IO completion port on Windows.
-relying on Native async mechanisms makes node scalable as the only limitation is the operating system kernel.
-example of this is a network i o operation on the other hand.
+
+To avoid blocking the main thread, libuv will make use of the system's native async features wherever available.
+((((((((((((("whenever possible libuv will use native async mechanisms in the operating system so as to avoid blocking the main thread.
+
+Since this is implemented in each OS's kernel in a unique way, we have e-pol for Linux, KQ for Mac OS, and IO completion port on Windows to name a few.
+((((((((((((("since this is part of the kernel there is a different mechanism for each operating system we have e-pol for Linux KQ for Mac OSand IO completion port on Windows.
+
+Node becomes scalable when it uses Native async techniques, with the only restriction being the OS kernel. 
+((((((((((((("relying on Native async mechanisms makes node scalable as the only limitation is the operating system kernel.
+
+A network I/O operation is an alternative example.
+if the job is resource intensive (CPU or file I/O) and no native async capability exists.
+((((((((((((("example of this is a network i o operation on the other hand.
 if there is no native async support and the task is file IO or CPU intensive.
-Library uses the thread pool to avoid blocking the main thread.
-although the thread pull preserves asynchronicity with respect to node'smain thread it can still become a bottle neck if all threads are busy.
-I hope you now have a clear understanding of how async methods are handled under the hood in node.js.
-thank you for watching please do consider subscribing to the channel and I'll see you in the next one"
+
+To prevent the main thread from being blocked, the library utilizes a pool of threads.
+((((((((((((("Library uses the thread pool to avoid blocking the main thread.
+
+Thread pull maintains asynchronicity relative to the main thread of a node, but if all threads are active, it might cause a bottleneck. 
+((((((((((((("although the thread pull preserves asynchronicity with respect to node'smain thread it can still become a bottle neck if all threads are busy.
+
+I trust that you now have a firm grasp on how async functions are implemented internally in node.js.
+((((((((((((("I hope you now have a clear understanding of how async methods are handled under the hood in node.js.
+
+Please consider subscribing to the channel, and I hope you enjoyed the video; I'll see you next time!
+((((((((((((("thank you for watching please do consider subscribing to the channel and I'll see you in the next one"
 
 
 
