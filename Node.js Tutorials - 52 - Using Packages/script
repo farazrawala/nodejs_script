@@ -1,1 +1,23 @@
-"in the previous video we learned how toinstall the uppercase package into ourproject from the npm registryin this video let's learn how to usethat package in our codenow what you should know is that anypackage we install is basically a modulein node.jsearlier in the series we have seen howto import a local module and a built-inmodulefor a local moduleconst local module is equal to requiredot slashpath to modulefor a built-in module we've usedconst FS is equal to requirenode colon FSnow let's see how to import athird-party module which is nothing butthe package code we have installed inthe previous videonow the package name is upper hyphencaseif we head back to npmgs we can see asection on usagethis however uses the es module syntaxlet's convert it into common Jsback in vs codeconst uppercaseis equal torequireuppercasethis however Imports everything that isexported from the packagewe just need the uppercase functionso dot uppercasenow within the Contour log statementwe can invoke uppercasepassing in the stringwe can now call the grid functionpassing in a namevishwasand the terminal if we run node indexwe should see the expected output inuppercasehello vishwas welcome to code evolutionso we have successfully used a packageinstalled from the npm registry in ourown projectof course our requirement was a simpleone to convert text to uppercasebut you can imagine a more complexrequirement such as a need to deep clonean object in JavaScriptinstead of you having to write the codeand test that code you can rely on annpm packagelow Dash is a pretty popular JavaScriptutility Libraryit exposes various functionality thatyou can readily use in your projectyou can focus on the project requirementrather than building utility functionsbut I hope it is clear to you now as tohow we can install and use packages fromthe npm registryalright in the next video Let'sunderstand more about this dependenciesfield in package.jsonthank you for watching I'll see you inthe next one"
+"in the previous video we learned how to install the uppercase package into our project from the npm registry.
+in this video let's learn how to use that package in our code.
+now what you should know is that any package we install is basically a module in node.js.
+earlier in the series we have seen how to import a local module and a built-in module.
+for a local module const local module is equal to require dot slash path to module for a built-in module we've used const FS is equal to require node colon FS.
+now let's see how to import a third-party module which is nothing but the package code we have installed in the previous video.
+now the package name is upper hyphen case.
+if we head back to npmgs we can see a section on usage this however uses the es module syntax.
+let's convert it into common Js.
+back in vs code const uppercase is equal to require uppercase.
+this however Imports everything that is exported from the package we just need the uppercase function so dot uppercase.
+now within the Contour log statement we can invoke upper case passing in the string.
+we can now call the grid function passing in a name vishwas and the terminal if we run node index we should see the expected output in upper case hello vishwas welcome to code evolution.
+so we have successfully used a package installed from the npm registry in our own project.
+of course our requirement was a simple one to convert text to uppercase.
+but you can imagine a more complex requirement such as a need to deep clone an object in JavaScript.
+instead of you having to write the code and test that code you can rely on an npm package.
+low Dash is a pretty popular Java Script utility Library.
+it exposes various functionality thatyou can readily use in your project.
+you can focus on the project requirement rather than building utility functions.
+but I hope it is clear to you now as to how we can install and use packages from the npm registry.
+alright in the next video Let's understand more about this dependencies field in package.json.
+thank you for watching I'll see you in the next one"

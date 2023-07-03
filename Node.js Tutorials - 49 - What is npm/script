@@ -1,1 +1,37 @@
-"welcome to section 6 of this course onnode.js for beginners in this section weare going to learn about npmNow what is npmwell npm is really two thingsfirst it is the world's largest softwareLibrarysecond it is a software package managerlet's understand more about these twopointsfirst up npm is a software Librarynow if you think about a booked Libraryit contains books written by variousauthorssimilarlynpm is a library or a registry whichcontains code packages written byvarious Developersit is a large public database ofJavaScript code that developers from allover the world can use to share andborrow codeif you order a code package as we callit you can publish it to the npmregistry for others to useon the other handif you come across a code package thatis authored by someone else and solvesthe problem you have at hand you canborrow that code without having toreinvent the wheelyou can visit npmgs.com where you cansearch for a package in the registryit truly is the world's largest softwareLibrarylet's move on to the second pointnpm is a software package managera minute ago we learned that developerspublish and consume code packagesbut there is a lot to consider whenbuilding a system around thathow does a developer publish a packageto the registryhow does a developer consume a packagefrom the registrywhat happens if the package authordecides to change a function name in apackagehow would a consumer of that packageupdate an already installed packagewhat if the package I am consuming isdependent on another packageas you can see managing packages in aproject is not as simple as it soundsthis is where npm as a package managercomes to the rescuewe have access to a command lineinterface tool that lets us install andmanage packages in a projectwe will learn more about this CLI toolin the upcoming videos but hopefullywhat is npm is now clear to youwhat you should know is that similar tonpm there are other package managersexamples are pnpm and yarnnpm though is the default packagemanager for node.js and is installedwhen you install node.jsto verify if npm is installedin the terminal run the command npm DashVyou should see the version of npminstalled on your machineas you can see there is no need for aseparate installation it is bundled withnode.jsfinally you should know that npm didstand for node package manager when itfirst started outhowever as time progressed npm evolvedand is now a package manager for theJavaScript programming languageit does not necessarily stand for nodepackage manager anymorein fact npm as you can see is all inlower casenow why do we need to learn about npmI've already hinted towards the answerwhen describing what it is but let meput it in simple wordswhen building Enterprise scaleapplications we often need to rely oncode written by other Developersnpm helps with thatbe it a side project or the project youmight work on at your company you willneed npmit is fundamental to learning node.jswhich is why in this section we're goingto understand how to work with thatthank you for watching and I'll see youin the next video"
+"welcome to section 6 of this course onnode.js for beginners.
+in this section we are going to learn about npm.
+Now what is npm well npm is really two things first it is the world's largest software Library.
+second it is a software package manager.
+let's understand more about these two points first up npm is a software Library now if you think about a booked Library it contains books written by various authors similarly npm is a library or a registry which contains code packages written by various Developers.
+it is a large public database of JavaScript code that developers from all over the world can use to share and borrow code.
+if you order a code package as we call it you can publish it to the npm registry for others to use.
+on the other hand if you come across a code package that is authored by someone else and solves the problem you have at hand you can borrow that code without having to reinvent the wheel.
+you can visit npmgs.com where you can search for a package in the registry.
+it truly is the world's largest software Library.
+let's move on to the second point npm is a software package manager.
+a minute ago we learned that developers  publish and consume code packages but there is a lot to consider when building a system around that.
+how does a developer publish a package to the registry.
+how does a developer consume a package from the registry.
+what happens if the package author decides to change a function name in a package.
+how would a consumer of that package update an already installed package.
+what if the package I am consuming is dependent on another package.
+as you can see managing packages in a project is not as simple as it sounds.
+this is where npm as a package manager comes to the rescue.
+we have access to a command line inter face tool that lets us install and manage packages in a project.
+we will learn more about this CLI tool in the upcoming videos but hopefully what is npm is now clear to you.
+what you should know is that similar to npm there are other package managers.
+examples are pnpm and yarn.
+npm though is the default package manager for node.js and is installed when you install node.js.
+to verify if npm is installed in the terminal run the command npm Dash V.
+you should see the version of npm installed on your machine.
+as you can see there is no need for a separate installation it is bundled withnode.js.
+finally you should know that npm did stand for node package manager when it first started out.
+however as time progressed npm evolved and is now a package manager for the JavaScript programming language.
+it does not necessarily stand for node package manager any more in fact npm as you can see is all in lower case.
+now why do we need to learn about npm.
+I've already hinted towards the answer when describing what it is but let me put it in simple words.
+when building Enterprise scale applications we often need to rely on code written by other Developers.
+npm helps with that.
+be it a side project or the project you might work on at your company you will need npm.
+it is fundamental to learning node.js which is why in this section we're going to understand how to work with that.
+thank you for watching and I'll see you in the next video"

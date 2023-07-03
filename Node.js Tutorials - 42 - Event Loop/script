@@ -1,58 +1,72 @@
-
-(((((((((((((""welcome back.
+hello again.
+Let's break through the fundamentals of Node's event Loop in this video.js. 
+((((((((((((("welcome back.
 in this video Let's understand about the all-important event Loop in node.js.
 
-
+let me start by restating a few key concepts related to asynchronous programming.
+To begin, JavaScript is a single-threaded, synchronous, blocking language.
 ((((((((((((("let me Begin by reiterating a few points about async code execution.
 First JavaScript is a synchronous blocking single threaded language.
 
-
+Second, with Liberty's aid, async programming can finally become a reality.
+I trust that makes sense. 
 ((((((((((((("Second to make async programming possible we need the help of Liberty.
 I hope this is clear to you
 
-
+Considering these two factors Here, I'll try to give you a mental image of how code normally runs in the node runtime.
 ((((((((((((("using these two points let me now paint a picture in your mind as to how code typically executes in the node runtime.
 
-
+To the left, we see the V8 engine, which is responsible for running JavaScript.
+It consists of a call stack and a memory he.
+The Heap is used to allocate memory for variables and functions whenever they are declared.
 ((((((((((((("on the left we have the V8 engine which executes JavaScript code.
 it comprises of a memory he and a call stack.
 whenever you declare variables or functions memory is allocated on the Heap.
 
-
+The call stack is a stack onto which functions are put during execution and from which they are removed upon return.
 ((((((((((((("whenever you execute code functions are pushed into the call stack and when the function returns it is popped off the call stack.
 
-
+simple implementation of the stack data structure using LIFO (last in, first out).
+Async method execution is delegated to the UV in the right-hand libue.
 ((((((((((((("straightforward last in first out implementation of the stack data structure.
 on the right we have libue whenever you execute an async method itis offloaded to the UV.
 
-
+To avoid blocking the main thread, Liberty will execute the job asynchronously using the OS's built-in methods if feasible, else it will use its own thread pool.
 ((((((((((((("Liberty will then run the task using native async mechanisms of the operating system and if that is not possible it will utilize its thread pool to run the task ensuring the main thread is not blocked.
 
-
+To learn how node employs V8engine and libue, let's have a look at two short snippets of code.
 ((((((((((((("let's now walk through two simple code Snippets and understand how the V8engine and libue are used by node.
 
-
+Let's start with a basic example of synchronous code execution, shown on the left.
+There are three separate console log statements that log the data in order.
 ((((((((((((("first let's take a look at synchronous code execution on the left we have a simple code snippet.
 three console log statements that log first second and third one after the other.
 
-
+Let's pretend the runtime is actually executing this code and go through its motions.
+The main execution thread always initiates at the global level. 
 ((((((((((((("let's now walk through the code as if the runtime is executing it.
 the main thread of execution always starts in the global scope.
 
-
+If there is such a thing as a global function, it gets placed into the stack.
+Hence, a console log statement may be found on line 1.
+The operation of pushing the function into the stack. 
 ((((((((((((("so the global function if you can call it that is pushed onto the stack.
 then on line 1 we have a console log statement.
 the function is pushed onto the stack.
 
-
+Let's pretend for the purpose of the chronology that this occurs every millisecond.
 ((((((((((((("and for the sake of understanding the timeline let's assume this happens atone millisecond.
 
-
+Initially, a console log is created.
+The procedure is subsequently "popped" from the stack.
+The second line of execution is next.
 ((((((((((((("first is logged to the console.
 then the function is popped off the stack.
 execution comes to line two.
 
-
+At a rate of 2 ms, for example.
+Once again, the log function is placed into the stack.
+The second function is popped off the stack and the console is locked.
 ((((((((((((("let's say at 2 milliseconds.
 log function is again pushed onto the stack.
 second is locked to the console and the function is popped off the stack.
