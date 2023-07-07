@@ -1,1 +1,43 @@
-"welcome back two videos ago I mentionedthat npm is a software registry whichcontains packages published bydevelopers from all over the worldit helps us leverage other people's workto solve our problem at a rapid pacein this video let's learn how to installan npm package in our node.js projectfirst let me mention that I am lookingfor a package that is going to convertour log statement text to uppercaseI know we can do this with a built-inJavaScript method but the intention isto make you familiar with the concept ofinstalling a package from the npmregistryStep 1 we need to identify a packagethat serves the purposehead over to npmgs.com and in the searchinput I'm going to type upperas that is a good enough keyword tostart witha top suggestion here is upper hyphencase which transforms the string toUpper KeysI'm going to select this firstsuggestionStep 2 we need to assess whether this isa good package that we can use in ourprojectthere is no set rule but let me give youa few guidelines that I follow to judgewhether I can proceed with installing aparticular packagefirst I look at the published datetypically I would hope for somethingthat is less than a year but given thenature of this package which is toSimply convert a string to uppercasethat is no need for new features to beaddedso I am comfortable with published datebeing two years agothe second thing I look for is theweekly downloads metricif it is in millions you can take it forgranted it is a pretty good package thatis used by a lot of Developersfew hundred thousands is also finehowever if it is hundreds or lowthousands I would probably keepsearching to see if I can find somethingbetterthird I look at the package sizewhen you install a package you'rebasically increasing the size of yourproject as welllarge packages May bloat your ownproject bundle size which is somethingyou should be careful aboutlower the size better it is for yourprojectfor a good package size but a fewkilobytes is something you don't have toworry about if the package is crucialfor your projectfinally a few miscellaneous factors Ilook for are good documentation andfewer issuesthe package we have here checks all theboxes for me so let's proceed to thenext stepfor step 3 we're going to install thepackage using the npmclithe command is right here on this pageit is a little outdated though as dashdash save is not required anymorecopy npm install upper hyphen case headback to vs codeand within the project folderpaste the commandafter running the command you will see aprogress bar as npm fetches the packagethe package will be downloaded from theregistry and installed in a foldercalled node modulesin package.jsona dependencies field will be created andupdated with the package team andinstalled versionin our case the version is 2.0.2you will also see a package log.jsonfile created which will happen wheneveryou add your first dependencyfor subsequent packages the same filewill be updatedthis file simply keeps track of thepackages and versions installed in aproject ensuring there is noinconsistency when someone else installsthe same packagesso this is how we install an npm packagein our projecton a side note if you want to uninstalla package you can runnpm uninstall followed by the packagename which is uppercase in our scenarioas an exercise I want you to run thiscommand and observe the changes inpackage.jsonpackagelock.json and the node modulesfolderpause the video and give it a tryalright in the next video let's learnhow to use this uppercase package thatwe have just installed thank you forwatching and I'll see you in the nextone"
+"welcome back two videos ago I mentioned that npm is a software registry which contains packages published by developers from all over the world.
+it helps us leverage other people's work to solve our problem at a rapid pace.
+in this video let's learn how to install an npm package in our node.js project.
+first let me mention that I am looking for a package that is going to convert our log statement text to uppercase.
+I know we can do this with a built-in JavaScript method but the intention is to make you familiar with the concept of installing a package from the npm registry.
+Step 1 we need to identify a package that serves the purpose.
+head over to npmgs.com and in the searching put I'm going to type upper as that is a good enough keyword to start with.
+a top suggestion here is upper hyphen case which transforms the string to Upper Keys.
+I'm going to select this first suggestion.
+Step 2 we need to assess whether this isa good package that we can use in our project.
+there is no set rule but let me give you a few guidelines that I follow to judge whether I can proceed with installing a particular package.
+first I look at the published date.
+typically I would hope for something that is less than a year but given the nature of this package which is toSimply convert a string to uppercase that is no need for new features to beaded.
+so I am comfortable with published date being two years ago.
+the second thing I look for is the weekly downloads metric.
+if it is in millions you can take it for granted it is a pretty good package that is used by a lot of Developers.
+few hundred thousands is also fine.
+however if it is hundreds or low thousands I would probably keep searching to see if I can find something better.
+third I look at the package size.
+when you install a package you're basically increasing the size of your project as well.
+large packages May bloat your own project bundle size which is something you should be careful about.
+lower the size better it is for your project.
+for a good package size but a few kilobytes is something you don't have to worry about if the package is crucial for your project.
+finally a few miscellaneous factors I look for are good documentation and fewer issues.
+the package we have here checks all the boxes for me so let's proceed to the next step.
+for step 3 we're going to install the package using the npm cli.
+the command is right here on this page.
+it is a little outdated though as dash dash save is not required anymore.
+copy npm install upper hyphen case head back to vs code.
+and within the project folder paste the command.
+after running the command you will see a progress bar as npm fetches the package.
+the package will be downloaded from the registry and installed in a folder called node modules.
+in package.js.
+on a dependencies field will be created and updated with the package team and installed version.
+in our case the version is 2.0.2.
+you will also see a package log.json file created which will happen when ever you add your first dependency.
+for subsequent packages the same file will be updated.
+this file simply keeps track of the packages and versions installed in a project ensuring there is no inconsistency when someone else installs the same packages.
+so this is how we install an npm package in our project.
+on a side note if you want to uninstall a package you can run npm uninstall followed by the package name which is uppercase in our scenario.
+as an exercise I want you to run this command and observe the changes in package.json package lock.json and the node modules folder.
+pause the video and give it a try.
+alright in the next video let's learn how to use this uppercase package that we have just installed thank you for watching and I'll see you in the next one"

@@ -1,31 +1,31 @@
-"welcome back so far we've seen the order of execution taking into account synchronous code the micro task queues and the timer queue.
+((((((((((""welcome back so far we've seen the order of execution taking into account synchronous code the micro task queues and the timer queue.
  in this video let's add Io q into the picture.
- a friendly reminder that you should have watched the previous three videos before proceeding.
- I would like to begin this video by mentioning to queue a callback function into the io q there are a number of methods.
- most of the async methods from the built-in modules cue the Callback function in the io q.
+ (((((((((("a friendly reminder that you should have watched the previous three videos before proceeding.
+ (((((((((("I would like to begin this video by mentioning to queue a callback function into the io q there are a number of methods.
+((((((((((" most of the async methods from the built-in modules cue the Callback function in the io q.
  for this video I will be using the read file method from FS module.
- let's head back to vs code and run our next experiment.
+ (((((((((("let's head back to vs code and run our next experiment.
  for experiment number six I will be starting fresh.
- let me copy paste the code to save us some time.
+((((((((((" let me copy paste the code to save us some time.
  all right let's walk through the code.
- first we are importing the fs module.
+ (((((((((("first we are importing the fs module.
  next we invoke the read file method on the fs module.
- we are reading the current file contents but that is not relevant as evident from the Callback function.
+ (((((((((("we are reading the current file contents but that is not relevant as evident from the Callback (function.
  we are ignoring the arguments and simply logging this is read file 1.
-after the call to read file we are queuing up a callback in the next queue and a callback in the promise queue.
+(((((((((("after the call to read file we are queuing up a callback in the next queue and a callback in the promise queue.
  really simple as you can see.
- want you to now pause the video and try figure out the output.
+ (((((((((("want you to now pause the video and try figure out the output.
  all right if I run node index.
- you can see next tick log statement first followed by promise resolve followed by read file.
+ (((((((((("you can see next tick log statement first followed by promise resolve followed by read file.
  from this we can infer callbacks in the micro task queues are executed before callbacks in the io q.
- me now help you visualize the execution with the event Loop.
+ (((((((((("me now help you visualize the execution with the event Loop.
  when the call stack executes all statements in our code snippet.
-we end up with one callback in the next queue.
+(((((((((("we end up with one callback in the next queue.
 one in the promise queue.
- and one in the io q.
+ (((((((((("and one in the io q.
 now there is no further code to execute and control and does the event Loop.
- here next a queue gets top priority followed by promise queue which is Then followed by Io q.
-first call back from the next stick queue is dq’d and executed which locks a message to the console.
+ (((((((((("here next a queue gets top priority followed by promise queue which is Then followed by Io q.
+(((((((((("first call back from the next stick queue is dq’d and executed which locks a message to the console.
  now that the next queue is empty event Loop proceeds to the promise queue.
  the Callback is dq’d and executed on the call stack logging a message to the console.
  at this point the promise queue is empty and the event Loop proceeds to the timer queue.
@@ -35,75 +35,75 @@ first call back from the next stick queue is dq’d and executed which locks a m
  if this is clear let's now jump to the next experiment.
  for experiment number seven let me copy paste a slightly different code snippet.
  this time we still have the same FS do tread file and the log statement in the Callback function but instead of queuing up the micro task queues we are queuing up the timer queue using set timeout with zero second delay.
-i want you to now pause and figure out the output.
+(((((((((("i want you to now pause and figure out the output.
  all right let's see if you got this rite.
  I going to run node index.
- we see the output read file 1 followed by set timeout 1.
+ (((((((((("we see the output read file 1 followed by set timeout 1.
 now this may or may not be the output you expected.
- why do I phrase it like that.
+ (((((((((("why do I phrase it like that.
  well let me rerun node index a couple of times to show you a strange Behavior.
  you can see in every run the output doesn’t seem to be consistent.
- we have read file 1 followed by set timeout 1 but in the very next run we have set timer at 1 followed by read file 1.
-and this inconsistency seems to keep up.
+ (((((((((("we have read file 1 followed by set timeout 1 but in the very next run we have set timer at 1 followed by read file 1.
+(((((((((("and this inconsistency seems to keep up.
 and let me tell you this is bound to happen when you run the code several times in your computer as well.
- you simply cannot guarantee the Callback function from set timeout with a delay of 0 milliseconds will run before the Callback pass to read file.
+((((((((((" you simply cannot guarantee the Callback function from set timeout with a delay of 0 milliseconds will run before the Callback pass to read file.
  and this will be our inference from the seventh experiment.
- when running set timeout with a delay of 0 milliseconds.
+ (((((((((("when running set timeout with a delay of 0 milliseconds.
  along with an I o Async method the order of execution can never be guaranteed.
- Of course this wouldn't be a code evolution video if I haven't guessed already that your next question is why can the order of execution never guaranteed.
- let's understand that now as it out.
+ (((((((((("Of course this wouldn't be a code evolution video if I haven't guessed already that your next question is why can the order of execution never guaranteed.
+ (((((((((("let's understand that now as it out.
  the anomaly is because of how a minimum delay is set for timers.
- in Google Chrome if you can search chromium Dom timer C ++ file and click on the first link.
- it takes you to the C plus plus code for the dom timer.
+ (((((((((("in Google Chrome if you can search chromium Dom timer C ++ file and click on the first link.
+ (((((((((("it takes you to the C plus plus code for the dom timer.
  here if you search for Dom timer colon colon Dom timer we will come across a very interesting piece code.
-With in the function body we are calculating the interval in milliseconds.
- but the calculation seems to be maximum of 1 millisecond or the user passed an interval multiplied by one millisecond.
- which means if V pass in 0 milliseconds the interval is maximum of 1 comma 0which is 1.
-this will result in a one millisecond set timeout delay.
+(((((((((("With in the function body we are calculating the interval in milliseconds.
+ (((((((((("but the calculation seems to be maximum of 1 millisecond or the user passed an interval multiplied by one millisecond.
+ (((((((((("which means if V pass in 0 milliseconds the interval is maximum of 1 comma 0which is 1.
+(((((((((("this will result in a one millisecond set timeout delay.
  it seems that node.js follows a similar implementation.
  when you set 0 milliseconds delay it overrides to one milliseconds delay.
- but how does the one millisecond delay affect the order of the two log statements.
+ (((((((((("but how does the one millisecond delay affect the order of the two log statements.
  let's understand that.
- when you set 0 milliseconds delay at the start of the event Loop node.js needs to figure out if the one millisecond timer has elapsed or not.
-if event Loop enters the timer at 0.05millisecondsthe one millisecond callback hasn't been queued and the control moves on to thelion executing the read file callback.
- in the next iteration of the event Loop the timer Q callback will be executed.
- on the other hand if the CPU is busy and enters the timer Queue at 1.01millisecondstimer would have elapsed and the Callback function which is queued in the timer queue is executed first.
- the control will then proceed to ion and the read file callback will be executed.
- because of this uncertainty in how busy the CPU can be and zero milliseconds delay being overwritten as one millisecond delay we can never guarantee the order of execution between a zero millisecond timer and an I o callback.
- it is a slightly Advanced topic to understand but hopefully the explanation was clear enough.
- and that concludes our seventh experiment.
+ (((((((((("when you set 0 milliseconds delay at the start of the event Loop node.js needs to figure out if the one millisecond timer has elapsed or not.
+(((((((((("if event Loop enters the timer at 0.05millisecondsthe one millisecond callback hasn't been queued and the control moves on to thelion executing the read file callback.
+ (((((((((("in the next iteration of the event Loop the timer Q callback will be executed.
+ (((((((((("on the other hand if the CPU is busy and enters the timer Queue at 1.01millisecondstimer would have elapsed and the Callback function which is queued in the timer queue is executed first.
+ (((((((((("the control will then proceed to ion and the read file callback will be executed.
+ (((((((((("because of this uncertainty in how busy the CPU can be and zero milliseconds delay being overwritten as one millisecond delay we can never guarantee the order of execution between a zero millisecond timer and an I o callback.
+((((((((((" it is a slightly Advanced topic to understand but hopefully the explanation was clear enough.
+ (((((((((("and that concludes our seventh experiment.
  all right for the eighth experiment.
- which would be the final experiment in this video Let's understand the order of execution of callbacks in microtask queues timer queue and io q combined.
- once again I'm going to copy paste code to save us some time.
+ (((((((((("which would be the final experiment in this video Let's understand the order of execution of callbacks in microtask queues timer queue and io q combined.
+ (((((((((("once again I'm going to copy paste code to save us some time.
  let me walk you through the code.
- first we have the fs module import with an invoke read file and pass in a callback function that locks a message to the console.
- next we have process Dot next Dick which will add a callback function into the next stick queue.
- similarly we have promise.Resolve which will add a callback function to the promise queue.
- finally we have set timeout which locks message to the console as well.
+ (((((((((("first we have the fs module import with an invoke read file and pass in a callback function that locks a message to the console.
+ (((((((((("next we have process Dot next Dick which will add a callback function into the next stick queue.
+ (((((((((("similarly we have promise.Resolve which will add a callback function to the promise queue.
+ (((((((((("finally we have set timeout which locks message to the console as well.
  now as it stands we still have run into the timer issue we saw in the last experiment.
- to make sure we avoid that I'm going toad a for Loop that does nothing.
+ (((((((((("to make sure we avoid that I'm going toad a for Loop that does nothing.
  however it will ensure that when control enters the timer queue the set timer timer has elapsed and the Callback is ready to be executed.
- pause for a minute and try figure out the output.
+ (((((((((("pause for a minute and try figure out the output.
  all right let me run node index.
- we see next tick callback first followed by promise callback followed by timer callback and at the end IO callback.
- from this we can infer io q callbacks are executed after microtask queue callbacks and timer queue callbacks.
- visualization is also pretty straight forward.
+ (((((((((("we see next tick callback first followed by promise callback followed by timer callback and at the end IO callback.
+ (((((((((("from this we can infer io q callbacks are executed after microtask queue callbacks and timer queue callbacks.
+ (((((((((("visualization is also pretty straight forward.
  when the call stack executes all statements we end up with one callback in the next queue.
- one in the promise queue .
+ (((((((((("one in the promise queue .
 one in the timer queue.
  and one in the io q.
- their is no further code to execute and control enters the event glue.
+ (((((((((("their is no further code to execute and control enters the event glue.
  first call back from the next EQ is d’s and executed which locks a message to the console.
- now that the next queue is empty event Loop proceeds to the promise queue.
+ (((((((((("now that the next queue is empty event Loop proceeds to the promise queue.
  the Callback is d’s and executed on the call stack.
  logging a message to the console.
- at this point the promise queue is empty and the event Loop proceeds to the timer queue.
+ (((((((((("at this point the promise queue is empty and the event Loop proceeds to the timer queue.
  the Callback function is dq’d and executed.
- finally the event Loop proceeds to the io q.
+ (((((((((("finally the event Loop proceeds to the io q.
 we have one callback which is dq’d and executed resulting in the final log message in the console.
- hopefully this makes sense. 
+((((((((((" hopefully this makes sense. 
 well that is about the ion and its priority in the event Loop.
- thank you for watching please do leave alike if you are enjoying the videos as it helps out a lot with the YouTube algorithm I'll see you in the next one"
+ (((((((((("thank you for watching please do leave alike if you are enjoying the videos as it helps out a lot with the YouTube algorithm I'll see you in the next one"
 
 
 

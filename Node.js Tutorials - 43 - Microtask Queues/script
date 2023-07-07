@@ -1,1 +1,130 @@
-"welcome back in the previous video wehad a look at the event Loop in node.jswith the help of a visual representationwe were able to form a mental model ofhow async code is executedwe also learned that the event Loopcomprises of six different queuestwo microtask queues namely next queueand promise queuea timer queue an input output queue acheck queue and finally a close queuein each Loop callback functions are dq'dwhen appropriate and executed on thecall stackif these points are clear let us nowunderstand better the order of executionof a few asynchronous methods in node.jsby understanding with code I hope you'llbe able to remember this visualizationfor a long timeand similar to the thread pool we aregoing to do this by running a fewexperiments and making a note of theinference of each experimentlet's beginfor our first set of experiments we aregoing to deal with only the twomicrotask queuesbefore we run our experiment I want toexplain how we can queue up a callbackfunction in each of these queuesto queue a callback function into thenext tick queue we use a built-inprocess dot next tick methodthe syntax is as followsprocess dot next stickand this accepts a callback functionwhen process.nextstick is executed onthe call stack the pass in callbackfunction will be on queued in the nextstick queuereally simple as you can seenow to queue up a callback function intothe promise queue there are a fewdifferent ways but for our experimentswe just have to know onethe method we will be using is promisedot resolve dot then with a callbackfunctionwhen the promise results the functionpassed into then block is a functionthat will be queued up in the promisequeuehopefully the syntax is clearnow that we understand how to addfunctions into the micro task queueslet's start with our first experimentback in vs code I'm going to start freshwith an empty index.js fileI'm going to start with two lockstatementsconsole log 1 and console log 2. now inbetween the two log statements I'm goingto call processDot nextickand to this method I'm going to pass ina callback function that simply logs amessage to the consoleso Arrow functionconsole.logthis is process dot nextick oneI want you to now pause for a minute andtry against the output when we runindex.jsall right if I now run the codeyou can see we have console.log1console.log 2 and then this is processdot next stick onethis brings us to our first inferencein node.jsall user written synchronous JavaScriptcode takes priority over async code thatthe runtime would like to eventuallyexecutein our experimentwe see that the two console logstatements are executed before theCallback function passed to process dotnext decklet me help you visualize this executionnow I will apologize in advance as thereis too little space and too much to fitinon the left we have the call stack andthe console to see the outputon the right we have the event LoopI will switch between the slide and vscode as there is not enough space herefor the code snippetfirst we have console.logit is pushed onto the call stack logsthe corresponding message in the consoleand is popped off the stacknext we have process Dot nextdickthis gets executed on the call stackqueues up a callback function into thenext queueand is popped off the stackwe still have user written code toexecute so the Callback function has towait for its turnexecution moves onand console.log is pushed onto the stackthe message is logged to the consoleand the function is popped off the stacknow there is no more user writtensynchronous code to execute and controlenters the event Loopthe Callback function from next to queueis DQpushed onto the stackconsole.log is pushed onto the stackexecuted and the corresponding messageis logged to the consoleconsole log and the Callback functionare then popped off the stackhopefully this makes it easier tounderstand our first experimentall right let's move on to our secondexperimentI'm going to comment out the firstexperiment and start fresh from the topfor this experiment we're going to focusonly on the two micro task queuesfirst I'm going to queue up a callbackfunction in the promise queuepromise dot resolve dot thenwe're going to pass in a callbackfunctionthis is promisedot Result Onenext I'm going to queue up a function inThe Next Step queueprocess dot next stick accepts acallback functiona recon's a logthis is process.nic stick oneI want you to again pause for a minuteand try guess the outputall right if I run node indexyou can see the next tick message isprinted before the promise messageand this is our inference for the secondexperimentall callbacks in next queue are executedbefore callbacks in promise queueonce again let me help you visualize theexecutionI'll be a little quick as it is thesecond time we're doing thiswhen the call stack executes Line 1it will queue the console log functionin the promise queuewhen the call stack executes line 2 itwill queue the Callback function in thenext stick queueafter line 2 there is no more userwritten code to executethe control enters the event Loopin the event Loop next take queue getspriority over promise queue and that isjust how the source code is writtenpayment Loop executes the next IQcallback functionlocks the appropriate messageand then executes the promise queuecallback functionlogging the appropriate messagewhen all code is executed in the consolewe see process.nextstick and thenpromise.resolvehopefully this makes senseif it does let me walk you through amore elaborate version of this secondexperimentexperiment 2.1 if I can call it thatI'm going to comment out Experiment 2and then copy paste the code forexperiment 3 to save us some timelet me walk you through what I have herewe have three calls to process dot nextdeckand three promise dot resultsin each of the Callback functions we logthe appropriate message this isprocess.nic stick one next to two andnext stick 3.similarlypromise.resolve 1 result 2 and resolve3.however inside the secondprocess dot next stick and secondpromise.resolve we have an additionalprocess dot nextick methodfrom the callbacks passed inwe log this is the inner next stickinside next stick and this is the innernext tag inside promiseplease pause the video to understand thecode we have hereall right I want you to now take anadditional pause for as long as it takesto try figure out what the order ofexecution is in this code snippetif you have understood the secondexperiment inference you should be ableto get thisit's a really good exercise so pleasepause the video and give it a tryalright if I now run node indexyou can see we have process dot nextickone two and three and then this is theinner next tag inside next stickthat is followed by promise.resolve onetwo and three and finally this is theinner neck stick inside promise thenblocklet me know in the comment section ifyou got this rightif you didn't let me help you understandonce again we are going to rely onvisual explanation as I feel that worksthe bestI will however omit the call stack fromthe visualization to speed up theexplanationnow when the call stack executes all thesix statementsthere are three callbacks in the nextqueue and three in the promise queuethere is no further code to execute andcontrol enters the event Loopas we know the next EQ gets priorityfirst callback is executedand the console log statement isexecuted logging the correspondingmessagenext the second callback function isexecuted which logs the second logstatementthis time though the Callback functioncontains another call to process Dotnextstickthis will queue up the inner Tech logstatement at the end of the next queuenode will then execute nextstick 3callbackinitially there were only threecallbacks but the second callback addedanother callback to the queueevent Loop will push the inner next tickcallback and the console log statementis executedhopefully the first four lock statementsmake sensenow the next queue is empty and controlmoves on to the promise queueand this is similar to the next queuepromise.resolve 1 is loggedfollowed by promise dot result 2.now there is a call to process dotnextdick which adds a function to thenext stick queuehowever the control is still insidepromise queue and will continue toexecute other callback functionswithin C promise Dot resolve3 and atthis point the promise queue is emptynode will once again check if there arenew callbacks in the micro task queuessince there is one in the next queue itwill go ahead and execute thatwhich explains our last log statementa slightly Advanced experiment but theinference Remains the Sameall callbacks in the next queue areexecuted before all callbacks in thepromise queuenow there is one point I would like tomention before we wind up this videoand that is the use of process.nextec isdiscouraged as it can cause the rest ofthe event Loop to starveif you endlessly call process.nextstickthe control will never make it past themicro task queueeven if you were to have a large numberof next dig calls you are effectivelystarving the ioq from getting to run itsown call bagsaccording to the docs there are two mainreasons to use process.nextstickone to allow users to handle errorsclean up any then unneeded resources orperhaps try the request again before theevent Loop continuesand two to allow a callback to run afterthe call stack has Unwound but beforethe event Loop continuesplease do make sure you know what you'redoing when using process Dot nextstickwith that I hope you now have a clearidea of the order of execution for themicro task queuesthank you for watching and if you'reenjoying the videos please do leave alike as it helps a lot with the YouTubealgorithm I'll see you in the next one"
+((((((((((((("welcome back in the previous video we had a look at the event Loop in node.js.
+with the help of a visual representation we were able to form a mental model of how async code is executed.
+((((((((((((("we also learned that the event Loop comprises of six different queues.
+two microtask queues namely next queue and promise queue.
+((((((((((((("a timer queue an input output queue a check queue and finally a close queue.
+
+
+((((((((((((("in each Loop callback functions are dq'd when appropriate and executed on the call stack.
+if these points are clear let us now understand better the order of execution of a few asynchronous methods in node.js.
+
+((((((((((((("by understanding with code I hope you'll be able to remember this visualization for a long time.
+((((((((((((("and similar to the thread pool we are going to do this by running a few experiments and making a note of the inference of each experiment.
+
+((((((((((((("let's begin.
+for our first set of experiments we are going to deal with only the two microtask queues.
+((((((((((((("before we run our experiment I want to explain how we can queue up a callback function in each of these queues.
+((((((((((((("to queue a callback function into the next tick queue we use a built-in process dot next tick method.
+the syntax is as follows.
+((((((((((((("process dot next stick.
+and this accepts a callback function when process.next stick is executed on the call stack the pass in callback function will be on queued in the next stick queue.
+((((((((((((("really simple as you can see.
+((((((((((((("now to queue up a callback function into the promise queue there are a few different ways but for our experiments we just have to know one.
+((((((((((((("the method we will be using is promise dot resolve dot then with a callback function.
+when the promise results the function passed into then block is a function that will be queued up in the promise queue.
+((((((((((((("hopefully the syntax is clear.
+now that we understand how to add functions into the micro task queues let's start with our first experiment.
+((((((((((((("back in vs code I'm going to start fresh with an empty index.js file.
+I'm going to start with two lock statements.
+((((((((((((("console log 1 and console log 2.
+now in between the two log statements I'm going to call process Dot next tick and to this method I'm going to pass in a callback function that simply logs a message to the console.
+((((((((((((("so Arrow function.
+console.log.
+this is process dot next stick one.
+((((((((((((("I want you to now pause for a minute and try against the output when we runindex.js.
+all right if I now run the code.
+((((((((((((("you can see we have console.log1console.log 2 and then this is process dot next stick one this brings us to our first inference.
+((((((((((((("all user written synchronous JavaScript code takes priority over async code that the runtime would like to eventually execute in our experiment.
+((((((((((((("we see that the two console log statements are executed before the Callback function passed to process dot next deck.
+((((((((((((("let me help you visualize this execution.
+now I will apologize in advance as there is too little space and too much to fit in.
+((((((((((((("on the left we have the call stack and the console to see the output.
+on the right we have the event Loop I will switch between the slide and vs code as there is not enough space here for the code snippet.
+((((((((((((("first we have console.log.
+it is pushed onto the call stack logs the corresponding message in the console and is popped off the stack.
+((((((((((((("next we have process Dot next stick.
+((((((((((((("this gets executed on the call stack queues up a callback function into the next queue and is popped off the stack e still have user written code to execute so the Callback function has to wait for its turn.
+((((((((((((("execution moves on.
+and console.log is pushed onto the stack.
+the message is logged to the console.
+((((((((((((("and the function is popped off the stack.
+now there is no more user written synchronous code to execute and control enters the event Loop.
+((((((((((((("the Callback function from next to queue is DQ.
+((((((((((((("pushed onto the stackconsole.log is pushed onto the stack executed and the corresponding messageis logged to the console.
+((((((((((((("console log and the Callback function are then popped off the stack.
+hopefully this makes it easier to understand our first experiment.
+all right let's move on to our second experiment.
+((((((((((((("I'm going to comment out the first experiment and start fresh from the top.
+for this experiment we're going to focus only on the two micro task queues.
+((((((((((((("first I'm going to queue up a callback function in the promise queue.
+promise dot resolve dot then.
+we're going to pass in a callback function.
+((((((((((((("this is promise dot Result One.
+next I'm going to queue up a function in The Next Step queue process dot next stick accepts a callback function a recon's a log this is process.nic stick one.
+((((((((((((("I want you to again pause for a minute and try guess the output.
+all right if I run node index.
+((((((((((((("you can see the next tick message is printed before the promise message.
+and this is our inference for the second experiment.
+((((((((((((("all callbacks in next queue are executed before callbacks in promise queue.
+once again let me help you visualize the execution.
+((((((((((((("I'll be a little quick as it is the second time we're doing this.
+when the call stack executes Line 1.
+((((((((((((("it will queue the console log function in the promise queue.
+when the call stack executes line 2 it will queue the Callback function in the next stick queue.
+after line 2 there is no more user written code to execute.
+((((((((((((("the control enters the event Loop.
+in the event Loop next take queue gets priority over promise queue and that is just how the source code is written.
+((((((((((((("payment Loop executes the next IQ callback function locks the appropriate message.
+and then executes the promise queue callback function logging the appropriate message.
+((((((((((((("when all code is executed in the console we see process.next stick and then promise.resolve.
+((((((((((((("hopefully this makes sense.
+if it does let me walk you through a more elaborate version of this second experiment.
+((((((((((((("experiment 2.1 if I can call it that.
+I'm going to comment out Experiment 2and then copy paste the code for experiment 3 to save us some time.
+((((((((((((("let me walk you through what I have here.
+we have three calls to process dot next deck and three promise dot results.
+in each of the Callback functions we log the appropriate message this is process.nic stick one next to two and next stick 3.
+Similarly promise.resolve 1 result 2 and resolve3.
+however inside the second process dot next stick and second promise.resolve we have an additional process dot next tick method.
+from the callbacks passed in we log this is the inner next stick inside next stick and this is the inner next tag inside promise.
+please pause the video to understand the code we have here.
+all right I want you to now take an additional pause for as long as it takes to try figure out what the order of execution is in this code snippet.
+if you have understood the second experiment inference you should be able to get this.
+it's a really good exercise so please pause the video and give it a try alright if I now run node index.
+you can see we have process dot next Tick one two and three and then this is the inner next tag inside next stick.
+that is followed by promise.resolve one two and three and finally this is the inner neck stick inside promise then block.
+let me know in the comment section if you got this right.
+if you didn't let me help you understand.
+once again we are going to rely on visual explanation as I feel that works the best.
+I will however omit the call stack from the visualization to speed up the explanation.
+now when the call stack executes all the six statements.
+there are three callbacks in the next queue and three in the promise queue.
+there is no further code to execute and control enters the event Loop.
+as we know the next EQ gets priority first callback is executed and the console log statement is executed logging the corresponding message.
+next the second callback function is executed which logs the second log statement.
+this time though the Callback function contains another call to process Dot next stick this will queue up the inner Tech log statement at the end of the next queue.
+node will then execute next stick 3callbackinitially there were only three callbacks but the second callback added another callback to the queue.
+event Loop will push the inner next tick callback and the console log statement is executed.
+hopefully the first four lock statements make sense now the next queue is empty and control moves on to the promise queue.
+and this is similar to the next queue.
+promise.resolve 1 is logged.
+followed by promise dot result 2.
+now there is a call to process dot next tick which adds a function to the next stick queue.
+however the control is still inside promise queue and will continue to execute other callback functions.
+within C promise Dot resolve3 and at this point the promise queue is empty.
+node will once again check if there are new callbacks in the micro task queues.
+since there is one in the next queue it will go ahead and execute that.
+which explains our last log statement.
+a slightly Advanced experiment but the inference Remains the Same.
+all callbacks in the next queue are 0executed before all callbacks in the promise queue.
+now there is one point I would like to mention before we wind up this video.
+and that is the use of process.next tick is discouraged as it can cause the rest of the event Loop to starve.
+if you endlessly call process.next stick the control will never make it past the micro task queue.
+even if you were to have a large number of next dig calls you are effectively starving the io q from getting to run its own call bags.
+according to the docs there are two main reasons to use process.next stick.
+one to allow users to handle errors clean up any then unneeded resources or perhaps try the request again before the event Loop continues.
+and two to allow a callback to run after the call stack has Unwound but before the event Loop continues.
+please do make sure you know what you're doing when using process Dot next stick.
+with that I hope you now have a clear.
+idea of the order of execution for the micro task queues.
+thank you for watching and if you're enjoying the videos please do leave alike as it helps a lot with the YouTube algorithm I'll see you in the next one"

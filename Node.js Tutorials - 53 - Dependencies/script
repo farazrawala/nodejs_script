@@ -1,2 +1,27 @@
-"in this video Let's quickly take a lookat the dependencies field inpackage.json which is very veryimportant for managing installedpackagesif you can recollect from the previousvideo the dependencies field was createdand populated when we installed theuppercase packagenow this dependencies field is a way fornpm to track the packages that arerequired for the functioning of our codecurrently our project depends on theuppercase packagewhere this list comes in really handy iswhen you work with Version Controlin a real world application thedependencies list might contain anywherebetween 5 and 50 different npm packagesall the code would be present in thenode modules folderand this folder can be megabytes in sizeinstead of committing this folder toSource control we will get ignore itwhich means when another developer inour team clones the code they will nothave the node modules folderlet me delete it to mimic the scenarioif we now rerun node indexyou can see we have an errorcannot find module upper hyphen caseso the developer now understands theyneed to install one or more modules orpackages that our project is dependentonand that list of packages as you mighthave already guessed is what thedependencies field representsour project has one dependency which wecan install using the commandnpm install upper hyphen casenow if it is just the one package surewe can run this command but what ifthere are 50 packagesdo we need to install them one at a timewell no this is where the npm CLI comesin handyin the terminal we can run the commandnpm installthis will scan package.json for anydependenciesand automatically install themyou can see the node modules folder isregeneratedwe can now go about our normaldevelopment workwe run node indexand our tiny project continues to workas expectedthis is the role of the dependenciesfield in package.json configuration filehopefully you're slowly able tounderstand the need of a package managersuch as npmthank you for watching and I'll see youin the next video"
-/w
+in this video Let's quickly take a look at the dependencies field in package.json which is very very important for managing installed packages.
+if you can recollect from the previous video the dependencies field was created and populated when we installed the uppercase package.
+now this dependencies field is a way for npm to track the packages that are required for the functioning of our code.
+currently our project depends on the uppercase package.
+where this list comes in really handy is when you work with Version Control.
+in a real world application the dependencies list might contain anywhere between 5 and 50 different npm packages.
+all the code would be present in the node modules folder.
+and this folder can be megabytes in size.
+instead of committing this folder to Source control we will get ignore it.
+which means when another developer in our team clones the code they will not have the node modules folder.
+let me delete it to mimic the scenario.
+if we now rerun node index.
+you can see we have an error cannot find module upper hyphen case.
+so the developer now understands they need to install one or more modules or packages that our project is dependent on.
+and that list of packages as you might have already guessed is what the dependencies field represents.
+our project has one dependency which we can install using the command.
+npm install upper hyphen case.
+now if it is just the one package sure we can run this command but what if there are 50 packages do we need to install them one at a time.
+well no this is where the npm CLI comes in handy.
+in the terminal we can run the command npm install.
+this will scan package.json for any dependencies and automatically install them.
+you can see the node modules folder is regenerated.
+we can now go about our normal development work.
+we run node index and our tiny project continues to work as expected.
+this is the role of the dependencies field in package.json configuration file.
+hopefully you're slowly able to understand the need of a package manager such as npm.
+thank you for watching and I'll see you in the next video"
