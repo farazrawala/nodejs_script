@@ -71,236 +71,275 @@ The second function is popped off the stack and the console is locked.
 log function is again pushed onto the stack.
 second is locked to the console and the function is popped off the stack.
 
-
+The function is placed into the stack after 3ms of execution, on line 3.
+The third person can't leave the system. 
 ((((((((((((("finally execution is on line three and at three milliseconds function is pushed onto the stack.
 third is locked to the console.
 
-
+to remove the function from the stack.
+There is no more code to run, and Global has been removed as well.
+With the node runtime, this is essentially how synchronous code execution looks.
 ((((((((((((("and the function is popped off the stack.
 there is no more code to execute and Global is also popped off.
 this is pretty much how synchronous code execution can be visualized with the node runtime.
 
-
+Let's investigate async NES code execution next.
+There's some more code over on the left.
 ((((((((((((("next let's take a look at async nes code execution.
 on the left we have another code snippet.
 
-
+Similar to previously, there are three log statements, but this time one of them is within a callback function that is sent to FS dot read file. 
 ((((((((((((("three log statements like before but this time the second log statement is within a callback function passed to FS dot read file.
 
-
+once more, let's assume the runtime is executing the code and go over it line by line. 
 ((((((((((((("let us once again walk through the code as if the runtime is executing it.
 
-
+Every main loop begins execution in the global scope, which causes the global function to be placed onto the stack.
 ((((((((((((("the main thread of execution always starts in the global scope so the global function is pushed onto the stack.
 
-
+Line one, millisecond console, here comes the execution.Pushing log onto the stack.
+Initially, a console login is made.
 ((((((((((((("execution comes to line one at one millisecond console.log is pushed onto the stack.
 first is logged in the console.
 
-
+the procedure gets removed from the stack.
+The second line of execution has begun.
 ((((((((((((("and the function is popped off the stack.
 execution now moves on to line two.
 
-
+increase by 2 ms The procedure to read the file is placed on the stack.
+Read file is an async action that is offloaded to libue, as I described in the last lesson. 
 ((((((((((((("add 2 milliseconds the read file method gets pushed onto the stack.
 in the earlier lecture I mentioned that read file is an async operation that is offloaded to libue.
 
-
+So now libue is responsible for executing the Callback function.
+As soon as line 2 has completed executing, JavaScript removes the read 5 function off the call stack.
 ((((((((((((("so what happens now is that the Callback function is handed over to libue.
 JavaScript then simply pops off the read 5 method from the call stack because its job is done as far as execution of line 2 is concerned.
 
-
+The attractiveness initiates a parallel read of the file's contents in the background.
+JavaScript continues to line 5 at 3 ms. 
 ((((((((((((("in the background the beauty starts to read the file contents on a separate thread.
 at 3 milliseconds JavaScript proceeds to line 5.
 
-
+The log function is pushed onto the stack.
+Locking third down to the control panel.
 ((((((((((((("it pushes the log function onto the stack.
 third gets locked to the console.
 
-
+the procedure gets removed from the stack.
+The call stack is currently empty since there is no more user-supplied code in the current global scope.
 ((((((((((((("and the function is popped off the stack.
 now there is no more user written code in the global scope to execute so the call stack is empty.
 
-
+Let's assume the thread pool finishes the file read operation in roughly 4 ms.
+The call stack has been updated to include the designated callback function.
 ((((((((((((("at about 4 milliseconds let's say that the file read task is completed in the thread pool.
 the associated callback function is now pushed onto the call stack.
 
-
+We have a log statement in our Callback function.
+function is plucked off the call stack and the console is locked after that.
+when the Callback function is terminated since it has completed all of its statements.
 ((((((((((((("within the Callback function we have the log statement.
 that is pushed onto the call stack second is locked to the console and the function is popped off.
 as there are no more statements to execute in the Callback function that is popped off as well.
 
+the stack is empty and the "global function," as we term it, is removed.
+The console output will show "third" and "second" sequentially.
+In this manner, the node runtime will carry out an FS dot read file snippet asynchronously.
 
+the stack is empty and the "global function," as we term it, is removed.
+The console output will show "third" and "second" sequentially.
+In this manner, the node runtime will carry out an FS dot read file snippet asynchronously.
 ((((((((((((("no more code to run so the global function as we call it is also popped off the stack.
 the console output is going to read first third and then second.
 this is how the node runtime executes an asynchronous code snippet that uses FS dot read file.
 
-
+The same technique of execution is valid for all asynchronous methods.
+The way code is executed in the node runtime should now be obvious to you.
+If you've made it this far, I'd like to test your comprehension with a few inquiries.
 ((((((((((((("similar execution holds good for other async methods as well.
 I hope it is clear to you as to how code is executed in the node runtime.
 now if you've understood this far let me ask you a few questions.
 
-
+when liby's async task finishes.
 ((((((((((((("whenever an async task completes in liby.
 
-
+Does node wait for the call stack to be empty before executing the callback code, or does it pause regular execution to execute the callback function?
 ((((((((((((("at what point does node decide to run the associated callback function on the call stack 
 does it wait for the call stack to be empty or does it interrupt the normal flow of execution to run the Callback function.
 
-
+The execution of the callback function can be delayed using async techniques such as set timeout or set interval.
 ((((((((((((("what about async methods like set timeout and set interval which also delay the execution of callback function.
 
-
+When many F2 asynchronous actions, such set timeout and Fs dot read file, finish at the same time, how does node prioritise which callback function to execute?
 ((((((((((((("F2 async tasks such as set timeout and Fs dot read file complete at the same time how does node decide which callback function to run first on the call stack.
 
-
+whether one comes first, if any.
+We just do not know at this time.
 ((((((((((((("does 1 get priority over the other.
 at the moment we simply don't know.
 
-
+The inner workings of the node runtime appear to be more complicated than we realised just when we thought we had a handle on them.
 ((((((((((((("just when we thought we understood how code is executed behind the scenes in the node runtime it seems to have become more complex.
 
-
+Let me assure you that learning about the event Loop, the heart of liby, will answer all your questions. 
 ((((((((((((("well let me tell you all these questions can be answered by understanding about the core part of liby which is the event Loop.
 
-
+the event Loop is now, what is it Yes, it's true that it's only a C programme.
+The execution of synchronous and asynchronous code in node.js is orchestrated by a design pattern known as the event loop.
 ((((((((((((("now what is the event Loop well technically it is just a c program.
 but you can think of event loop as a design pattern that orchestrates or coordinates the execution of synchronous and asynchronous code in node.js.
 
-
+Now we'll learn the event Loop's inner workings in two stages.
+In this video, we'll analyse an illustration of the event loop. 
 ((((((((((((("and the way we are going to understand how the event Loop works is a two-step process.
 in this video we will take a look at a visual representation of the event Loop.
 
-
+It will provide a high-level summary of the event Loop's constituent pieces; in the subsequent films, we'll dive further into the visual representation through a series of coding experiments.
 ((((((((((((("that will give you a brief overview of the different parts that come together in the event Loop and then over the next few videos we will conduct various experiments with code to better understand the visual representation.
 
-
+The event Loop is shown here for your viewing pleasure.
 ((((((((((((("all right here is how we can visualize the event Loop.
 
-
+I'd want to take a moment to give credit where credit is due to deepaljsekara, whose post is where I first came across a depiction like this.
 ((((((((((((("I would like to pause and thank deepaljsekara who has written an article where I first 
 came across a similar representation
 
-
+I've found it to be incredibly helpful, and it's my responsibility to convey the same clarity to you. 
 ((((((((((((("it has been very useful for me and now my job is to make sure you easily understand this as well.
 
-
+The Time Has Come If your node lives forever, then so does the loop.The.js server-side application is now live.
 ((((((((((((("now the event Loop is a loop that is alive as long as your node.js application is up and running.
 
-
+Every time around the loop, we encounter a new set of cues (a total of six). Each queue stores a callback function that must be processed by the call stack at some point in the future.
 ((((((((((((("in every iteration of the loop we come across six different cues each queue holds one or more callback functions that need to be eventually executed on the call stack.
 
-
+Moreover, each queue has its own unique set of callback routines.
+First, there is a queue for callbacks related to setting a timeout or an interval.
 ((((((((((((("and of course the type of callback functions are different for each queue.
 first we have the timer queue this contains callbacks associated with set timeout and set interval.
 
-
+Second, we have the io q, which stores the callbacks for all the asynchronous methods we've seen.
 ((((((((((((("second we have the io q this contains callbacks associated with all the async methods that we have seen so far.
 
-
+techniques related to the fs and HTTP modules as examples.
+Finally, we have the check queue, which stores the callbacks for the set immediate function.
 ((((((((((((("example methods associated with the fs and HTTP modules.
 third we have the check queue now this contains the callbacks associated with a function called set 
 immediate.
 
-
+This is a node-only function that won't show up in your typical JavaScript for the browser.
 ((((((((((((("this function is specific to node and it's not something you would come across when writing JavaScript for the browser.
 
-
+ The fourth queue is the closure queue, which stores the callbacks related to an async task's close event.
 ((((((((((((("fourth we have the close queue this contains callbacks associated with the close event of an async task.
 
-
+We now have a central Queue for microtasks.
+There are two signals being sent here.
 ((((((((((((("finally we have a micro task Queue at the center.
 this is actually two separate cues.
 
-
+Next tick queue is the first queue and it stores callbacks related to a node.js-unique function named process dot next take.
+As a second indicator, we have the promise queue.
 ((((((((((((("The first queue is called Next tick queue and contains callbacks associated with a function called process dot next take which is again specific to node.js.
 the second cue is the promise queue.
 
-
+It stores the accompanying callbacks for the JavaScript native promise.
+Additionally, libue has useful features like timed IO check and close queues.
+Neither of these two microtasks is officially supported by libuee.
 ((((((((((((("which contains callbacks that are associated with the native promise in JavaScript.
 and one very important point to note is that timer IO check and close queues are all part of libue.
 the two microtask use however are not part of libuee.
 
-
+Hopefully the visual distinction will communicate that the node runtime is still there and plays a critical role in the dispatching of callbacks.
 ((((((((((((("hopefully the color difference conveys that never the less there's still part of the node runtime and play an important role in the order of execution of callbacks.
 
-
+which reminds me, let's analyse that next.
+Even though the arrowheads should serve as a dead giveaway, things may get confusing quickly. 
 ((((((((((((("speaking of which let's understand that next.
 the arrowheads are already a giveaway but it is very easy to get confused.
 
-
+So, allow me to break down the queue's hierarchical priorities for you.
 ((((((((((((("so let me explain the priority order of the queues.
 
-
+First, understand that the runtime will always prioritise synchronous user-written JavaScript code above asynchronous code. 
 ((((((((((((("first you should know that all user written synchronous JavaScript code takes priority 
 over asynchronous code that the runtime would like to execute.
 
-
+hence, the event Loop is not involved until the call stack is no longer being used.
+However, I must warn you that there are quite a few rules you need to get your head around in order to understand the sequence of execution within the event Loop. 
 ((((((((((((("which means only after the call stack is empty the event Loop comes into picture.
 within the event Loop though the sequence of execution follows certain rules and I will warn you there are quite a few rules you have to wrap your head around.
 
-
+One by one, let's examine them.
+In the first phase, microtask queue callbacks are processed.
 ((((((((((((("let's go over them one at a time.
 step one any callbacks in the micro task queues are executed.
 
-
+before jobs in the promise queue, work on the next queue.
+The second step is to run all of the timer queue's callbacks. 
 ((((((((((((("first tasks in the next queue and only then tasks in the promise queue.
 Step 2 all callbacks within the timer queue are executed.
 
-
+Every callback in the timer queue is executed, and then any step-3 callbacks in the micro task queues, if any.
 ((((((((((((("step 3 callbacks in the micro task queues if present are executed after the execution of every callback in the timer queue.
 
-
+once again, promise queue jobs will be completed before those in the following queue.
+step 4
 ((((((((((((("again first tasks in the next queue and then tasks in the promise queue.
 step 4.
 
-
+Each and every io q callback is processed.
+The fifth step is to run any callbacks that have been stored in the microtask queues.
 ((((((((((((("all callbacks within the io q are executed.
 step 5 callbacks in the micro task queues if present are executed.
 
-
+subsequently queue, then promise queue.
+All callbacks in the check queue are run in Step 6.
 ((((((((((((("next to queue followed by promise queue.
 step 6 all callbacks in the check queue are executed.
 
-
+If there are micro task queues, step 7 callbacks will be run after all check queue callbacks have completed.
 ((((((((((((("step 7 callbacks in the micro task queues if present are executed after the execution of every callback in the check queue.
 
-
+If there are micro task queues, step 7 callbacks will be run after all check queue callbacks have completed.
 ((((((((((((("again first tasks in the next IQ and then tasks in the promise queue.
 step 8 all callbacks in the close queue are executed.
 step 9 for one final time in the same Loop the micro task queues are executed.
 
-
+Afterwards, a queue, then a queue of promises.
 ((((((((((((("next a queue followed by promise queue.
 
-
+If further callbacks need to be handled, the loop is kept active for another round and the procedure is repeated.
 ((((((((((((("at this point if there are more call backs to be processed the loop is kept alive for one more run and the same steps are repeated.
 
-
+However, if all callbacks have been processed and the event Loop has nothing more to do, it will end. 
 ((((((((((((("on the other hand if all callbacks are executed and there is no more code to process the event Loop exits.
 
-
+This is how the event Loop in libuey is used to run asynchronous programming in node.js.
+Like you, I'm hoping that the questions we had just a few minutes ago have been answered. 
 ((((((((((((("this is the role libuey's event Loop plays in the execution of async code innode.js.
 I'm also hopeful that we now have answers to the questions we had a few minutes ago.
 
-
+The usual flow of execution will not be disrupted to run a callback function, which answers our first question; callback functions are executed only when the call stack is empty. 
 ((((((((((((("for our first question the answer is that callback functions are executed only when the call stack is empty the normal flow of execution will not be interrupted to run a callback function.
 
-
+Our second question has been answered; callbacks associated with the set timeout and set interval options are processed first. 
 ((((((((((((("for our second question we now know that set timeout and set interval callbacks are given first priority.
 
-
+in regards to the third question Previously, it was unclear which callback would be executed first in the event of a tie.
 ((((((((((((("for the third question We Now understand that timer callbacks are executed before IO callbacks even if both are ready at the exact same time.
 
-
+The relative importance of a few additional signals was also covered.
 ((((((((((((("apart from this we also learned about a few other cues that have their own priority.
 
-
+Under The Herd, however, this visual depiction of how node runs asynchronous code is what I want you to keep in mind.
 ((((((((((((("but this visual representation here is what I want you to imprint in your mind as it is 
 how node executes async code Under The Herd.
 
-
+If the event Loop's purpose is now apparent, then in the next videos we'll do some tests to figure out and confirm the event Loop's execution sequence.
 ((((((((((((("if it is now clear as to what the event Loop is over the next few videos let's conduct a few different experiments to understand and verify the order of execution in the event Loop.
 
-
+Please consider subscribing to the channel, and I hope you enjoyed the video.
 ((((((((((((("thank you for watching please do consider subscribing to the channel and I'll see you in the next one.

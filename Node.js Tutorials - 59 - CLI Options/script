@@ -1,2 +1,52 @@
-"in the previous video we learned how tocreate a basic CLI tool using node andnpmin this video let's add some logic andalso understand how to pass options torclilet's beginI'm here atpokeyapi.co where you have access to afree Pokemon related rest APIyou can enter a Pokemon name and the APIresponds with a Json of propertiesapplicable to that Pokemonif I typeCharmander and click submitwe get back details about Charmandersuch as abilitiesformsgame indicesEtcwhat I want to focus on though is justthis moves propertymoves is an array of objects and eachobject has a move propertyeach move is in turn an object with aname and URLfor our Pokedex CLI I want to keep itreally simple and display the first fivemoves for a given Pokemonif this requirement is clear let's headback to vs code and add the logicI'm going to begin with the functiondefinition that prints the first fivemoves given a Pokemon nameconst print 5 Movesand this is an async function thataccepts a Pokemon nameand logs the first five moves to theconsolewithin the function we call the PokemonAPI passing in the Pokemon nameso const response is equal to a weightfetchand I'm going to copy paste the API fromthe websitehttps pokeyapi.com API V2 slash Pokemonfollowed by Pokemon namenext convert the response to Jsonconst Pokemon is equal to a weightresponse dot Jsonnext we extract the moves property fromthe JsonPokemon dot movesdot mapand for each movewe extract just the namethen we log to the console only thefirst five moves so moves dot slice0 comma fivefinally we call the functionpassing in a Pokemon namelet's pass in Charmander once againand a small correction move should bedestructurednow what you should know is that thiscode is linked to the command and wedon't have to run any additional stepsto update the CLI with our changeswe can runcode evolutionPokedexand we see the first five moves lockedin the terminal Mega Punch Fire PunchThunder Punch scratch and sword standsour code works as expectedlet's now improve this codeat the moment the Pokemon name is hardcodedlet's make it in such a way that theuser can pass in a Pokemon name whenrunning the CLI command itselfnow the way to pass arguments to a CLItool is to pass acli optionin index.js we can add a log statementwhere we logprocess.arg Vif we now runcode Evolution Pokedex dash dash Pokemonis equal to Charmanderwe see an additional log fromprocess.argarythis is an array where the zeroth indexis always path to The Interpreterand first index is path to the CLIfrom the second index though we have thepassed in optionswe have passed in one option which isPokemon is equal to Charmandernow we can process this array but abetter way is to use a package calledyards let me install itnpm install yardsyou can see it listed as a dependency inpackage.jsonYorks converts options into key valuepairs that we can easily access in ourcodein index.js let's import and use thepackageconst ergs is equal to require yarksand we extract our GUIcalling yards passing in process dotarguenow instead of passing in Charmanderwe can pass inargue dot Pokemonand this is what yarx doesit allows us to easily retrieve thePokemon option valueif we now runcode Evolution Pokedex with an optionPokemon is equal to Charmanderwe see the same output as beforerun the CLI with Pokemon is equal to Muand we see a different set of moves ourCLI works as expected and has a fewimprovementsin the next video let's add someinteractivity to the CLIthank you for watching and I'll see youin the next one"
-/watch?v=oIg08Z0bqsY&list=PLC3y8-rFHvwh8shCMHFA5kWxD9PaPwxaY&index=59:1 The resource https://i.ytimg.com/generate_204 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+in the previous video we learned how to create a basic CLI tool using node and npm.
+in this video let's add some logic and also understand how to pass options tor cli.
+let's begin.
+I'm here atpokeyapi.co where you have access to a free Pokemon related rest API.
+you can enter a Pokemon name and the API responds with a Json of properties applicable to that Pokemon.
+if I type Charmander and click submit.
+we get back details about Charmander such as abilities forms game indices Etc.
+what I want to focus on though is just this moves property.
+moves is an array of objects and each object has a move property.
+each move is in turn an object with a name and URL.
+for our Pokedex CLI I want to keep it really simple and display the first five moves for a given Pokemon.
+if this requirement is clear let's head back to vs code and add the logic.
+I'm going to begin with the function definition that prints the first five moves given a Pokemon name.
+const print 5 Moves.
+and this is an async function that accepts a Pokemon name.
+and logs the first five moves to the console.
+within the function we call the Pokemon API passing in the Pokemon name.
+so const response is equal to a weight fetch and I'm going to copy paste the API from the website.
+https pokeyapi.com API V2 slash Pokemon followed by Pokemon name.
+next convert the response to Json.
+const Pokemon is equal to a weight response dot Json.
+next we extract the moves property from the Json.
+Pokemon dot moves dot map and for each move we extract just the name.
+then we log to the console only the first five moves so moves dot slice 0 comma five.
+finally we call the function passing in a Pokemon name.
+let's pass in Charmander once again.
+and a small correction move should be de structured.
+now what you should know is that this code is linked to the command and we don't have to run any additional steps to update the CLI with our changes.
+we can run code evolution Pokedex and we see the first five moves locked in the terminal Mega Punch Fire Punch Thunder Punch scratch and sword stands our code works as expected.
+let's now improve this code.
+at the moment the Pokemon name is hard coded let's make it in such a way that the user can pass in a Pokemon name when running the CLI command itself.
+now the way to pass arguments to a CLI tool is to pass a cli option.
+in index.js we can add a log statement where we log process.arg V.
+if we now run code Evolution Pokedex dash dash Pokemon is equal to Charmander.
+we see an additional log from process.argary.
+this is an array where the zeroth index is always path to The Interpreter and first index is path to the CLI.
+from the second index though we have the passed in options.
+we have passed in one option which is Pokemon is equal to Charmander.
+now we can process this array but a better way is to use a package called yards let me install it npm install yards.
+you can see it listed as a dependency in package.json.
+Yorks converts options into key value pairs that we can easily access in our code in index.js let's import and use the package.
+const ergs is equal to require yarks and we extract our GUI calling yards passing in process dot argue.
+now instead of passing in Charmander.
+we can pass in argue dot Pokemon.
+and this is what yarx does.
+it allows us to easily retrieve the Pokemon option value.
+if we now run code Evolution Pokedex with an option Pokemon is equal to Charmander.
+we see the same output as before.
+run the CLI with Pokemon is equal to Mu.
+and we see a different set of moves our CLI works as expected and has a few improvements.
+in the next video let's add some interactivity to the CLI.
+thank you for watching and I'll see you in the next one"

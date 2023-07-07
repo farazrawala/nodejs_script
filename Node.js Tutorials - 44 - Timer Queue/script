@@ -1,216 +1,258 @@
-
+hello again In the last video, we discussed the importance of microtask queues in the context of running asynchronous code.
 (((((((((((((("welcome back in the previous video we had a look at micro task queues and their order of priority when executing asynchronous code.
 
-
+If you haven't seen the video yet, please do so now; otherwise, read on. Let's go forward with this video's explanation of the timer queue. 
 (((((((((((((("if you haven't watched that video please do so before continuing if you have watched that video Let's proceed to understand about the timer queue in this video.
 
-
+Before we begin our experiment, I should emphasize that while both set timeout and set interval may be used to add a callback function to the timer queue, I'll be sticking with set timeout for the duration of this series.
 (((((((((("before we run our experiment I want to mention to queue a callback function into the timer queue we can use either the set timeout function or the set interval function I will be using set 
 timeout for the rest of the series.
 
-
+The Syntax is provided below for your convenience.
+The Callback function is sent as the first parameter.
 (((((((((("here is the Syntax for your reference.
 the first argument is the Callback function.
 
-
+The second point is that time is running out.
+Let's return to vs code and give it another go.
  (((((((((("and the second argument is the delay.
 let's head back to vs code and run our experiment.
 
-
+In the third experiment, we'll use both the microtask queue and the timer queue to queue up tasks.
+and I'm going to pick up where we left off in this experiment.
 (((((((((("for our third experiment we are going to queue up tasks in both microtask queues as well as the timer queue.
 and for this experiment I'm going to continue from where we left off.
 
-
+There are three calls coming in at process.next.dig.
+then three asterisks indicating accomplished goals.
 (((((((((("we have three process dot next dig calls.
 followed by three promise dot results.
 
-
+There are two more steps that we take.calls made to the net stick from the Callback procedures.
+if we execute this program.
+The output is shown, and its meaning was addressed in the preceding movie.
 (((((((((("we have two additional process.net stick calls from within the Callback functions.
 if we run this code.
 we see the output and an explanation of this output was already discussed in the previous video.
 
-
+While it may not be entirely obvious at first glance, our code sample now uses two separate micro task queues to store pending callback functions.
 (((((((((("but it should be clear that our code snippet currently queues up callback functions in both the micro task queues.
 
-
+The Next Promise, as for the Final One.
+Let's start by adding a few callbacks to the timer queue.
+in the highest position.
 (((((((((("next stick as for Last Promise.
 now let's queue up a few callbacks in the timer queue.
 at the top.
 
-
+To implement a timeout, I will simply paste three separate method calls.
+Each set timeout command is executed on the call stack immediately, with no lag time, so that the Callback functions are queued immediately.
 (((((((((("I'm going to copy paste three function calls to set timeout.
 all of them have a delay of 0milliseconds which implies the Callback functions are queued up as soon as each set timeout statement is executed on the call stack.
 
-
+I'd want you to stop what you're doing for a second and see if you can guess the result.
+OK, I'll start the node index right now.
 (((((((((("I want you to now pause for a minute and try figure out the output.
 all right if I now run node index.
 
-
+The results are the same as in the previous clip.
+Afterwards, there are a further three log statements.
 (((((((((("we see the same output as the last video.
 and then we have three more log statements at the end.
 
-
+Additionally, these log statements are in line with the three set timeout operations.
+Toggle between timers 1 and 2.
 (((((((((("and these log statements correspond to the three set timeout functions.
 set timeout 1 2 and 3.
 
-
+The conclusion for the third test may be drawn from these results.
+Unlike the timer queue, the micro task queue's callbacks will be executed immediately.
+Easy if you've watched the first two videos in this series.
 (((((((((("from this we have our inference for the third experiment.
 callbacks in the micro task queues are executed before callbacks in the timer queue.
 pretty straightforward to understand if you've been following along from the previous two videos.
 
-
+However, allow me to provide some brief assistance with the mental image.
+Three callbacks are placed in the next queue, three are placed in the promise queue, and three are placed in the timer queue once all the instructions in our code sample have been executed by the call stack.
 (((((((((("but let me also quickly help you with the visualization.
 when the call stack executes all the statements in our code snippet we end up with three callbacks in the next queue three in the promise queue and three in the timer queue.
 
-
+Since there is no further code to run, the event hint is taken as the source of control.
+In this case, queue comes before promise Q, which before timer Q.
 (((((((((("now there is no further code to execute and control enters the event clue.
 here next to queue gets priority followed by promise queue which is Then followed by timer Q.
 
-
+The first callback of the subsequent EQ is dispatched and performed, locking the console with a message.
+The second callback occurs after this and similarly logs a message.
 (((((((((("first callback from the next EQ is dq'd and executed which locks a message to the console.
 this is followed by the second callback which also logs a message.
 
-
+There is an extra call to handle in the second callback.The execution of the callbacks proceeds with the next tick, which triggers a new callback in the next queue. The third callback is dq'd and run, locking a message in the process.
 (((((((((("the second callback contains an additional call to process.next tick resulting in a new callback in the next  queue execution continues and the third callback is dq'd and executed which locks a message as well.
 
-
+When the call stack is complete, the newly inserted callback is dq'd and executed. 
 (((((((((("finally the newly added callback also is dq'd and run on the call stack.
 
+This generates log statement number four on the terminal.
+Because there is nothing in the next queue, event Loop moves on to the promise queue.
 
 (((((((((("this results in the fourth log statement in the console.
 now that the next queue is empty event Loop proceeds to the promise queue.
 
-
+The initial callback is dispatched and run on the call stack, outputting text to the terminal.
+The second callback has the same result.
 (((((((((("first callback is dq'd and executed on the call stack printing a message to the console.
 second callback also has a similar effect.
 
-
+It inserts a callback into the subsequent stick queue in addition to the log statement.
+The third callback in the promise queue is now being executed, which will produce the subsequent log message.
 (((((((((("in addition to the log statement it also adds a callback to the next stick queue.
 next the third callback in the promise queue is executed resulting in the next log message.
 
-
+When the promise queue is empty, the event loop moves on to the subsequent EQ to see whether any new callbacks have arrived.
 (((((((((("at this point the promise queue is empty and the event Loop checks the next EQ to see if there are new callbacks.
 
-
+There is just the one, and it is carried out.
+Now that neither microtask queue is full, we may proceed. 
 (((((((((("there is one and the same is executed.
 now both the micro task queues are empty.
 
-
+event Continue looping to the timer queue.
+Each of the three callbacks has been dequeued and is currently being processed via the call stack in turn.
 (((((((((("event Loop moves on to the timer queue.
 we have three callbacks and each of the mare dequeued and executed on the call stack one by one.
 
-
+A printout of "set timeout 1 2 3" will be generated.
+I'm going to assume you can keep up.
+Okay, so far the timer Q comes after the promise queue and then next q.
 (((((((((("this will print set timeout 1 2 and 3.
 hopefully you're able to follow along.
 all right so far the order of priority is next q then the promise queue and then the timer Q.
 
-
+Now, for the fourth experiment, please.
+Except for that one tweak, this experiment's code will be quite similar to the third.
+The Callback function that was supplied to the second set timeout function will undergo some minor adjustments on our end.
 (((((((((("let's now proceed to experiment number four.
 the code will pretty much remain the same as experiment number three except for one change.
 we are going to slightly modify the Callback function passed to the second set timeout function.
 
-
+The code is being copied and pasted by me.
+There is still the timeout 2 log statement.
 (((((((((("I'm going to copy paste the code.
 so we still have the log statement this is set timeout 2
 
-
+However, after the log statement.
+Next December, we will have an extra request to handle Dot.
+This is the inner next tag inside the defined timeout, and it will include a callback function that reports the current time. 
 (((((((((("but after the log statement.
 we have an additional call to process Dot next dec.
 this will contain a callback function which logs this is the inner next tag inside set timeout.
 
-
+I'd want you to stop the video for the second time so far and try to guess the result.
+Okay, let me start node index right now.
 (((((((((("now for the second time in this video I would like you to pause and try figure out the output.
 all right let me now run node index.
 
-
+You can pause and double-check the output, but I should warn you that, save from the very end, nothing has changed.
 (((((((((("you can pause and verify the output but let me tell you that there is no change except for 
 the last part which is to do with set timeout.
 
-
+Here, we can see that the set timeout's next callback function is invoked before the timeout's final callback function.
 (((((((((("this time we can see that the inner next callback function inside set timeout is executed before the final set timeout call back function.
 
-
+and this is what the fourth experiment led us to conclude.
+The timer queue's callbacks are run before the micro task queue's are.
 (((((((((("and this is our inference from the fourth experiment.
 callbacks in micro task queues are executed in between the execution of callbacks in the timer queue.
 
-
+Okay, let me to assist you in imagining it.
+I'm going to skip ahead until after the callbacks in the microtask queues have finished running this time. 
 (((((((((("let me help you with visualization.
 this time though I'm going to skip to the part where callbacks in the microtask queues have already been executed.
 
-
-
+At the outset, there are three callbacks waiting to be processed by the timer queue.
 (((((((((("we start at a point where three callbacks are queued up in the timer queue.
 
-
+A set timeout 1 message is displayed in the terminal after the first callback has been dq'd and processed on the call stack.
 (((((((((("Now the first callback is dq'd and executed on the call stack resulting in set timeout 1 message in the console.
 
-
+The second callback is executed as part of the event Loop's continuation.
+A console message reading "set timer 2" will be the consequence of this action.
 (((((((((("event Loop proceeds and runs the second callback as well.
 this will result in set timer 2 message in the console.
 
-
+Nonetheless, a callback function will be added to the subsequent lengthy queue as a result of this. 
 (((((((((("but this will also queue up a callback function in the next thick queue.
 
-
+And as we've seen, the event Loop loops back to the micro task queues after every callback execution in the timer queue.
 (((((((((("and as we just learned after every callback execution in the timer queue the event Loop goes back and checks the micro task queues.
 
-
+If a callback is due to be run, it will do so at the next EQ. 
 (((((((((("it will check the next EQ and identify there is a callback to be executed.
 
-
+As a consequence, it is dq'd and performed on the call stack, producing the inner next stick message in the console. 
 (((((((((("so that is dq'd and executed on the call stack resulting in the inner next stick message in the console.
 
-
+in case you were wondering, yes, this check was performed again after the initial callback. 
 (((((((((("and to answer a question you might potentially have yes this check did happen after the first callback as well.
 
-
+However, there was no impact because the microtask queues were all empty.
+Since the microtask queues are now empty, processing power is returned to the timer queue.
 (((((((((("but the microtask queues were empty and thus did not make a difference.
 anyway now that the micro task queues are empty control goes back to the timer queue.
 
-
+The final callback is processed, and a set timer 3 message is displayed in the console.
+I'm hoping you get the implication.
 (((((((((("the last callback is executed resulting in set timer 3 message in the console.
 hopefully the inference makes sense.
 
-
+Just for fun, include a pledge.conclusion statement and double-check that your inferences from before are still correct.
 (((((((((("as an exercise please do add a promise.result statement and verify that the previous inferences still hold good.
 
-
+OK, I guess Let's test out three set time out statements as our fifth and last experiment in this video.
 (((((((((("all right for the fifth experiment which would be the final experiment in this video let's 
 run three simple set time out statements
 
-
+Hence, remove the preceding comment and the current code.
+Please provide three further calls to establish timeout with varying delays.
 (((((((((("so comment out the existing code and at the top.
 add three calls to set timeout with different delays.
 
-
+Five hundred milliseconds, a second, and no time at all.
+wait a moment and see if you can guess the result.
 (((((((((("one second 500 milliseconds and zero seconds.
 pause and try figure out the output.
 
-
+Since just the timer queue is involved, this should be easy to accomplish.
+OK, I'll start the node index right now.
+The third timer is set, then the second, and finally the first. 
 (((((((((("this should be straightforward as it involves only the timer queue.
 all right if I now run node index.
 we see set timer 3 first followed by 2and then 1.
 
-
+This leads us to believe that the default foorder of execution of timer Q callbacks is first-in-first-out.
 (((((((((("from this our inference is that timer Q callbacks are executed in fi foorder first n first out.
 
-
+they said timeout callback with the least delay is the first one to be queued up and is the first one to be executed by the event Loop.
 (((((((((("they said timeout callback with the least delay is the first one to be queued up and is the first one to be executed by the event Loop.
 
-
+and I am confident that there is no need to picture this.
 (((((((((("and I'm sure this one does not need any visualization.
 
-
+The relative importance of asynchronous and microtask queue callbacks should be clearer now.
 (((((((((("but I hope you now have a good idea of the order of priority of synchronous code plus micro task queue callbacks.
 
 
++ Q callbacks from the timer.
+If I may add something here, the timer queue is not actually a queue.
 (((((((((("plus timer Q callbacks.
 one point I would like to mention here is that the timer queue is technically not a queue.
 
-
+It's a data structure known as a Min Heap.
+However, if we treat it as a hint, we can comprehend it more quickly and easily. 
 (((((((((("it is a Min Heap data structure.
 but for our understanding thinking it isa cue makes the process simpler.
 
-
+OK, I guess the following video Please consider subscribing to the channel, and until the next time, have a great day! The inner next tick callback is pushed by the event loop, and the console log statement is executed.
 (((((((((("all right in the next video Let's understand about the next q which is the io q thank you for watching please do consider subscribing to the channel and I'll see you in the next video"
 event Loop will push the inner next tick callback and the console log statement is executed.
