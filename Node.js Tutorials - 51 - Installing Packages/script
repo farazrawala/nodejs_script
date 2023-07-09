@@ -1,43 +1,108 @@
-"welcome back two videos ago I mentioned that npm is a software registry which contains packages published by developers from all over the world.
-it helps us leverage other people's work to solve our problem at a rapid pace.
+Hi there Again In the last video, I explained that npm is a package registry where developers from all around the world may share their work.
+(((((((((((("welcome back two videos ago I mentioned that npm is a software registry which contains packages published by developers from all over the world.
+
+It allows us to quickly address our challenge by building upon the efforts of others.
+Let's watch this video together and figure out how to put a npm package into our node.project in js.
+(((((((((("it helps us leverage other people's work to solve our problem at a rapid pace.
 in this video let's learn how to install an npm package in our node.js project.
-first let me mention that I am looking for a package that is going to convert our log statement text to uppercase.
-I know we can do this with a built-in JavaScript method but the intention is to make you familiar with the concept of installing a package from the npm registry.
+
+I should preface this by saying I'm on the hunt for a package that would capitalize all log statement content.
+(((((((((("first let me mention that I am looking for a package that is going to convert our log statement text to uppercase.
+
+I'm aware that we could use a native JavaScript way for this, but my goal here is to acquaint you with the idea of using the npm registry to obtain and install a package.
+The first step is to select an appropriate software bundle.
+(((((((((("I know we can do this with a built-in JavaScript method but the intention is to make you familiar with the concept of installing a package from the npm registry.
 Step 1 we need to identify a package that serves the purpose.
-head over to npmgs.com and in the searching put I'm going to type upper as that is a good enough keyword to start with.
+
+visit npmgs.com; I'll start my search with the keyword "upper" in the site's search bar.
+Here, it is recommended that you use upper hyphen case to convert the string to Upper Keys.
+(((((((((("head over to npmgs.com and in the searching put I'm going to type upper as that is a good enough keyword to start with.
 a top suggestion here is upper hyphen case which transforms the string to Upper Keys.
-I'm going to select this first suggestion.
+
+This is the option I've decided to go with.
+The second step is to determine if this package is suitable for usage in our project.
+(((((((((("I'm going to select this first suggestion.
 Step 2 we need to assess whether this isa good package that we can use in our project.
-there is no set rule but let me give you a few guidelines that I follow to judge whether I can proceed with installing a particular package.
-first I look at the published date.
+
+There is no hard and fast rule, but I can tell you the criteria I use to decide whether or not to install a certain program.
+(((((((((("there is no set rule but let me give you a few guidelines that I follow to judge whether I can proceed with installing a particular package.
+
+I start by checking the book's release date.
+Usually I'd like to see less than a year, but because this package's only purpose is to "Simply convert a string to uppercase," there's no pressing need for any updates for quite some time.
+(((((((((("first I look at the published date.
 typically I would hope for something that is less than a year but given the nature of this package which is toSimply convert a string to uppercase that is no need for new features to beaded.
-so I am comfortable with published date being two years ago.
+
+So, the fact that it was published two years ago doesn't bother me at all.
+The number of downloads made each week is the second statistic I examine.
+(((((((((("so I am comfortable with published date being two years ago.
 the second thing I look for is the weekly downloads metric.
-if it is in millions you can take it for granted it is a pretty good package that is used by a lot of Developers.
-few hundred thousands is also fine.
+
+If the number is in the millions, you can safely assume that many Developers find this package useful.
+(((((((((("if it is in millions you can take it for granted it is a pretty good package that is used by a lot of Developers.
+
+Just a few hundred thousand will do as well.
+I may consider it if the price was in the tens of thousands, but if it was in the hundreds of thousands, I would keep looking.
+(((((((((("few hundred thousands is also fine.
 however if it is hundreds or low thousands I would probably keep searching to see if I can find something better.
-third I look at the package size.
+
+Third, I inspect the size of the box.
+When you add a new package to your project, you're also boosting its overall size. 
+(((((((((("third I look at the package size.
 when you install a package you're basically increasing the size of your project as well.
-large packages May bloat your own project bundle size which is something you should be careful about.
-lower the size better it is for your project.
+
+oversized parcels You should be wary of the possibility that your own project bundle size will balloon.
+(((((((((("large packages May bloat your own project bundle size which is something you should be careful about.
+
+If you can get the size down, that'll be great for your work.
+for a respectable package size, but if the package is essential to your project, those few more kilobytes won't matter.
+(((((((((("lower the size better it is for your project.
 for a good package size but a few kilobytes is something you don't have to worry about if the package is crucial for your project.
-finally a few miscellaneous factors I look for are good documentation and fewer issues.
+
+Lastly, a few of supplementary criteria I consider include thorough documentation and fewer bugs.
+For me, everything is in order to move through with this deal.
+Third, we'll use the npm cli to install the package.
+(((((((((("finally a few miscellaneous factors I look for are good documentation and fewer issues.
 the package we have here checks all the boxes for me so let's proceed to the next step.
 for step 3 we're going to install the package using the npm cli.
-the command is right here on this page.
+
+This page has the explicit order.
+However, it is a bit out of date because dash dash save is no longer necessary.
+Uppercase npm install and then return to vs code.
+(((((((((("the command is right here on this page.
 it is a little outdated though as dash dash save is not required anymore.
 copy npm install upper hyphen case head back to vs code.
-and within the project folder paste the command.
+
+and then copy and paste the command into the project folder.
+When you run this command, npm will begin retrieving the package and display its progress in a bar.
+(((((((((("and within the project folder paste the command.
 after running the command you will see a progress bar as npm fetches the package.
-the package will be downloaded from the registry and installed in a folder called node modules.
-in package.js.
+
+This package will be installed in a directory named "node modules" after being downloaded from the registry.
+(((((((((("the package will be downloaded from the registry and installed in a folder called node modules.
+
+A dependencies field, including the package's developer and version number, will be generated and maintained in package.js.
+Our version is 2.0.2, if you're curious.
+(((((((((("in package.js.
 on a dependencies field will be created and updated with the package team and installed version.
 in our case the version is 2.0.2.
-you will also see a package log.json file created which will happen when ever you add your first dependency.
+
+A package log will also be shown.When you add your first dependency, a json file is automatically generated.
+In later distributions, the same file will be upgraded.
+(((((((((("you will also see a package log.json file created which will happen when ever you add your first dependency.
 for subsequent packages the same file will be updated.
-this file simply keeps track of the packages and versions installed in a project ensuring there is no inconsistency when someone else installs the same packages.
-so this is how we install an npm package in our project.
+
+This file is used to maintain consistency when many people are working on a project that uses the same packages and versions.
+(((((((((("this file simply keeps track of the packages and versions installed in a project ensuring there is no inconsistency when someone else installs the same packages.
+
+Here we see the process for incorporating a new npm package into our work.
+In this example, the package name is capitalized, so if you want to uninstall it, simply type npm uninstall followed by the package name.
+(((((((((("so this is how we install an npm package in our project.
 on a side note if you want to uninstall a package you can run npm uninstall followed by the package name which is uppercase in our scenario.
-as an exercise I want you to run this command and observe the changes in package.json package lock.json and the node modules folder.
-pause the video and give it a try.
+
+I want you to try out this command and see what happens to the package as an exercise.Lock.json in the json package, and the node modules directory.
+(((((((((("as an exercise I want you to run this command and observe the changes in package.json package lock.json and the node modules folder.
+
+pausing the video to test it out.
+Now that we have the uppercase package loaded, let's learn how to utilize it in the next video. Thanks for watching, and I'll see you then.
+(((((((((("pause the video and give it a try.
 alright in the next video let's learn how to use this uppercase package that we have just installed thank you for watching and I'll see you in the next one"

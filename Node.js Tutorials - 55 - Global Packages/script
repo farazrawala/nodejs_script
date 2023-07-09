@@ -1,30 +1,78 @@
-over the past few videos we've learned how to install and use a package from the npm registry.
-what you should know is that our installation of this uppercase package is local to our my custom package project.
-meaning we installed it into the local node modules folder within the project.
+In the previous videos, we covered how to navigate the npm registry and find the appropriate package for our needs.
+(((((((((("over the past few videos we've learned how to install and use a package from the npm registry.
+
+This uppercase package installation is specific to my custom package, which is something you should know.
+(((((((((("what you should know is that our installation of this uppercase package is local to our my custom package project.
+
+that is, we did a local install within the project's node modules folder.
+We can now utilize the package by importing it into our code.
+(((((((((("meaning we installed it into the local node modules folder within the project.
 this allows us to import the package and use it in our code.
-now some packages published to the npm registry are meant to be used as Standalone command line applications.
-such packages are intended to be run from a terminal and not used directly in code like a local dependency would be.
-if you worked with react on the frontend a good example is the create react app command line application which is used to scaffold out a react project.
-for node.js a very popular globally installed package is node mon.
+
+Some of the packages available in the npm repository can be run independently of any other software.
+(((((((((("now some packages published to the npm registry are meant to be used as Standalone command line applications.
+
+These packages are meant to be used at a terminal and not as local dependencies in your code.
+(((((((((("such packages are intended to be run from a terminal and not used directly in code like a local dependency would be.
+
+If you've ever dealt with React on the front end, you may be familiar with the build react app command line application.
+(((((((((("if you worked with react on the frontend a good example is the create react app command line application which is used to scaffold out a react project.
+
+meant node.js, with node mon being a widely used package all across the world.
+Please allow me to look for node mon in npmgs.
+(((((((((("for node.js a very popular globally installed package is node mon.
 in npmgs let me search for node mon.
-you can see it is a simple monitor script for use during development of anode.js application.
+
+It's clear that this is just a basic monitoring script for usage in the anode.js app while it's being built.
+When a directory change is detected, the node program is restarted automatically.
+(((((((((("you can see it is a simple monitor script for use during development of anode.js application.
 it automatically restarts the node application when file changes in the directory are detected.
-the recently introduced watch mode innode.js does the same for us but this isa package that has served node.js Developers for a long long time let's pay our respects by learning to use it in this video.
-now node mod is a package intended to be used from the terminal.
+
+the innode for the new watch mode.js accomplishes the same thing, but this package has been helpful to node.js developers for a very long time, so let's show our appreciation by watching this video and learning how to use it.
+(((((((((("the recently introduced watch mode innode.js does the same for us but this isa package that has served node.js Developers for a long long time let's pay our respects by learning to use it in this video.
+
+The current version of node mod is a terminal-only package.
+To set up, type npm install -g node mon -d.
+(((((((((("now node mod is a package intended to be used from the terminal.
 the command to install is npm install Dash G node mon.
-the option Dash G instructs npm to install the package globally to your system path.
+
+To have npm install the package globally to your system path, use the tilde () option.
+It will let us use the package from the command line no matter where the command is executed, so we can return to VS Code and do sudo npm install Dash G node mon to get it up and running.
+(((((((((("the option Dash G instructs npm to install the package globally to your system path.
 that will allow us to run the package from the command line regardless of where you run the command from so back in vs code you can run sudo npm install Dash G node mon.
-of course Sudo is not required if you're on a Windows machine.
+
+If you're working on a Windows system, you may safely ignore this section.
+After setup is finished, we can check node mon index.js.
+(((((((((("of course Sudo is not required if you're on a Windows machine.
 once the installation completes we can run node mon index.js.
-you can see Node 1 is being used in the terminal instead of being used in code.
+
+Rather of being utilized in code, Node 1 is being used at the terminal.
+The Results Are In I'm Vishwas and I'm happy to have you here at Code Evolution.
+(((((((((("you can see Node 1 is being used in the terminal instead of being used in code.
 we see the output hello vishwas welcome to code evolution.
-I can make a small change in a log statement by adding an exclamation save the file.
+
+Rather of being utilized in code, Node 1 is being used at the terminal.
+The Results Are In I'm Vishwas and I'm happy to have you here at Code Evolution.
+(((((((((("I can make a small change in a log statement by adding an exclamation save the file.
 and you can see nude mon automatically restarts the application we see the updated output with the exclamation sign.
-now it is very important to note that Global packages are not listed as a dependency for a single project.
-and because of this running npm install will not install the package.
+
+Now, keep in mind that Global packages aren't stated as a need for a specific project.
+(((((((((("now it is very important to note that Global packages are not listed as a dependency for a single project.
+
+hence, doing npm install will not result in the package being installed.
+Each member of the development team is responsible for installing global packages individually.
+(((((((((("and because of this running npm install will not install the package.
 Global packages have to be installed on  their own by every single developer in the team.
-on a side note to uninstall a global package run npm uninstall Dash G followed by the package name.
+
+As a side note, you may remove a global package by typing npm uninstall dash G packageName.
+This is a case of node mon.
+(((((((((("on a side note to uninstall a global package run npm uninstall Dash G followed by the package name.
 node mon in this case.
- Global packages are primarily utilities and tools written in node.js which can help us during development.
+
+The vast majority of global packages are useful development utilities and tools developed in Node.js.
+ Make sure you are familiar with the distinction between local and global package installations.
+ (((((((((("Global packages are primarily utilities and tools written in node.js which can help us during development.
  please make sure you understand the difference between installing local and Global packages.
-all right thank you for watching please do consider subscribing to the channel and I'll see you in the next one"
+
+OK, I guess Thanks for viewing, and I hope you'll consider subscribing so you don't miss a single video!
+(((((((((("all right thank you for watching please do consider subscribing to the channel and I'll see you in the next one"

@@ -1,23 +1,59 @@
-welcome back in this video let's learn about npm Scripts.
+hello again Let's become acquainted with npm Scripts in this video.
+An npm script is a helpful tool for collecting and organizing frequently used tasks in one place.
+(((((((((("welcome back in this video let's learn about npm Scripts.
 an npm script is a convenient way to bundle common commands for use in a project.
-they are typically entered in the command line in order to do something with the application.
+
+They are used to perform actions in the program and are entered on the command line.
+The package of a Project is where the npm scripts are kept.a json file that may be read by anybody with access to the code repository.
+(((((((((("they are typically entered in the command line in order to do something with the application.
 npm scripts are stored in a Project's package.json file giving access to everyone who has access to the code base.
-they also ensure that everyone is using the same command with the same options.
+
+Additionally, they guarantee that everyone is employing the identical command with the same parameters.
+Building your project, establishing a Dev server, creating CSS, linting, minifying, etc. are all frequent uses for npm scripts.
+(((((((((("they also ensure that everyone is using the same command with the same options.
 common use cases for npm scripts include building your project starting a Dev server compiling CSS linting minifying Etc.
-npm scripts are executed using the command npm run followed by the script name.
+
+The script name is followed by the npm run command to launch a npm script.
+Let's return to vs code and review a sample program.
+(((((((((("npm scripts are executed using the command npm run followed by the script name.
 let's head back to vs code and take a look at an example.
-when we run the command npm in it it generates a scripts Field in package.json.
+
+It creates a scripts Field in package.json when we execute the npm command in it.
+The included test script just outputs "no test" to the console if run.
+(((((((((("when we run the command npm in it it generates a scripts Field in package.json.
 this contains a test script that just prints to the console now test is specified.
-this is not so useful so let's add one on our own.
+
+Not very helpful, so let's make our own.
+Let's write a little script to launch our node program.
+((((((((((" this is not so useful so let's add one on our own.
 let's create a simple script that is going to run our node application.
-which is of course index.js in our scenario.
+
+which, in this case, is index.js.
+We'll begin with the script's working title.
+and nodeindex.js is the command this script will execute.
+(((((((((("which is of course index.js in our scenario.
 the script name I'm going to call it start.
 and the command this script is going to run is nodeindex.js.
-save the file and in the terminal within the project folder run the command npm Run start.
+
+After saving, open a terminal within the project folder and type npm. Kick off and start running.
+index.js will be executed, and the anticipated results will be shown. Greetings, and welcome to Code Evolution, Vishwas.
+(((((((((("save the file and in the terminal within the project folder run the command npm Run start.
 this will run index.js and give us the expected output hello vishwas welcome to code evolution
-now a start script is something you would typically see in every project it helps everyone in the team get started easily without having to understand all the commands that need to be run.
-at the moment it is just node index but in an Enterprise scale application the start script might be a combination of several commands.
-but you as a developer always have to remember just one script npm Run start in fact start is a special script which allows you to directly run npm start.
+
+Now, every project should include a start script to allow new team members quickly get up and running without learning the specific instructions.
+(((((((((("now a start script is something you would typically see in every project it helps everyone in the team get started easily without having to understand all the commands that need to be run.
+
+Currently, only the node index is being used, but in a large-scale enterprise application, several commands may make up the start script.
+(((((((((("at the moment it is just node index but in an Enterprise scale application the start script might be a combination of several commands.
+
+As a developer, however, you need only keep in mind a single script: npm Run start. In reality, start is a unique script that enables you to immediately use npm start.
+(((((((((("but you as a developer always have to remember just one script npm Run start in fact start is a special script which allows you to directly run npm start.
+
 Led you get back the same output.
-now there is a lot more to writing scripts but from a beginner's perspective for learning node.js this isa good start.
-in the next video Let's understand how to publish a package to the npm registry I'll see you in the next one"
+(((((((((("Led you get back the same output.
+
+Scripting has evolved into much more than this, however this is a good place to start for those new to node.As a beginning, this works. 
+(((((((((("now there is a lot more to writing scripts but from a beginner's perspective for learning node.js this isa good start.
+
+following this video So, let's learn the ropes of uploading a package to the npm registry. Please join me in the subsequent one.
+(((((((((("in the next video Let's understand how to publish a package to the npm registry I'll see you in the next one

@@ -1,46 +1,91 @@
-" "welcome to the seventh section in this course on node.js for beginners in this section we are going to learn how to build CLI tools with node and npm.
-having gone through the previous section.
+
+(((((((((("welcome to the seventh section in this course on node.js for beginners in this section we are going to learn how to build CLI tools with node and npm.
+
+
+(((((((((("having gone through the previous section.
 you are probably aware what is a CLI but let me briefly explain in two sentences.
-CLI stands for command line interface.
+
+
+(((((((((("CLI stands for command line interface.
 and is basically a program that you can run from the terminal.
-two very popular clis include npm which we have already come across and the other one is git which is a Version Control System.
-in this section our goal is to create a very simple CLI using node.js.
+
+
+(((((((((("two very popular clis include npm which we have already come across and the other one is git which is a Version Control System.
+
+
+(((((((((("in this section our goal is to create a very simple CLI using node.js.
 in this particular video I will show you how to create a basic CLI tool using node and npm.
-in the next video I will show how to pass options to the CLI.
+
+
+(((((((((("in the next video I will show how to pass options to the CLI.
 in the third video I will show how to add interactivity to the CLI.
-if that makes sense let's head back to vs code and get started with implementing a basic CLI.
+
+
+(((((((((("if that makes sense let's head back to vs code and get started with implementing a basic CLI.
 now creating a CLI is similar to creating an npm package with a few extra steps.
 so for step one let's initialize a new npm project.
-I'm going to create a new folder called my custom CLI.
+
+
+(((((((((("I'm going to create a new folder called my custom CLI.
 in the terminal I'm going to navigate into the project folder.
-and run the command npm in it dash dash yes.
+
+
+(((((((((("and run the command npm in it dash dash yes.
 this will generate a new package.json with default values within our my custom CLI folder.
-in the package.json file I'm going to change the project name to code evolution Pokedex.
+
+
+(((((((((("in the package.json file I'm going to change the project name to code evolution Pokedex.
 spoiler alert we will be making use of the Pokemon API in the next video.
-do make sure that your package name is unique npm will not let you publish it to the registry if a package already exists with the same name.
+
+
+(((((((((("do make sure that your package name is unique npm will not let you publish it to the registry if a package already exists with the same name.
 all right for Step 2 let's write the code we want to execute when we run the CLI command.
-So within the same folder create a new file index.js and for now let's add one log statement that says code Evolution Pokedex.
+
+
+(((((((((("So within the same folder create a new file index.js and for now let's add one log statement that says code Evolution Pokedex.
 all right for the third and final step we convert this package into a CLI.
-and that requires two additions.
+
+
+(((((((((("and that requires two additions.
 first in index.js at the top we add hash symbol exclamation slash user slash Win slash En V space node.
 this is called hash bank or shi bang which tells the operating system which interpreter to use.
-in our case we specify node as The Interpreter and the location where node is installed.
+
+
+(((((((((("in our case we specify node as The Interpreter and the location where node is installed.
 second in package.json we add a new field called bin.
-the bin field basically allows us to treat our package as an executable file which can be installed into the path variable.
-the value is an object which contains key value pairs.
+
+
+(((((((((("the bin field basically allows us to treat our package as an executable file which can be installed into the path variable.
+
+
+(((((((((("the value is an object which contains key value pairs.
 ASCII we specify the command we want to execute to run our CLI.
-in our case I will call it co-revolution Pokedex.
+
+
+(((((((((("in our case I will call it co-revolution Pokedex.
 the value to this key is the entry point to the CLI.
 that is index.js.
-and that is pretty much it we have created our first CLI tool.
+
+
+(((((((((("and that is pretty much it we have created our first CLI tool.
 to test it as a CLI we need to install this package.
-now you may think we need to publish this package to the registry and install it.
+
+
+(((((((((("now you may think we need to publish this package to the registry and install it.
 well there is a simpler way from within the project folder you can run sudo npm install.
 I'm not specified the package name as you can see and Sudo is not required if you're on Windows.
-when you run this command npm will install our CLI tool globally and during the installation it will come across this bin field and register the code Evolution Pokedex command which will run index.js.
-once the command completes.
+
+
+(((((((((("when you run this command npm will install our CLI tool globally and during the installation it will come across this bin field and register the code Evolution Pokedex command which will run index.js.
+
+
+(((((((((("once the command completes.
 we can run code Evolution hyphen Pokedex.
-in the terminal press enter and visit the log statement fromindex.js code Evolution Pokedex.
+
+
+(((((((((("in the terminal press enter and visit the log statement fromindex.js code Evolution Pokedex.
 really simple as you can see.
-in the next video let's add some logic and understand how to pass options tor cli thank you for watching please do consider subscribing to the channel and I'll see you in the next one"
+
+
+(((((((((("in the next video let's add some logic and understand how to pass options tor cli thank you for watching please do consider subscribing to the channel and I'll see you in the next one"
 

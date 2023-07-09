@@ -1,65 +1,162 @@
-"welcome back in the previous video we had a look at what is npm and why do we need it.
+hello again In the last video, we discussed what npm is and why it's useful.
+In this video, we will examine the primary idea we discussed. Packaged under npm's umbrella.json. 
+(((((((((((("welcome back in the previous video we had a look at what is npm and why do we need it.
 in this video let's take a look at our first concept Under the npm Umbrella which is package.json.
-now what is it well package.json is npm's configuration file.
+
+Okay, so here's the deal with that box.The npm settings file is json.
+It's a Json file that stores metadata about your package and usually resides in the top-level directory of your project.
+(((((((((((("now what is it well package.json is npm's configuration file.
 it is a Json file that typically lives in the root directory of your package and holds various meta data relevant to that package.
-why do we need package.json well package.json is the central place to configure and describe how to interact with and run your package.
-it is primarily used by the npm CLI.
+
+The requirement for a bundle seems unnecessary.excellent json package.json is the hub around which your package's configuration and description revolve.
+(((((((((((("why do we need package.json well package.json is the central place to configure and describe how to interact with and run your package.
+
+The requirement for a bundle seems unnecessary.excellent json package.json is the hub around which your package's configuration and description revolve.
+(((((((((((("it is primarily used by the npm CLI.
 let's head back to vs code and create our own package.json file.
-I'm going to create a new folder called my custom package.
+
+A new directory, which I'll label "my custom package," will be made.
+A new file called index.js will be made within the folder.
+(((((((((((("I'm going to create a new folder called my custom package.
 within the folder I'm going to create anew file index.js.
-within the file I'm going to default export a simple greet function.
+
+I'm going to export a basic hello function from the file by default.
+logins to the console after being given a name.
+(((((((((((("within the file I'm going to default export a simple greet function.
 accepts name and logs to the console.
-hello followed by the name and the text welcome to code evolution.
-module.export greet this is the code we would like to eventually package and publish to the npm  registry.
-but in order to do that we need a package.json file let's create it.
+
+Module.export greet displays "hello" followed by the user's name and the words "welcome to Code Evolution." This is the code we want to one day package and submit to the npm registry. 
+(((((((((((("hello followed by the name and the text welcome to code evolution.
+module.export greet this is the code we would like to eventually package and publish to the npm  
+registry.
+
+but a package is required for that purpose.Let's make a json file.
+inside the same compressed folder.json.
+Since this is a Json file, we'll start with them.
+(((((((((((("but in order to do that we need a package.json file let's create it.
 within the same folder package.json.
 since this is a Json file let's begin with a pair of curly braces.
-now let's take a look at some of the fields we can specify in this file.
+
+Let's examine a few of the fields we can set in this document right now.
+There are a couple of required ones.
+Identify it and the version it is.
+(((((((((((("now let's take a look at some of the fields we can specify in this file.
 there are two mandatory fields.
 Name and version.
-the name field defines the name of the package it must be lowercase one word and may contain hyphens or underscores.
-for example greet hyphen code evolution.
-the version field must be in the form x dot x dot X and follow the semantic versioning guidelines.
-we will understand what is semantic versioning in a later video but for now our initial package version will be1.0.0.
-it is the current version of the software that package.json is describing.
+
+The package's name is specified in the name field; it must be a single, lowercase word and may be separated by hyphens or underscores. 
+(((((((((((("the name field defines the name of the package it must be lowercase one word and may contain hyphens or underscores.
+
+Example: the development of the welcome hyphen code.
+Semantic versioning dictates that the version field have the form x.x.x.X.
+(((((((((((("Example: the development of the welcome hyphen code.
+Semantic versioning dictates that the version field have the form x.x.x.X.
+
+Our first package release will be 1.0.0, and we'll go into semantic versioning in a later video.
+(((((((((((("we will understand what is semantic versioning in a later video but for now our initial package version will be1.0.0.
+
+The software in the bundle is the most recent release.describe in json.
+A text box for a description comes next.
+(((((((((((("it is the current version of the software that package.json is describing.
 next we can add a description field.
-which is used to search and describe packages in the npm registry.
+
+This is what you use to look for packages and describe them in the npm registry.
+Let's use the evolving text message greetings bundle.
+(((((((((((("which is used to search and describe packages in the npm registry.
 let's set it to the text code evolution.
 greeting package.
-we can also add a keywords field.
+
+There's room for a keywords section, too.
+, which is a collection of text strings.
+let's tack on another string. 
+(((((((((((("we can also add a keywords field.
 which is an array of strings.
 let's add two strings.
-code Evolution and greet.
+
+Greetings and Evolution code.
+The npm registry now uses this feature to index packages and make them easier to locate during a search
+(((((((((((("code Evolution and greet.
 now this field is indexed by the npm registry to help find packages when someone searches for them.
-finally we can specify the main field which defines the entry point of our project.
+
+Our project's starting point, the primary field, may now be defined.
+This is the index.js file for our project.
+(((((((((((("finally we can specify the main field which defines the entry point of our project.
 in our project this is index.js.
-now there are plenty more fields and we will learn more about them as we progress through the other videos in the section but for now this is how you create and Define a package.json file.
-but what I would like to point out is that we don't have to manually create a package.json file.
+
+While there are many more fields that may be included in a package.json file, we will cover those in the next videos in this subject. For now, though, this is how you get started.
+(((((((((((("now there are plenty more fields and we will learn more about them as we progress through the other videos in the section but for now this is how you create and Define a package.json file.
+
+However, I'd want to highlight the fact that making a package from scratch is not required.a.json document.
+In most cases, package.json is created with the help of the npm cli.
+(((((((((((("but what I would like to point out is that we don't have to manually create a package.json file.
 typically we use the npm cli to initialize a project with package.json.
-so delete the file we have created navigate into the project folder.
+
+So, get inside the project folder, and remove the file we just made.
+and then type npm at the command prompt.
+This will prompt you to fill up some of package's default fields with your own data.json.
+(((((((((((("so delete the file we have created navigate into the project folder.
 and now run the command npm in it.
 this will prompt you to enter values for some of the standard fields in package.json.
-you can see the description right here npm in it utility will walk you through creating a package.json file it only covers the most common items and tries to guess sensible defaults.
-and there are a few help commands as well.
+
+The explanation is displayed below for your perusal. npm is a handy tool that will guide you through the process of building a package.When parsing a.json file, it solely focuses on the most essential details and makes educated guesses for the rest.
+(((((((((((("you can see the description right here npm in it utility will walk you through creating a package.json file it only covers the most common items and tries to guess sensible defaults.
+
+Moreover, a few aid commands are available.
+However, if you scroll down to the very last line, where it says "package name," you'll see that it automatically suggests the name of our folder, my custom package.
+(((((((((((("and there are a few help commands as well.
 but if you now take a look at the bottommost line we have package name and the default value it is suggesting is my custom package which is the name of our folder.
-now you can enter a value.
+
+It's possible to set a value now.
+consisting of grid code development.
+(((((((((((("now you can enter a value.
 such as grid code evolution.
-or you can also press enter to stick to the defaults.
+
+You can accept the settings by pressing the Enter key.
+I'm fine with the current setting of 1.0.0 for the version number, therefore I'll proceed to push the enter key.
+Forget the intro, just take me to the index.We're fine with no keywords and no author; js, hit enter; we don't have a git repo; we don't require a test command.
+(((((((((((("or you can also press enter to stick to the defaults.
 the version default value is 1.0.0 and I'm going to press enter as I'm happy with that.
 I don't need a description press enter entry point is index.js press enter we don't need a test command we don't have a git repo we're okay with no keywords and no author.
-the default license is ISC.
+
+When you hit enter again, the default license is ISC.
+(((((((((((("the default license is ISC.
 when you press enter again.
-it will mention about to write to the custom package package.json file with these entries.
+
+The process of writing to the bespoke package will be described.These data are stored in a json file.
+If you're satisfied, we may proceed by pressing enter once again, which is the accepted answer.
+(((((((((((("it will mention about to write to the custom package package.json file with these entries.
 if you're happy with this we can press enter again which is the default yes.
-now you can see a package.json file has been created in the custom package folder with all the values we have entered using the CLI.
+
+A bundle has been revealed.A json file containing all the data we input via the command line interface has been produced in the custom package folder.
+really cool, huh? There's something much better.
+(((((((((((("now you can see a package.json file has been created in the custom package folder with 
+all the values we have entered using the CLI.
 pretty neat right well there is something better.
-if you want to stick to the defaults and just change the project name you can use the dash dash yes option.
-let me delete the package.json file.
+
+The dash dash yes option is for those who merely wish to alter the project's name without touching any other settings.
+(((((((((((("if you want to stick to the defaults and just change the project name you can use the dash dash yes option.
+
+Permit me to cancel the shipment.the json document.
+And then type npm in it dash dash yes into the terminal.
+(((((((((((("let me delete the package.json file.
 and in the terminal run the command npm in it dash dash yes.
-this will generate a package.json file with the default values.
+
+A package is produced by doing this.json file with the default settings.
+without asking for feedback from the user.
+(((((((((((("this will generate a package.json file with the default values.
 without prompting for any user input.
-we have our package.json with all the default values and we can simply change any value that we want to.
+
+We've received our shipment.json file that contains all the default settings and allows us to easily modify any of them.
+clearly uncomplicated.
+(((((((((((("we have our package.json with all the default values and we can simply change any value that we want to.
 really simple as you can see.
-now there are a few Fields here which I haven't covered earlier so please take it up as an exercise to research on the purpose of some of these fields here.
-all right now that we understand package.js on is a configuration file for npm join me in the next video where we will learn how to install a package from the npm registry into our node.js project.
-I'll see you in the next one"
+
+There are a few fields here that I didn't explain previously; feel free to use them as homework assignments to learn more.
+(((((((((((("now there are a few Fields here which I haven't covered earlier so please take it up as an exercise to research on the purpose of some of these fields here.
+
+package has been explained, therefore everything is good to go.Join me in the next video as we learn how to add a package from the npm registry to our node.js project using the js on configuration file.
+(((((((((((("all right now that we understand package.js on is a configuration file for npm join me in 
+the next video where we will learn how to install a package from the npm registry into our node.js project.
+
+So, till the next one, bye!
+(((((((((((("I'll see you in the next one"

@@ -1,23 +1,59 @@
-"in the previous video we learned how to install the uppercase package into our project from the npm registry.
-in this video let's learn how to use that package in our code.
+In the last video, we covered getting the uppercase package from the npm registry and integrating it into our project.
+((((((((((""in the previous video we learned how to install the uppercase package into our project from the npm registry.
+
+Let's watch this video and get some help figuring out how to include that library into our programs.
+You should know that in node.js, each package we add functions like a separate module.
+(((((((((("in this video let's learn how to use that package in our code.
 now what you should know is that any package we install is basically a module in node.js.
-earlier in the series we have seen how to import a local module and a built-in module.
+
+Earlier in this series, we learned how to use both local and system-wide module imports.
+Const local module = require.. path> to module defines a local module; const FS = require node colon FS defines a global module.
+(((((((((("earlier in the series we have seen how to import a local module and a built-in module.
 for a local module const local module is equal to require dot slash path to module for a built-in module we've used const FS is equal to require node colon FS.
-now let's see how to import a third-party module which is nothing but the package code we have installed in the previous video.
-now the package name is upper hyphen case.
+
+Now that we have the package code installed (in the previous video), let's have a look at how to import a third-party module.
+(((((((((("now let's see how to import a third-party module which is nothing but the package code we have installed in the previous video.
+
+The hyphen in the package name has been capitalized.
+A section on use is available in npmgs, although it is written in the es module syntax.
+Please J-ize it for me.
+(((((((((("now the package name is upper hyphen case.
 if we head back to npmgs we can see a section on usage this however uses the es module syntax.
 let's convert it into common Js.
-back in vs code const uppercase is equal to require uppercase.
-this however Imports everything that is exported from the package we just need the uppercase function so dot uppercase.
-now within the Contour log statement we can invoke upper case passing in the string.
-we can now call the grid function passing in a name vishwas and the terminal if we run node index we should see the expected output in upper case hello vishwas welcome to code evolution.
-so we have successfully used a package installed from the npm registry in our own project.
+
+Requiring uppercase letters is equivalent to using the const keyword in versus.
+However, this does not simply import the uppercase function; it imports everything that is exported from the package.
+(((((((((("back in vs code const uppercase is equal to require uppercase.
+this however Imports everything that is exported from the package we just need the uppercase function (so dot uppercase.
+
+Upper case string invocation is now possible within the Contour log statement.
+(((((((((("now within the Contour log statement we can invoke upper case passing in the string.
+
+The grid function may now be called with the name Vishwas as an argument; when the node index command is executed on the terminal, the expected result of "Hello, Vishwas" in upper case will be shown.
+((((((((("we can now call the grid function passing in a name vishwas and the terminal if we run node index we should see the expected output in upper case hello vishwas welcome to code evolution.
+
+So far, our experience with using a npm package in our own project has been positive.
+The need to change the case of text to uppercase was, of course, a trivial one.
+(((((((((("so we have successfully used a package installed from the npm registry in our own project.
 of course our requirement was a simple one to convert text to uppercase.
-but you can imagine a more complex requirement such as a need to deep clone an object in JavaScript.
+
+However, a deeper cloning of an object in JavaScript may be an example of a more complicated need.
+You may rely on a npm package instead of writing and testing the requisite code yourself.
+(((((((((("but you can imagine a more complex requirement such as a need to deep clone an object in 
+JavaScript.
 instead of you having to write the code and test that code you can rely on an npm package.
-low Dash is a pretty popular Java Script utility Library.
+
+Java Script's low Dash is a widely used utility library.
+It makes a number of useful features available for integration into your own work.
+(((((((((("low Dash is a pretty popular Java Script utility Library.
 it exposes various functionality thatyou can readily use in your project.
-you can focus on the project requirement rather than building utility functions.
+
+Instead of spending time and energy on mundane tasks like creating utility functions, you may instead concentrate on the actual project requirements.
+But I hope that my explanation of the npm registry and its package installation and utilization has been helpful.
+(((((((((("you can focus on the project requirement rather than building utility functions.
 but I hope it is clear to you now as to how we can install and use packages from the npm registry.
-alright in the next video Let's understand more about this dependencies field in package.json.
+
+okay, see you in the next video. Let's go further into the meaning of the package's dependents column.json.
+I appreciate you tuning in and until the next time, take care!
+(((((((((("alright in the next video Let's understand more about this dependencies field in package.json.
 thank you for watching I'll see you in the next one"

@@ -1,27 +1,69 @@
-in this video Let's quickly take a look at the dependencies field in package.json which is very very important for managing installed packages.
-if you can recollect from the previous video the dependencies field was created and populated when we installed the uppercase package.
-now this dependencies field is a way for npm to track the packages that are required for the functioning of our code.
-currently our project depends on the uppercase package.
+Let's take a short look at package's dependents field in this video.json, which plays a crucial role in controlling already-downloaded software.
+(((((((((("in this video Let's quickly take a look at the dependencies field in package.json which is very very important for managing installed packages.
+
+If you remember from the previous video, when we installed the uppercase package, a new column called dependencies was created and supplied with relevant information.
+(((((((((("if you can recollect from the previous video the dependencies field was created and populated when we installed the uppercase package.
+
+This dependencies field is how npm remembers which packages are necessary for our code to run.
+(((((((((("now this dependencies field is a way for npm to track the packages that are required for the functioning of our code.
+
+The uppercase package is currently essential to our project.
+When dealing with Version Control, this checklist is invaluable.
+(((((((((("currently our project depends on the uppercase package.
 where this list comes in really handy is when you work with Version Control.
-in a real world application the dependencies list might contain anywhere between 5 and 50 different npm packages.
-all the code would be present in the node modules folder.
+
+There might be anything from five to fifty individual npm packages listed as requirements for a production-ready application.
+(((((((((("in a real world application the dependencies list might contain anywhere between 5 and 50 different npm packages.
+
+In the node modules folder, you'll find all the necessary code.
+The size of this directory can be measured in megabytes.
+(((((((((("all the code would be present in the node modules folder.
 and this folder can be megabytes in size.
-instead of committing this folder to Source control we will get ignore it.
+
+We will not include this directory in our source code repository.
+hence another programmer on our team who clones the code won't have access to the node modules folder.
+(((((((((("instead of committing this folder to Source control we will get ignore it.
 which means when another developer in our team clones the code they will not have the node modules folder.
-let me delete it to mimic the scenario.
+
+well, I'll delete it to play along.
+Node index should be re-executed at this time.
+An unexpected problem has arisen; we were unable to locate the specified module.
+(((((((((("let me delete it to mimic the scenario.
 if we now rerun node index.
 you can see we have an error cannot find module upper hyphen case.
-so the developer now understands they need to install one or more modules or packages that our project is dependent on.
+
+developer has been made aware of the requirement to install requisite packages and/or modules for our project.
+The dependencies field is a representation of the packages themselves, as you would have assumed.
+(((((((((("so the developer now understands they need to install one or more modules or packages that our project is dependent on.
 and that list of packages as you might have already guessed is what the dependencies field represents.
-our project has one dependency which we can install using the command.
+
+There is only one need for our project, and it can be easily installed with a command.
+Type "npm install upper hyphen case" to have it used in upper case.
+(((((((((("our project has one dependency which we can install using the command.
 npm install upper hyphen case.
-now if it is just the one package sure we can run this command but what if there are 50 packages do we need to install them one at a time.
-well no this is where the npm CLI comes in handy.
+
+Sure, we can issue this command if there's just a single package, but what if there are fifty? Do we have to install them one by one?
+(((((((((("now if it is just the one package sure we can run this command but what if there are 50 
+packages do we need to install them one at a time.
+
+Here's where the npm CLI really shines, though.
+The npm install command may be entered into the terminal.
+(((((((((("well no this is where the npm CLI comes in handy.
 in the terminal we can run the command npm install.
-this will scan package.json for any dependencies and automatically install them.
+
+If there are any prerequisites listed in package.json, this will install them immediately.
+The modules/node folder has been recreated.
+(((((((((("this will scan package.json for any dependencies and automatically install them.
 you can see the node modules folder is regenerated.
-we can now go about our normal development work.
+
+We can proceed with our regularly scheduled programming.
+After starting node index, our little project has continued to function normally.
+The dependents field in package serves this function.To set up in a json file. 
+(((((((((("we can now go about our normal development work.
 we run node index and our tiny project continues to work as expected.
 this is the role of the dependencies field in package.json configuration file.
-hopefully you're slowly able to understand the need of a package manager such as npm.
+
+With any luck, you're beginning to see the value of using a package management like npm.
+We appreciate your time and attention; till next time, stay tuned!
+(((((((((("hopefully you're slowly able to understand the need of a package manager such as npm.
 thank you for watching and I'll see you in the next video"

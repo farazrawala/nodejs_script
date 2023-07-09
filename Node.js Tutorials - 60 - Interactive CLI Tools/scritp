@@ -1,38 +1,40 @@
-"in the previous video we enhanced our basic CLI to accept options from the command line.
-we can run the command code Evolution Pokedex followed by the Pokemon option and a value for that option.
-although this is great what would be even better is if the CLI was interactive prompting us to enter a Pokemon name.
-that way as a user we don't have to refer to the manual to understand what options have to be passed in to make the CLI work.
-in this video Let's understand how to skip passing the Pokemon option and instead prompt the user for a Pokemon name.
-Step 1 I'm going to comment out code related to the arcs package as we don't plan to pass in any option.
+
+(((((((((("in the previous video we enhanced our basic CLI to accept options from the command line.
+
+(((((((((("we can run the command code Evolution Pokedex followed by the Pokemon option and a value for that option.
+(((((((((("although this is great what would be even better is if the CLI was interactive prompting us to enter a Pokemon name.
+(((((((((("that way as a user we don't have to refer to the manual to understand what options have to be passed in to make the CLI work.
+(((((((((("in this video Let's understand how to skip passing the Pokemon option and instead prompt the user for a Pokemon name.
+(((((((((("Step 1 I'm going to comment out code related to the arcs package as we don't plan to pass in any option.
 Step 2 we're going to install an npm package that allows us to add interactivity to our CLI.
-there are quite a few packages out there but I am going to use a package called Inquirer.
+(((((((((("there are quite a few packages out there but I am going to use a package called Inquirer.
 in the terminal run the command npm install Inquirer at 8.2.5.
-Version 9 only works with es modules so I'm going to install version 8 which also supports common JS module format.
-when the command completes the package should be listed as a dependency.
+(((((((((("Version 9 only works with es modules so I'm going to install version 8 which also supports common JS module format.
+(((((((((("when the command completes the package should be listed as a dependency.
 step 3 Let's import and use the package in index.js at the top const Inquirer is equal to require Inquirer.
-next after the print 5 Moves function we're going to add the code related to interactivity now you should refer to the docs for a better understanding about Inquirer but let me go over this one line at a time.
-first we create a prompt module.
+(((((((((("next after the print 5 Moves function we're going to add the code related to interactivity now you should refer to the docs for a better understanding about Inquirer but let me go over this one line at a time.
+(((((((((("first we create a prompt module.
 const prompt is equal to Inquirer dot create prompt module next we invoke this prompt function returned from create prompt module.
-to this function we pass in an array of questions we want to ask the user.
+(((((((((("to this function we pass in an array of questions we want to ask the user.
 we just have the one question and each question is an object in this array.
-we specify type which is input name for the question this is going to be Pokemon and the actual question that the user sees.
+(((((((((("we specify type which is input name for the question this is going to be Pokemon and the actual question that the user sees.
 enter a Pokemon name to view its first five moves.
-when the user replies with an answer to this question it is returned back to us for processing.
-prompt does return a promise though.
+(((((((((("when the user replies with an answer to this question it is returned back to us for processing.
+(((((((((("prompt does return a promise though.
 we can use then block to capture and use the answer.
 Arrow function we receive all the answers and we're going to extract just Pokemon.
-here Pokemon refers to the name property.
+(((((((((("here Pokemon refers to the name property.
 in the next line we call this print 5 Moves function passing in the answer that the user provided.
 and that is pretty much it.
-in the terminal we can now run code Evolution Pokedex and it starts our CLI in an interactive mode.
+(((((((((("in the terminal we can now run code Evolution Pokedex and it starts our CLI in an interactive mode.
 it prompts the question enter a Pokemon name to view its first five moves.
-I'm going to enter Dragonite and we see the five moves locked in the terminal.
+(((((((((("I'm going to enter Dragonite and we see the five moves locked in the terminal.
 really simple as you can see.
 all right this is pretty much what I wanted to cover about building CLI tools.
-we learned that CLI stands for command line interface and is a program we can run from the terminal.
+(((((((((("we learned that CLI stands for command line interface and is a program we can run from the terminal.
 we learned how to pass options which introduces some Dynamic behavior and we also learned how to add interactivity toa CLI tool.
-of course what we've learned in this section barely scratches the surface of what is possible with a CLI built using node and npm.
-this is a topic I would recommend you Explore More so you can build a few tools that can help you in your day-to-day workflow.
+(((((((((("of course what we've learned in this section barely scratches the surface of what is possible with a CLI built using node and npm.
+(((((((((("this is a topic I would recommend you Explore More so you can build a few tools that can help you in your day-to-day workflow.
 with that we come to the end of this short section on building CLI tools with node and npm.
-thank you for watching please do consider subscribing to the channel and I'll see you in the next one"
+(((((((((("thank you for watching please do consider subscribing to the channel and I'll see you in the next one"
 

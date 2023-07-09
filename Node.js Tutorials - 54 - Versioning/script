@@ -1,45 +1,45 @@
-welcome back in the previous video we learned about the dependencies field in package.json.
+(((((((((("welcome back in the previous video we learned about the dependencies field in package.json.
 each dependency is code that is needed for the functioning of our project.
-each entry consists of the package name followed by the package version installed in a project.
+(((((((((("each entry consists of the package name followed by the package version installed in a project.
 in this video let's learn more about versioning in npm.
-first you should know that the npm install command always installs the latest table version.
+(((((((((("first you should know that the npm install command always installs the latest table version.
 in case of uppercase package it is 2.0.2.
-you can however specify the version number when installing a package.
+(((((((((("you can however specify the version number when installing a package.
 for that we can run npm install upper hyphen case at 2.0.0.
-when I run this command.
+(((((((((("when I run this command.
 you can see the version in package.json is now overwritten to 2.0.0.
-a good use case for installing a specific version is when the latest version contains a bug that has been over looked by the maintainers.
-you can install an earlier version start using it and update when the latest version has been patched.
+(((((((((("a good use case for installing a specific version is when the latest version contains a bug that has been over looked by the maintainers.
+(((((((((("you can install an earlier version start using it and update when the latest version has been patched.
 we run npm install uppercase and the latest version is reinstalled.
-at this point I'm pretty sure you're wondering why is the version number represented as three digits with a DOT separator.
-why is it not a simple sequential version number like 1 2 3 and so on.
+(((((((((("at this point I'm pretty sure you're wondering why is the version number represented as three digits with a DOT separator.
+(((((((((("why is it not a simple sequential version number like 1 2 3 and so on.
 well that is because npm adopts what is known as semantic versioning.
-let's understand more about that semantic versioning also known as somewhere is one of the most widely adopted versioning systems.
-it is a simple set of rules and requirements that dictate how version numbers are assigned and incremented.
+(((((((((("let's understand more about that semantic versioning also known as somewhere is one of the most widely adopted versioning systems.
+(((((((((("it is a simple set of rules and requirements that dictate how version numbers are assigned and incremented.
 in today's world of web development new packages are being created every single day.
-all of them at some point of time undergo a change and it is crucial to keep a semantic and historical track of those changes.
-under semantic versioning version numbers and the way they change convey meaning about the underlying code and what has been modified from one version to the next.
-in doing so it becomes easy to communicate your intentions to the users of your software.
+(((((((((("all of them at some point of time undergo a change and it is crucial to keep a semantic and historical track of those changes.
+(((((((((("under semantic versioning version numbers and the way they change convey meaning about the underlying code and what has been modified from one version to the next.
+(((((((((("in doing so it becomes easy to communicate your intentions to the users of your software.
 so how does it work.
-well a semantic version is of the format x dot y dot Z where X stands for a major version y stands for a minor version and Z stands for a patch.
-for example uppercase version 2.0.2 indicates a major version 2 a minor version 0 and a patch version 2.
-now the real question is when do we bumpthe different version numbers.
+(((((((((("well a semantic version is of the format x dot y dot Z where X stands for a major version y stands for a minor version and Z stands for a patch.
+(((((((((("for example uppercase version 2.0.2 indicates a major version 2 a minor version 0 and a patch version 2.
+(((((((((("now the real question is when do we bumpthe different version numbers.
 obviously we can't increment the version by a random number right.
-so here are the rules when you fix a bug and the code stays backwards compatible you increment the patch version.
-for example1.1.1 to 1.1.2.
+(((((((((("so here are the rules when you fix a bug and the code stays backwards compatible you increment the patch version.
+(((((((((("for example1.1.1 to 1.1.2.
 when you add new functionality but the code still stays backwards compatible you increment the minor version.
-but this time you also reset the patch version to zero for example1.1.1 to 1.2.0.
+(((((((((("but this time you also reset the patch version to zero for example1.1.1 to 1.2.0.
 when you make changes and the code is no more backwards compatible you increment the major version in addition to that you have to reset the miner and Patch versions to zero.
-for example1.1.1 to 2.0.0.
+(((((((((("for example1.1.1 to 2.0.0.
 this semantic increment will help users make decisions regarding their projects.
-now let's discuss a few more points on versioning.
+(((((((((("now let's discuss a few more points on versioning.
 semantic versioning always starts with0.1.0 and that is because you never start with a patch on a brand new package.
-0 dot y dot z a major version of 0 is used for initial development.
+(((((((((("0 dot y dot z a major version of 0 is used for initial development.
 when the code is production ready you increment to version 1.0.0.
 at any point in time even the simplest of changes has to be done with an increase in the version number.
-that is pretty much how semantic versioning works.
+(((((((((("that is pretty much how semantic versioning works.
 I would say there is definitely a responsibility both as a developer and as a user.
-as the creator of a package it is your duty to update the appropriate version based on the changes you make.
-as a user it is my responsibility to keep track of the changes and make necessary Corrections in my project when I update to the latest version.
-all right I hope that you now have a better understanding of what a version really means what impact it has and why it is so important to update it correctly especially if you write packages that are used by others.
-thank you for watching please do consider subscribing to the channel and I'll see you in the next one"
+(((((((((("as the creator of a package it is your duty to update the appropriate version based on the changes you make.
+(((((((((("as a user it is my responsibility to keep track of the changes and make necessary Corrections in my project when I update to the latest version.
+(((((((((("all right I hope that you now have a better understanding of what a version really means what impact it has and why it is so important to update it correctly especially if you write packages that are used by others.
+(((((((((("thank you for watching please do consider subscribing to the channel and I'll see you in the next one"

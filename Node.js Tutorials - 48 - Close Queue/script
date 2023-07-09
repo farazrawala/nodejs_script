@@ -1,45 +1,111 @@
+Hello again, and thank you for joining me as I examine the closing queue, the final cue in the event Loop, in this video.
 (((((((((""welcome back in this video let's take a look at the last cue in the event Loop which is the close queue.
+
+We'll do our 14th and last experiment in this part to learn about the event Loop in node.js, which will shed light on the closure queue. 
 ((((((((("and to understand about the close queue we're going to run our 14th and final experiment in this section on learning about the event Loop in node.js.
+
+once again to save us some time I'm going to copy paste the code.
+let me walk you through the code.
 ((((((((("once again to save us some time I'm going to copy paste the code.
 let me walk you through the code.
+
+To begin, the fs module must be imported.
+Next, we use FS dot construct read stream to make a stream that can be read.
 ((((((((("first we import the fs module.
 next we create a readable stream using FS dot create read stream.
+
+The stream will be closed using the close method in the next line.
+After that, we keep an ear out for the close event, which fires off when the stream is finally closed.
 ((((((((("in the next line we close the stream using the close method.
 next we listen to the close event which is emitted when the stream is closed.
+
+As a consequence of the preceding line, something is released.
+with the last act. 
 ((((((((("this is emitted as a result of the previous line.
 to the close event.
+
+We affix a listener to it.
+This is a callback for the readable stream's closure event and will be logged.
+This is how we put a callback function in the close queue, which you probably knew previously.
 ((((((((("we attach a listener.
 this is a callback function which logs this is from readable stream close event callback.
 you may have guessed it already but this is how we queue a callback function into the close queue.
+
+through participating in closing-event listening.
+After that, we'll go over a few common approaches.
 ((((((((("by adding listeners to close events.
 next we have a few familiar methods.
+
+We see a sequence of three separate calls to set immediate, set timeout, and promise.fix and complete processing dot next deck.
+Please pause the video and attempt to predict the result.
 ((((((((("we have a call to set immediate followed by set timeout followed by promise.resolve and finally process dot next deck.
 I want you to now pause the video and try figure out the output.
+
+if I do an index node scan.
+We now know the protocol for killing.
 ((((((((("if I run node index.
 we see the order of execution.
+
+first, next, a stick.
+A further assurance.After the event callback has been resolved, the timeout, instant, and close settings are set.
 ((((((((("first next stick.
 second promise.resolve third set timeout fourth set immediate and finally close event callback.
+
+This suggests that close queue callbacks occur after all other queue callbacks have completed inside a particular iteration of the event Loop.
+Picture the hanging if you will.
+One callback is placed in every queue besides the io q after the call stack processes all statements.
 ((((((((("from this we can infer close queue callbacks are executed after all other queues callbacks in a given iteration of the event Loop.
 let's visualize the execution.
 when the call stack executes all statements we end up with one callback in each queue except the io q.
+
+Control moves into the event Loop when there is no more code to run.
+The following tick queue's initial call back is dequeued and executed.
+The promise queue is dequeued and the next call back is processed.
 ((((((((("when there is no further code to execute control enters the event Loop.
 first call back in the next tick queue is DQ and executed.
 next call back in the promise queue is DQ and executed.
+
+It is followed by a callback to the timer queue.
+Loop advances to the inspection queue at the next occurrence.
 ((((((((("that is followed by the timer queue callback.
 next event Loop moves on to the check queue.
+
+The callback was dispatched and ran.
+The loop is now complete, and the close queue is in charge. 
 ((((((((("callback is dq'd and executed.
 finally control moves on to the close queue.
+
+The last callback is dispatched and run.
+easy if you've viewed the videos leading up to this one regarding the event Loop.
+Okay, if the 14 experiments and their conclusions have been made clear, we can wrap up by discussing some final thoughts on the event loop. 
 ((((((((("the final callback is dq'd and executed.
 really simple if you have watched the previous few videos about the event Loop.
 all right if all the 14 different experiments and their corresponding inferences are now clear let's conclude with the following points about the event loop.
+
+an Occurrence In node.js, synchronous and asynchronous code are both executed by the loop c programme, which orchestrates or coordinates their execution.
 ((((((((("the event Loop is a c program that orchestrates or coordinates the execution of synchronous and asynchronous code in node.js.
+
+an Occurrence In node.js, synchronous and asynchronous code are both executed by the loop c programme, which orchestrates or coordinates their execution.
 ((((((((("it coordinates the execution of callbacks in six different queues.
 they are next tick promise timer i o check and close queues.
+
+To enter the next queue, we utilise the process dot next tick function.
+When a promise enters the promise queue, it is either resolved or rejected.
 ((((((((("we use process dot next tick method to queue into the next queue.
 we resolve or reject a promise to queue into the promise queue.
+
+To perform an asynchronous method and queue it into the Io q, we utilise a set timeout or set interval.
 ((((((((("we use a set timeout or set interval to queue into the timer queue
 execute an async method to queue into the Io q.
+
+The check queue may be joined using the set instant function, and the close queue can be joined by adding event listeners for when the queue is about to be closed.
 ((((((((("use set immediate function to queue into the check queue and finally attach close event listeners to queue into the close queue.
+
+Next stick and promise queues are executed in between each queue and also between each callback execution in the timer and check queues, therefore the sequence of execution is as shown above.
 ((((((((("the order of execution follows the same order listed here with an additional point that next stick and promise queues are executed in between each queue and also in between each callback execution in the timer and check queues.
+
+This concludes our look at the inner workings of Node.js's asynchronous execution. 
 ((((((((("with that we come to the end of this section on understanding the internals of how async code is executed in node.js.
+
+Thanks for viewing, and I hope you'll consider subscribing so you don't miss a single video!
 ((((((((("thank you for watching please do consider subscribing to the channel and I'll see you in the next one"
