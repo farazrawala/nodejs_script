@@ -1,1 +1,117 @@
-"welcome to the eighth and final sectionin this course on node.js for beginnersin this section I want to cover a fewmiscellaneous topics that don't fallunder one particular categoryin this video we are going to learnabout the built-in cluster module innode.jsnow if you can recollect from theprevious sections I had mentioned thatnode is single threadedwhich means no matter how many cores youhave node only uses a single core ofyour CPUthis is fine for i o operations but ifthe code has long running and CPUintensive operations your applicationmight struggle from a performance pointof viewto help with the scenarionode.js introduced the cluster modulethe cluster module enables the creationof child processes also called workersthat run simultaneouslyit's also important to note that allcreated workers share the same serverportin simple words the cluster module givesyou a quick win when it comes tohandling the workload in a node.jsapplicationin this video Let's understand moreabout this module with an exampleI'm going to begin by creating a newfilenew cluster.jsthe idea is to first start with codethat doesn't use the cluster module andcompare it with one that uses thecluster modulewithin the file I'm going to copy pastea code snippet to save us some timeit is a very simple HTTP serversomething that shouldn't be new to youif you watched the section on built-inmoduleswe import the HTTP modulecreate a server and handle two routesin the home page route which is the rootwe have a simple response with plaintexthome pagein the slow page route though we have afor Loopthat simulates long-running CPU work itdoesn't matter what the code is but youjust have to know this takes a reallylong time to executeonce the for Loop completes we respondwith slow page as the textso we have one routethat should be fairly quick inresponding and another routethat will take a while before respondingwe then listen to the server on Port8000 and a callback method is attachedto lock a message to the console whenthe server is in fact listeningif the code is clearlet's now run nodeno clusterwe should see our server is running onPort 8000.in the browserI'm going to navigate to localhost Port8000.we see the home pageI will also open the network tabto monitor the time it takes to load thepagewhen I refreshyou can see the home page loads in aboutthree milliseconds which is pretty goodI will now open a new tabopen the network paneland this time navigate to localhost Port8000 slash slow pagewhen I press enteryou can see this takes about 4.72secondsway slower compared to the home pagebut this should not be surprising giventhe fact we have a long running for Loopin this routebut here is the interesting bitI want you to observe the time taken byboth the routes when I load the slowpage first and while this page isloading quickly load the home pageready refresh refreshyou can see this time slow page takesapproximately 5.7 secondsbut the home page also takes 4.9 secondsthe point 8 second difference isbasically the time I have taken toswitch tabs and refresh this pagebut it is pretty clear that homepagewhich would load in under fivemilliseconds is now taking five secondswell that is because the single threadof node.js is blocked with this for Loopand the server won't be able to respondto any new requestsslash slow page is basically blockingthe Home Routenow one way to fix this is to use thecluster module let's understand itsusagefirst let me explain with the slide howthe cluster module Works in node.jswhen we run node index in the terminalthe file is treated as a cluster masterand this master is in charge of spawningnew workers which run an instance of ournode applicationit is very important to note that themaster is only in charge of the workersstarting stopping restarting Etc butdoes not execute the application codeitselfit is not in charge of handling incomingrequests reading files Etcthat is up to the individual workerinstanceeach worker gets its own event Loopmemory and V8 instancein doing so we are able to share theworkload across different instanceswithout having to block incomingrequestslet's now head back to the editor andwrite code to distinguish between masterand worker and ensure they areresponsible for the right type of workI'm going to begin by creating a newfile called cluster.jsat the top I'm going to import thecluster modulenow we need to execute two differentSnippets of code depending on whetherthe file is treated as master or workerfor that we use the ease Master propertyon the cluster objectso F cluster dot is masterwe're going to logMaster processprocess.pidis runningif it is not masterwe're going to logworker process.pidstartedwhen you first run node cluster.js inthe terminalnode treats this file as master and setsis master to truewe can quickly verify this by runningnode clusterNASA process 3202 is runningnow let's focus on what code to run asMaster versus workeras Master we need to create new workersand for that we use the fork method onthe cluster objectlet's create two workers by calling ittwiceand for the worker we are pretty muchgoing to run the same code that we didin the non-cluster fileI'm going to copy paste the codeso the master is in charge of creatingworkers and the workers are in charge ofhandling the incoming requestswe are now ready to see the clusteringmodule in actionin the terminal run the command nodeclusterwe can see that the master and twoworkers are runningback in the browserif we refresh home pageit takes 24 millisecondsif we refresh the slow pageit takes 4.72 secondsbut what happens if we make the tworequests in parallelplease observe as I quickly reload theslow page first followed by the homepagerefresh and refreshyou can see the home page responds rightaway in two millisecondsthe slow page continues to takeapproximately the same amount of time 5Secondsbut it is clear that the second requestis not blocked well the first request isbeing servedwhat is happening isthe first worker with its node instancehandles the first requestthe second worker with its own nodeinstance handles the second requestthis as you can see leads to betterperformanceit is very important that you create twoworker threads at minimumif you create only one it is the same asno cluster scenariothe master will not handle any incomingrequest resulting in just one nodeinstance responsible for both incomingrequestsnow I'm pretty sure you have a questionin your mindwhy shouldn't we simply create a largenumber of workers using cluster.orgthat will ensure our app is performantrightwell that's not truewe should only create as many workers asthere are CPU cores on the machine theapp is runningif you create more workers then thereare logical cores on the computer it cancause an overhead as a system will haveto schedule all the created workers withfewer number of coresin case of my MacBook I have 10 logicalcores so I should only ever create 10workers to get the maximum performanceanything more and it is only hurting andhelpingto verify how many workers you cancreate head back to vs code and importthe OS modulein the next linelogOs Os dot CPUsdot lengthrun the codeand we see 10.of course this might be a differentnumber for your machinebut wait there is an easier way to doall of thisyou can simply ask someone else to runyour application as a cluster and alsodecide the best number of workers tocreate for your machineand that someone else is an npm packagecalled pm2let's install itthe command is sudo npm install Dashgpm2Dash G is required as we intend to runit from the command lineSudo is not required if you're onWindowsI already have this package installed soplease pause the video and run thecommandwhen the command completes we can askpm2 to run our new cluster file incluster moderemember we are basically trying toreplicate the cluster modewe have written manuallyso the file to run is no cluster and notclusterin the terminal run the command pm2start followed by the file namecluster.js followed by the option Dash Iand we pass in 0.here 0 indicates we want pm2 to figureout the optimum number of workers tocreateif you specify the number as 2 pm2 willcreate only two workersif I press enteryou can see a table has been displayedwe see 10 workers in total0 to 9.they all are online which means we canhead back to the browserrun slow page and quickly run home pagethe home page still loads in twomillisecondsand the slow page loads without blockingthe other requestreally simple as you can seenow to stop pm2 run the commandpm2 space stop spaceno cluster.jsthe status now reads startand that was quite a bit to cover aboutthe cluster module but hopefully it allmade senseit is something that you don't need as abeginner starting out with node.js but aconcept that is well worth knowing aboutplease do read up more about the pm2package for your understandingalright thank you for watching please doconsider subscribing to the channel andI'll see you in the next one"
+welcome to the eighth and final section in this course on node.js for beginners.
+in this section I want to cover a few miscellaneous topics that don't fall under one particular category in this video we are going to learn about the built-in cluster module innode.js.
+now if you can recollect from the previous sections I had mentioned that node is single threaded.
+which means no matter how many cores you have node only uses a single core of your CPU.
+this is fine for i o operations but if the code has long running and CPU intensive operations your application might struggle from a performance point of view.
+to help with the scenarionode.js introduced the cluster module.
+the cluster module enables the creation of child processes also called workers that run simultaneously.
+it's also important to note that all created workers share the same server port.
+in simple words the cluster module gives you a quick win when it comes to handling the workload in a node.js application.
+in this video Let's understand more about this module with an example.
+I'm going to begin by creating a new file.
+new cluster.js.
+the idea is to first start with code that doesn't use the cluster module and compare it with one that uses the cluster module.
+within the file I'm going to copy paste a code snippet to save us some time.
+it is a very simple HTTP server.
+something that shouldn't be new to you if you watched the section on built-in modules.
+we import the HTTP module.
+create a server and handle two routes in the home page route which is the root we have a simple response with plaintext.
+home page in the slow page route though we have a for Loop.
+that simulates long-running CPU work it doesn't matter what the code is but you just have to know this takes a really long time to execute.
+once the for Loop completes we respond with slow page as the text.
+so we have one route that should be fairly quick in responding and another route that will take a while before responding.
+we then listen to the server on Port8000 and a callback method is attached to lock a message to the console when the server is in fact listening.
+if the code is clear let's now run node no cluster.
+we should see our server is running on Port 8000.
+in the browser I'm going to navigate to localhost Port8000.
+we see the home page.
+I will also open the network tab to monitor the time it takes to load the page.
+when I refresh you can see the home page loads in about three milliseconds which is pretty good.
+I will now open a new tab open the network panel.
+and this time navigate to localhost Port8000 slash slow page.
+when I press enter.
+you can see this takes about 4.72seconds.
+way slower compared to the home page.
+but this should not be surprising given the fact we have a long running for Loop in this route.
+but here is the interesting bit.
+I want you to observe the time taken by both the routes when I load the slow page first and while this page is loading quickly load the home page.
+ready refresh refresh.
+you can see this time slow page takes approximately 5.7 seconds.
+but the home page also takes 4.9 seconds.
+the point 8 second difference is basically the time I have taken to switch tabs and refresh this page.
+but it is pretty clear that home page which would load in under five milliseconds is now taking five seconds.
+well that is because the single thread of node.js is blocked with this for Loop and the server won't be able to respond to any new requests.
+slash slow page is basically blocking the Home Route.
+now one way to fix this is to use the cluster module let's understand its usage.
+first let me explain with the slide how the cluster module Works in node.js.
+when we run node index in the terminal the file is treated as a cluster master and this master is in charge of spawning new workers which run an instance of our node application.
+it is very important to note that the master is only in charge of the workers.
+starting stopping restarting Etc but does not execute the application code itself.
+it is not in charge of handling incoming requests reading files Etc.
+that is up to the individual worker instance.
+each worker gets its own event Loop memory and V8 instance in doing so we are able to share the work load across different instances without having to block incoming requests.
+let's now head back to the editor and write code to distinguish between master and worker and ensure they are responsible for the right type of work.
+I'm going to begin by creating a new file called cluster.js.
+at the top I'm going to import the cluster module.
+now we need to execute two different Snippets of code depending on whether the file is treated as master or worker.
+for that we use the ease Master property on the cluster object.
+so F cluster dot is master we're going to log Master process process.pid is running.
+if it is not master we're going to log worker process.pid started.
+when you first run node cluster.js in the terminal.
+node treats this file as master and sets is master to true.
+we can quickly verify this by running node cluster NASA process 3202 is running.
+now let's focus on what code to run as Master versus worker.
+as Master we need to create new workers and for that we use the fork method on the cluster object.
+let's create two workers by calling it twice.
+and for the worker we are pretty much going to run the same code that we did in the non-cluster file.
+I'm going to copy paste the code.
+so the master is in charge of creating workers and the workers are in charge of handling the incoming requests.
+we are now ready to see the clustering module in action.
+in the terminal run the command node cluster we can see that the master and two workers are running.
+back in the browser if we refresh home page it takes 24 milliseconds.
+if we refresh the slow page.
+it takes 4.72 seconds but what happens if we make the two requests in parallel.
+please observe as I quickly reload the slow page first followed by the homepage.
+refresh and refresh you can see the home page responds right away in two milliseconds.
+the slow page continues to take approximately the same amount of time 5Seconds.
+but it is clear that the second request is not blocked well the first request is being served.
+what is happening is the first worker with its node instance handles the first request.
+the second worker with its own node instance handles the second request.
+this as you can see leads to better performance.
+it is very important that you create two worker threads at minimum.
+if you create only one it is the same as no cluster scenario.
+the master will not handle any incoming request resulting in just one node instance responsible for both incoming requests.
+now I'm pretty sure you have a question in your mind.
+why shouldn't we simply create a large number of workers using cluster.org that will ensure our app is performant right well that's not true we should only create as many workers as there are CPU cores on the machine the app is running.
+if you create more workers then there are logical cores on the computer it can cause an overhead as a system will have to schedule all the created workers with fewer number of cores.
+in case of my MacBook I have 10 logical cores so I should only ever create 10workers to get the maximum performance.
+anything more and it is only hurting and helping.
+to verify how many workers you can create head back to vs code and import the OS module.
+in the next line log Os Os dot CPUs dot length.
+run the code and we see 10.
+of course this might be a different number for your machine.
+but wait there is an easier way to do all of this.
+you can simply ask someone else to run your application as a cluster and also decide the best number of workers to create for your machine.
+and that someone else is an npm package called pm2let's install it.
+the command is sudo npm install Dashgpm2Dash G is required as we intend to run it from the command line
+Sudo is not required if you're on Windows I already have this package installed so please pause the video and run the command.
+when the command completes we can askpm2 to run our new cluster file in cluster mode.
+remember we are basically trying to replicate the cluster mode we have written manually.
+so the file to run is no cluster and not cluster.
+in the terminal run the command pm2start followed by the file name.
+cluster.js followed by the option Dash I and we pass in 0.
+here 0 indicates we want pm2 to figure out the optimum number of workers to create.
+if you specify the number as 2 pm2 will create only two workers.
+if I press enter you can see a table has been displayed.
+we see 10 workers in total0 to 9.
+they all are online which means we can head back to the browser.
+run slow page and quickly run home page.
+the home page still loads in two milliseconds.
+and the slow page loads without blocking the other request.
+really simple as you can see now to stop pm2 run the command.
+pm2 space stop space no cluster.js.
+the status now reads start.
+and that was quite a bit to cover about the cluster module but hopefully it all made sense.
+it is something that you don't need as a beginner starting out with node.js but a concept that is well worth knowing about.
+please do read up more about the pm2package for your understanding.
+alright thank you for watching please do consider subscribing to the channel and I'll see you in the next one"

@@ -1,1 +1,19 @@
-'all right for the final video in theseries I want to recap what we havelearned and suggest where to go fromherewe started off by spending an entiresection to understand what is node.jsin section 2 we learned about modules innode.jsuser defined modules to be more specificin Section 3 and 4 we learned about thecore built-in modules that node.js shipswith such as path FS events and httpin Section 5 we had a closer look at theinternals of node.jswe understood in detail about Libertythreadpool and the event Loopin section 6 we learned about npm andhow to work with third-party modulesin section 7 we learned how to build acommand line interface tool using nodeand npmfinally in the last section we covered afew miscellaneous topics such asclusters worker threads and deploying anode.js applicationI hope you have a much betterunderstanding of the concepts now thanyou did before starting the seriesnow where do you go from herewell let me suggest a few topicsfirst I would suggest express.jsit is a web framework built on top ofnode.jsthe next topic is just or retestyou can use these to write unit testsfor your applicationanother great topic to consider istypescriptadding types to your node.js app willgreatly reduce the number of bugs youmight come across and refactoringbecomes a whole lot easierof course I will be creating videos onthese topics sometime in the near futurein the meantime if you have enjoyed theseries on node.js and found it helpfulplease do consider leaving a like andsubscribing to the channel as it helpsout a lot with the YouTube algorithmas always thank you for watching anduntil next time take care'
+'all right for the final video in the series I want to recap what we have learned and suggest where to go from here.
+we started off by spending an entire section to understand what is node.js.
+in section 2 we learned about modules innode.js.
+user defined modules to be more specific in Section 3 and 4 we learned about the core built-in modules that node.js ships with such as path FS events and http.
+in Section 5 we had a closer look at the internals of node.js.
+we understood in detail about Libuv thread pool and the event Loop.
+in section 6 we learned about npm and how to work with third-party modules.
+in section 7 we learned how to build a command line interface tool using node and npm.
+finally in the last section we covered a few miscellaneous topics such as clusters worker threads and deploying anode.js application.
+I hope you have a much better understanding of the concepts now than you did before starting the series.
+now where do you go from here.
+well let me suggest a few topics first I would suggest express.js.
+it is a web framework built on top ofnode.js.
+the next topic is just or retest you can use these to write unit tests for your application.
+another great topic to consider is type script adding types to your node.js app will greatly reduce the number of bugs you might come across and re factoring becomes a whole lot easier.
+of course I will be creating videos on these topics sometime in the near future.
+in the meantime if you have enjoyed the series on node.js and found it helpful please do consider leaving a like and subscribing to the channel as it helps out a lot with the YouTube algorithm.
+as always thank you for watching and until next time take care'
+
