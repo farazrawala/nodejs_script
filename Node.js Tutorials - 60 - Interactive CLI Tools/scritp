@@ -1,9 +1,15 @@
 
 (((((((((("in the previous video we enhanced our basic CLI to accept options from the command line.
 
+
 (((((((((("we can run the command code Evolution Pokedex followed by the Pokemon option and a value for that option.
+
 (((((((((("although this is great what would be even better is if the CLI was interactive prompting us to enter a Pokemon name.
+
+
 (((((((((("that way as a user we don't have to refer to the manual to understand what options have to be passed in to make the CLI work.
+
+
 (((((((((("in this video Let's understand how to skip passing the Pokemon option and instead prompt the user for a Pokemon name.
 (((((((((("Step 1 I'm going to comment out code related to the arcs package as we don't plan to pass in any option.
 Step 2 we're going to install an npm package that allows us to add interactivity to our CLI.

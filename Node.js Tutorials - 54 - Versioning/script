@@ -1,45 +1,115 @@
+hello again, in the last video, we discussed the dependents section of package.json.
+Each dependency is a piece of code that must be present for our project to run properly.
 (((((((((("welcome back in the previous video we learned about the dependencies field in package.json.
 each dependency is code that is needed for the functioning of our project.
+
+Each item lists the project name, the name of the package, and the version of the package that is currently installed.
+Discover the ins and outs of npm versioning with this helpful video.
 (((((((((("each entry consists of the package name followed by the package version installed in a project.
 in this video let's learn more about versioning in npm.
+
+The first thing you need to know is that npm install always uses the most up-to-date version of table.
+For capital-case packages, the version number is 2.0.2.
 (((((((((("first you should know that the npm install command always installs the latest table version.
 in case of uppercase package it is 2.0.2.
+
+When installing a package, though, you can provide the version number.
+Uppercase hyphen case at version 2.0.0 may be installed using the npm command.
 (((((((((("you can however specify the version number when installing a package.
 for that we can run npm install upper hyphen case at 2.0.0.
+
+If I execute this, what happens?
+The package contains the version number.Updated to json version 2.0.0.
 (((((((((("when I run this command.
 you can see the version in package.json is now overwritten to 2.0.0.
+
+When the most recent release is flawed in some way that has been overlooked by the developers, downloading an older version is a smart idea.
 (((((((((("a good use case for installing a specific version is when the latest version contains a bug that has been over looked by the maintainers.
+
+You may get up and running with an older release, then upgrade after the current stable release has received security patches.
 (((((((((("you can install an earlier version start using it and update when the latest version has been patched.
 we run npm install uppercase and the latest version is reinstalled.
+
+The version number is shown as three numerals separated by a., which I'm sure has you scratching your head.
 (((((((((("at this point I'm pretty sure you're wondering why is the version number represented as three digits with a DOT separator.
+
+I don't get why it's not a version number starting with 1, 2, 3, etc.
+The reason for this is that npm uses semantic versioning.
 (((((((((("why is it not a simple sequential version number like 1 2 3 and so on.
 well that is because npm adopts what is known as semantic versioning.
+
+Semantic versioning, often known as someplace, is one of the most popular versioning systems, so let's learn more about it.
 (((((((((("let's understand more about that semantic versioning also known as somewhere is one of the most widely adopted versioning systems.
+
+Assigning and increasing version numbers adhere to a minimal set of criteria and constraints.
+Every day, in the realm of web development, new packages appear.
 (((((((((("it is a simple set of rules and requirements that dictate how version numbers are assigned and incremented.
 in today's world of web development new packages are being created every single day.
+
+There is a need to record the semantic and historical alterations that occur in all of them throughout time.
 (((((((((("all of them at some point of time undergo a change and it is crucial to keep a semantic and historical track of those changes.
+
+Under semantic versioning, version numbers and their evolution provide insight into the nature of the underlying code and how it has evolved over time.
 (((((((((("under semantic versioning version numbers and the way they change convey meaning about the underlying code and what has been modified from one version to the next.
+
+Doing so simplifies conveying your goals to software end users.
+the procedure, if you will.
 (((((((((("in doing so it becomes easy to communicate your intentions to the users of your software.
 so how does it work.
+
+Semantic versions, on the other hand, have the pattern x.y.z, where X denotes a major version, y a minor one, and Z a patch.
 (((((((((("well a semantic version is of the format x dot y dot Z where X stands for a major version y stands for a minor version and Z stands for a patch.
+
+The version 2.0.2 patch, for instance, is a minor release based on the 2.0 major release. 
 (((((((((("for example uppercase version 2.0.2 indicates a major version 2 a minor version 0 and a patch version 2.
+
+The fundamental issue at hand is deciding when to release new major and minor revisions.
+Increasing the version number arbitrarily is plainly wrong. 
 (((((((((("now the real question is when do we bumpthe different version numbers.
 obviously we can't increment the version by a random number right.
+
+When a problem is fixed and the code remains backwards compatible, the patch version is updated.
 (((((((((("so here are the rules when you fix a bug and the code stays backwards compatible you increment the patch version.
+
+When new features are added while keeping the code compatible with older versions, the minor version is incremented.
 (((((((((("for example1.1.1 to 1.1.2.
 when you add new functionality but the code still stays backwards compatible you increment the minor version.
+
+But this time, instead of upgrading from 1.1.1 to 1.2.0, you roll back to 1.1.1.
+When making modifications that break backwards compatibility, you must not only reset the miner and Patch versions to zero, but also increase the major version.
 (((((((((("but this time you also reset the patch version to zero for example1.1.1 to 1.2.0.
 when you make changes and the code is no more backwards compatible you increment the major version in addition to that you have to reset the miner and Patch versions to zero.
+
+For instance, 1.1.1 to 2.0.0.
+Users will benefit from this semantic enhancement while making choices concerning their projects.
 (((((((((("for example1.1.1 to 2.0.0.
 this semantic increment will help users make decisions regarding their projects.
+
+Let's talk more about versioning now.
+Because you never begin with a patch on a fresh new package, semantic versioning always begins with 0.1.0.
 (((((((((("now let's discuss a few more points on versioning.
 semantic versioning always starts with0.1.0 and that is because you never start with a patch on a brand new package.
+
+zero dot y dot z Initial development typically begins with a major version number of 0.
+When the software is ready for release, the version number is set to 1.0.0.
+Any modification, no matter how little, will eventually necessitate a new version number. 
 (((((((((("0 dot y dot z a major version of 0 is used for initial development.
 when the code is production ready you increment to version 1.0.0.
 at any point in time even the simplest of changes has to be done with an increase in the version number.
+
+That is essentially how the concept of semantic versions operates.
+As a user and a developer, I believe we both have responsibilities.
 (((((((((("that is pretty much how semantic versioning works.
 I would say there is definitely a responsibility both as a developer and as a user.
+
+If you modify a package and release a newer version, it is your responsibility as the creator to release the revised package.
 (((((((((("as the creator of a package it is your duty to update the appropriate version based on the changes you make.
+
+When I upgrade to a new version, it is my obligation as a user to monitor the changes and incorporate them into my work. 
 (((((((((("as a user it is my responsibility to keep track of the changes and make necessary Corrections in my project when I update to the latest version.
+
+Okay, I guess If you develop packages that are used by other people, I hope you now have a better idea of what a version actually means, what influence it has, and why it is so crucial to update it appropriately.
 (((((((((("all right I hope that you now have a better understanding of what a version really means what impact it has and why it is so important to update it correctly especially if you write packages that are used by others.
+
+"Thanks for viewing, and I hope you'll consider subscribing so you don't miss a single video!
 (((((((((("thank you for watching please do consider subscribing to the channel and I'll see you in the next one"
