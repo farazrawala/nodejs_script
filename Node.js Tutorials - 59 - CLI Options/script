@@ -1,103 +1,130 @@
-
+In the previous video, we discovered how to use node and npm to build a simple CLI utility.
+Let's add some logic and learn how to pass options to the Tor cli in this video. 
 (((((((((("in the previous video we learned how to create a basic CLI tool using node and npm.
 in this video let's add some logic and also understand how to pass options tor cli.
 
-
+Let's start.
+I'm at pokeyapi.co, where you can get free access to a rest API that is tied to Pokemon.
 (((((((((("let's begin.
 I'm here atpokeyapi.co where you have access to a free Pokemon related rest API.
 
-
+When a Pokemon name is entered, the API returns a Json with properties relevant to that Pokemon. 
 (((((((((("you can enter a Pokemon name and the API responds with a Json of properties applicable to that Pokemon.
 
-
+In case I enter Charmander and hit the submit button.
+We're given information on Charmander like its moves, stats in games, and more.
 (((((((((("if I type Charmander and click submit.
 we get back details about Charmander such as abilities forms game indices Etc.
 
-
+However, this feature is what I like to emphasise.
+move is a property of each item in the moves array.
 (((((((((("what I want to focus on though is just this moves property.
 moves is an array of objects and each object has a move property.
 
-
+Each each action consists of a name and a URL-encoded object.
+I'd want to make the Pokedex CLI as basic as possible by just showing the first five moves for each Pokemon.
 (((((((((("each move is in turn an object with a name and URL.
 for our Pokedex CLI I want to keep it really simple and display the first five moves for a given Pokemon.
 
-
+Let's go back to versus code if this need is crystal apparent so that we can implement it.
+First, I'll describe the definition of the function that outputs, for a given Pokemon name, the first five moves.
+Iterate 5 Times and Print Constantly.
 (((((((((("if this requirement is clear let's head back to vs code and add the logic.
 I'm going to begin with the function definition that prints the first five moves given a Pokemon name.
 const print 5 Moves.
 
-
+This is an asynchronous method that takes a Pokemon name as an argument.
+also records the first five moves played to the control panel.
 (((((((((("and this is an async function that accepts a Pokemon name.
 and logs the first five moves to the console.
 
-
+We use the Pokemon API and send the Pokemon's name to the method.
+I'm going to cut and paste the API from the page, so const answer is equivalent to a weight retrieve.
+URL: http://pokeyapi.com/ Pokemon name followed by API V2 slash.
 (((((((((("within the function we call the Pokemon API passing in the Pokemon name.
 so const response is equal to a weight fetch and I'm going to copy paste the API from the website.
 https pokeyapi.com API V2 slash Pokemon followed by Pokemon name.
 
-
+The next step is to Json-encode the result.
+A weight answer in dot Json format is equal to the const Pokemon.
 (((((((((("next convert the response to Json.
 const Pokemon is equal to a weight response dot Json.
 
-
+The movements property of the Json will be parsed out in the following step.
+We use the dot map of Pokemon moves to learn their names.
 (((((((((("next we extract the moves property from the Json.
 Pokemon dot moves dot map and for each move we extract just the name.
 
-
+We then only record the first five moves (moves.slice.0.comma.5) in the console.
+We finish by calling the function while passing in a Pokemon's name.
 (((((((((("then we log to the console only the first five moves so moves dot slice 0 comma five.
 finally we call the function passing in a Pokemon name.
 
-
+Bring in Charmander for another pass.
+and the destructuring of a minor corrective move.
 (((((((((("let's pass in Charmander once again.
 and a small correction move should be de structured.
 
-
+You should know that this code is included in the command, so we don't need to take any further measures to reflect our modifications in the CLI.
 (((((((((("now what you should know is that this code is linked to the command and we don't have to run any additional steps to update the CLI with our changes.
 
-
+If we enter code evolution Pokedex and check the terminal, we see the expected results: the first five moves (Mega Punch, Fire Punch, Thunder Punch, Scratch, and Sword Stand) are locked.
+Let's go ahead and fix up this code.
 (((((((((("we can run code evolution Pokedex and we see the first five moves locked in the terminal Mega Punch Fire Punch Thunder Punch scratch and sword stands our code works as expected.
 let's now improve this code.
 
-
+The Pokemon name is currently hardcoded; let's change it so that the user specifies one when executing the CLI command.
+Today, cli options are the standard method of providing input to command line tools.
 (((((((((("at the moment the Pokemon name is hard coded let's make it in such a way that the user can pass in a Pokemon name when running the CLI command itself.
 now the way to pass arguments to a CLI tool is to pass a cli option.
 
-
+A log statement, in which process.arg V is logged, can be added to index.js.
+If we now enter evolution_code_pokemon_dash_dash_pokemon into the Pokedex, we get the result "Charmander."
+There is more information in the process.argary log.
 (((((((((("in index.js we can add a log statement where we log process.arg V.
 if we now run code Evolution Pokedex dash dash Pokemon is equal to Charmander.
 we see an additional log from process.argary.
 
-
+This is an array, where index 0 always represents the path to The Interpreter and index 1 represents the path to the command line interface.
 (((((((((("this is an array where the zeroth index is always path to The Interpreter and first index is path to the CLI.
 
-
+The passed-in options are available, however, beginning at the second index.
+We've already ruled out one possibility by saying Charmander is equivalent to Pokemon.
 (((((((((("from the second index though we have the passed in options.
 we have passed in one option which is Pokemon is equal to Charmander.
 
-
+Now that we have npm installed, we can process this array, but there is a better method to do it using a package called yards.
 (((((((((("now we can process this array but a better way is to use a package called yards let me install it npm install yards.
 
-
+It is a required component, and its presence in package.json is documented.
+Using Yorks, we are able to have options mapped into key-value pairs that can be indexed and retrieved from within our code.JS, let's bring in the package and start using it.
 (((((((((("you can see it listed as a dependency in package.json.
 Yorks converts options into key value pairs that we can easily access in our code in index.js let's import and use the package.
 
-
+It is a required component, and its presence in package.json is documented.
+Using Yorks, we are able to have options mapped into key-value pairs that can be indexed and retrieved from within our code.JS, let's bring in the package and start using it.
 (((((((((("const ergs is equal to require yarks and we extract our GUI calling yards passing in process dot argue.
 
-
+now, rather than merely breezing by Charmander.
+Pokemon argument resolution is a non-issue.
 (((((((((("now instead of passing in Charmander.
 we can pass in argue dot Pokemon.
 
-
+the function of yarx is as follows.
+The Pokemon option value can be retrieved quickly and easily.
+We can test this by using the Pokedex's evolution-checking code and setting it to the Charmander option.
 (((((((((("and this is what yarx does.
 it allows us to easily retrieve the Pokemon option value.
 if we now run code Evolution Pokedex with an option Pokemon is equal to Charmander.
 
-
+The results are the same as previously.
+Mu equals running the Pokemon CLI.
+and a new set of strategies has emerged Our CLI does what it's supposed to and even includes some enhancements!
 (((((((((("we see the same output as before.
 run the CLI with Pokemon is equal to Mu.
 and we see a different set of moves our CLI works as expected and has a few improvements.
 
-
+We'll be implementing CLI interactivity in the next video.
+I appreciate you tuning in and I'll catch you in the next episode.
 (((((((((("in the next video let's add some interactivity to the CLI.
 thank you for watching and I'll see you in the next one"

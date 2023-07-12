@@ -1,19 +1,46 @@
-'all right for the final video in the series I want to recap what we have learned and suggest where to go from here.
-we started off by spending an entire section to understand what is node.js.
+okay, in this last video I'd want to summarise our progress so far and offer some advice on how to proceed.
+(((((((("all right for the final video in the series I want to recap what we have learned and suggest where to go from here.
+
+The first step was to devote an entire chapter to defining node.js.
+In Chapter 2, Node.js Modules were covered in depth.
+(((((((("we started off by spending an entire section to understand what is node.js.
 in section 2 we learned about modules innode.js.
-user defined modules to be more specific in Section 3 and 4 we learned about the core built-in modules that node.js ships with such as path FS events and http.
-in Section 5 we had a closer look at the internals of node.js.
+
+modules created by the user Specifically, in Sections 3 and 4, we studied the standard modules that come preinstalled with Node.js, like the path FS events module and the http module.
+(((((((("user defined modules to be more specific in Section 3 and 4 we learned about the core built-in modules that node.js ships with such as path FS events and http.
+
+In Section 5, we dissected a node to see how it was put together.In js., we had a firm grasp of the event Loop and the Libuv thread pool.
+(((((((("in Section 5 we had a closer look at the internals of node.js.
 we understood in detail about Libuv thread pool and the event Loop.
-in section 6 we learned about npm and how to work with third-party modules.
+
+In Chapter 6, you were introduced to NPM and shown how to install and utilise external modules.
+In Chapter Seven, you saw how to use Node.js and NPM to create a CLI app.
+(((((((("in section 6 we learned about npm and how to work with third-party modules.
 in section 7 we learned how to build a command line interface tool using node and npm.
-finally in the last section we covered a few miscellaneous topics such as clusters worker threads and deploying anode.js application.
-I hope you have a much better understanding of the concepts now than you did before starting the series.
+
+Last but not least, we discussed a few ancillary subjects, including clusters, worker threads, and the deployment of an anode.js application.
+(((((((("finally in the last section we covered a few miscellaneous topics such as clusters worker threads and deploying anode.js application.
+
+I'm hoping that by the end of the series, you'll have a much firmer grasp of the ideas than you had at the outset.
+What should you do next?
+(((((((("I hope you have a much better understanding of the concepts now than you did before starting the series.
 now where do you go from here.
-well let me suggest a few topics first I would suggest express.js.
+
+OK, I'll throw out a few ideas; express.js is the first one that comes to me.
+A web framework that use node.js as its foundation.
+The next section will cover simply or retest, which may be used to create unit tests for your programme.
+(((((((("well let me suggest a few topics first I would suggest express.js.
 it is a web framework built on top ofnode.js.
 the next topic is just or retest you can use these to write unit tests for your application.
-another great topic to consider is type script adding types to your node.js app will greatly reduce the number of bugs you might come across and re factoring becomes a whole lot easier.
-of course I will be creating videos on these topics sometime in the near future.
-in the meantime if you have enjoyed the series on node.js and found it helpful please do consider leaving a like and subscribing to the channel as it helps out a lot with the YouTube algorithm.
+
+Type script, which may be added to your node, is another interesting possibility.The amount of defects in your js app will decrease, and refactoring will be much simpler.
+(((((((("another great topic to consider is type script adding types to your node.js app will greatly reduce the number of bugs you might come across and re factoring becomes a whole lot easier.
+
+Of course, I plan to make films covering these subjects in the not-too-distant future.
+(((((((("of course I will be creating videos on these topics sometime in the near future.
+
+Meanwhile, if you've enjoyed the node.js series and found it useful, a like and a subscribe would go a long way towards helping the channel rise in the YouTube rankings.
+Please enjoy the video, and till next time, take care.
+(((((((("in the meantime if you have enjoyed the series on node.js and found it helpful please do consider leaving a like and subscribing to the channel as it helps out a lot with the YouTube algorithm.
 as always thank you for watching and until next time take care'
 

@@ -1,43 +1,104 @@
-welcome back in this video we're going to learn how to deploy a node.js application.
+hello again The process of putting a node into service is demonstrated in this video.a programme written in js.
+Several low-cost or no-cost methods exist for setting up your node.JavaScript app.
+Although Heroku was a viable option before, it is no longer cost-free to utilise.
+((((((((("welcome back in this video we're going to learn how to deploy a node.js application.
 there are quite a few free options to deploy your node.js app.
 Heroku used to be a good choice but itis not free anymore.
-in this video I will be using render but fly is also a good option for you to explore.
+
+While I'll be utilising render for this video, I recommend checking out fly as well.
+Step 1 Let's take a brief look at the code that will be going live.
+This index.js file is where the "hello world" response from the HTTP server is stored.
+((((((((("in this video I will be using render but fly is also a good option for you to explore.
 Step 1 Let's quickly take a look at the code we will be deploying.
 it is this index.js file it contains a very simple HTTP server that responds with hello world.
-the app runs on Ford 3000 by default but also accepts the value as an environment variable.
+
+The application may be executed on Ford 3000 by setting an environment variable to that effect.
+In this tutorial, we'll go through the render settings.
+((((((((("the app runs on Ford 3000 by default but also accepts the value as an environment variable.
 we will see how to set this on render.
-Step 2 ensure your code is pushed to GitHub as you can see I already have a repo created which is the same repo I've used for the entire series node.js tutorials.
-we have a folder called nerd fundamentals and this index.js file is what we will be deploying in this video.
-step 3 head over to render.com and click on get started for free if you're new to render.
+
+As you can see, I've already had a repo set up, and I've been using it throughout this whole series of node.js lessons, so that's where we'll be working on Step 2: pushing your code to GitHub.
+((((((((("Step 2 ensure your code is pushed to GitHub as you can see I already have a repo created which is the same repo I've used for the entire series node.js tutorials.
+
+We'll be using the index.js file found in the nerd basics folder in this video.
+((((((((("we have a folder called nerd fundamentals and this index.js file is what we will be deploying in this video.
+
+If you're new to Render, Step 3 is to visit render.com and click on the "Get Started for Free" button.
+After logging in, I should be taken straight to my dashboard, as I am an existing user.
+((((((((("step 3 head over to render.com and click on get started for free if you're new to render.
 I already have an account once you sign in you should arrive at the dashboard page.
-step 4 to deploy a node.js application click on the new web service button under the web services option.
-next connect to your GitHub account by clicking on the corresponding button.
+
+Node deployment, step 4.js Programme To add a new web service, go to the web services menu and choose the corresponding button.
+((((((((("step 4 to deploy a node.js application click on the new web service button under the web services option.
+
+the following step is to log in to your GitHub account.
+To authorise rendering, please enter your login details.
+((((((((("next connect to your GitHub account by clicking on the corresponding button.
 enter your credentials and authorize render.
-next you can give permission to all your GitHub repositories or only selected repositories.
+
+The following step is to provide access to either all of your GitHub repositories or a subset of them.
+I prefer to restrict access to specific node.js libraries.
+((((((((("next you can give permission to all your GitHub repositories or only selected repositories.
 I like to give access only to selectednode.js repositories.
-from the drop down I have already selected node.js tutorials.
+
+Node.js tutorials are what I've chosen from the drop-down menu.
+GitHub may now prompt you to enter additional login details; if so, please do so.
+You should be routed back to render after the repo has been updated to include render.
+((((((((("from the drop down I have already selected node.js tutorials.
 now GitHub may ask for further authentication so please finish that step.
 once render is installed in the repo you should be redirected back to render.
-ideally it should bring you back to where you left off but if it brings you back to the dashboard it's not a problem.
-step 5 click on new web service again and this time connect to the node.js repo.
+
+Ideally, it would return you to your previous screen, but even if it only takes you back to the dashboard, that's OK.
+((((((((("ideally it should bring you back to where you left off but if it brings you back to the dashboard it's not a problem.
+
+step 5 To do this, go back to the "new web service" menu and this time select the "node.js repo" option.
+Some information has to be entered here.
+((((((((("step 5 click on new web service again and this time connect to the node.js repo.
 here we need to enter a few details.
-first we enter a unique name for our service let's call it code Evolution hyphen demo.
+
+In the first step, we give our service a memorable name; we'll call it "code Evolution hyphen demo," for example.
+We can just forget about Branch and the surrounding area.
+We're going to make node/basics the root directory.
+((((((((("first we enter a unique name for our service let's call it code Evolution hyphen demo.
 we can leave the region and Branch as is.
 the root directory we're going to set it to node fundamentals.
-this is the folder that contains ourindex.js file.
+
+Ourindex.js is located in this directory.
+natural setting works just fine without any changes.
+((((((((("this is the folder that contains ourindex.js file.
 environment is fine as is.
-for the build command you could leave yarn as the default but if you're not familiar with yarn it is npm space install.
-for our project we don't have a package.json file and hence this does not matter.
+
+You may safely leave yarn as the default for the build command, although npm space install should suffice if you're unfamiliar with yarn.
+((((((((("for the build command you could leave yarn as the default but if you're not familiar with yarn it is npm space install.
+
+There is no package available for use with our project.json file, and this is of little consequence.
+However, nodeindex.js is the first command.
+Scroll down and the selected plan will remain unbilled.
+((((((((("for our project we don't have a package.json file and hence this does not matter.
 the start command however is nodeindex.js.
 scroll down and we leave the selected plan as free.
-we are however going to click on the advanced button.
+
+But we're going to choose the "Advanced" option, so there.
+and incorporate a new enviroment variable.
+((((((((("we are however going to click on the advanced button.
 and add an environment variable.
-the key is port in uppercase and the value is three thousand.
+
+The value is 3,500 and the key is uppercase port.
+All other fields can be left blank and the button to "create web service" can be clicked.
+The deployment has been initiated and will take a few moments to complete.
+((((((((("the key is port in uppercase and the value is three thousand.
 we can leave everything else as is scroll down to the bottom and click on create web service.
 the deployment is kickstarted which will take a few minutes.
-you should see the build is successful and the server is running on Port 3000.
+
+The server should be up and operating on Port 3000 after a successful build.
+if I follow this random link
+((((((((("you should see the build is successful and the server is running on Port 3000.
 if I click on this generated link.
-we should see our app responding with hello world.
+
+The "hello world" response from our app should appear.
+As you can see, launching a node couldn't be easier.a programme written in js.
+okay, I appreciate you sticking around, and I'll see you in the next video.
+((((((((("we should see our app responding with hello world.
 as you can see it is really simple to deploy a node.js application.
 alright thank you for watching and I'll see you in the next video"
 
