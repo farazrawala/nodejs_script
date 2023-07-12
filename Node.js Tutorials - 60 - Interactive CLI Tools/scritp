@@ -1,46 +1,95 @@
-
+In the preceding video, we improved our standard CLI to support command-line parameters.
 (((((((((("in the previous video we enhanced our basic CLI to accept options from the command line.
 
-
+The Evolution Pokedex command code can be executed after selecting the Pokemon option and its associated value.
 (((((((((("we can run the command code Evolution Pokedex followed by the Pokemon option and a value for that option.
 
+Even if this is excellent, it would be even better if the CLI asked us to enter a Pokemon name.
 (((((((((("although this is great what would be even better is if the CLI was interactive prompting us to enter a Pokemon name.
 
-
+Thus, as users, we may utilize the CLI without having to consult the documentation to understand what parameters need to be handed in.
 (((((((((("that way as a user we don't have to refer to the manual to understand what options have to be passed in to make the CLI work.
 
-
+Let's learn how to bypass the Pokemon selection and instead ask the user for a Pokemon name in this video.
 (((((((((("in this video Let's understand how to skip passing the Pokemon option and instead prompt the user for a Pokemon name.
+
+Let's learn in this video how to bypass the Pokemon selection and instead ask the user for a Pokemon name.
 (((((((((("Step 1 I'm going to comment out code related to the arcs package as we don't plan to pass in any option.
 Step 2 we're going to install an npm package that allows us to add interactivity to our CLI.
+
+There are other software available, but I'll use one named Inquirer.
+Run the command npm install Inquirer at 8.2.5 in the terminal.
 (((((((((("there are quite a few packages out there but I am going to use a package called Inquirer.
 in the terminal run the command npm install Inquirer at 8.2.5.
+
+Version 8 will be installed because it also supports the common JS module format, but Version 9 only supports es modules.
 (((((((((("Version 9 only works with es modules so I'm going to install version 8 which also supports common JS module format.
+
+The package should be marked as a dependency once the command has finished running.
+step 3 Let's import the package and use it in the index.Const Inquirer and need Inquirer are equivalent in JavaScript at the top.
 (((((((((("when the command completes the package should be listed as a dependency.
 step 3 Let's import and use the package in index.js at the top const Inquirer is equal to require Inquirer.
+
+The code for interaction will be added next, after the print 5 Moves function. For more information on Inquirer, please go to the documentation, but let me go over each line in turn.
 (((((((((("next after the print 5 Moves function we're going to add the code related to interactivity now you should refer to the docs for a better understanding about Inquirer but let me go over this one line at a time.
+
+A prompt module is first made.
+Inquirer dot is equal to const prompt. design a prompt module Next, we call the prompt function that the create prompt module returned. 
 (((((((((("first we create a prompt module.
 const prompt is equal to Inquirer dot create prompt module next we invoke this prompt function returned from create prompt module.
+ 
+ We provide an array of queries we want to ask the user to this function.
+Each of the one question, which we only have, is an object in this array.
 (((((((((("to this function we pass in an array of questions we want to ask the user.
 we just have the one question and each question is an object in this array.
+
+We give the question's type, which is the input name; the user will see a Pokemon-themed question.
+To examine a Pokemon's first five moves, type in its name.
 (((((((((("we specify type which is input name for the question this is going to be Pokemon and the actual question that the user sees.
 enter a Pokemon name to view its first five moves.
+
+When a user responds to this query with a response, we receive it back for processing.
 (((((((((("when the user replies with an answer to this question it is returned back to us for processing.
+
+However, prompt does give a promise.
+To obtain and utilize the solution, we might use the then block.
+With the help of the arrow function, we are able to retrieve only the Pokemon.
 (((((((((("prompt does return a promise though.
 we can use then block to capture and use the answer.
 Arrow function we receive all the answers and we're going to extract just Pokemon.
+
+Pokemon is making a name-property reference here.
+The user's response is passed into the print 5 Moves function when it is called in the next line.
+and that's about it.
 (((((((((("here Pokemon refers to the name property.
 in the next line we call this print 5 Moves function passing in the answer that the user provided.
 and that is pretty much it.
+
+Now that we have code Evolution Pokedex, we can execute it in the terminal to launch our CLI in interactive mode.
+Enter a Pokemon name to see its first five moves, as it asks.
 (((((((((("in the terminal we can now run code Evolution Pokedex and it starts our CLI in an interactive mode.
 it prompts the question enter a Pokemon name to view its first five moves.
+
+We can see the five moves that are locked in the terminal as I enter Dragonite.
+As you can see, it's very basic.
+Okay, I think I've covered everything I wanted to regarding creating CLI tools.
 (((((((((("I'm going to enter Dragonite and we see the five moves locked in the terminal.
 really simple as you can see.
 all right this is pretty much what I wanted to cover about building CLI tools.
+
+CLI, which stands for command line interface, is a program that can be run from the terminal, as we discovered.
+We discovered how to provide options, which adds some dynamic behavior, and we discovered how to make a CLI tool more interactive.
 (((((((((("we learned that CLI stands for command line interface and is a program we can run from the terminal.
 we learned how to pass options which introduces some Dynamic behavior and we also learned how to add interactivity toa CLI tool.
+
+Of fact, what we've learned in this part just begins to scratch the surface of what a CLI created with node and npm is capable of.
 (((((((((("of course what we've learned in this section barely scratches the surface of what is possible with a CLI built using node and npm.
+
+I'd advise you to learn more about this subject so you can create a few tools that will be useful to you in your daily work.
+This brings us to the conclusion of this brief session on creating CLI tools using node and npm.
 (((((((((("this is a topic I would recommend you Explore More so you can build a few tools that can help you in your day-to-day workflow.
 with that we come to the end of this short section on building CLI tools with node and npm.
+
+I appreciate you viewing, and I hope you'll consider subscribing. I'll see you in the future video.
 (((((((((("thank you for watching please do consider subscribing to the channel and I'll see you in the next one"
 

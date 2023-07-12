@@ -1,60 +1,147 @@
-in the previous video we learned about the cluster module which helps with performance Improvement in a node application.
-in this video let's learn about the worker threads module which also helps with the same cause.
+The cluster module, which aids in node application performance improvement, was covered in the last video.
+(((((((((((("in the previous video we learned about the cluster module which helps with performance Improvement in a node application.
+
+We may learn more about the worker threads module, which contributes to the same goal, by watching this video.
+The worker threats module allows for concurrent JavaScript execution through threads.
+(((((((((((("in this video let's learn about the worker threads module which also helps with the same cause.
 the worker threats module enables the use of threads that execute JavaScript in parallel.
-code executed in a worker thread runs in a separate child process preventing it from blocking your main application.
+
+Worker threads segregate background processing from the main programme by running it in its own child process.
+However, what sets this apart from the cluster module?
+(((((((((((("code executed in a worker thread runs in a separate child process preventing it from blocking your main application.
 but how is this module different from the cluster module.
-well the cluster module can be used to run multiple instances of node.js that can distribute work loads.
-work a threads module on the other hand allows running multiple application threads within a single node.js instance.
-when process isolation is not needed there is no separate instances of V8event Loop and memory are needed you should use worker threads.
+
+The cluster module makes it possible to launch many instances of node simultaneously.JavaScript capable of dividing out tasks equally.
+However, the work a threads module enables several application threads to be simultaneously active on a single node.instance of js.
+(((((((((((("well the cluster module can be used to run multiple instances of node.js that can distribute work loads.
+work a threads module on the other hand allows running multiple application threads within a single 
+node.js instance.
+
+Worker threads should be used when process isolation is not required since doing so would require allocating memory and the V8event Loop twice.
+Let's revisit versus code and see how it's put to use in practise.
+(((((((((((("when process isolation is not needed there is no separate instances of V8event Loop and memory are needed you should use worker threads.
 let's head back to vs code and understand its usage with an example.
-I'm going to create a new file called Main thread.js.
+
+It's time for me to start fresh with a brand new file: Main thread.js.
+and I'm going to insert a piece of code into the document.
+This is the same code we saw in the first video, version 99.
+We set up an HTTP server and manage two different traffic paths.
+(((((((((((("I'm going to create a new file called Main thread.js.
 and within the file I'm going to paste a code snippet.
 now this is 99 the same code we had seen in the previous video.
 we create an HTTP server and handle two routes.
-a home page route and a slow page route.
+
+both a quick path to the home page and a leisurely way.
+gradient is The route may be modified to include a shopping centre.
+I've declared a new variable, J.
+(((((((((((("a home page route and a slow page route.
 the slope is Route is one that has as mall modification.
 I have introduced a variable called J.
-which I increment within the for Loop.
+
+that I add to the total in the for Loop.
+When the for Loop completes, the J variable is included in the response text that is delivered.
+Next, we tune in on TCP/Port 8000.
+(((((((((((("which I increment within the for Loop.
 after the for Loop is done the J variable is returned as part of the response text.
 we then listen on Port 8000.
-let's now run node main thread in the terminal.
+
+Let's launch node's main thread in the terminal right now.
+, then open up a web browser,.
+Again, with the network panel visible, I'll travel to both destinations.
+(((((((((((("let's now run node main thread in the terminal.
 and head to the browser.
 once again I'm going to navigate to both the routes with the network panel open.
-visit home page and we see this takes 10 milliseconds.
+
+It just takes 10 ms to load the homepage.
+Go to /slow/ and you'll find that it takes about five seconds for this to load.
+(((((((((((("visit home page and we see this takes 10 milliseconds.
 navigate to slash slow page and we see this takes five seconds.
-we also see the value of J being returned.
+
+We also get J's value back, which we observe.
+If I rapidly refresh both this sluggish page and the homepage, I should be good to go.
+(((((((((((("we also see the value of J being returned.
 if I reload this slow page quickly and reload the home page.
-you see the home page is indeed blocked while the first request is being served.
+
+As you can see, access to the homepage is temporarily denied while the server processes the initial request.
+It's been 4.7 seconds so far.
+5.7 seconds to load a sluggish website
+(((((((((((("you see the home page is indeed blocked while the first request is being served.
 it has taken 4.7 seconds.
 slow page 5.7 seconds.
-there is room for performance Improvement and this is where the worker threads module comes into picture.
-let me explain the necessary changes in main thread we are going to import the worker threads module.
+
+The worker threads module is necessary since there is space for speed improvement.
+(((((((((((("there is room for performance Improvement and this is where the worker threads module comes into picture.
+
+I'll go over the modifications to the main thread that are required in order to accommodate the new worker threads module.
+We dismantle the labour Constructor.
+(((((((((((("let me explain the necessary changes in main thread we are going to import the worker threads module.
 we destructure the worker Constructor.
-next we are going to alter the slow page route.
+
+The sluggish page path will be modified next.
+The worker function is called first to start a new worker thread.
+(((((((((((("next we are going to alter the slow page route.
 first we create a new worker thread using the worker function.
-const worker is equal to new worker.
+
+Worker.const == worker.new.
+This function takes one argument, which is the path of a worker file.
+(((((((((((("const worker is equal to new worker.
 to this function we pass in path to a worker file as argument.
-dot slash worker thread.js.
+
+Thread for employees dot slash.js.
+Let's make this file as we don't have it yet.
+The next step is to switch the lengthy task to a separate thread called a "worker thread."
+To copy and paste. 
+(((((((((((("dot slash worker thread.js.
 we don't have this file yet so let's create it.
 next we're going to move the long operation from the main thread and place it in the worker thread.
 cut and paste.
-but what we are going to do now is send the value of this variable J back to the main thread.
-for that we once again rely on the worker threads module copy paste it but this time we import the parent Port object.
+
+However, at this point we will report J's value back to the main thread.
+This time, though, instead of simply copy-pasting the worker threads module, we'll be importing the 
+(((((((((((("but what we are going to do now is send the value of this variable J back to the main thread.
+for that we once again rely on the worker threads module copy paste it but this time we import the 
+
+the Port object's parent.
+Calling parent Port.postMessage with the parameter value of J after the for Loop.m
+(((((((((((("parent Port object.
 after the for Loop we call parent Port dot post message passing in the value of J.
-now we can listen to messages in the main thread using the message event.
+
+The message event in worker.dotOn allows us to monitor the main thread for incoming messages.
+A message and a callback procedure are available.
+(((((((((((("now we can listen to messages in the main thread using the message event.
 worker dot on.
 Message and we have a callback function.
-we get access to the data passed back which is the variable J and we will respond with that value.
+
+The information sent back to us, represented by the variable J, allows us to give an appropriate response.
+And with that, I think we're done here; let's reboot the server.
+(((((((((((("we get access to the data passed back which is the variable J and we will respond with that value.
 and that is pretty much it let's restart the server.
-and head back to the browser.
+
+then open up your browser once more.
+The sluggish page has to be reloaded, please.
+(((((((((((("and head back to the browser.
 if we now reload the slow page.
-and quickly reload the home page.
+
+and force the homepage to refresh in a flash.
+The time it takes to load the homepage is merely two microseconds.
+The five-second delay caused by the sluggish page is not an impediment.
+(((((((((((("and quickly reload the home page.
 you can see the home page only takes two milliseconds.
 it is not blocked by the slow page which has taken five seconds.
-we also see the value of J being displayed which is a value sent from the worker thread to the main thread.
-as you can see the worker threads module offers something similar to the thread pool it's not true multi-threading but it lets you execute code in parallel outside the main thread.
+
+The value of J, which was sent from the worker thread to the main thread, is also shown.
+(((((((((((("we also see the value of J being displayed which is a value sent from the worker thread to the main thread.
+
+While the worker threads module does not provide real multi-threading, it does allow for parallel function execution outside of the main thread.
+The worker threads module comes in handy when you need to compress or expand media files. 
+(((((((((((("as you can see the worker threads module offers something similar to the thread pool it's not true multi-threading but it lets you execute code in parallel outside the main thread.
 a good use case for using worker threads module is when you have to resize images or videos or even perhaps encrypt files.
-what we have seen here is a me reintroduction to the worker threads module.
+
+This is essentially a refresher course on using the worker threads library.
+There's more to it than that, so when you have some free time, I recommend reading through the docs. 
+(((((((((((("what we have seen here is a me reintroduction to the worker threads module.
 there is a lot more to it and I suggest you go through the documentation when you have the time.
-but for now thank you for watching and I'll see you in the next video"
+
+Anyway, I appreciate you sticking around until the end, and I'll see you in the next video!
+(((((((((((("but for now thank you for watching and I'll see you in the next video"
 
