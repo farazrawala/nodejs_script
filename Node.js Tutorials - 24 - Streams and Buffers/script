@@ -1,3 +1,6 @@
+https://docs.google.com/presentation/d/14hIWHcG_RWgfteoqACD2Z4zYgbdD3BYiYO0yLgRoL8k/edit#slide=id.g258a4711de1_0_0
+
+
 In the last clip, we discussed binary data, which consists of only zeros and ones.
 ((((((((" Welcome back in the previous video we learned about binary data which is zeros and ones that computers can understand.")))))))) 
 
@@ -41,10 +44,15 @@ The idea that a stream is a succession of data being sent from one location to a
 But the question is how precisely that data sequence is sent.
 (((((((("but the que stion is how exactly is that sequence of data moved.")))))))) 
 
+
+
+
 This leads us to the following Subject covered in the present video.
 that act as buffers. 
 (((((((("that brings us to the next Topic in this video.
 which is buffers.")))))))) 
+
+
 
 now to understand what a buffer is I'm going to give an analogy that should hopefully be easy to understand.
 consider the scenario of an amusement park with a roller coaster.
@@ -102,23 +110,29 @@ Once the data has been processed and the buffer is full, the video will begin pl
 Now that we know what buffers are, we need to know how they relate to the binary data character sets and encoding we covered in the last video.
 (((((((("now then what is the connection between binary data character sets and encoding we learned about in the previous video to buffers which we learned about a second ago."))))))))
 
+
+5 : 08 
+
 I guess we'll have to go back to the editor and do some more coding in order to figure it out.
 This is a blank index.js file. 
 (((((((("well to understand that we need to head back to the editor and write some code.
 I'm here at an empty index.js."))))))))
 
 Now, that's a node you need to know about.The buffer function is built into js so that it may be used without needing to be imported.
-The string vishwas will be stored in a buffer we will build.
+The string faraz will be stored in a buffer we will build.
 The buffer is constant, hence its contents cannot change. 
 (((((((("now what you should know is that node.js provides the buffer feature as a global feature that you can use without having to import it.
-let's create a buffer that holds the string vishwas.
+let's create a buffer that holds the string faraz.
 it's a const buffer."))))))))
 
+####const buffer = new Buffer.from('Faraz',"utf-8")
+console.log(buffer.toJSON())
+
 Now that's a hub you ought to be aware of.Rather to requiring an external import, js already includes the buffer function.
-A buffer will be constructed to hold the string vishwas.
+A buffer will be constructed to hold the string faraz.
 Since the size of the buffer is fixed, its contents are also fixed.  
 (((((((("is equal to new buffer.
-now on Buffer we use a method Dot from which accepts a string vishwas.
+now on Buffer we use a method Dot from which accepts a string faraz.
 we can also specify the character encoding which is utf-8."))))))))
 
 As of right now, the UT encoding value of 8 is discretionary.
@@ -126,11 +140,16 @@ The following line will include me logging the dot buffer into Json.
 (((((((("now UT of 8 is the default encoding value so that is optional.
 in the next line I'm going to log buffer dot to Json."))))))))
 
+
+## run terminal 
+
 "if we run node index, we find a data array with seven digits, and the object type is set to buffer." 
 (((((((("if we run node index we see an object type is set to buffer and we have a data array which contains seven numbers."))))))))
 
-Each of these numbers is the Unicode character code for a letter in the string vishwas; this is our first link to the previous film. 
-(((((((("and this is our first connection to the previous video each number here is the Unicode character code for the character in the string vishwas."))))))))
+
+and this is our first connection to the previous video each number here is the Unicode character code for the character in the string faraz.
+
+### console.log(buffer);
 
 Keep in mind that 86 represents the value of character.
 Let's log only this time and add another log statement.
@@ -162,7 +181,7 @@ but I think you get the idea now
 (((((((("but hopefully you now understand."))))))))
 
 The binary information stored in the buffer may now be converted to its string representation with the log buffer Dot to string command. 
-(((((((("now you can also log buffer Dot to string and this will give back the string representation of the binary data in the buffer vishwas."))))))))
+(((((((("now you can also log buffer Dot to string and this will give back the string representation of the binary data in the buffer faraz."))))))))
 
 There is now a write access to the buffer.
 so let's pass in the text code and conduct a buffer dot write.
@@ -174,8 +193,8 @@ We can now see that the text was actually a code.
 (((((((("if we rerun node index.
 we see that the string is now code was."))))))))
 
-The four characters from vishwas are lost since buffers have limited memory.
-(((((((("and this is because buffers have limited memory the four characters overwrite the four characters from vishwas."))))))))
+The four characters from faraz are lost since buffers have limited memory.
+(((((((("and this is because buffers have limited memory the four characters overwrite the four characters from faraz."))))))))
 
 Furthermore, the final few characters are missed when you type "code evolution run node index" since they don't fit in the buffer.
 (((((((("and if you were to write code evolution run node index you can see the last few letters are skipped 
