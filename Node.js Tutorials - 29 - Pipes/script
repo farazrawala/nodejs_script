@@ -1,3 +1,6 @@
+ https://www.youtube.com/watch?v=ej79ByltLOI&list=PLC3y8-rFHvwh8shCMHFA5kWxD9PaPwxaY&index=29
+
+
  In our previous video, we saw how streams are used to read and write data from files.
 ((((("in the previous video we learned about streams in the context of reading and writing file contents.))))))
 
@@ -37,6 +40,9 @@ rather than making use of a single code snippet
 ((((("back in vs code in index.js I can comment out the data event.
 and instead write one line of code.))))))
 
+
+### readableStream.pipe(writeableStream)
+
 the ability to read a pipe in real time.
 and time is written as we go by. 
 ((((("readable stream dot pipe.
@@ -68,6 +74,8 @@ instead let's make use of another built-in module which is zlib.))))))
 It's possible that the following example is too advanced for you right now, but I want to make sure you understand the notion of chaining using the pipe approach.
 ((((("now this example might be slightly Advanced at the moment but I want to make sure you're aware of the concept of chaining with the pipe method.))))))
 
+### const zlip = require("node:zlip")
+
 Initially, we need to bring in the zlib module.
 The gzip technique is used to implement compression in the lip module.
 ((((("at the top import the zlib module.
@@ -78,20 +86,27 @@ The transform stream is an integral part of zlib, which is one of its many wonde
 ((((("or in simple terms zlib allows us to create zipped files if we can call it that.
 what is great about zlib is that it has a built-in transform stream.))))))
 
+### const gzip = zlip.createGzip();
+
 This allows us to say that const gzip == zlib.create_gzip in our code.
 And then we can write readable stream dot pipe gzip once we have a readable stream ready to go.
 ((((("so we can write const gzip is equal to zlib dot create gzip.
 and after we have created a readable stream we can write readable stream dot pipe gzip.))))))
+
+readableStream.pipe(gzip).pipe(fs.writeStream("./file2.txt.zip"))
 
 Now you get a stream of transformations back.
 to enable us to dial Dot pipe and send the data. 
 ((((("now this returns a transform stream.
 so we can call Dot pipe and pass in.))))))
 
+
 Write stream dot FS."
 using File 2.txt.gz as the final resting place.
 ((((("FS dot write stream.
 and the destination is File 2 dot txt dot gz.))))))
+
+// select pipe
 
 As can be seen, we're using DOT pipe for our chaining.
 Changing from a read-only stream to a transform-only stream and finally to a write-only stream. 

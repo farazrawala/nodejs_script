@@ -7,9 +7,18 @@ While the fs module may be used without issue, a newer, promise-based version of
 I feel it's important for you to be aware of this since you'll be seeing it in more modern code bases, especially if you're utilizing ES modules. 
 ((((("it is something you will come across in more recent code bases especially when using ES modules so I want to make sure you're aware of it.))))))
 
+### comment all code and move to the bottom
+
+
 I feel it's important for you to be aware of this since you'll be seeing it in more modern code bases, especially if you're utilizing ES modules. 
 ((((("I'm going to comment out the existing code and move it to the bottom.
 now for Step One Import the module at the top.))))))
+
+### const fs = require('node:fs/promises');
+### fs.readFile("file.txt","utf-8");
+.then(data => console.log(data))
+.catch((error) => console.log(error))
+
 
 const The FS equals the mandatory node We have now attached slash promises to our FS status.
 It's plain to see
@@ -34,13 +43,13 @@ then is called when the promise results successfully we get access to the data w
 When the promise fails with an error, we call catch to reclaim access to the adder and log it to the console. 
 ((((("catch is called when the promise rejects with an error to get access to the adder which we can log again to the console.))))))
 
-You may watch my Advanced JavaScript crash course if you're unfamiliar with the syntax of promises, then, and catch blocks. 
-((((("now if the concept of promises then and catch blocks are new to you please watch my Advanced JavaScript crash course which will help you understand the syntax.))))))
-
 We may proceed with node index if we now save the file.
 file's contents are shown Greetings, Evolving Code 
 ((((("if we now save the file and run node index.
 we see the file contents hello code evolution.))))))
+
+## console.log("first") // top
+## console.log("second") // bottom
 
 The outcomes of our code are as planned.
 Add some more log statements to show that this is in fact asynchronous. 
@@ -67,9 +76,23 @@ Since async await is only a syntactical wrapper overpromises, it may now be used
 ((((("now the promise based FS module can also be used with async await as async a wait is just a syntactical wrapper 
 overpromises.))))))
 
-To avoid unnecessary complexity, I will instead use an async function within the same file, as top-level a weight may only be used in modules, i.e. dot MJS files.
+### async function readFile()
+{
+	try{
+		const data = await fs.readFile("file.txt","utf-8")
+		console.log(data)
+	}
+	catch(error)
+	{
+		console.log(error)
+	}
+}
+
+readFile()
+
+To avoid unnecessary complexity, I will instead use an async function within the same file, as top-level a wait may only be used in modules, i.e. dot MJS files.
 There are try/catch sections inside the async function that reads the file.
-((((("however since top level a weight can only be used in modules that is dot MJS files I'm going to instead use an 
+((((("however since top level a wait can only be used in modules that is dot MJS files I'm going to instead use an 
 async function in the same file to not further complicate this.
 Async function read file within the function we have try catch blocks.))))))
 

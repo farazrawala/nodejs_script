@@ -8,7 +8,7 @@ let's understand how to work with that.))))))
 
 ((((("I'm here in index.js which is our main module it is empty to begin with to make use of a built-in module we first have to import it and to import a built-in module we use the require function.))))))
 
-
+### const fs = require("node:fs");
 ((((("so at the top const FS is equal to require node colon FS.
 here FS is the name of our built-in module.))))))
 
@@ -16,19 +16,21 @@ here FS is the name of our built-in module.))))))
 ((((("once we have the module loaded we can access the various properties and methods exposed by the fs module.
 for our first method let's learn how to read the contents of a file.))))))
 
-
-((((("I'm going to create a new file calledfile.txt.
+### create file.txt
+((((("I'm going to create a new file called file.txt.
 within the file I'm going to add.))))))
 
 
 ((((("hello code Evolution as text.
 now back in index.js on the fs object returned from the fs module.))))))
 
+### const fileContentst = fs.readFileSync("./file.txt")
+console.log(fileContentst);
 
 ((((("we're going to invoke a method called read file sync.
 to this method we pass in the path to the file we want to read.))))))
 
-
+### const fileContentst = fs.readFileSync("./file.txt","utf-8")
 ((((("if you're happy with relative Parts itis as simple as dot slash file Dot txd.
 we can capture the return value in a constant called file contents.))))))
 
@@ -67,16 +69,25 @@ now it might be okay to block the JavaScript main thread and read data If that i
 
 
 ((((("the performance will be really poor.
-now I hinted towards this in the previous video but what you have to keep in mind is that node.js is 
-asynchronous.))))))
+now I hinted towards this in the previous video but what you have to keep in mind is that node.js is asynchronous.))))))
 
 
 ((((("it has features to do tasks asynchronously without blocking the main thread.
 and for that reason another method exists on the fs object which is the read file method.))))))
 
 
-((((("let's understand its syntax.
-so FS dot read file.))))))
+### fs.readFile("./file.txt" ,"utf-8, (error,data) =>{
+	if(error)
+	{
+	   console.log(error);
+	}
+	else
+	{
+	  console.log(data);
+	}
+})
+
+((((("let's understand its syntax. so FS dot read file.))))))
 
 
 ((((("and the first argument is the file path which is dot slash file Dot txt.
@@ -128,6 +139,8 @@ when the file reading is complete node will then execute the Callback function.)
 and because of this asynchronous callback approach your app will not freeze when multiple users interact with 
 the application.))))))
 
+7.25
+
 
 ((((("hopefully the log statements make sense.
 now there are quite a few methods available on the fs module but let's take a look at one more just to get the 
@@ -136,6 +149,8 @@ hang of things.))))))
 
 ((((("let's see how to write contents into a file we are going to be using the write file method which has both sync and async versions.))))))
 
+
+### fs.writeFileSync("./greet.txt","Hello World");
 
 ((((("let's start with synchronous FS dot write file sync.
 first argument is the path to the file.))))))
@@ -146,12 +161,26 @@ if we now run node index.))))))
 ((((("you can see a new file greet.txt has been created with hello world as the contents.
 pretty simple right.))))))
 
+8.23
+
+
+##fs.writeFile("./greet.txt","Hello Faraz", (err)=>{
+	if(err)
+	{
+		console.log(err);
+	}
+	else
+	{	
+		console.log("file Written");
+	}
+
+});
 
 ((((("let's now take a look at the async version.
 FS dot write file and the first argument Remains the Same file name which is dot slash greet Dot txt followed by file contents.))))))
 
 
-((((("hello vishwas now we specify the third argument which is our error first callback.
+((((("hello faraz now we specify the third argument which is our error first callback.
 within the function body check for an error.))))))
 
 
@@ -160,19 +189,21 @@ if there is no error the contents have been written to the file and we can log a
 
 
 ((((("rerun node index and this time we see file written in the log statements.
-open greet.txt and we see the updated text hello vishwas.))))))
+open greet.txt and we see the updated text hello faraz.))))))
 
 
 ((((("by default write file overwrites the file contents.
-this is the reason hello world has been overwritten with hello vishwas.))))))
+this is the reason hello world has been overwritten with hello faraz.))))))
+
+#####fs.writeFile("./greet.txt"," Hello Faraz", { flag : "a" }
 
 
 ((((("however if you want to append to the existing content you can add an option as a third argument.
 it's an object where we set flag as append.))))))
 
 
-((((("now if I add a space before hello vishwas save the file and run node index.
-we have Hello World a space and then hello vishwas.))))))
+((((("now if I add a space before hello faraz save the file and run node index.
+we have Hello World a space and then hello faraz.))))))
 
 
 ((((("both content exist in the file.
