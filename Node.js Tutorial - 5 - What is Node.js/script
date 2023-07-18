@@ -1,1 +1,53 @@
-"foreign now that we understand what a JavaScript runtime is it's time to Circle back to the three-part definition of what is node.js we already know node.js is open source and its source code is publicly available for sharing and modification we also know that node.js is cross-platform and works on Mac windows and Linux and with our Newfound Knowledge from the previous video we can Now understand node. js is a JavaScript runtime environment which provides all the necessary components in order to use and run a JavaScript program and a very important point to note is that node.js can run a JavaScript program outside the browser hopefully you now have a good understanding of what is node.js the next question that I would like to answer is what can you build with node. js well up until 2009 which is the year node.js was introduced JavaScript could only be run inside a browser with node.js however JavaScript code can be run outside the browser which opens a new world of possibilities you can build traditional websites back-end services like apis real-time applications streaming services like Netflix command line interface tools multiplayer games and a lot more the bottom line is node. js allows you to build complex and Powerful applications alright if you're now clear as to what is node.js and for what purpose it can be used let's spend a few minutes to go over its source code and form a visual representation of the node.js runtime it is open source after all I'm here at github.com node. js slash node this repo contains the source code for the node.js JavaScript runtime here I want to briefly talk about three specific folders the first folder is the depths or dependencies folder this folder contains external code that node.js requires for its functioning there are quite a few dependencies here so let me highlight two very important ones first we have V8 which is the same JavaScript engine present in the Chrome browser without V8 there is no way for node. js to understand the JavaScript code we write the other dependency is UV which is an open source Library called libue this is another major dependency providing node.js access to the underlying operating system features such as file system and networking we will learn more about liby in a later section but that is about the dependencies folder which we can treat as one component in the node. js runtime with sub components like V8 libue Etc the second folder is the source folder which contains the C plus source code of the node.js runtime now you should keep in mind JavaScript as a language was not designed to deal with low level functionality like file system or networking C plus plus on the other hand was designed to do that so this Source folder is a set of C plus features that node. js brings to the table features such as file system handling and networking this forms the second component in our node.js runtime the third and final folder is the lib folder a few seconds ago I mentioned that node.js adds new features to JavaScript through C plus code now that begs the question how does a JavaScript developer get access to these C plus features should they know C plus plus well the answer is in the lib folder the lib folder contains JavaScript code that's been written for you to easily get access to the C plus features for example fs.js contains JavaScript code that we can write to access the file system the code internally calls the corresponding C plus feature which further relies on libuv to access the operating system in fact the lib folder also contains a few utility functions that you may need when writing code with node. js this standard library of JavaScript code forms the final component in our visualization of the node.js runtime hopefully you're now able to see that node.js is not a big black box that we can't figure out it is just code written in C plus and JavaScript one important point you do have to note though is that node. js runtime unlike the browser runtime does not have access to the web apis there is no window or document when working with node.js so to summarize node.js is an open source cross-platform JavaScript runtime environment it is not a language it is not a framework it is a runtime and is capable of executing JavaScript code outside a browser it can execute not only the standard ecmascript language but also new features that are made available through C plus bindings using the V8 engine from a code point of view it consists of C plus files which form the core features and JavaScript files which expose common utilities and some of the C plus features for easier consumption now I understand if you're a little frustrated at this point we have completed five videos and not written a single line of code but hopefully I've created a visual representation and a code representation of node. js that you should not be able to forget anyway in the next video Let's ease any frustration you may have by finally writing our customary hello world program with node.js thank you for watching please do consider subscribing to the channel and I'll see you in the next one"
+foreign now that we understand what a JavaScript runtime is it's time to Circle back to the three-part definition of what is node.js.
+ we already know node.js is open source and its source code is publicly available for sharing and modification.
+ we also know that node.js is cross-platform and works on Mac windows and Linux.
+ and with our Newfound Knowledge from the previous video we can Now understand node. js is a JavaScript runtime environment which provides all the necessary components in order to use and run a JavaScript program.
+ and a very important point to note is that node.js can run a JavaScript program outside the browser.
+ hopefully you now have a good understanding of what is node.js.
+ the next question that I would like to answer is what can you build with node. Js.
+ well up until 2009 which is the year node.js was introduced JavaScript could only be run inside a browser.
+ with node.js however JavaScript code can be run outside the browser which opens a new world of possibilities.
+ you can build traditional websites back-end services like apis real-time applications streaming services like Netflix command line interface tools multiplayer games and a lot more.
+ the bottom line is node. js allows you to build complex and Powerful applications.
+ alright if you're now clear as to what is node.js and for what purpose it can be used let's spend a few minutes to go over its source code and form a visual representation of the node.js runtime.
+ it is open source after all.
+ I'm here at github.com node. js slash node this repo contains the source code for the node.js JavaScript runtime.
+ here I want to briefly talk about three specific folders.
+ the first folder is the depths or dependencies folder.
+ this folder contains external code that node.js requires for its functioning.
+ there are quite a few dependencies here so let me highlight two very important ones.
+ first we have V8 which is the same JavaScript engine present in the Chrome browser.
+ without V8 there is no way for node. js to understand the JavaScript code we write.
+ the other dependency is UV which is an open source Library called libue.
+ this is another major dependency providing node.js access to the underlying operating system features such as file system and networking.
+ we will learn more about liby in a later section.
+ but that is about the dependencies folder which we can treat as one component in the node. js runtime with sub components like V8 libue Etc.
+ the second folder is the source folder which contains the C plus source code of the node.js runtime.
+ now you should keep in mind JavaScript as a language was not designed to deal with low level functionality like file system or networking.
+ C plus plus on the other hand was designed to do that.
+ so this Source folder is a set of C plus features that node. js brings to the table.
+ features such as file system handling and networking.
+ this forms the second component in our node.js runtime.
+ the third and final folder is the lib folder.
+ a few seconds ago I mentioned that node.js adds new features to JavaScript through C plus code.
+ now that begs the question how does a JavaScript developer get access to these C plus features.
+ should they know C plus plus.
+ well the answer is in the lib folder.
+ the lib folder contains JavaScript code that's been written for you to easily get access to the C plus features.
+ for example fs.js contains JavaScript code that we can write to access the file system.
+ the code internally calls the corresponding C plus feature which further relies on libuv to access the operating system.
+ in fact the lib folder also contains a few utility functions that you may need when writing code with node. Js.
+ this standard library of JavaScript code forms the final component in our visualization of the node.js runtime.
+ hopefully you're now able to see that node.js is not a big black box that we can't figure out.
+ it is just code written in C plus and JavaScript.
+ one important point you do have to note though is that node. js runtime unlike the browser runtime does not have access to the web apis.
+ there is no window or document when working with node.js.
+ so to summarize node.js is an open source cross-platform JavaScript runtime environment.
+ it is not a language it is not a framework it is a runtime and is capable of executing JavaScript code outside a browser.
+ it can execute not only the standard ecmascript language but also new features that are made available through C plus bindings using the V8 engine.
+ from a code point of view it consists of C plus files which form the core features and JavaScript files which expose common utilities and some of the C plus features for easier consumption.
+ now I understand if you're a little frustrated at this point we have completed five videos and not written a single line of code.
+ but hopefully I've created a visual representation and a code representation of node. Js.
+ that you should not be able to forget anyway in the next video Let's ease any frustration you may have by finally writing our customary hello world program with node.js.
+ thank you for watching please do consider subscribing to the channel and I'll see you in the next one"
+
