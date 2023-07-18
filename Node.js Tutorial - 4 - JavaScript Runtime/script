@@ -1,23 +1,60 @@
-all right for our next topic of discussion let's understand about JavaScript runtime.
+OK, I guess Let's talk about the JavaScript runtime environment now.
+ A JavaScript runtime is an environment that includes everything a user needs to access and operate a JavaScript application.
+((((((((((((all right for our next topic of discussion let's understand about JavaScript runtime.
  JavaScript runtime is an environment which provides all the necessary components in order to use and run a JavaScript program.
- in the previous video I mentioned that every browser has a JavaScript engine.
+
+Every browser has a JavaScript engine, as I described in the prior video.
+ It turns out that the JavaScript runtime includes an engine for executing JavaScript.
+ I'm curious as to what more the JavaScript runtime entails.
+ ((((((((((((in the previous video I mentioned that every browser has a JavaScript engine.
  well as it turns out a JavaScript engine is one component in the JavaScript runtime.
  so what else does the JavaScript runtime consist of.
- let's understand using Chrome browser as an example.
+
+Let's break it down using Google's Chrome web browser.
+ The following components make up Chrome's JavaScript runtime, where our JavaScript code is executed.
+ ((((((((((((let's understand using Chrome browser as an example.
  the JavaScript code we write is executed in Chrome's JavaScript runtime which consists of the following components.
- a JavaScript engine web apis.
+
+cues, and an event Loop built on top of a JavaScript engine.
+ ((((((((((((a JavaScript engine web apis.
  cues and an event Loop.
- the JavaScript engine is the V8 engine which executes JavaScript code.
- it consists of a call stack where JavaScript code gets executed and a heap which is nothing but memory to store all the variables that a JavaScript application needs.
- web apis refer to the Dom ERS such as set timeout and set interval promises browser storage Etc which add extra functionality to the JavaScript engine but are not part of JavaScript language itself.
- all web apis are provided by the browser.
+
+The JavaScript engine is the part of the V8 engine responsible for running JavaScript scripts.
+ ((((((((((((the JavaScript engine is the V8 engine which executes JavaScript code.
+ 
+It is made up of a call stack, which is where JavaScript code is executed, and a heap, which is just RAM, used to hold all the variables a JavaScript application requires.
+ ((((((((((((it consists of a call stack where JavaScript code gets executed and a heap which is 
+ nothing but memory to store all the variables that a JavaScript application needs.
+ 
+Web APIs are a set of extensions to the JavaScript engine that are not part of the JavaScript language itself, such as the set timeout and set interval promises browser storage, etc.
+ ((((((((((((web apis refer to the Dom ERS such as set timeout and set interval promises browser storage Etc which add extra functionality to the JavaScript engine but are not part of JavaScript language itself.
+ 
+The browser is responsible for supplying all web APIs.
+ Asynchronous jobs wait for indications to be fulfilled before being carried out. 
+ ((((((((((((all web apis are provided by the browser.
  cues are where asynchronous tasks weight before they can be executed.
- finally we have the event Loop that ensures async tasks are executed in the right order.
- this at a very high level is the overview of the JavaScript runtime in the browser.
- if you want a more in-depth explanation please do watch my crash course on async JavaScript.
+ 
+The event Loop guarantees the correct execution of asynchronous operations.
+ ((((((((((((finally we have the event Loop that ensures async tasks are executed in the right order.
+ 
+This is, at a high level, the overview of the browser's JavaScript runtime.
+ ((((((((((((this at a very high level is the overview of the JavaScript runtime in the browser.
+ 
+Watch my crash course on async JavaScript if you want a more in-depth explanation.
+ My point, though, is that a JavaScript engine alone is insufficient, and I want to drive it home with this graphic.
+ ((((((((((((if you want a more in-depth explanation please do watch my crash course on async JavaScript.
  but what I want to highlight with this visualization is that just a JavaScript engine is not sufficient in the grand scheme of things.
- the engine itself can execute ecmascript but JavaScript as we know it is ecmascript plus all these web apis like console log set timeout Dom apis Etc.
- so to run the JavaScript code we write every day a browser needs not just a JavaScript engine but a JavaScript runtime.
- so we have learned what is ecmascript which in turn helped us understand what is a JavaScript engine which in turn helped us understand what is a JavaScript runtime.
- with this knowledge in place let's now go back to the definition of what is node.js and see how the node.js runtime is different to that of the browser's runtime.
+ 
+It's true that ecmascript may be run by the engine, but when you add in web APIs like console log set timeout Dom apis, etc., you get JavaScript as we know it.
+ ((((((((((((the engine itself can execute ecmascript but JavaScript as we know it is ecmascript plus all these web apis like console log set timeout Dom apis Etc.
+ 
+In order for a browser to execute the JavaScript code we write every day, it requires not just a JavaScript engine but also a JavaScript runtime.
+ ((((((((((((so to run the JavaScript code we write every day a browser needs not just a JavaScript engine but a JavaScript runtime.
+ 
+ Now that we know what ecmascript is, we can better comprehend what a JavaScript engine is, and from there, what a JavaScript runtime is.
+ ((((((((((((so we have learned what is ecmascript which in turn helped us understand what is a JavaScript engine which in turn helped us understand what is a JavaScript runtime.
+ 
+With this information in hand, let's revisit the original description of node.js and examine the ways in which the node.js runtime differs from the browser's runtime.
+ Next time, my friend.
+ ((((((((((((with this knowledge in place let's now go back to the definition of what is node.js and see how the node.js runtime is different to that of the browser's runtime.
  I'll see you in the next one
