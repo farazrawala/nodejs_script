@@ -1,1 +1,18 @@
-in the previous video we learned how to run JavaScript code using node.js that is we executed JavaScript code outside the browser despite the fact that it's JavaScript we write in both the cases there are some key differences that we should be aware of in the browser most of the time what we are doing is interacting with the Dom or other web platform apis like cookies now those do not exist in node. js we don't have the document window and all the other objects that are provided by the browser similarly in the browser we don't have all the nice apis that node.js provides through its modules for example the file system access functionality and this is the primary difference another noteworthy difference is that with node. js you control the environment we know which version of node.js the application runs on and that means we can write all the modern es6 7 8 or 9 JavaScript features that are node.js version supports compare this with the browser where we are at the mercy of what the user chooses if they're using Internet Explorer it just means more work for us to account for that the bottom line is that we will see differences when writing JavaScript with node versus JavaScript for browser and it's something you should always keep in mind with that we come to the end of the first section in the series we have covered what is ecmascript what is Chrome's V8 engine what is the JavaScript runtime understood what is node.js with a clear Visual and code representation executed our first hello world JavaScript program outside the browser and understood a few differences between the browser JavaScript runtime and node. js now if all of this is clear let's focus our attention to the features available in node.js one at a time in the next section let's learn all about modules thank you for watching please do consider subscribing to the channel and I'll see you in the next one
+in the previous video we learned how to run JavaScript code using node.js.
+ that is we executed JavaScript code outside the browser.
+ despite the fact that it's JavaScript we write in both the cases there are some key differences that we should be aware of.
+ in the browser most of the time what we are doing is interacting with the Dom or other web platform apis like cookies.
+ now those do not exist in node. Js.
+ we don't have the document window and all the other objects that are provided by the browser.
+ similarly in the browser we don't have all the nice apis that node.js provides through its modules.
+ for example the file system access functionality.
+ and this is the primary difference.
+ another noteworthy difference is that with node. js you control the environment.
+ we know which version of node.js the application runs on and that means we can write all the modern es6 7 8 or 9 JavaScript features that are node.js version supports.
+ compare this with the browser where we are at the mercy of what the user chooses.
+ if they're using Internet Explorer it just means more work for us to account for that.
+ the bottom line is that we will see differences when writing JavaScript with node versus JavaScript for browser and it's something you should always keep in mind.
+ with that we come to the end of the first section in the series.
+ we have covered what is ecmascript what is Chrome's V8 engine what is the JavaScript runtime understood what is node.js with a clear Visual and code representation executed our first hello world JavaScript program outside the browser and understood a few differences between the browser JavaScript runtime and node. Js.
+ now if all of this is clear let's focus our attention to the features available in node.js one at a time in the next section let's learn all about modules.
+ thank you for watching please do consider subscribing to the channel and I'll see you in the next one

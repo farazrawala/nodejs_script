@@ -1,44 +1,116 @@
-the series is sponsored by syncfusion syncfusion is a leading third-party component vendor that's been in business for over two decades.
- they offer more than 1 700 UI components for various platforms like Blazer angular react JavaScript flutter.net Maui and classic platforms like Windows forms win UI xamarin and more.
- they're also recognized for their powerful document processing libraries.
+ Sponsoring the series is Syncfusion A reputable third-party component supplier with over 20 years of experience is syncfusion.
+ ((((((((((((the series is sponsored by syncfusion syncfusion is a leading third-party component vendor that's been in business for over two decades.
+ 
+ For platforms like Blazer, Angular React, JavaScript, and Flutter.net, they provide more than 1 700 UI components. Maui and more traditional platforms, like Windows forms, Win UI, Xamarin, and others.
+ ((((((((((((they offer more than 1 700 UI components for various platforms like Blazer angular react JavaScript flutter.net Maui and classic platforms like Windows forms win UI xamarin and more.
+ 
+Their document processing library tools are likewise top-notch.
+ Syncfusion makes it easy to create beautiful apps for desktops, mobile devices, and the web.
+  ((((((((((((they're also recognized for their powerful document processing libraries.
  with syncfusion you can build your own stunning desktop web and mobile apps in no time.
- get the complete component suite for free via the community license program.
+ 
+Use the community licence programme to receive the whole component suite for nothing.
+ You may get further information at www.syncfusion.com.
+ Hello, my name is Vishwas, and I am excited to launch a new series devoted to node.beginners' guide to js.
+ ((((((((((((get the complete component suite for free via the community license program.
  for more details visit www.syncfusion.com.
  hey everyone my name is vishwas and welcome to a brand new series on node.js for beginners.
- in this introductory video Let's understand what is node.js why you might want to learn it take a look at the course structure and the prerequisites to get started.
- let's begin if you visit nodejs. org which is the official site for node.js you're going to see node.js as an open source cross-platform JavaScript runtime environment .
-now what I would like to do is break this down into three parts.
+
+Let's find out what a node is and how it works in this introduction video.the benefits of learning js first, you should check out the course outline and requirements.
+(((((((((((( in this introductory video Let's understand what is node.js why you might want to learn it take a look at the course structure and the prerequisites to get started.
+
+To get started, head over to nodejs. org, the official site, and you'll learn that node.js is a cross-platform JavaScript runtime environment that's free source.
+ ((((((((((((let's begin if you visit nodejs. org which is the official site for node.js you're going to see node.js as an open source cross-platform JavaScript runtime environment .
+
+To better understand this, let me divide it into three halves.
+ First, Node.js is open source, which means that its source code may be freely distributed, studied, and improved upon by anybody.
+((((((((((((now what I would like to do is break this down into three parts.
  first node.js is open source which simply means the source code for node.js is publicly available for sharing and modification .
-second node. js is cross-platform which means it is available for Mac windows and Linux.
+
+Another hub. js is compatible with both Mac OS X and Linux distributions, making it a cross-platform language.
+ lastly, a nexus.js refers to the JavaScript runtime.  
+((((((((((((second node. js is cross-platform which means it is available for Mac windows and Linux.
  finally node.js is a JavaScript runtime environment.
- now to understand this last part we need a little bit of background so let's revisit this slide after we've understood what exactly is a JavaScript runtime environment.
- for now though at a high level let me give you a few good reasons as to why you might want to learn node. Js.
- node.js is a technology with which you can build end-to-end JavaScript applications learn one language and you can develop both front-end and backend for your apps.
- second a number of major companies like LinkedIn Netflix PayPal have all migrated from other backend Technologies to node.js.
- third full stack development is one of the most sorted skill sets by companies right now and if you are a front-end Dev learning node. js will take you one step closer to Landing the dream job.
- there is huge Community Support as well and you can be rest assured node.js won't be going anywhere anytime soon.
- it is always a good time to learn node.js.
- alright now that we have an idea of what is node.js and why you may want to learn node.js let me briefly go over the course structure.
- in the first section of the series we will learn a few terms and Concepts that are crucial to understanding what is node. Js.
- that's right an entire section just to understand what we mean by a JavaScript runtime environment .
+
+This final section requires a little bit of context, so let's come back to this slide once we've learned what a JavaScript runtime environment is.  
+ ((((((((((((now to understand this last part we need a little bit of background so let's revisit this slide after we've understood what exactly is a JavaScript runtime environment.
+
+Let me tell you a few high-level reasons why you might want to learn node for the time being. Js. 
+ ((((((((((((for now though at a high level let me give you a few good reasons as to why you might want to learn node. Js.
+
+Node.js is a platform for creating complete JavaScript applications; developers just need to master one language to create their projects' front and back ends.
+ ((((((((((((node.js is a technology with which you can build end-to-end JavaScript applications learn one language and you can develop both front-end and backend for your apps.
+
+secondly, many large organisations have switched to using node as their primary backend technology, including PayPal, LinkedIn, and a slew of others.js.
+ ((((((((((((second a number of major companies like LinkedIn Netflix PayPal have all migrated from other backend Technologies to node.js.
+
+If you're a front-end developer, full stack development is one of the most sought-after skills from employers. If you want to get your ideal job, learning JavaScript is the first step.
+ ((((((((((((third full stack development is one of the most sorted skill sets by companies right now and if you are a front-end Dev learning node. js will take you one step closer to Landing the dream job.
+
+Node, you can relax knowing that there is substantial community support.There is no way that JavaScript could ever disappear.
+ ((((((((((((there is huge Community Support as well and you can be rest assured node.js won't be going anywhere anytime soon.
+
+No time is better than the present to study node.js.
+ ((((((((((((it is always a good time to learn node.js.
+
+OK, so now we know what node.js is and why you would want to learn it.Please allow me to quickly outline the outline of this course.
+ ((((((((((((alright now that we have an idea of what is node.js and why you may want to learn node.js let me briefly go over the course structure.
+
+The first part of this series will introduce you to some fundamental node-related concepts and terminology. Js.
+ ((((((((((((in the first section of the series we will learn a few terms and Concepts that are crucial to understanding what is node. Js.
+
+the definition of a JavaScript runtime environment is so crucial that it warrants its own section.
+After we have a firm grasp of the node.js definition, we can move on to a deeper examination of the components that give rise to its unique capabilities.This js stuff is awesome.
+ ((((((((((((that's right an entire section just to understand what we mean by a JavaScript runtime environment .
 once we understand what is node.js we will proceed to understand the underlying features that are responsible for making node.js a great technology.
- in section 2 we will learn about modules in node.js use the defined modules to be more specific.
+
+Node's modules are the subject of Chapter 2.To go more particular with js, utilise the specified modules.
+ Section 3 will delve even further, teaching you all about the node's essential built-in modules. JavaScript is bundled with.
+(((((((((((( in section 2 we will learn about modules in node.js use the defined modules to be more specific.
  in Section 3 we will dive deeper and learn about the core built-in modules that node. js ships with.
- this is code that you can readily use in your application.
+
+This is ready-to-use code for your programme.
+ In Section 4, we'll dive further into the workings of node and see where the action actually lies.js.
+ ((((((((((((this is code that you can readily use in your application.
  section 4 is where it gets really interesting we're going to take a closer look at the internals of node.js.
- a slightly Advanced topic but one that will help you write better code.
+
+an Advanced subject that will help you improve your coding skills.
+ In Section 5, we'll get into npm, the node package manager, which provides us with a vast repository of third-party modules to meet a wide range of needs in our own software. 
+ ((((((((((((a slightly Advanced topic but one that will help you write better code.
  for Section 5 we will learn about npm the node package manager which is a huge library of third-party modules that we can use for a variety of requirements in our own application.
- npm is essential to build any medium to large scale app with node. Js.
+
+Node applications of any size require the use of npm. Js.
+ We shall examine node's potential applications in Section 6.JavaScript to create a programme with a command line user interface.
+ Node may be used to create web servers.however you can also make command-line tools in js.
+ ((((((((((((npm is essential to build any medium to large scale app with node. Js.
  for Section 6 we will see how we can use node.js to build a command line interface tool.
  yes you can build web servers with node.js but you can also build CLI tools.
- finally we will wind up the series with a miscellaneous section where I will cover a few topics that don't necessarily fall under one specific category.
- now you might be wondering is this all there is to it well about node. js itself yes these are pretty much the Core Concepts you have to learn.
- what you typically come across at work though is building web applications using a framework like express.js.
+
+Finally, we will wrap up the series with a random segment in which I discuss a few issues that don't neatly fit into any other.
+ ((((((((((((finally we will wind up the series with a miscellaneous section where I will cover a few topics that don't necessarily fall under one specific category.
+
+Having read thus far, you may be wondering if there is anything further to know about node. These are, indeed, the fundamentals of js that you must master.
+ ((((((((((((now you might be wondering is this all there is to it well about node. js itself yes these are pretty much the Core Concepts you have to learn.
+
+Building web apps with a framework like express.js, complete with API endpoint definition, database connection, authentication, etc., is more representative of what you'll encounter on the job.
+ ((((((((((((what you typically come across at work though is building web applications using a framework like express.js.
  defining API endpoints connecting to databases adding authentication Etc.
- but let me tell you to understand express.js which is a node framework for the web you should first know the concepts in node. js .
-and express.js is a huge topic to cover which is why I will create a separate node.js plus express your series for beginners in the near future .
-when we are done you will have a solid understanding of both node.js and express.js.
+
+However, I must warn you that you need to be familiar with node.js fundamentals before attempting to learn express.js, a node framework for the web.
+ ((((((((((((but let me tell you to understand express.js which is a node framework for the web you should first know the concepts in node. js .
+
+and communicate.Since there is so much to say about JavaScript, I've decided to split it off into its own node.The future of js plus expressing your series for newcomers.
+((((((((((((and express.js is a huge topic to cover which is why I will create a separate node.js plus express your series for beginners in the near future .
+
+You will leave this tutorial with a firm grasp of node.js and express.js.
+ As for requirements, there is only one necessary tool: up-to-date JavaScript.
+((((((((((((when we are done you will have a solid understanding of both node.js and express.js.
  now as far as the prerequisites are concerned we just have one and that is modern JavaScript.
- if you're new to JavaScript please watch my crash courses on the fundamentals of JavaScript the advanced topics in JavaScript and also the video on the important Concepts in es2015 and above a link should be in the description down below.
- all right if this is clear let's proceed to the first section where we will learn about a few important topics that lay the foundation to understand what exactly is node.js.
+
+If you're just getting started with JavaScript, I highly recommend watching my crash courses on the foundations, advanced subjects, and key concepts in es2015 and higher (a link to which should be included in the description).
+ ((((((((((((if you're new to JavaScript please watch my crash courses on the fundamentals of JavaScript the advanced topics in JavaScript and also the video on the important Concepts in es2015 and above a link should be in the description down below.
+
+OK, I guess If this makes sense, let's go on to the next part, where we'll cover some groundwork material for grasping the concept of a node.js.
+ Please join me in the subsequent one.
+(((((((((((( all right if this is clear let's proceed to the first section where we will learn about a few important topics that lay the foundation to understand what exactly is node.js.
  I'll see you in the next one

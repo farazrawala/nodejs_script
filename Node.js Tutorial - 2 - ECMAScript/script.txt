@@ -1,34 +1,90 @@
-welcome everyone to section one of the series where the focus is on understanding the definition of node.js.
- before we try to understand what is a JavaScript runtime environment though let's try to understand a few other Concepts that lay the foundation.
- kind of like video games where you defeat small bosses and use that experience to defeat the big boss.
+hello, and welcome to the first part of this series, in which we will learn what node.js is and why it's important.
+(((((((((((welcome everyone to section one of the series where the focus is on understanding the definition of node.js.
+
+Let's attempt to get a handle on some ancillary Concepts before we go into trying to figure out what a JavaScript runtime environment is.
+((((((((((( before we try to understand what is a JavaScript runtime environment though let's try to understand a few other Concepts that lay the foundation.
+
+similar to video games where progress is made by vanquishing progressively more difficult bosses before facing the ultimate showdown.
+ OK, let's start with the basics and learn what ecmascript is before moving on to any other concepts or vocabulary.
+ (((((((((((kind of like video games where you defeat small bosses and use that experience to defeat the big boss.
  all right for our first concept or terminology we're going to understand what is ecmascript.
- and for this we need to go back in time.
+
+and we'll have to travel through time to do it now.
+ Mosaic, the first web browser featuring a graphical user interface, was introduced in 1993.
+ (((((((((((and for this we need to go back in time.
  in 1993 the first web browser with a user interface called Mosaic was released.
- in 1994 the lead developers of Mosaic founded a company called Netscape and released a more polished browser called Netscape Navigator.
+
+The creators of Mosaic eventually went on to form the business Netscape and release their improved browser, Netscape Navigator, in 1994.
+ Despite its rising popularity, it never included the functionality of dynamic Behavior.
+ (((((((((((in 1994 the lead developers of Mosaic founded a company called Netscape and released a more polished browser called Netscape Navigator.
  although it became increasingly popular it lacked the capability for dynamic Behavior.
- web pages could only be static and there was no interactivity after a page was loaded.
- to address this in 1995 Netscape created a new scripting language called JavaScript the name was purely for marketing purpose as Java was the hot new language back then.
+
+There was no way for users to interact with web pages once they were loaded.
+ (((((((((((web pages could only be static and there was no interactivity after a page was loaded.
+
+JavaScript was established by Netscape in 1995 to solve this issue; the name was chosen primarily for marketing purposes, as Java was the trendy new programming language at the time.
+ Internet Explorer was released by Microsoft in 1995, about the same time.
+ (((((((((((to address this in 1995 Netscape created a new scripting language called JavaScript the name was purely for marketing purpose as Java was the hot new language back then.
  during the same time in 1995 Microsoft debuted their browser Internet Explorer.
- this led to a browser war with Netscape Microsoft soon realized that JavaScript fundamentally changed the user experience of the web and wanted the same for Internet Explorer.
+
+Ultimately, this caused a browser war with Netscape. Microsoft quickly discovered that JavaScript had a transformative effect on the online browsing experience and sought to include it into Internet Explorer.
+ yet no guidelines were provided for them to follow.
+ (((((((((((this led to a browser war with Netscape Microsoft soon realized that JavaScript fundamentally  changed the user experience of the web and wanted the same for Internet Explorer.
  but there was no specification for them to follow.
- in order to match netscape's JavaScript in 1996 Microsoft reverse engineered the Navigator interpreter to create its own scripting language called jscript.
+
+Microsoft developed jscript, their own scripting language, by reverse engineering the Navigator interpreter in 1996 to compete with Netscape's JavaScript.
+ jscript served the same function as JavaScript, but it did it in a different way.
+ (((((((((((in order to match netscape's JavaScript in 1996 Microsoft reverse engineered the Navigator interpreter to create its own scripting language called jscript.
  jscript filled the same use case as JavaScript but its implementation was different.
- this unfortunately created a problem the differences made it difficult for developers to make their websites work well in both browsers.
- in fact the two implementations were so different that best viewed in Netscape and best viewed in Internet Explorer badges became common for most companies who couldn't afford to build for both implementations.
- to resolve this in November 1996 Netscape submitted JavaScript to ecma International.
+ 
+Unfortunately, this led to an issue. The disparities made it challenging for web designers to create sites that would function correctly across both browsers.
+ (((((((((((this unfortunately created a problem the differences made it difficult for developers 
+ to make their websites work well in both browsers.
+ 
+Since it was impractical for most businesses to develop for both browsers, "best viewed in Netscape" and "best viewed in Internet Explorer" badges started appearing on websites.
+ (((((((((((in fact the two implementations were so different that best viewed in Netscape and best viewed in Internet Explorer badges became common for most companies who couldn't afford to build for both implementations.
+ 
+JavaScript was presented by Netscape to ecma International in November 1996 as a solution to this problem.
+ What is ecma international, you ask? It's a trade group that promotes uniformity in the field of information and communication technology.
+ (((((((((((to resolve this in November 1996 Netscape submitted JavaScript to ecma International.
  now what is ecma international well it is an industry Association dedicated to the standardization of information and communication systems.
- Netscape wanted a standard specification that all browser vendors could conform to as it would help keep other implementations consistent across browsers.
- now for each new specification ecma provides a standard specification and a committee.
+ 
+For this reason, Netscape advocated for a universally adoptable specification that all browser makers could adhere to.
+ (((((((((((Netscape wanted a standard specification that all browser vendors could conform to as it would help keep other implementations consistent across browsers.
+ 
+Now, ECMA offers a committee and a standard specification for every new specification.
+ The JavaScript specification is known as Eggman 262, and the group responsible for it is known as Technical Committee 39 (or tc39 for short).
+ (((((((((((now for each new specification ecma provides a standard specification and a committee.
  in case of JavaScript the standard is called Eggman 262 and the committee that works on ik1262 is called technical committee 39 or tc39 for short.
- tecma however decided to use the term ecmascript to talk about the official language the reason for this is because Oracle who acquired Microsystems owns the trademark for the term JavaScript.
- so ecmascript refers to the standard language whereas JavaScript is what we use in practice and builds on top of ecmascript.
+ 
+Because Oracle, the company that bought Microsystems, holds the trademark for the name JavaScript, tecma has opted to refer to the official language as ecmascript instead.
+ (((((((((((tecma however decided to use the term ecmascript to talk about the official language the reason for this is because Oracle who acquired Microsystems owns the trademark for the term JavaScript.
+ 
+Therefore, ecmascript is the standard language and JavaScript, which is what we really use, is a superset of ecmascript.
+ As you can see, several different versions of ecmascript have been produced throughout the years.
+ (((((((((((so ecmascript refers to the standard language whereas JavaScript is what we use in practice and builds on top of ecmascript.
  over the years we've had many versions of ecmascript released as you can see.
- es2015 also known as es6 is the version that provides what we call Modern JavaScript features and has become a prerequisite for developing with JavaScript.
- now here's the funny bit although ecmascript and JavaScript are technically not the same the two words are often used interchangeably.
- and to be honest for the purpose of the series it does not make a huge difference.
+ 
+The es2015, or es6, version is required for JavaScript development since it includes what we term Modern JavaScript capabilities.
+ (((((((((((es2015 also known as es6 is the version that provides what we call Modern JavaScript features and has become a prerequisite for developing with JavaScript.
+ 
+The irony is that, despite the fact that ecmascript and JavaScript are distinct languages, people frequently confuse the two.
+ (((((((((((now here's the funny bit although ecmascript and JavaScript are technically not the same the two words are often used interchangeably.
+ 
+honestly, it doesn't matter that much for the series' overall plot.
+ I do not want you to become sidetracked attempting to investigate what is ecmascript and how is it different from JavaScript anytime you encounter the phrase ecmascript; instead, just think about JavaScript.
+ (((((((((((and to be honest for the purpose of the series it does not make a huge difference.
  whenever you see the word ecmascript you can think of it as JavaScript I do not want you to get sidetracked trying to research on what is ecmascript and how is it different from JavaScript.
- this video has hopefully made that clear.
+ 
+I hope the video helped clarify that for you.
+ to sum up, the language requirement 262 is the language itself. ecmascript is a programming language that uses the ekma 262 standard.
+ (((((((((((this video has hopefully made that clear.
  to summarize like my 262 is the language specification ecmascript is a language that implements ekma 262.
- JavaScript is basically ecmascript at its core but Builds on top of that.
+ 
+JavaScript is based on ecmascript but adds more functionality.
+ We may safely ignore ecmascript's specifics and think of it as JavaScript for the rest of the series.
+ (((((((((((JavaScript is basically ecmascript at its core but Builds on top of that.
  for the rest of the series it is safe to treat ecmascript as JavaScript which is the language we all are familiar with.
- if this first concept is clear join me in the next video where we will learn about Chrome's V8 engine"
+ 
+If you understand this, then come on over to the next video where we'll talk about the V8 engine that powers Chrome. 
+ (((((((((((if this first concept is clear join me in the next video where we will learn about Chrome's V8 engine"
