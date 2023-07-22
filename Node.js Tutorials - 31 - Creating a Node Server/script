@@ -17,7 +17,6 @@ Server that uses the Hypertext Transfer Protocol (HTTP).create.
 HTTP dot create server.))))))
 
 
-
 Now, a callback method accepts a callback function as its argument.
 Two parameters, request and response, are sent to this function. 
 ((((("now this method accepts a callback function as its argument.
