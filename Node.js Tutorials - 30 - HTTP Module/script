@@ -11,12 +11,21 @@ Okay, to kick things off, let's talk about what clients and servers are.
 ((((("or in simple terms let's understand what happens when you type a URL in a web browser on your computer.
 let's start with the concept of clients and servers.
 
+// click 
+
 Clients are any devices that can connect to the internet and use web-based software, such as a computer, smartphone, or tablet.
 Clients and servers are respectively the machines that use and are used by the internet. 
 ((((("computers connected to the internet are called clients and servers.
 
+// click 
+
+
+
  Clients are computers, smartphones, and other devices that can access the internet and run web-based applications like web browsers.
 ((((("clients are internet connected devices such as computers or mobile phones along with web accessing software available on those devices such as a web browser.
+
+// click 
+
 
 Conversely, servers are computers that host websites and programs.
 A client device makes a request to see a web page whenever a user enters a URL into its browser. 
@@ -41,32 +50,54 @@ now we may use HTTP for this purpose.
 ((((("Or what if the response sent by the server cannot be understood by the client.
 well this is where HTTP comes into picture.
 
+// click 
+
 Hypertext Transfer Protocol (HTTP) is a protocol that specifies a language for exchanging data between clients and servers over the Internet. 
-((((("HTTP stands for hypertext transfer protocol and is a protocol that defines a format for clients and servers to speak to each other.
+((((("HTTP stands for hypertext transfer protocol and 
+
+// click 
+
+is a protocol that defines a format for clients and servers to speak to each other.
+
 
 Both the client and the server use the Hypertext Transfer Protocol (HTTP) to communicate.
 At its most fundamental level, the Web operates in this way.
 ((((("a client sends an HTTP request and the server responds with an HTTP response.
 this is how the web works at a very high level.
 
+// click 
+
 An HTTP request is sent from a client to a server, which then sends back an HTTP response.
 This is, at its most fundamental level, how the Web operates.
 ((((("now where does node fit in.
-well as it turns out we can create a webserver using node.js.
+well as it turns out 
+ 
+ ++++ we can create a webserver using node.js.
 
 
-((((("node has access to operating system functionality like networking and given the fact that node has an event Loop to run tasks asynchronously.
-With node, you can conduct tasks asynchronously thanks to its event loop and access to OS features like networking.
+((((("
++++ node has access to operating system functionality like networking 
+
+and given the fact that 
+
+
++++ Node has an event loop to run asynchronously and is perfect for creating web servers that can handle simultaneously large volumes of requests..
 
  
 
 ((((("it is perfect for creating web servers that can simultaneously handle large volumes of requests.
-of course the node server we create still has to respect the HTTP format.
+of course the 
+
+++++ node server we create still has to respect the HTTP format.
+
+
 Web servers that can process a high number of requests at once may be easily developed using this method.
 The node server we develop must, of course, adhere to the standard HTTP protocol. 
 
 ((((("and for that we use the built-in HTTP module.
-the HTTP module allows creation of webservers that can transfer data over http.
+the 
+
++++ HTTP module allows creation of webservers that can transfer data over http.
 and the internal HTTP module is used for that purpose.
 The HTTP library facilitates the development of web servers with HTTP transmission capabilities.  
 

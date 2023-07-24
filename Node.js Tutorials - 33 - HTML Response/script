@@ -8,6 +8,9 @@ meaning, content type Hello, world! type / aircraft. rest.
 (((((((((("I'm going to revert back to plain text response instead of Json.
 so content type Text slash plane and rest dot end hello world.
 
+## text/plain
+## "Hello World"
+
  The server has to be rebooted, and the browser must be refreshed. 
  if you now restart the server and refresh the browser.
  (((((((((("This should seem familiar as it is the exact same code from two videos ago.
@@ -18,10 +21,13 @@ It's expected that "hello world" will appear on the screen.
  (((((((((("we should see the text hello world.
  now let's try to add some HTML.
 
+
+### <h1>Hello World</h1>
 I'm going to put an H1 tag around the "hello world" text.
  I need a server restart.
  (((((((((("I'm going to wrap the hello world text with an H1 tag.
  restart the server.
+
 
 If the results are not what you anticipated, try refreshing the browser.
  Without the opening and closing H1 tags, the phrase "hello world" should presumably be larger.
@@ -31,10 +37,16 @@ If the results are not what you anticipated, try refreshing the browser.
 We have instructed the browser to display this response only in text format rather than HTML, which is why we see simply text.
  (((((((((("the reason we see only text and not HTML is because we are asking the browser to treat this response as plain text.
 
+
+
+### text/html 
 We should set the content type to "Text/HTML" if we want the browser to treat this as HTML.
  After restarting the server, the text "hello world" should appear in bold when the browser is refreshed.
 ((((((((((" if the browser has to parse this as HTML we need to specify content type as Text slash HTML.
  restart the server and now if we refresh the browser we should see larger hello world text in bold.
+
+
+
 
 This is how an H1 tag is styled by default and how HTML content is sent in response.
  Despite the fact that this is perfectly functional, HTML is rarely built as a string in the same JavaScript code.
@@ -46,6 +58,8 @@ Rather, we transmit the contents of a file where the HTML is defined as a respon
  (((((((((("instead we Define the HTML in a separate file and send that file contents as a response.
  let me show you how to do that.
 
+
+## create file index.html
 Let me start by making a fresh index.html file.
  using the file extension's exclamation point and tab character to produce HTML. 
  (((((((((("I'm going to create a new file called index.html.
@@ -60,6 +74,10 @@ Our request listener will now read the contents of the index.html file.
  (((((((((("next we need to read the file contents of index.html in our request listener.
  and for reading a file we know we can use the fs module.
 
+###const fs  = require('node:fs')
+//lister midle
+const html = fs.readFileSync("./index.html",'utf-8')
+
 This means that in the request listener, as well as at the top level, const FS equals need node colon FS.
  FS.dot_read_file_sync is equal to const HTML.
  (((((((((("so at the top const FS is equal to require node colon FS and within the request listener.
@@ -72,6 +90,8 @@ The correct filename format is "./index.html."
 
 Because I wanted to wait until the file's contents were read before replying, I used read file sync instead of just read file.
 (((((((((("the reason I've used read file sync and not read file is because we want to wait for the file content to be read before responding.
+
+### res.end(html)
 
 Now that we have the file's contents in HTML format, we can send that back as a reply.
  and for the time being restart the server so that when we Ctrl C node index return to the browser and hit refresh, we get the anticipated HTML.
@@ -95,6 +115,11 @@ unnecessary use of memory.
 Instead, we may depend on our prior knowledge of streams.
  So, the address is "FS/create/stream/index.html"
  (((((((((("instead we can rely on streams which we have already learned about.
+ 
+
+##### fs.createReadStream("./index.html").pipe(res)
+// const fs.read
+// res.end 
  so FS dot create stream the path is dot slash index.html.
 
 Then we will be using a conduit to get the reply.
@@ -108,7 +133,7 @@ Then we will be using a conduit to get the reply.
 (((((((((("but this time our code is more performant.
  now for Simplicity I've used relative path to index.html.
 
-
+__dirname+ "index.html"
  However, double underscores should be used in directory names wherever possible.
  Keep the file safe. 
  (((((((((("but you should stick to using double underscore directory name whenever you can.

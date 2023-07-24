@@ -8,10 +8,19 @@ I'm going to make a new object in the request listener.
 (((((((((((("in this video let's see how to respond with Json data.
 in the request listener I'm going to create a new object.
 
-dual qualities of the const superhero Bruce is the default first name.
-to Wayne's last name, also.
-(((((((((((("const superhero has two properties first name set to Bruce.
-and last name said to Wayne.
+### const superHero = {
+	firstName:"Iron"
+	lastName: "Man"
+}
+
+dual qualities of the const superhero Iron is the default first name.
+to Man's last name, also.
+(((((((((((("const superhero has two properties first name set to Iron.
+and last name said to Man.
+
+
+
+### res.end(superHero)
 
 Let's see if we can get a reaction from the client by sending them this item.
 hence,. end rest.
@@ -22,6 +31,8 @@ Superhero.
 Use the node index command in the terminal.
 (((((((((((("Superhero.
 in the terminal run node index.
+
+node index.
 
 as well as if we now reload the web page.
 We need to fix this ASAP.
@@ -43,6 +54,8 @@ The JavaScript object notation (json) is a data transfer format compatible with 
 (((((((((((("what we have to do is convert it into what is called the Json format.
 Json which stands for JavaScript object notation is a data interchange format that we can use with http.
 
+
+
 The V8 engine offers in-built capabilities to meet our goals, which is why we've settled on the Json format.
 (((((((((((("the nice thing about using Json format is that the V8 engine has built-in functionality to support what we want to achieve.
 
@@ -50,6 +63,9 @@ The only thing we need to do is call the predefined function Json Dot stringify.
 and use the superhero argument.
 (((((((((((("all we have to do is invoke the built-in method Json Dot stringify.
 and pass n superhero as an argument.
+
+### res.end(JSON.stringify(superHero))
+"content-type":"application/json"
 
 However, we must tell the browser that the file's content type is Json.
 Therefore, in the application slash colon Json content type on line 9. 
@@ -61,6 +77,8 @@ Our item is shown as a string.
 ((((((((((("now if we restart the server node index head back to the browser and refresh.
 we see a string representation of our object.
 
+
+
 The built-in Json dot parse method may be used to return to an object form.
 However, this is how you may reply with objects in Json format.
 ((((((((((("if you want to convert this back to an object you can use the built-in Json dot parse method.
@@ -68,7 +86,8 @@ but this is how you can send objects as Json response.
 
 , and the realization that you've created your first API with node.js will come as a nice surprise.
 There is a single API endpoint available to us at localhost:3000.
-((((((((((("and you'll be pleasantly surprised to know you've written your first API withnode.js.
+((((((((((("and you'll be pleasantly surprised to know you've written your first API with node.js.
+
 we have one API endpoint which is localhost 3000 and that endpoint returns some data.
 
 There are first and last names stored in the data item.
@@ -81,6 +100,8 @@ Now that we know what an API is, we can go on to learning how to construct APIs 
 
 Please focus on learning the difference between application/slash-Json and json for the time being.In order to return a Json response to the client, stringify is all that is required.
 ((((((((((("for now I want you to understand that content type set to application slash Json and json.stringify are sufficient to send a Json response back to the client.
+
+
 
 a different presentation style from the basic text we saw in the first video.
 If you understand, come on in to the following film where we'll discover how to reply with HTML.
